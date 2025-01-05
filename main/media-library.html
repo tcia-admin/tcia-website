@@ -1,0 +1,849 @@
+<style>
+    :root {
+        /* Brand Colors */
+        --tcia-red: #ec1a3c;
+        --tcia-yellow: #f3b54a;
+        --tcia-green: #01752d;
+        --tcia-teal: #02a69e;
+        --tcia-navy: #061531;
+        --tcia-white: #f4f4f4;
+        
+        /* Supporting Colors */
+        --tcia-black: #1D1D1B;
+        --tcia-gray-dark: #333333;
+        --tcia-gray-light: #666666;
+        
+        /* Typography */
+        --font-primary: "Helvetica Neue Condensed Bold", "Arial Narrow Bold", sans-serif;
+        --font-secondary: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        --font-headline: "Interstate Condensed Bold", "Helvetica Neue Condensed Bold", "Arial Narrow Bold", sans-serif;
+        --font-body: "Interstate Condensed Regular", "Helvetica Neue", Arial, sans-serif;
+        --font-alt-bold: "Neuzeit Grotesk Bold", "Helvetica Neue Bold", Arial, sans-serif;
+        --font-alt-regular: "Neuzeit Grotesk Regular", "Helvetica Neue", Arial, sans-serif;
+        
+        /* Font Sizes */
+        --font-size-base: 1rem;
+        --font-size-lg: 1.25rem;
+        --font-size-xl: 1.5rem;
+        --font-size-2xl: 2rem;
+        
+        /* Spacing */
+        --spacing-xs: 0.5rem;
+        --spacing-sm: 1rem;
+        --spacing-md: 2rem;
+        --spacing-lg: 3rem;
+
+        /* New background options */
+        --tcia-bg-navy-10: #e8eaef;     /* Light navy - 10% strength */
+        --tcia-bg-teal-10: #e6f5f4;     /* Light teal - 10% strength */
+        --tcia-bg-yellow-10: #fef8ed;   /* Light yellow - 10% strength */
+        
+        /* Or slightly darker options */
+        --tcia-bg-navy-20: #d1d5dd;     /* Navy - 20% strength */
+        --tcia-bg-teal-20: #cceae9;     /* Teal - 20% strength */
+        --tcia-bg-yellow-20: #fdf1db;   /* Yellow - 20% strength */
+    }
+
+    /* Typography Styles */
+    h1, h2, h3 {
+        font-family: var(--font-headline);
+        font-weight: bold;
+    }
+
+    h2 {
+        text-transform: uppercase;
+    }
+
+    body {
+        font-family: var(--font-body);
+    }
+
+    .caption, .statistics, blockquote {
+        font-family: var(--font-headline);
+    }
+
+    .alt-text {
+        font-family: var(--font-alt-regular);
+    }
+
+    .alt-text-bold {
+        font-family: var(--font-alt-bold);
+    }
+
+    /* Layout */
+    .media-library-container {
+        background-color: var(--tcia-bg-navy-20);
+        max-width: 90rem;
+        margin: 0 auto;
+        padding: var(--spacing-md);
+    }
+
+    /* Grid System */
+    .media-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+        gap: 2rem;
+        padding: var(--spacing-md) 0;
+    }
+
+    .media-item {
+        background: var(--tcia-navy);
+        border-radius: 8px;
+        overflow: hidden;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .media-item:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .media-thumbnail-container {
+        position: relative;
+        aspect-ratio: 16/9;
+        background: var(--tcia-navy);
+        overflow: hidden;
+    }
+
+    .media-thumbnail {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    .media-content {
+        padding: var(--spacing-md);
+        color: var(--tcia-white);
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .media-title {
+        font-family: var(--font-headline);
+        font-size: var(--font-size-lg);
+        margin-bottom: var(--spacing-xs);
+        color: var(--tcia-white);
+        display: -webkit-box;
+        display: -moz-box;
+        display: box;
+        -webkit-line-clamp: 2;
+        -moz-line-clamp: 2;
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+        -moz-box-orient: vertical;
+        box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        height: 2.8em;
+        line-height: 1.4;
+    }
+
+    .media-metadata {
+        display: flex;
+        gap: var(--spacing-sm);
+        margin-bottom: var(--spacing-sm);
+        font-size: 0.9rem;
+        color: var(--tcia-gray-light);
+    }
+
+    .media-description {
+        margin-bottom: var(--spacing-md);
+        line-height: 1.4;
+        font-family: var(--font-body);
+        flex-grow: 1;
+        display: -webkit-box;
+        display: -moz-box;
+        display: box;
+        -webkit-line-clamp: 3;
+        -moz-line-clamp: 3;
+        line-clamp: 3;
+        -webkit-box-orient: vertical;
+        -moz-box-orient: vertical;
+        box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .media-actions {
+        display: flex;
+        gap: var(--spacing-sm);
+        margin-top: auto;
+    }
+
+    .media-button {
+        padding: 0.5em 1em;
+        border-radius: 4px;
+        font-family: var(--font-headline);
+        text-decoration: none;
+        transition: background-color 0.2s ease;
+    }
+
+    .media-button-primary {
+        background-color: var(--tcia-yellow);
+        color: var(--tcia-navy);
+    }
+
+    .media-button-primary:hover {
+        background-color: var(--tcia-red);
+        color: var(--tcia-white);
+    }
+
+    .media-button-secondary {
+        background-color: transparent;
+        color: var(--tcia-yellow);
+        border: 1px solid var(--tcia-yellow);
+    }
+
+    .media-button-secondary:hover {
+        background-color: var(--tcia-yellow);
+        color: var(--tcia-navy);
+    }
+
+    /* Media Controls */
+    .media-controls {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: var(--spacing-md);
+        flex-wrap: wrap;
+        gap: var(--spacing-sm);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .media-controls {
+            flex-direction: column;
+            align-items: stretch;
+        }
+        
+        .media-grid {
+            grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+        }
+    }
+
+    @media (max-width: 480px) {
+        :root {
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2rem;
+        }
+    }
+
+    /* Banner Styles */
+    .playlist-banner {
+        position: relative;
+        width: 100%;
+        height: 400px;
+        overflow: hidden;
+        background-color: var(--tcia-navy);
+    }
+
+    .playlist-slides {
+        display: flex;
+        transition: transform 0.5s ease;
+        height: 100%;
+    }
+
+    .playlist-slide {
+        min-width: 100%;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: var(--spacing-lg);
+        position: relative;
+        flex-shrink: 0;
+        box-sizing: border-box;
+    }
+
+    .playlist-slide.active {
+        opacity: 1;
+    }
+
+    .playlist-content {
+        flex: 1;
+        max-width: 50%;
+        color: var(--tcia-white);
+        z-index: 2;
+    }
+
+    .playlist-title {
+        font-family: var(--font-headline);
+        font-size: var(--font-size-2xl);
+        margin-bottom: var(--spacing-md);
+        color: var(--tcia-white);
+    }
+
+    .playlist-metadata {
+        font-family: var(--font-body);
+        font-size: var(--font-size-base);
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .playlist-preview {
+        width: 45%;
+        position: relative;
+        z-index: 2;
+    }
+
+    .playlist-thumbnail {
+        width: 100%;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .background-blur {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        filter: blur(20px) brightness(0.5);
+        z-index: 1;
+    }
+
+    .start-button {
+        display: inline-block;
+        padding: 0.8em 2em;
+        background-color: var(--tcia-yellow);
+        color: var(--tcia-navy);
+        font-family: var(--font-headline);
+        text-decoration: none;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+    }
+
+    .start-button:hover {
+        background-color: var(--tcia-red);
+        color: var(--tcia-white);
+    }
+
+    .video-modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        z-index: 1000;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .video-modal.active {
+        display: flex;
+        opacity: 1;
+    }
+
+    .video-modal-content {
+        position: relative;
+        width: 80%;
+        max-width: 1200px;
+        margin: auto;
+        background: var(--tcia-navy);
+        border-radius: 8px;
+        overflow: hidden;
+        padding: 40px;
+    }
+
+    .video-modal-close {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        background: var(--tcia-yellow);
+        border: none;
+        color: var(--tcia-navy);
+        font-size: 24px;
+        font-weight: bold;
+        cursor: pointer;
+        z-index: 1001;
+        padding: 5px 12px;
+        border-radius: 50%;
+        transition: all 0.2s ease;
+        width: 36px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .video-modal-close:hover {
+        background-color: var(--tcia-red);
+        color: var(--tcia-white);
+    }
+
+    #player-container {
+        position: relative;
+        padding-top: 56.25%;
+        background: var(--tcia-black);
+        border-radius: 4px;
+        overflow: hidden;
+    }
+
+    #player {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+</style>
+
+
+<section class="playlist-banner">
+    <div class="playlist-slides">
+        <!-- Slides will be dynamically inserted here -->
+    </div>
+</section>
+
+<section class="media-library-container">
+    <div class="media-controls">
+        <div class="search-filter">
+            <!-- Search and filter controls will go here -->
+        </div>
+        <div class="view-controls">
+            <!-- Grid/List view toggle will go here -->
+        </div>
+    </div>
+
+    <div class="media-grid">
+        <!-- Media items will be dynamically inserted here -->
+    </div>
+</section>
+
+<div id="video-modal" class="video-modal">
+    <div class="video-modal-content">
+        <button class="video-modal-close">&times;</button>
+        <div id="player-container">
+            <div id="player"></div>
+        </div>
+    </div>
+</div>
+
+<link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+<script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
+
+<script>
+    // Add this before mediaLibraryData
+    const CATEGORIES = {
+        D4PG: 'd4pg',
+        NOTICE_COALITION: 'notice-coalition',
+        DATA_JUSTICE_FUTURES: 'data-justice-futures',
+        NO_DATA_WITHOUT_US: 'no-data-without-us'
+    };
+
+    // Add this before populateMediaGrid()
+    const CATEGORY_DISPLAY_NAMES = {
+        [CATEGORIES.D4PG]: 'D4PG',
+        [CATEGORIES.NOTICE_COALITION]: 'NOTICE Coalition',
+        [CATEGORIES.DATA_JUSTICE_FUTURES]: 'Data Justice Futures',
+        [CATEGORIES.NO_DATA_WITHOUT_US]: 'No Data About Us Without Us'
+    };
+
+    function getCategoryDisplayName(categoryId) {
+        return CATEGORY_DISPLAY_NAMES[categoryId] || categoryId;
+    }
+
+    // Data structure for media items
+    const mediaLibraryData = {
+        videos: [
+            {
+                id: "video1",
+                title: null,
+                thumbnail: null,
+                videoUrl: "https://www.youtube.com/embed/-L5KP0t4A9s",
+                isYoutube: true,
+                dateAdded: null,
+                duration: null,
+                categories: [CATEGORIES.DATA_JUSTICE_FUTURES],
+                isNew: true
+            },
+            {
+                id: "video2",
+                title: null,
+                thumbnail: null,
+                videoUrl: "https://www.youtube.com/embed/XZxujy7y4HY?si=5jsC-cUI00M6f37R",
+                isYoutube: true,
+                dateAdded: null,
+                duration: null,
+                categories: [CATEGORIES.D4PG],
+                isNew: false
+            },
+            {
+                id: "video6",
+                title: null,
+                thumbnail: null,
+                videoUrl: "https://www.youtube.com/embed/94YsrY2CLgQ",
+                isYoutube: true,
+                dateAdded: null,
+                duration: null,
+                categories: [CATEGORIES.D4PG],
+                isNew: false
+            },
+            {
+                id: "video5",
+                title: null,
+                thumbnail: null,
+                videoUrl: "https://www.youtube.com/embed/gCZmF0Xboxs?si=JyQpP_6ZdRvTBfF1",
+                isYoutube: true,
+                dateAdded: null,
+                duration: null,
+                categories: [CATEGORIES.D4PG],
+                isNew: false
+            },
+            {
+                id: "video4",
+                title: null,
+                thumbnail: null,
+                videoUrl: "https://www.youtube.com/embed/HE7Rasdi36U?si=Wj_g1nqh-RXwIwws",
+                isYoutube: true,
+                dateAdded: null,
+                duration: null,
+                categories: [CATEGORIES.D4PG],
+                isNew: false
+            },
+            {
+                id: "video3",
+                title: null,
+                thumbnail: null,
+                videoUrl: "https://www.youtube.com/embed/Ny0i2yF1E_E?si=9WFlIk7RMzh0T1uT",
+                isYoutube: true,
+                dateAdded: null,
+                duration: null,
+                categories: [CATEGORIES.D4PG],
+                isNew: false
+            }
+            // Add more videos...
+        ],
+        images: [
+            {
+                id: "img1",
+                title: "Community Workshop",
+                imageUrl: "https://video.squarespace-cdn.com/content/v1/5b9081c58ab7224793278e1d/09656986-3214-4bc7-af30-a005062978ac/thumbnail",
+                thumbnail: "https://video.squarespace-cdn.com/content/v1/5b9081c58ab7224793278e1d/09656986-3214-4bc7-af30-a005062978ac/thumbnail",
+                dateAdded: "2024-03-15",
+                category: "events"
+            }
+            // More images...
+        ]
+    };
+
+    // Data structure for playlists
+    const playlistData = [
+        {
+            id: "playlist1",
+            title: "Understanding Youth Data Surveillance",
+            duration: "45 minutes",
+            videoCount: 5,
+            thumbnail: "https://images.pexels.com/photos/163140/technology-computer-motherboard-chips-163140.jpeg"
+        },
+        {
+            id: "playlist2",
+            title: "Data Privacy Fundamentals",
+            duration: "35 minutes",
+            videoCount: 4,
+            thumbnail: "https://images.pexels.com/photos/1034425/pexels-photo-1034425.jpeg"
+        },
+        {
+            id: "playlist3",
+            title: "Digital Rights and Youth",
+            duration: "50 minutes",
+            videoCount: 6,
+            thumbnail: "https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg"
+        },
+        {
+            id: "playlist4",
+            title: "Community Data Protection",
+            duration: "30 minutes",
+            videoCount: 3,
+            thumbnail: "https://images.pexels.com/photos/163140/technology-computer-motherboard-chips-163140.jpeg"
+        }
+    ];
+
+    // Add these new functions for metadata retrieval
+    const YOUTUBE_API_KEY = 'AIzaSyD1dC6b3XvHecu7nxnYSyHD2_oJFF87RRk';
+
+    function getYouTubeVideoId(url) {
+        const regex = /(?:embed\/|v=|v\/|youtu\.be\/|\/v\/|\/e\/|watch\?v=|\/watch\?v=|\/watch\?feature=player_embedded&v=)([^#\&\?\n<>\'\"]*)/;
+        const match = url.match(regex);
+        return match && match[1];
+    }
+
+    async function fetchYouTubeMetadata(videoUrl) {
+        const videoId = getYouTubeVideoId(videoUrl);
+        if (!videoId) return null;
+
+        try {
+            const response = await fetch(
+                `https://www.googleapis.com/youtube/v3/videos?` +
+                `id=${videoId}&` +
+                `key=${YOUTUBE_API_KEY}&` +
+                `part=snippet,contentDetails,statistics`
+            );
+
+            const data = await response.json();
+            if (!data.items || data.items.length === 0) return null;
+
+            const video = data.items[0];
+            const thumbnails = video.snippet.thumbnails;
+            // Try to get the highest quality thumbnail available
+            const thumbnail = thumbnails.maxres?.url || 
+                             thumbnails.standard?.url || 
+                             thumbnails.high?.url || 
+                             thumbnails.medium?.url;
+
+            return {
+                title: video.snippet.title,
+                description: video.snippet.description,
+                thumbnail: thumbnail,
+                duration: parseDuration(video.contentDetails.duration),
+                dateAdded: new Date(video.snippet.publishedAt).toISOString().split('T')[0]
+            };
+        } catch (error) {
+            console.error('Error fetching YouTube metadata:', error);
+            return null;
+        }
+    }
+
+    function parseDuration(duration) {
+        const match = duration.match(/PT(\d+H)?(\d+M)?(\d+S)?/);
+        const hours = (match[1] || '').replace('H', '');
+        const minutes = (match[2] || '').replace('M', '');
+        const seconds = (match[3] || '').replace('S', '');
+
+        let result = '';
+        if (hours) result += `${hours.padStart(2, '0')}:`;
+        result += `${minutes.padStart(2, '0')}:${seconds.padStart(2, '0')}`;
+        return result;
+    }
+
+    // Modify the initializeMediaLibrary function to include metadata fetching
+    async function initializeMediaLibrary() {
+        // Fetch metadata for YouTube videos first
+        for (const video of mediaLibraryData.videos) {
+            if (video.isYoutube && (!video.fetchedMetadata)) {
+                const metadata = await fetchYouTubeMetadata(video.videoUrl);
+                if (metadata) {
+                    // Only update metadata fields if they're not already set
+                    video.title = video.title || metadata.title;
+                    video.description = video.description || metadata.description;
+                    video.thumbnail = video.thumbnail || metadata.thumbnail;
+                    video.duration = video.duration || metadata.duration;
+                    video.dateAdded = video.dateAdded || metadata.dateAdded;
+                    video.fetchedMetadata = true;
+                }
+            }
+        }
+
+        // Continue with existing initialization
+        initializePlaylistBanner();
+        populateMediaGrid();
+        setupControls();
+        setupEventListeners();
+    }
+
+    // Populate media grid
+    function populateMediaGrid() {
+        const mediaGrid = document.querySelector('.media-grid');
+        
+        mediaLibraryData.videos.forEach(video => {
+            const mediaItem = document.createElement('div');
+            mediaItem.className = 'media-item';
+            mediaItem.setAttribute('data-video-id', video.id);
+            
+            // Format categories with bullet separators
+            const categoriesDisplay = video.categories
+                .map(cat => getCategoryDisplayName(cat))
+                .join(' • ');
+            
+            mediaItem.innerHTML = `
+                <div class="media-thumbnail-container">
+                    <img 
+                        src="${video.thumbnail}" 
+                        alt="${video.title}" 
+                        class="media-thumbnail"
+                    >
+                </div>
+                <div class="media-content">
+                    <h3 class="media-title">${video.title}</h3>
+                    <div class="media-metadata">
+                        <span>${categoriesDisplay}</span>
+                        <span>${video.duration}</span>
+                        ${video.isNew ? '<span class="badge-new">New</span>' : ''}
+                    </div>
+                    <p class="media-description">
+                        ${video.description}
+                    </p>
+                    <div class="media-actions">
+                        <a href="#watch/${video.id}" class="media-button media-button-primary">Watch Now</a>
+                        <a href="#details/${video.id}" class="media-button media-button-secondary">View Details</a>
+                    </div>
+                </div>
+            `;
+            
+            mediaGrid.appendChild(mediaItem);
+        });
+    }
+
+    // Setup controls
+    function setupControls() {
+        // Controls setup logic will go here
+    }
+
+    // Setup event listeners
+    function setupEventListeners() {
+        // Add click handlers for "Watch Now" buttons
+        document.querySelectorAll('.media-button-primary').forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                const videoId = e.target.closest('.media-item').getAttribute('data-video-id');
+                const video = mediaLibraryData.videos.find(v => v.id === videoId);
+                openVideoModal(video);
+            });
+        });
+
+        // Close modal when clicking the close button or outside the content
+        const modal = document.getElementById('video-modal');
+        const closeBtn = document.querySelector('.video-modal-close');
+        
+        closeBtn.addEventListener('click', closeVideoModal);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeVideoModal();
+            }
+        });
+    }
+
+    let player = null;
+
+    function openVideoModal(video) {
+        const modal = document.getElementById('video-modal');
+        const playerContainer = document.getElementById('player');
+        
+        // Extract video ID from YouTube URL
+        const videoId = video.videoUrl.split('embed/')[1].split('?')[0];
+        
+        // Create new player if it doesn't exist
+        if (!player) {
+            player = new Plyr('#player', {
+                controls: ['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'captions', 'settings', 'pip', 'fullscreen'],
+                youtube: { noCookie: true }
+            });
+        }
+
+        // Set up YouTube iframe
+        playerContainer.innerHTML = `
+            <div class="plyr__video-embed" id="player">
+                <iframe
+                    src="https://www.youtube.com/embed/${videoId}?origin=${window.location.origin}&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1"
+                    allowfullscreen
+                    allowtransparency
+                    allow="autoplay"
+                ></iframe>
+            </div>
+        `;
+
+        // Show modal
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeVideoModal() {
+        const modal = document.getElementById('video-modal');
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+        
+        // Destroy current player
+        if (player) {
+            player.destroy();
+            player = null;
+        }
+
+        // Clear the player container to fully stop the video
+        const playerContainer = document.getElementById('player');
+        playerContainer.innerHTML = '';
+    }
+
+    function createPlaylistSlides() {
+        const slidesContainer = document.querySelector('.playlist-slides');
+        
+        playlistData.forEach(playlist => {
+            const slide = document.createElement('div');
+            slide.className = 'playlist-slide';
+            
+            slide.innerHTML = `
+                <div class="playlist-content">
+                    <h2 class="playlist-title">${playlist.title}</h2>
+                    <div class="playlist-metadata">
+                        <span>Playlist • ${playlist.videoCount} videos • ${playlist.duration}</span>
+                    </div>
+                    <a href="#playlist/${playlist.id}" class="start-button">Start Playlist</a>
+                </div>
+                <div class="playlist-preview">
+                    <img src="${playlist.thumbnail}" alt="${playlist.title} preview" class="playlist-thumbnail">
+                </div>
+                <div class="background-blur" style="background-image: url('${playlist.thumbnail}')"></div>
+            `;
+            
+            slidesContainer.appendChild(slide);
+        });
+    }
+
+    function initializePlaylistBanner() {
+        createPlaylistSlides();
+        
+        const slidesContainer = document.querySelector('.playlist-slides');
+        const slides = document.querySelectorAll('.playlist-slide');
+        let currentIndex = 0;
+
+        function switchSlide() {
+            currentIndex = (currentIndex + 1) % slides.length;
+            const offset = currentIndex * -100;
+            slidesContainer.style.transform = `translateX(${offset}%)`;
+        }
+
+        let intervalId = setInterval(switchSlide, 5000);
+        
+        const banner = document.querySelector('.playlist-banner');
+        
+        banner.addEventListener('mouseenter', () => {
+            clearInterval(intervalId);
+        });
+        
+        banner.addEventListener('mouseleave', () => {
+            intervalId = setInterval(switchSlide, 5000);
+        });
+    }
+
+    // Add these utility functions for filtering
+    function filterVideosByCategory(category) {
+        return mediaLibraryData.videos.filter(video => 
+            video.categories.includes(category)
+        );
+    }
+
+    function filterVideosByMultipleCategories(categories) {
+        return mediaLibraryData.videos.filter(video => 
+            categories.some(category => video.categories.includes(category))
+        );
+    }
+
+    function filterVideosByAllCategories(categories) {
+        return mediaLibraryData.videos.filter(video => 
+            categories.every(category => video.categories.includes(category))
+        );
+    }
+
+    // Example usage:
+    // const d4pgVideos = filterVideosByCategory(CATEGORIES.D4PG);
+    // const multiCategoryVideos = filterVideosByMultipleCategories([CATEGORIES.D4PG, CATEGORIES.NOTICE_COALITION]);
+    // const videosInAllCategories = filterVideosByAllCategories([CATEGORIES.D4PG, CATEGORIES.DATA_JUSTICE_FUTURES]);
+
+    // Initialize when DOM is loaded
+    document.addEventListener('DOMContentLoaded', initializeMediaLibrary);
+</script>
