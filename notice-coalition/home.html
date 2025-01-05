@@ -1,0 +1,1269 @@
+<!-- Add these lines near the top of your HTML, before your existing styles -->
+<!-- Preload critical fonts -->
+<link rel="preload" 
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" 
+      as="style">
+<link rel="preload" 
+      href="https://fonts.cdnfonts.com/css/impact" 
+      as="style">
+
+<!-- Preload critical images -->
+<link rel="preload" 
+      href="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/301406ed-440a-4a15-b346-b8b0faff4729/Notice+Logo+Design+F-03.png" 
+      as="image" 
+      type="image/png">
+
+<!-- Preconnect to external domains -->
+<link rel="preconnect" href="https://images.squarespace-cdn.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<!-- DNS prefetch for older browsers -->
+<link rel="dns-prefetch" href="https://images.squarespace-cdn.com">
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+<style>
+    :root {
+        --notice-yellow: #fbc516;
+        --notice-black: #1a1919;
+        --notice-grey: #808285;
+        --font-size-base: 1rem;
+        --spacing-unit: 1rem;
+        --left-column-margin: 2%; /* New variable for left column margin */
+        /* New variables for glint effect */
+        --glint-duration: 1.2s;
+        --glint-timing-function: ease-in-out;
+        --glint-width: 150%;
+        --glint-start-position: 100%;
+        --glint-end-position: 0%;
+        --glint-after-end-position: -200%;
+        --glint-color: rgba(255, 255, 255, 0.8);
+    }
+
+
+    #notice-page {
+        width: 100%;
+        max-width: none;
+        margin: 0;
+        padding: 0;
+        font-family: 'Roboto', sans-serif;
+        font-size: var(--font-size-base);
+        line-height: 1.6;
+        color: var(--notice-black);
+        background-image: 
+            url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIklEQVQIW2NkQAKrVq36zwjjgzhhYWGMYAEYB8RmROaABADeOQ8CXl/xfgAAAABJRU5ErkJggg=='),
+            linear-gradient(to bottom, var(--notice-grey), var(--notice-grey));        
+        background-size: cover;
+        background-position: center;
+        background-repeat: repeat;
+        background-attachment: fixed;
+        animation: backgroundMove 30s linear infinite; /* Adjust duration and timing as needed */
+    }
+
+    header, main, footer {
+        padding: var(--spacing-unit);
+    }
+
+    .logo {
+        width: 6.25rem; /* 100px */
+        height: auto;
+        margin-bottom: var(--spacing-unit);
+    }
+
+    .notice-yellow-bg {
+        background-color: var(--notice-yellow);
+    }
+
+    .notice-black-bg {
+        background-color: var(--notice-black);
+        color: #ffffff;
+    }
+
+    .regular-black-bg {
+        background-color: #000000;
+        color: #ffffff;
+    }
+
+    .notice-grey-bg {
+        background-color: var(--notice-grey);
+        color: #ffffff;
+    }
+
+    .notice-grey-text {
+        color: var(--notice-grey);
+    }
+
+    .two-column-layout {
+        display: flex;
+        gap: var(--spacing-unit);
+        max-width: none;
+        margin: 0;
+        padding: 0;
+        align-items: flex-start; /* Add this to align tops of columns */
+    }
+
+    .left-column {
+        flex: 2; 
+        margin-left: var(--left-column-margin);
+        position: relative; /* Add this */
+    }
+
+    .right-column {
+        flex: 7; 
+        max-width: 30.5rem; 
+        margin-right: auto;
+        position: sticky; /* Add this */
+        top: var(--spacing-unit); /* Add this to control the sticky position */
+    }
+
+    #leadership-team, #coalition-members {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-unit);
+    }
+
+    .team-member {
+        display: flex;
+        gap: var(--spacing-unit);
+    }
+
+    .team-member img {
+        width: 6.25rem; /* 100px */
+        height: 6.25rem;
+        object-fit: cover;
+    }
+
+    footer {
+        margin-top: var(--spacing-unit);
+        text-align: center;
+    }
+
+    #social-media {
+        display: flex;
+        justify-content: center;
+        gap: var(--spacing-unit);
+        margin-top: var(--spacing-unit);
+    }
+
+    @media (max-width: 75rem) { /* 1200px */
+        :root {
+            --left-column-margin: 2%; /* Adjust for smaller screens */
+        }
+    }
+
+    @media (max-width: 48rem) { /* 768px */
+        .two-column-layout {
+            flex-direction: column;
+        }
+
+        .left-column, .right-column {
+            flex: none;
+            margin-left: 0;
+            margin-right: 0;
+            max-width: none;
+        }
+    }
+
+    .logo-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: var(--spacing-unit) 0;
+    }
+
+    .header-logo {
+        width: 15.625rem; /* 250px */
+        height: auto;
+        max-width: 100%;
+    }
+
+    @media (max-width: 48rem) { /* 768px */
+        .header-logo {
+            width: 9.375rem; /* 150px */
+        }
+    }
+
+    p {
+        margin-bottom: 1rem;
+    }
+
+    p:last-child {
+        margin-bottom: 0;
+    }
+
+    .notice-header {
+        font-family: 'Impact', 'Arial Black', sans-serif;
+        font-size: 1.5rem;
+        font-weight: bold;
+        font-style: italic; /* Add italic style */
+        text-transform: uppercase;
+        letter-spacing: 0.15em; /* Add letter spacing */
+        color: var(--notice-black);
+        background-color: var(--notice-yellow);
+        padding: 0.5rem 1rem;
+        display: inline-block;
+        position: relative;
+        margin-bottom: 0.3rem;
+        transform: skew(-10deg); /* Slant the entire text block */
+    }
+
+    .notice-header span {
+        display: inline-block;
+        transform: skew(10deg); /* Counter-skew the text to keep it readable */
+    }
+
+    .notice-header::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -0.25rem;
+        width: 100%;
+        height: 0.25rem;
+        background-color: var(--notice-black);
+        transform: skew(-65deg);
+    }
+
+    .text-blob {
+        background-color: var(--notice-black);
+        color: #ffffff;
+        padding: 1.5rem;
+        border-radius: 10px;
+        margin-bottom: 1.5rem;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        contain: content;
+    }
+
+    .text-blob:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    .text-blob h2 {
+        margin-top: 0;
+        margin-bottom: 1rem;
+    }
+
+    .text-blob p {
+        margin-bottom: 1rem;
+    }
+
+    .text-blob p:last-child {
+        margin-bottom: 0;
+    }
+
+    .team-member-name {
+        margin-top: -0.5rem;
+        text-align: center;
+        color: var(--notice-yellow);
+        font-size: 1.2em;
+        font-weight: bold;
+        margin-bottom: 0.1rem;
+        position: relative;
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+        background-image: linear-gradient(
+            to right,
+            var(--notice-yellow),
+            var(--notice-yellow)
+        );
+        background-size: var(--glint-width) 100%;
+        background-position: var(--glint-start-position) 0;
+        transition: background-position var(--glint-duration) var(--glint-timing-function);
+        contain: layout style paint;
+    }
+
+    .text-blob:hover .team-member-name {
+        background-position: var(--glint-end-position) 0;
+    }
+
+    .team-member-name::after {
+        content: attr(data-text);
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        background-image: linear-gradient(
+            90deg,
+            transparent,
+            var(--glint-color),
+            transparent
+        );
+        background-size: var(--glint-width) 100%;
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+        transition: background-position var(--glint-duration) var(--glint-timing-function);
+        background-position: var(--glint-start-position) 0;
+        will-change: background-position;
+    }
+
+    .text-blob:hover .team-member-name::after {
+        background-position: var(--glint-after-end-position) 0;
+    }
+
+    .notice-link {
+        font-family: 'Impact', 'Arial Black', sans-serif;
+        font-weight: bold;
+        font-size: 1.6em;
+        letter-spacing: 0.15em; /* Add letter spacing */
+        color: var(--notice-yellow);
+        text-decoration: none;
+        position: relative;
+        transition: color 0.3s ease;
+        contain: layout style paint;
+    }
+
+    .notice-link::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+        width: 100%;
+        height: 3px;
+        background-color: var(--notice-yellow);
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.3s ease;
+        will-change: transform;
+    }
+
+    .notice-link:hover {
+        color: #ffffff;
+    }
+
+    .notice-link:hover::after {
+        transform: scaleX(1);
+        transform-origin: left;
+    }
+
+    .notice-link::before {
+        content: '';
+        position: absolute;
+        left: -4px;
+        top: -4px;
+        right: -4px;
+        bottom: -4px;
+        background-color: rgba(251, 197, 22, 0.2);
+        z-index: -1;
+        transform: skew(-5deg);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .notice-link:hover::before {
+        opacity: 1;
+    }
+
+    @keyframes backgroundMove {
+        from {
+            transform: translate(0, 0);
+        }
+        to {
+            transform: translate(20px, 20px);
+        }
+    }
+
+    /* Adjust spacing for coalition members section */
+    #coalition-members {
+        margin-top: 0; /* Remove any top margin */
+    }
+
+    #coalition-members .notice-header {
+        margin-top: 0; /* Remove any top margin from the header */
+    }
+
+    /* Drop Cap Styles */
+    .drop-cap::first-letter {
+        font-family: 'Impact', 'Arial Black', sans-serif;
+        float: left;
+        font-size: 4.5em;
+        line-height: 0.8;
+        padding: 0.1em 0.1em 0 0;
+        color: var(--notice-yellow);
+        text-shadow: 2px 2px var(--notice-black);
+        margin-right: 0.05em;
+        transform: skew(-10deg);
+        position: relative;
+    }
+
+    .drop-cap::first-letter::after {
+        content: '';
+        position: absolute;
+        bottom: 0.1em;
+        left: 0.1em;
+        width: 100%;
+        height: 0.1em;
+        background-color: var(--notice-black);
+        transform: skew(-65deg);
+    }
+
+    /* Optional: Add a subtle animation when the paragraph comes into view */
+    .drop-cap {
+        opacity: 0;
+        animation: fadeIn 0.5s ease-in forwards;
+    }
+
+    @keyframes fadeIn {
+        to {
+            opacity: 1;
+        }
+    }
+
+    /* Lead-in Text Styles */
+    .lead-in {
+        font-family: 'Impact', 'Arial Black', sans-serif;
+        font-size: 2em;
+        line-height: 1;
+        color: var(--notice-yellow);
+        text-shadow: 2px 2px var(--notice-black);
+        transform: skew(-10deg);
+        display: block;
+        margin-bottom: 1.5rem;
+        opacity: 0;
+        animation: fadeIn 0.5s ease-in forwards;
+    }
+
+    /* Blob Enlarge and Focus Styles */
+    .blob-enlarge-and-focus {
+        cursor: pointer;
+        transition: all 0.7s ease;
+        position: relative;
+        transform: translateZ(0);
+        backface-visibility: hidden;
+        perspective: 1000px;
+    }
+
+    .blob-enlarge-and-focus.enlarged {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80vw;
+        max-height: 80vh;
+        z-index: 1000;
+        font-size: 1.3em;
+        overflow-y: auto;
+        box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.8);
+        padding: 2.5rem 2rem 2rem;
+    }
+
+    .blob-enlarge-and-focus .close-button {
+        display: none;
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        background: var(--notice-yellow);
+        color: var(--notice-black);
+        border: none;
+        width: 2rem;
+        height: 2rem;
+        border-radius: 50%;
+        cursor: pointer;
+        font-weight: bold;
+        transition: all 0.7s ease;
+    }
+
+    .blob-enlarge-and-focus.enlarged .close-button {
+        display: block;
+    }
+
+    .blob-enlarge-and-focus .close-button:hover {
+        background: var(--notice-black);
+        color: var(--notice-yellow);
+    }
+
+    /* Prevent body scrolling when blob is enlarged */
+    body.blob-enlarged {
+        overflow: hidden;
+    }
+
+    /* Enlarge Message Styles */
+    .blob-enlarge-and-focus::before {
+        content: '';
+        position: absolute;
+        right: 1rem;
+        bottom: 1rem;
+        font-family: 'Impact', 'Arial Black', sans-serif;
+        color: var(--notice-yellow);
+        transform: skew(-10deg);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        white-space: nowrap;
+        letter-spacing: 0.15em;
+    }
+
+    .blob-enlarge-and-focus:hover::before {
+        content: 'ENLARGE';
+        font-size: 1.6em;
+        opacity: 1;
+        animation: typewriter 0.5s steps(7) forwards;
+    }
+
+    /* Underline effect */
+    .blob-enlarge-and-focus::after {
+        content: '';
+        position: absolute;
+        right: 1rem;
+        bottom: 0.8rem;
+        width: 0;
+        height: 3px;
+        background-color: var(--notice-yellow);
+        transform: skew(-10deg);
+        transition: width 0.5s ease;
+    }
+
+    .blob-enlarge-and-focus:hover::after {
+        width: 7em;
+    }
+
+    @keyframes typewriter {
+        from {
+            clip-path: inset(0 100% 0 0);
+        }
+        to {
+            clip-path: inset(0 0 0 0);
+        }
+    }
+
+    /* Hide enlarge message when blob is enlarged */
+    /*
+    .blob-enlarge-and-focus.enlarged::before,
+    .blob-enlarge-and-focus.enlarged::after {
+        display: none;
+    }*/
+
+    /* Or alternatively, if you want to keep the elements in the DOM but hide them: */
+    
+    .blob-enlarge-and-focus.enlarged::before,
+    .blob-enlarge-and-focus.enlarged::after {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    /* Team Member Blob Enlarge Styles */
+    .team-blob-enlarge {
+        cursor: pointer;
+        transition: all 0.7s ease;
+        position: relative;
+        transform: translateZ(0);
+        backface-visibility: hidden;
+        perspective: 1000px;
+    }
+
+    .team-blob-enlarge.enlarged {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80vw;
+        max-height: 80vh;
+        z-index: 1000;
+        overflow-y: auto;
+        box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.8);
+        padding: 2.5rem 2rem 2rem;
+        background-color: var(--notice-black);
+    }
+
+    .team-blob-enlarge .close-button {
+        display: none;
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        background: var(--notice-yellow);
+        color: var(--notice-black);
+        border: none;
+        width: 2rem;
+        height: 2rem;
+        border-radius: 50%;
+        cursor: pointer;
+        font-weight: bold;
+        transition: all 0.7s ease;
+    }
+
+    .team-blob-enlarge.enlarged .close-button {
+        display: block;
+    }
+
+    .team-blob-enlarge .close-button:hover {
+        background: var(--notice-black);
+        color: var(--notice-yellow);
+    }
+
+    /* Enlarge message for team blobs */
+    .team-blob-enlarge::before {
+        content: '';
+        position: absolute;
+        right: 1rem;
+        bottom: 1rem;
+        font-family: 'Impact', 'Arial Black', sans-serif;
+        color: var(--notice-yellow);
+        transform: skew(-10deg);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        white-space: nowrap;
+        letter-spacing: 0.15em;
+    }
+
+    .team-blob-enlarge:hover::before {
+        content: 'ENLARGE';
+        opacity: 1;
+        animation: typewriter 0.5s steps(7) forwards;
+    }
+
+    .team-blob-enlarge::after {
+        content: '';
+        position: absolute;
+        right: 1rem;
+        bottom: 0.8rem;
+        width: 0;
+        height: 3px;
+        background-color: var(--notice-yellow);
+        transform: skew(-10deg);
+        transition: width 0.5s ease;
+    }
+
+    .team-blob-enlarge:hover::after {
+        width: 6em;
+    }
+
+    /* Hide enlarge message when enlarged */
+    .team-blob-enlarge.enlarged::before,
+    .team-blob-enlarge.enlarged::after {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    /* Add specific font size increases for the content */
+    .team-blob-enlarge.enlarged p {
+        font-size: 1.4em;
+        line-height: 1.6;
+    }
+
+    .team-blob-enlarge.enlarged .team-member-name {
+        font-size: 1.6em;
+    }
+
+    .team-blob-enlarge.enlarged h4 {
+        font-size: 1.3em;
+    }
+
+    /* If needed, center the entire content div */
+    
+    .team-member > div {
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Keep paragraphs left-aligned */
+    .team-member p {
+        text-align: left;
+    }
+
+    @media (max-width: 48rem) { /* 768px */
+        /* Adjust main container padding */
+        header, main, footer {
+            padding: var(--spacing-unit) 0; /* Remove horizontal padding */
+        }
+
+        /* Ensure full width of page container */
+        #notice-page {
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+            margin-right: calc(-50vw + 50%);
+            padding: 0;
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+        }
+
+        /* Adjust content padding */
+        .two-column-layout {
+            padding: 0 1rem; /* Add padding to the content instead */
+        }
+
+        /* Remove the text blob width expansion */
+        /*.text-blob {
+            margin-left: -1rem;
+            margin-right: -1rem;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            width: calc(100% + 2rem);
+        }*/
+
+        /* Disable enlarge functionality */
+        .blob-enlarge-and-focus::before,
+        .blob-enlarge-and-focus::after,
+        .team-blob-enlarge::before,
+        .team-blob-enlarge::after {
+            display: none;
+        }
+
+        .blob-enlarge-and-focus,
+        .team-blob-enlarge {
+            cursor: default;
+        }
+
+        /* Remove hover effects */
+        .blob-enlarge-and-focus:hover,
+        .team-blob-enlarge:hover {
+            transform: none;
+        }
+
+        /* Reorganize team member layout for mobile */
+        .team-member {
+            flex-direction: column; /* Stack elements vertically */
+            align-items: flex-start; /* Align items to the left */
+            gap: 1rem; /* Adjust spacing between elements */
+        }
+
+        .team-member img {
+            width: 100%; /* Make image full width */
+            max-width: 200px; /* But limit maximum size */
+            height: auto; /* Maintain aspect ratio */
+            margin: 0 auto; /* Center the image */
+            display: block; /* Ensure margin auto works */
+        }
+
+        .team-member > div {
+            width: 100%; /* Full width for content */
+        }
+
+        .team-member p {
+            width: 100%; /* Ensure paragraph takes full width */
+            margin-top: 0.5rem; /* Add some space after name */
+        }
+
+        /* Adjust text blobs for mobile */
+        .text-blob {
+            max-height: 300px; /* Adjust this value as needed */
+            overflow-y: auto;
+            padding: 1.5rem;
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+
+        /* Specific adjustments for team member blobs */
+        .team-member.text-blob {
+            max-height: 400px; /* Slightly larger for team members due to image */
+            overflow-y: auto;
+        }
+
+        /* Increase font sizes for better readability */
+        .text-blob p {
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+
+        .team-member-name {
+            font-size: 1.4em;
+            margin-bottom: 1rem;
+        }
+
+        /* Add scrollbar styling for better visibility */
+        .text-blob::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .text-blob::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+
+        .text-blob::-webkit-scrollbar-thumb {
+            background: var(--notice-yellow);
+            border-radius: 4px;
+        }
+
+        /* Firefox scrollbar styling */
+        .text-blob {
+            scrollbar-width: thin;
+            scrollbar-color: var(--notice-yellow) rgba(255, 255, 255, 0.1);
+        }
+    }
+
+    .notice-subheader {
+        font-family: 'Impact', 'Arial Black', sans-serif;
+        font-size: 1.3rem;
+        color: var(--notice-yellow);
+        margin: 2rem 0 1rem;
+    }
+
+    .notice-bullet-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .notice-bullet-item {
+        display: flex;
+        align-items: center; /* Center align logo with text */
+        gap: 1rem;
+        margin-bottom: 1rem;
+        position: relative; /* For absolute positioning of text */
+        height: 2.5rem; /* Match logo height to maintain consistent spacing */
+    }
+
+    .notice-bullet-logo {
+        width: 2.5rem;
+        height: 2.5rem;
+        flex-shrink: 0;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+        will-change: transform;
+    }
+
+    .notice-bullet-logo:hover {
+        transform: scale(1.1);
+    }
+
+    .notice-bullet-text {
+        font-size: 1.1em;
+        line-height: 1.6;
+        color: rgba(255, 255, 255, 0.5); /* Start with semi-transparent text */
+        transition: all 0.3s ease;
+    }
+
+    /* When hovering over list, dim all items except the hovered one */
+    .notice-bullet-list:hover .notice-bullet-text {
+        opacity: 0.3;
+    }
+
+    .notice-bullet-item:hover .notice-bullet-logo {
+        transform: scale(1.1);
+    }
+
+    .notice-bullet-item:hover .notice-bullet-text {
+        color: #ffffff;
+        opacity: 1;
+        font-size: 1.3em; /* Slightly larger on hover */
+    }
+
+    /* Keep normal on mobile */
+    @media (max-width: 48rem) {
+        .notice-bullet-text {
+            color: #ffffff;
+            opacity: 1;
+            font-size: 1.1em;
+        }
+        
+        .notice-bullet-logo {
+            width: 2rem;
+            height: 2rem;
+        }
+
+        /* Disable hover effects on mobile */
+        .notice-bullet-list:hover .notice-bullet-text {
+            opacity: 1;
+        }
+
+        .notice-bullet-item:hover .notice-bullet-text {
+            font-size: 1.1em;
+        }
+    }
+
+    .notice-bullet-marker {
+        width: 1rem;
+        height: 1rem;
+        background-color: var(--notice-yellow);
+        transform: rotate(45deg);
+        flex-shrink: 0;
+        margin: 0.75rem;
+    }
+
+    .error-message {
+        background-color: #ff6b6b;
+        color: white;
+        padding: 1rem;
+        margin: 1rem;
+        border-radius: 4px;
+        text-align: center;
+    }
+
+    /* Add CSS containment to isolate components and optimize browser rendering */
+    .text-blob {
+        contain: content;
+    }
+
+    .team-member {
+        contain: layout style paint;
+    }
+
+    /* Use will-change for elements with animations */
+    .notice-bullet-logo {
+        will-change: transform;
+    }
+
+    .team-member-name::after {
+        will-change: background-position;
+    }
+
+    .notice-link::after {
+        will-change: transform;
+    }
+
+    /* Hardware acceleration for animated elements */
+    .blob-enlarge-and-focus, 
+    .team-blob-enlarge {
+        transform: translateZ(0);
+        backface-visibility: hidden;
+        perspective: 1000px;
+    }
+
+    /* Reduce paint operations for fixed elements */
+    .right-column {
+        transform: translateZ(0); /* Promotes to new layer */
+        will-change: transform;  /* Hints future changes */
+    }
+
+    /* Optimize animations by using opacity and transform */
+    @keyframes backgroundMove {
+        from {
+            transform: translate(0, 0);
+        }
+        to {
+            transform: translate(20px, 20px);
+        }
+    }
+
+</style>
+
+
+<section id="notice-page">
+    <header class="regular-black-bg">
+        <div class="logo-container">
+            <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/301406ed-440a-4a15-b346-b8b0faff4729/Notice+Logo+Design+F-03.png?content-type=image%2Fpng" alt="NOTICE Coalition Logo" class="header-logo">
+        </div>
+    </header>
+    <main class="two-column-layout">
+        <div class="left-column">
+            <section id="about-notice">
+                <!-- Content will be dynamically inserted here -->
+            </section>
+            <section id="origin-story">
+                <!-- Content will be dynamically inserted here -->
+            </section>
+            <section id="leadership-team">
+                <!-- Content will be dynamically inserted here -->
+            </section>
+        </div>
+        <div class="right-column">
+            <section id="reports">
+                <h2 class="notice-header"><span>REPORTS</span></h2>
+                <!-- Content will be dynamically inserted here -->
+            </section>
+            <section id="resources">
+                <h2 class="notice-header"><span>RESOURCES</span></h2>
+                <!-- Content will be dynamically inserted here -->
+            </section>
+            <section id="coalition-members">
+                <!-- Content will be dynamically inserted here -->
+            </section>
+        </div>
+    </main>
+    <footer>
+        <h3>Sign up for our NEWSLETTER to stay connected for updates about youth data surveillance and criminalization (policy updates and resources) featuring NOTICE coalition members and their work</h3>
+        <div id="newsletter-signup">
+            <!-- Squarespace signup form will be inserted here -->
+        </div>
+        <div id="social-media">
+            <!-- Social media icons will be inserted here -->
+        </div>
+    </footer>
+</section>
+
+
+
+<script>
+    const NOTICE_CACHE = new Map();
+
+    function getNoticeData(key) {
+        if (!NOTICE_CACHE.has(key)) {
+            NOTICE_CACHE.set(key, noticeData[key]);
+        }
+        return NOTICE_CACHE.get(key);
+    }
+
+    const noticeData = {
+        logoUrl: "https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/0424f978-c6c8-437a-b310-bf03f110d3cc/Notice+Logo+Design+F-02.png",
+        aboutNotice: {
+            title: "ABOUT NOTICE COALITION",
+            content: [
+                "The mission of the NOTICE Coalition is to build a national movement to end the use of data and technology that surveils, polices, and/or criminalizes young people and their communities. These technologies include predictive policing, data-sharing agreements, facial recognition, social media monitoring, automated license plate readers, gang databases, school hardening, biometric surveillance, and student device monitoring, and so-called 'early warning systems'. We recognize that these technologies intensify harm in Black, Brown, Indigenous, disabled, LGBTQIA+, and otherwise marginalized communities."
+            ],
+            subheader: "The Notice Coalition...",
+            bullets: [
+                "Expands our national network of communities actively resisting and refusing youth data criminalization, school hardening, and related harms across educational institutions and other systems that serve youth and young adults.",
+                "Documents and disseminates the stories, challenges, and victories of community resistance to youth data criminalization, including the PASCO Coalition and Stop the Cradle to Prison Algorithm Coalition.",
+                "Builds public awareness to identify and confront the harms of data-driven technologies and techniques that criminalize youth and young adults.",
+                "Uplifts youth-led, community-driven ideas, strategies, and solutions that build school safety and community safety without law enforcement or other punitive systems.",
+                "Builds capacity of educators, caregivers, advocates, and other allies to identify and resist youth data criminalization.",
+                "Co-creates innovative legal and policy solutions with youth and young adults that integrate civil rights, human rights, and data privacy rights into 21st century protections against data criminalization."
+            ]
+        },
+        originStory: {
+            title: "OUR ORIGIN STORY",
+            leadIn: "From a conversation, a coalition was born...",
+            content: [
+                "Marika Pfefferkorn and Clarence Okoh were attending the Twin Cities Innovation Alliance's (TCIA) Data for Public Good Conference (D4PG) conference in 2021, and a conversation was sparked about how communities were responding to the emergence of criminalizing technologies in education and the need to support grassroots communities on their journey, and NOTICE was born. At the time, Clarence Okoh was a member of the PASCO Coalition and was organizing and pushing back against predictive policing in Tampa Bay, Florida, and Marika Pfefferkorn was a member of the Stop the Cradle to Prison Algorithm Coalition and the Safety Not Surveillance Coalition in Minnesota, successfully pushing back against a problematic early warning system in Ramsey County and facial recognition technologies in Minneapolis. The two noted that between the local efforts of the coalitions, a new road map was being built for pushing back at the community level on youth data criminalization and the work must be shared across communities while connecting the dots nationally. From that point on, the new NOTICE Coalition worked to engage with communities around the country to elevate the work and share resources, strategies, tools, and learnings. Early projects of NOTICE include the NOTICE National Summit in 2022 and the Freedom of Information Act (FOIA) Learning Lab. The coalition continues to grow and expand programming with the launch of the No Data About Us Without Us Fellowship in 2024."
+            ]
+        },
+        leadershipTeam: [
+            {
+                name: "Clarence Okoh, J.D. (pronouns: he/him/his)",
+                title: "",
+                bio: "Clarence Okoh is a civil rights attorney and racial justice advocate whose work addresses the impact of mass criminalization, algorithmic racism, and economic divestment in Black communities, with a particular focus on Black youth and young adults. Clarence is Senior Policy Counsel at the Center for Law and Social Policy (CLASP), where he leads the organization’s cross-team policy agenda to advance abolitionist approaches to community safety by challenging systems that surveil and punish economically marginalized Black, brown and Indigenous youth and their communities. He is also an inaugural member of the Just Tech Fellows at the Social Science Research Council. In this capacity Clarence leads an interdisciplinary advocacy project that blends legal research and analysis, public policy advocacy, and public education strategies to challenge the use of algorithmic technologies, including artificial intelligence (AI), that criminalize Black and brown youth and systematically violate their civil and human rights.",
+                image: "https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/c2883652-abc2-4304-80e7-8196134100fe/Clarence+Okoh.png?content-type=image%2Fpng"
+            },
+            {
+                name: "Marika Pfefferkorn, (pronouns: she/her/hers)",
+                title: "",
+                bio: "As an interdisciplinary and cross-sector thought leader and community advocate, Marika is a change agent working to transform systems and scale successes across education, technology, civic leadership and entrepreneurship. Ms. Pfefferkorn works along the continuum from community to theory to practice, integrating collective cultural wisdom and applying a restorative lens to upend punitive conditions in education, and to reimagine education through a liberatory lens. She has successfully co-led campaigns to end discriminatory suspension practices in Minnesota schools, to remove the presence of police in Minneapolis and St. Paul schools, to increase investment in indigenous restorative practices in education and community settings and successfully advocated for a Ethnic Studies requirement in Minnesota schools. Marika has cofounded and led the Solutions not Suspensions Coalition, and Education for Liberation MN Network, and participates as a member of the Safety Not Surveillance Coalition and Dignity in Schools Campaign.",
+                image: "https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/5540b7ab-5b4b-489f-bbe7-77e3dbf2f131/Marika-2.jpeg?content-type=image%2Fjpeg"
+            },
+            {
+                name: "Chelsea Barabas, Ph. D. (pronouns: she/her/hers)",
+                title: "",
+                bio: "Dr. Chelsea Barabas is a community-centered researcher working on a wide range of issues related to the ways that technology serves as a battleground for transformational social change and racial justice in the United States. Much of her recent work examines the ways that student surveillance and digitized school security measures push marginalized students out of school and into the criminal legal system. Chelsea collaborates with local abolitionist and youth organizations to uncover the downstream consequences of digitized surveillance in the classroom, as well as develop alternative visions of student safety and well-being. Formerly, Chelsea was a Technology Fellow at the Carr Center for Human Rights Policy at the Harvard Kennedy School of Government and a research scientist for the AI Ethics and Governance Initiative at the MIT Media Lab.",
+                image: "https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/f25e062f-1f66-4c25-af64-ab3cfec984bf/DN-Chelsea-Barabas-.jpg?content-type=image%2Fjpeg"
+            },
+            {
+                name: "Ed Vogel (pronouns: He/Him/His)",
+                title: "",
+                bio: "Ed is the Senior Policy Researcher with the Surveillance Resistance Lab. He has more than fifteen years of experience in movement spaces and organizing in Chicago as a member of Lucy Parsons Labs, Chicago Community Bond Fund, Believers Bail Out, and Free Us: the Chicago EM Collective. Ed is currently a board member with Chicago Torture Justice Center, Corporate Accountability Lab, Ecosystems of Care, and DontCallThePolice.com.",
+                image: "https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/82b923fd-e1d2-42b8-9593-519c5cfd590d/Ed_Vogel_-_SRL-removebg-preview.png?content-type=image%2Fpng"
+            },
+            // Add more team members here
+        ],
+        reports: [
+            // Add more reports here
+        ],
+        resources: [
+            // Add more resources here
+        ],
+        coalitionMembers: [
+            { name: "PASCO COALITION", url: "https://www.splcenter.org/PASCOcoalition" },
+            { name: "SAFETY NOT SURVEILLANCE COALITION ", url: "https://safetynotsurveillance.org/" },
+            { name: "STOP THE CRADLE TO PRISON ALGORITHM", url: "https://www.tciamn.org/cpa-journey" },
+            { name: "CLASP", url: "https://clasp.org/"},
+            { name: "ENCODE JUSTICE", url: "https://encodejustice.org/"},
+            { name: "ACLU FLORIDA", url: "https://www.aclufl.org/" },
+            { name: "ACLU MINNESOTA", url: "https://www.aclu-mn.org/en"},
+            { name: "DISABILITY RIGHTS FLORIDA", url: "https://disabilityrightsflorida.org/"},
+            { name: "SOUTHERN POVERTY LAW CENTER", url: "https://www.splcenter.org/"},
+            { name: "LEGAL DEFENSE FUND", url: "https://www.naacpldf.org/"},
+            { name: "SURVEILLANCE RESISTANCE LAB", url: "https://surveillanceresistancelab.org/"},
+            { name: "CENTER FOR DEMOCRACY AND TECHNOLOGY", url: "https://cdt.org/"},
+            { name: "MUSLIM JUSTICE LEAGUE", url: "https://muslimjusticeleague.org/"},
+            { name: "FORT BEND INDEPENDENT SCHOOL DISTRICT EQUITY COUNCIL", url: "https://fbisdequity.com/"},
+            { name: "THE FOIA (Freedom of Information Act) BAKERY", url: ""},
+            { name: "LUCY PARSONS LAB", url: "https://www.lucyparsonslabs.com/"}
+
+            // Add more coalition members here
+        ]
+    };
+
+    function populateNoticePage() {
+        try {
+            const fragment = document.createDocumentFragment();
+
+            // Helper function to create elements
+            function createElement(type, className, content) {
+                const element = document.createElement(type);
+                if (className) element.className = className;
+                if (content) element.innerHTML = content;
+                return element;
+            }
+
+            // Create About Section
+            function createAboutSection() {
+                const section = createElement('section', null);
+                section.id = 'about-notice';
+
+                const aboutData = getNoticeData('aboutNotice');
+                
+                const header = createElement('h2', 'notice-header');
+                header.innerHTML = `<span>${aboutData.title}</span>`;
+
+                // Create main content blob
+                const contentBlob = createElement('p', 'text-blob blob-enlarge-and-focus drop-cap');
+                contentBlob.innerHTML = `
+                    <button class="close-button" aria-label="Close">×</button>
+                    ${aboutData.content}
+                `;
+
+                // Create subheader and bullets
+                const subheader = createElement('h3', 'notice-subheader', aboutData.subheader);
+                const bulletList = createElement('div', 'notice-bullet-list');
+                
+                bulletList.innerHTML = aboutData.bullets.map(bullet => `
+                    <div class="notice-bullet-item">
+                        <img src="${noticeData.logoUrl}" alt="NOTICE logo" class="notice-bullet-logo">
+                        <div class="notice-bullet-text">${bullet}</div>
+                    </div>
+                `).join('');
+
+                // Append all elements to section
+                section.append(header, contentBlob, subheader, bulletList);
+                return section;
+            }
+
+            // Similar functions for other sections...
+            function createOriginSection() {
+                const section = createElement('section', null);
+                section.id = 'origin-story';
+
+                const originData = getNoticeData('originStory');
+
+                const header = createElement('h2', 'notice-header');
+                header.innerHTML = `<span>${originData.title}</span>`;
+
+                const leadIn = createElement('div', 'lead-in');
+                leadIn.textContent = originData.leadIn;
+
+                const contentBlob = createElement('div', 'text-blob blob-enlarge-and-focus drop-cap');
+                contentBlob.innerHTML = `
+                    <button class="close-button" aria-label="Close">×</button>
+                    ${originData.content}
+                `;
+
+                section.append(header, leadIn, contentBlob);
+                return section;
+            }
+
+            function createLeadershipSection() {
+                const section = createElement('section', null);
+                section.id = 'leadership-team';
+
+                const header = createElement('h2', 'notice-header');
+                header.innerHTML = '<span>LEADERSHIP TEAM</span>';
+
+                const teamMembers = noticeData.leadershipTeam.map(member => {
+                    const memberDiv = createElement('div', 'text-blob team-blob-enlarge drop-cap');
+                    memberDiv.innerHTML = `
+                        <button class="close-button" aria-label="Close">×</button>
+                        <div class="team-member">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" 
+                                 data-src="${member.image}" 
+                                 loading="lazy" 
+                                 alt="${member.name}">
+                            <div>
+                                <h3 class="team-member-name" data-text="${member.name}">${member.name}</h3>
+                                <p>${member.bio}</p>
+                            </div>
+                        </div>
+                    `;
+                    return memberDiv;
+                });
+
+                section.append(header, ...teamMembers);
+                return section;
+            }
+
+            function createCoalitionSection() {
+                const section = createElement('section', null);
+                section.id = 'coalition-members';
+
+                const header = createElement('h2', 'notice-header');
+                header.innerHTML = '<span>COALITION MEMBERS</span>';
+
+                const membersList = createElement('div', 'text-blob');
+                membersList.innerHTML = noticeData.coalitionMembers.map(member => `
+                    <a href="${member.url}" class="notice-link" target="_blank" rel="noopener noreferrer">
+                        ${member.name}
+                    </a>
+                `).join('<br>');
+
+                section.append(header, membersList);
+                return section;
+            }
+
+            // Create all sections
+            const sections = {
+                about: createAboutSection(),
+                origin: createOriginSection(),
+                leadership: createLeadershipSection(),
+                coalition: createCoalitionSection()
+            };
+
+            // Get the column containers
+            const leftColumn = document.querySelector('.left-column');
+            const rightColumn = document.querySelector('.right-column');
+
+            // Append sections to appropriate columns
+            leftColumn.append(sections.about, sections.origin, sections.leadership);
+            rightColumn.append(sections.coalition);
+
+            // Finally, append the fragment to the page
+            document.getElementById('notice-page').appendChild(fragment);
+
+            console.log('Page population complete');
+        } catch (error) {
+            console.error('Error populating page:', error);
+            // Optionally show a user-friendly error message
+            const errorMessage = createElement('div', 'error-message');
+            errorMessage.textContent = 'Sorry, there was an error loading the page content.';
+            document.getElementById('notice-page').appendChild(errorMessage);
+        }
+    }
+
+    function initializeBlobEnlarge() {
+        // Single event listener for all blob clicks
+        document.addEventListener('click', function(e) {
+            // Check if clicked element or its parent is a blob
+            const blob = e.target.closest('.blob-enlarge-and-focus, .team-blob-enlarge');
+            const closeButton = e.target.closest('.close-button');
+            
+            if (closeButton) {
+                const parentBlob = closeButton.closest('.enlarged');
+                if (parentBlob) {
+                    parentBlob.classList.remove('enlarged');
+                    document.body.classList.remove('blob-enlarged');
+                }
+                return;
+            }
+            
+            if (blob && !blob.classList.contains('enlarged')) {
+                blob.classList.add('enlarged');
+                document.body.classList.add('blob-enlarged');
+            }
+        });
+
+        // Single event listener for escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const enlargedBlob = document.querySelector('.blob-enlarge-and-focus.enlarged, .team-blob-enlarge.enlarged');
+                if (enlargedBlob) {
+                    enlargedBlob.classList.remove('enlarged');
+                    document.body.classList.remove('blob-enlarged');
+                }
+            }
+        });
+    }
+
+    // Add this function at the top level of your script
+    function initializeLazyLoading() {
+        // Check if Intersection Observer is supported
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src; // Load the actual image
+                        imageObserver.unobserve(img); // Stop observing once loaded
+                    }
+                });
+            });
+
+            // Observe all images with data-src attribute
+            document.querySelectorAll('img[data-src]').forEach(img => {
+                imageObserver.observe(img);
+            });
+        }
+    }
+
+    // Update your DOMContentLoaded event handler to initialize lazy loading
+    document.addEventListener('DOMContentLoaded', () => {
+        populateNoticePage();
+        initializeBlobEnlarge(); // Your existing initialization function
+        initializeLazyLoading();
+    });
+</script>
