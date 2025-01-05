@@ -1,0 +1,12 @@
+{
+  "rss_feeds": [
+    { 
+      "name": "The Crush Bar", 
+      "url": "https://thecrushbar.substack.com/feed" 
+    },
+    { 
+      "name": "maxwell museums", 
+      "url": "https://maxwellmuseums.substack.com/feed" 
+    }
+  ]
+}
