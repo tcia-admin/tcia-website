@@ -1,0 +1,1188 @@
+<style>
+    
+    :root {
+        /* Spacing Variables */
+        --spacing-xs: 0.25rem;
+        --spacing-sm: 0.5rem;
+        --spacing-md: 1rem;
+        --spacing-lg: 1.5rem;
+        --spacing-xl: 2rem;
+        --spacing-2xl: 3rem;
+        --spacing-3xl: 4rem;
+        --spacing-4xl: 5rem;
+
+        /* Layout Variables */
+        --container-max-width: 1200px;
+        --container-padding: 1rem;
+
+        /* Breakpoints (for reference in media queries) */
+        --mobile: 480px;
+        --tablet: 768px;
+        --desktop: 1024px;
+
+        /* Typography Scale */
+        --font-size-xs: 0.75rem;
+        --font-size-sm: 0.875rem;
+        --font-size-med: 1rem;
+        --font-size-base: 1.25rem;
+        --font-size-lg: 1.125rem;
+        --font-size-xl: 1.25rem;
+        --font-size-2xl: 1.5rem;
+        --font-size-3xl: 2rem;
+        --font-size-4xl: 2.5rem;
+        --font-size-8xl: 4.5rem;
+        --font-size-12xl: 6rem;
+
+        /* Brand Colors */
+        --notice-yellow: #fbc516;
+        --notice-black: #1a1919;
+        --notice-grey: #808285;
+        --notice-white: #ffffff;
+
+        /* Functional Colors */
+        --notice-bg-primary: var(--notice-black);
+        --notice-bg-secondary: #242424;  /* slightly lighter than black for layering */
+        --notice-text-primary: var(--notice-white);
+        --notice-text-secondary: var(--notice-grey);
+        --notice-accent: var(--notice-yellow);
+        
+        /* Background tints for subtle variations */
+        --notice-bg-grey-light: rgba(128, 130, 133, 0.1);
+        --notice-bg-grey-medium: rgba(128, 130, 133, 0.2);
+        
+        /* Font Families */
+        --font-primary: 'Roboto', sans-serif;
+        /*--font-accent: 'Impact', sans-serif;*/
+        --font-accent: 'Roboto', sans-serif;
+        
+        /* Font Weights */
+        --font-regular: 400;
+        --font-bold: 700;
+    }
+
+    /* Reset and Base Styles - Update to remove any default margins */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+        scroll-padding-top: var(--nav-height); /* Add this variable to your root */
+    }
+
+    /* Utility Classes for Typography */
+    .text-accent {
+        font-family: var(--font-accent);
+    }
+
+    .text-yellow {
+        color: var(--notice-accent);
+    }
+
+
+    /* Main Container Styles - Ensure no top margin/padding */
+    .notice-coalition-main {
+        width: 100%;
+        font-family: var(--font-primary);
+        color: var(--notice-text-primary);
+        background-color: var(--notice-bg-primary);
+    }
+
+    /* Navigation Styles - Position at very top */
+    .notice-nav {
+        width: 100%;
+        padding: var(--spacing-md) 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        background-color: black;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+
+    .nav-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    /* Logo Styles */
+    .nav-logo {
+        margin-right: var(--spacing-xl);
+    }
+
+    .nav-logo img {
+        height: 55px;
+        width: auto;
+    }
+
+    /* Navigation Links */
+    .nav-links {
+        display: flex;
+        gap: var(--spacing-xl);
+        align-items: center;
+        margin: 0 auto;
+    }
+
+    .nav-links a {
+        color: var(--notice-text-primary);
+        text-decoration: none;
+        font-size: var(--font-size-base);
+        font-weight: var(--font-bold);
+        font-family: var(--font-accent);
+        transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+        color: var(--notice-accent);
+    }
+
+    /* Add selected nav link style */
+    .nav-links a.selected {
+        color: var(--notice-accent);
+        position: relative;
+    }
+
+    .nav-links a.selected::after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: var(--notice-accent);
+    }
+
+    /* CTA Button */
+    .nav-cta {
+        margin-left: var(--spacing-xl);
+    }
+
+     /* Button Styles */
+     .notice-btn {
+        background-color: var(--notice-accent);
+        color: var(--notice-black);
+        font-family: var(--font-accent);
+        font-weight: var(--font-bold);
+        padding: var(--spacing-sm) var(--spacing-lg);
+        border: none;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+        border-radius: 4px;
+    }
+
+    .notice-btn:hover {
+        transform: translateY(-2px);
+    }
+
+    /* Section Base Styles - Add content container */
+    .notice-coalition-main > section {
+        width: 100%;
+        padding: var(--spacing-2xl) 0; /* Remove horizontal padding */
+    }
+
+    /* Intro Section Styles */
+    .notice-intro {
+        position: relative;
+        min-height: 80vh;
+        display: flex;
+        align-items: center;
+        background-image: url('https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/33d8803b-19ba-43ca-b068-d454a4771440/SPEAKER+SERIES+STOCK+IMAGE.jpg?content-type=image%2Fjpeg'); /* Add your background image URL */
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    /* Add an overlay to ensure text remains readable */
+    .notice-intro::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+            rgba(0, 0, 0, 0.7),
+            rgba(0, 0, 0, 0.5)
+        );
+        z-index: 1;
+    }
+
+    /* Ensure content stays above the overlay */
+    .intro-content {
+        position: relative;
+        z-index: 2;
+    }
+
+    .intro-text-container {
+        max-width: 90%;
+        margin: 0 auto;
+        padding: 0 var(--container-padding);
+    }
+
+    .intro-catchphrase {
+        font-family: var(--font-accent);
+        font-size: var(--font-size-8xl);
+        color: var(--notice-white);
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        letter-spacing: 0.02em;
+        line-height: 0.9;
+        text-transform: uppercase;
+        text-align: left;
+        border-bottom: 4px solid var(--notice-white);
+        padding-bottom: var(--spacing-lg);
+        margin-bottom: var(--spacing-xl);
+    }
+
+    .intro-cta-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: var(--spacing-xl);
+    }
+
+    .intro-cta-text {
+        color: var(--notice-white);
+        font-size: var(--font-size-xl);
+        font-weight: var(--font-bold);
+        max-width: 60%;
+        text-align: left;
+    }
+
+    .intro-buttons {
+        display: flex;
+        gap: var(--spacing-md);
+    }
+
+    .intro-cta-btn {
+        flex-shrink: 0;
+        font-size: var(--font-size-lg);
+        padding: var(--spacing-md) var(--spacing-xl);
+        background-color: transparent;
+        border: 2px solid var(--notice-accent);
+        color: var(--notice-accent);
+        transition: all 0.3s ease;
+        border-radius: 4px;
+        text-decoration: none;
+    }
+
+    .intro-cta-btn:hover {
+        background-color: var(--notice-accent);
+        color: var(--notice-black);
+    }
+
+    /* Section Header Styles */
+    .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: var(--spacing-2xl);
+    }
+
+    .section-title {
+        font-family: var(--font-accent);
+        font-size: var(--font-size-3xl);
+        color: var(--notice-white);
+    }
+
+    /* Add content container for each section */
+    .section-content {
+        max-width: var(--container-max-width);
+        margin: 0 auto;
+        padding: 0 var(--container-padding);
+    }
+
+    .section-link {
+        font-family: var(--font-accent);
+        font-size: var(--font-size-lg);
+        color: var(--notice-accent);
+        text-decoration: none;
+        position: relative;
+        padding-bottom: var(--spacing-xs);
+    }
+
+    .section-link::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: var(--notice-accent);
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+    }
+
+    .section-link:hover::after {
+        transform: scaleX(1);
+    }
+
+    /* Newsletter Section Styles */
+    .notice-newsletter {
+        padding: var(--spacing-3xl) 0;
+        /*min-height: 600px;*/
+        display: flex;
+        align-items: center;
+    }
+
+
+    .newsletter-widget-container {
+        margin-top: var(--spacing-xl);
+    }
+
+    /* Social Media Section / Footer Styles */
+    .notice-social {
+        padding: var(--spacing-3xl) 0;
+        text-align: center;
+    }
+
+    .notice-social-links {
+        display: flex;
+        justify-content: center;
+        gap: var(--spacing-xl);
+        margin-bottom: var(--spacing-2xl);
+    }
+
+    .social-icon {
+        width: 64px;
+        height: 64px;
+        background-color: var(--notice-bg-secondary);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.3s ease;
+    }
+
+    .social-icon:hover {
+        transform: translateY(-2px);
+    }
+
+    .social-icon img {
+        width: 32px;
+        height: 32px;
+        filter: brightness(0) invert(1);
+    }
+
+    .social-icon i {
+        font-size: 32px;
+        color: var(--notice-white);
+    }
+
+    .notice-footer-logo {
+        display: block;
+        margin: 0 auto;
+        transition: opacity 0.3s ease;
+    }
+
+    .notice-footer-logo img {
+        height: 60px;
+        width: auto;
+    }
+
+    .notice-footer-logo:hover {
+        opacity: 0.8;
+    }
+
+    /* Add new alternating background colors */
+    .notice-coalition-main > section:not(.notice-intro):nth-child(odd) {
+        background-color: var(--notice-bg-primary);
+    }
+
+    .notice-coalition-main > section:not(.notice-intro):nth-child(even) {
+        background-color: var(--notice-bg-secondary);
+    }
+
+    
+
+    /* Responsive Design */
+    @media screen and (max-width: 1024px) {
+        :root {
+            /* Adjust spacing for tablet */
+            --container-padding: 2rem;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        :root {
+            /* Adjust spacing for mobile */
+            --container-padding: 1rem;
+            --font-size-4xl: 2rem;
+            --font-size-3xl: 1.75rem;
+            --font-size-2xl: 1.25rem;
+        }
+
+        .notice-coalition-main > section {
+            padding: var(--spacing-xl) var(--spacing-md);
+        }
+
+        /* Navigation Styles */
+        .nav-container {
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+
+        .nav-logo {
+            margin-right: 0;
+        }
+
+        .nav-links {
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--spacing-md);
+        }
+
+        .nav-cta {
+            margin-left: 0;
+        }
+
+        /* Intro Section Styles */
+        .intro-catchphrase {
+            font-size: calc(var(--font-size-4xl) * 0.8);
+            letter-spacing: 0.1em;
+            line-height: 1.6;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .intro-cta-container {
+            flex-direction: column;
+            gap: var(--spacing-lg);
+        }
+
+        .intro-cta-text {
+            max-width: 100%;
+            font-size: var(--font-size-lg);
+            text-align: center;
+        }
+
+        .intro-buttons {
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .intro-cta-btn {
+            width: 100%;
+            text-align: center;
+        }
+
+        .notice-newsletter {
+            min-height: 300px;
+            padding: var(--spacing-2xl) 0;
+        }
+
+        /* Social Media Section / Footer Styles */
+        .notice-social {
+            padding: var(--spacing-2xl) 0;
+        }
+
+        .notice-social-links {
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .social-icon {
+            width: 48px;
+            height: 48px;
+        }
+
+        .social-icon img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .notice-footer-logo img {
+            height: 48px;
+        }
+    }
+
+    /* Upcoming Speakers Section */
+    .notice-upcoming-speakers {
+        background-color: var(--notice-bg-primary);
+        padding: var(--spacing-3xl) 0;
+    }
+
+    .speakers-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: var(--spacing-2xl);
+        margin-top: var(--spacing-2xl);
+    }
+
+    /* Speaker Card Styles */
+    .speaker-card {
+        background-color: var(--notice-bg-secondary);
+        border-radius: 8px;
+        overflow: hidden;
+        transition: transform 0.3s ease;
+    }
+
+    .speaker-card:hover {
+        transform: translateY(-4px);
+    }
+
+    .speaker-flyer {
+        position: relative;
+        width: 100%;
+        padding-top: 100%;
+        overflow: hidden;
+    }
+
+    .speaker-flyer img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .event-countdown {
+        position: absolute;
+        top: var(--spacing-md);
+        right: var(--spacing-md);
+        background-color: var(--notice-accent);
+        padding: var(--spacing-sm);
+        border-radius: 4px;
+        text-align: center;
+    }
+
+    .countdown-value {
+        display: block;
+        font-size: var(--font-size-2xl);
+        font-weight: var(--font-bold);
+        color: var(--notice-black);
+    }
+
+    .countdown-label {
+        display: block;
+        font-size: var(--font-size-xs);
+        color: var(--notice-black);
+    }
+
+    .speaker-details {
+        padding: var(--spacing-lg);
+    }
+
+    .event-date {
+        font-size: var(--font-size-sm);
+        color: var(--notice-accent);
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .speaker-name {
+        font-size: var(--font-size-xl);
+        color: var(--notice-white);
+        margin-bottom: var(--spacing-xs);
+    }
+
+    .event-topic {
+        font-size: var(--font-size-base);
+        color: var(--notice-text-secondary);
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .register-btn {
+        width: 100%;
+    }
+
+    /* Responsive adjustments */
+    @media screen and (max-width: 768px) {
+        .speakers-grid {
+            grid-template-columns: 1fr;
+            gap: var(--spacing-xl);
+        }
+        
+        .speaker-flyer {
+            padding-top: 100%; /* Square aspect ratio on mobile */
+        }
+    }
+
+    /* Past Speakers Section */
+    .notice-past-speakers {
+        background-color: var(--notice-bg-secondary);
+        padding: var(--spacing-3xl) 0;
+    }
+
+    .speaker-card.past {
+        opacity: 0.8;
+        transition: opacity 0.3s ease;
+    }
+
+    .speaker-card.past:hover {
+        opacity: 1;
+    }
+
+    .event-status {
+        position: absolute;
+        top: var(--spacing-md);
+        right: var(--spacing-md);
+        background-color: var(--notice-grey);
+        padding: var(--spacing-sm);
+        border-radius: 4px;
+        color: var(--notice-white);
+        font-size: var(--font-size-sm);
+    }
+
+    .watch-btn {
+        background-color: var(--notice-bg-secondary);
+        color: var(--notice-white);
+        border: 2px solid var(--notice-accent);
+    }
+
+    .watch-btn:hover {
+        background-color: var(--notice-accent);
+        color: var(--notice-black);
+    }
+
+    /* Past Talks Section Styles */
+    .past-talks-grid {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-3xl);
+        margin-top: var(--spacing-2xl);
+    }
+
+    .past-talk-card {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--spacing-xl);
+        background-color: var(--notice-bg-secondary);
+        border-radius: 8px;
+        overflow: hidden;
+        transition: transform 0.3s ease;
+        align-items: start;
+        padding-bottom: var(--spacing-2xl);
+        border-bottom: 1px solid var(--notice-grey);
+    }
+
+    .past-talk-card:last-child {
+        padding-bottom: 0;
+        border-bottom: none;
+    }
+
+    .past-talk-card:hover {
+        transform: translateY(-4px);
+    }
+
+    /* Video Container */
+    .video-container {
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+        height: 0;
+        overflow: hidden;
+        background-color: var(--notice-bg-grey-medium);
+        margin-top: var(--spacing-xl); /* Add top margin to match padding of talk-details */
+        margin-left: var(--spacing-xl); /* Add left margin to match padding */
+    }
+
+    .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    /* Talk Details */
+    .talk-details {
+        padding: var(--spacing-xl);
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-lg);
+    }
+
+    .talk-header {
+        border-bottom: 2px solid var(--notice-accent);
+        padding-bottom: var(--spacing-md);
+    }
+
+    .talk-title {
+        font-family: var(--font-accent);
+        font-size: var(--font-size-2xl);
+        color: var(--notice-white);
+        margin-bottom: var(--spacing-xs);
+    }
+
+    .talk-date {
+        font-size: var(--font-size-sm);
+        color: var(--notice-accent);
+    }
+
+    .speaker-info {
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .speaker-name {
+        font-size: var(--font-size-xl);
+        color: var(--notice-white);
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .talk-description {
+        color: var(--notice-text-secondary);
+        line-height: 1.6;
+    }
+
+    /* Responsive adjustments */
+    @media screen and (max-width: 1024px) {
+        .past-talk-card {
+            grid-template-columns: 1fr;
+        }
+        
+        .video-container {
+            margin: 0; /* Remove margins on mobile */
+            order: -1;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        .section-header {
+            flex-direction: column;
+            gap: var(--spacing-md);
+            align-items: flex-start;
+        }
+
+        .talk-details {
+            padding: var(--spacing-lg);
+        }
+        
+        .talk-title {
+            font-size: var(--font-size-xl);
+        }
+    }
+
+    /* Modal Styles */
+    .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+    }
+
+    .modal-content {
+        position: relative;
+        background-color: var(--notice-bg-secondary);
+        margin: 2vh auto;
+        padding: 0;
+        width: 90%;
+        max-width: 900px;
+        border-radius: 8px;
+        min-height: 95vh;
+        overflow: hidden;
+    }
+
+    .close-modal {
+        position: fixed;
+        right: calc(5% + var(--spacing-lg));
+        top: 3vh;
+        color: var(--notice-white);
+        font-size: var(--font-size-2xl);
+        font-weight: bold;
+        cursor: pointer;
+        z-index: 1001;
+        transition: color 0.2s ease;
+        background-color: var(--notice-bg-secondary);
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+    }
+
+    .registration-form {
+        width: 100%;
+        height: calc(95vh);
+        border: none;
+        background: var(--notice-bg-secondary);
+        margin: 0;
+        padding: 0;
+        display: block;
+    }
+</style>
+
+<section class="notice-coalition-main">
+
+    <nav class="notice-nav">
+        <div class="section-content nav-container">
+            <a href="/noticecoalition" class="nav-logo">
+                <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/301406ed-440a-4a15-b346-b8b0faff4729/Notice+Logo+Design+F-03.png?content-type=image%2Fpng" alt="Notice Coalition Logo">
+            </a>
+            
+            <div class="nav-links">
+                <a href="#upcoming-speakers">Upcoming Events</a>
+                <a href="#past-talks">Past Talks</a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Introduction Section -->
+    <section class="notice-intro">
+        <div class="section-content intro-content">
+            <div class="intro-text-container">
+                <h1 class="intro-catchphrase">
+                    ENDING YOUTH<br>
+                    SURVEILLANCE<br>
+                    <span class="series-subtitle">SPEAKER SERIES</span>
+                </h1>
+                <div class="intro-cta-container">
+                    <p class="intro-cta-text">
+                        Join leading experts and advocates in the fight against surveillance technologies in educational spaces.
+                    </p>
+                    <div class="intro-buttons">
+                        <a href="" class="notice-btn register-btn intro-cta-btn">REGISTER FOR EVENTS</a>
+                        <a href="#past-talks" class="notice-btn intro-cta-btn secondary">WATCH PAST TALKS</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upcoming Speakers Section -->
+    
+    <section id="upcoming-speakers" class="notice-upcoming-speakers">
+        <div class="section-content">
+            <h2 class="section-title">UPCOMING SPEAKERS & EVENTS</h2>
+            
+            <div class="speakers-grid">
+                <article class="speaker-card">
+                    <div class="speaker-flyer">
+                        <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/9e124ee7-f112-4884-a9bb-83c063a10516/Ending+Youth+Surveillance+Series+Flyers.jpg?content-type=image%2Fjpeg" alt="February Speaker Series Event Flyer">
+                        <div class="event-countdown">
+                            <span class="countdown-value">10</span>
+                            <span class="countdown-label">Days Until Event</span>
+                        </div>
+                    </div>
+                    <div class="speaker-details">
+                        <h3 class="event-date" data-event-datetime="2025-01-30T19:00:00-05:00">January 30, 2025 • 5:30 PM EST</h3>
+                        <h4 class="speaker-name">Dr. Rua Williams</h4>
+                        <p class="event-topic">Disability Justice & Tech</p>
+                        <a href="" class="notice-btn register-btn">Register Now</a>
+                    </div>
+                </article>
+
+                <article class="speaker-card">
+                    <div class="speaker-flyer">
+                        <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/e4f97b6e-a0f6-4bf7-bd2c-d15df15a2a38/EYS+-+Kert+Bertash+-+Flyer.jpg?content-type=image%2Fjpeg" alt="February Speaker Series Event Flyer">
+                        <div class="event-countdown">
+                            <span class="countdown-value">10</span>
+                            <span class="countdown-label">Days Until Event</span>
+                        </div>
+                    </div>
+                    <div class="speaker-details">
+                        <h3 class="event-date" data-event-datetime="2025-02-13T17:30:00-05:00">February 13, 2025 • 5:30 PM EST</h3>
+                        <h4 class="speaker-name">Kate Bertash</h4>
+                        <p class="event-topic">Ancestral Technologies of Uprising/Resistance</p>
+                        <a href="" class="notice-btn register-btn">Register Now</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+    
+
+    <!-- Past Speakers Section -->
+    <section id="past-talks" class="notice-past-speakers">
+        <div class="section-content">
+            <div class="section-header">
+                <h2 class="section-title">WATCH PAST SPEAKER TALKS</h2>
+                <a href="https://youtube.com/playlist?list=PLhus6uJuTstKr5BHKenyMkyQ8Zp4I5VhU&si=NS36Ud2GZJ74mMkc" class="section-link" target="_blank">View Full Playlist</a>
+            </div>
+            
+            <div class="past-talks-grid">
+                <!-- January 30th Talk -->
+                 <!--
+                <article class="past-talk-card">
+                    <div class="video-container">
+                        <iframe 
+                            src="https://www.youtube.com/embed/VIDEO_ID"
+                            class="lazy-video"
+                            title="January 30th Talk - Disability Justice & Tech with Rua Williams"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="talk-details">
+                        <div class="talk-header">
+                            <h3 class="talk-title">Disability Justice & Tech</h3>
+                            <span class="talk-date">January 30, 2025</span>
+                        </div>
+                        <div class="speaker-info">
+                            <h4 class="speaker-name">Rua Williams</h4>
+                            <p class="talk-description">
+                                An exploration of disability justice in technological spaces and its intersection with surveillance.
+                            </p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- December 5th Talk -->
+                <article class="past-talk-card">
+                    <div class="video-container">
+                        <iframe 
+                            src="https://www.youtube.com/embed/lUmMazGSPyY?si=Agrj3QMIo6J366tm"
+                            class="lazy-video"
+                            title="December 5th Talk - Censorship and anti-LGBTQ+ policies with Cameron Samuels"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="talk-details">
+                        <div class="talk-header">
+                            <h3 class="talk-title">Censorship and anti-LGBTQ+ policies</h3>
+                            <span class="talk-date">December 5, 2024</span>
+                        </div>
+                        <div class="speaker-info">
+                            <h4 class="speaker-name">Cameron Samuels</h4>
+                            <p class="talk-description">
+                                Examining the intersection of technology, censorship, and LGBTQ+ rights in educational spaces.
+                            </p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- November 21st Talk -->
+                 <!--
+                <article class="past-talk-card">
+                    <div class="video-container">
+                        <iframe 
+                            src="https://www.youtube.com/embed/VIDEO_ID"
+                            class="lazy-video"
+                            title="November 21st Talk - School Safety & Ed Tech with Mark Keierleber"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="talk-details">
+                        <div class="talk-header">
+                            <h3 class="talk-title">School Safety & Ed Tech</h3>
+                            <span class="talk-date">November 21, 2024</span>
+                        </div>
+                        <div class="speaker-info">
+                            <h4 class="speaker-name">Mark Keierleber</h4>
+                            <p class="talk-description">
+                                Investigating the relationship between educational technology, surveillance, and school safety measures.
+                            </p>
+                        </div>
+                    </div>
+                </article>
+                -->
+
+                <!-- November 7th Talk -->
+                <article class="past-talk-card">
+                    <div class="video-container">
+                        <iframe 
+                            src="https://www.youtube.com/embed/1kRKXs5xuQg?si=AFEPcLU6MsfO1pUd"
+                            class="lazy-video"
+                            title="November 7th Talk - Predictive analytics in the child welfare system with Khadija Abdurahman"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="talk-details">
+                        <div class="talk-header">
+                            <h3 class="talk-title">Predictive analytics in the child welfare system</h3>
+                            <span class="talk-date">November 7, 2024</span>
+                        </div>
+                        <div class="speaker-info">
+                            <h4 class="speaker-name">Khadija Abdurahman</h4>
+                            <p class="talk-description">
+                                Exploring the impact of predictive analytics and surveillance technologies in child welfare systems.
+                            </p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- October 17th Talk -->
+                <article class="past-talk-card">
+                    <div class="video-container">
+                        <iframe 
+                            src="https://www.youtube.com/embed/o9Al5zf50Ck?si=7QXctLKr3CP2Qdk9"
+                            class="lazy-video"
+                            title="October 17th Talk - Black youth subverting & resisting racially biased technologies with Dr. Tiera Tanksley"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="talk-details">
+                        <div class="talk-header">
+                            <h3 class="talk-title">Black youth subverting & resisting racially biased technologies</h3>
+                            <span class="talk-date">October 17, 2024</span>
+                        </div>
+                        <div class="speaker-info">
+                            <h4 class="speaker-name">Dr. Tiera Tanksley</h4>
+                            <p class="talk-description">
+                                Examining youth resistance strategies against racially biased surveillance technologies.
+                            </p>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section id="newsletter" class="notice-newsletter">
+        <div class="section-content">
+            <h2 class="section-title">STAY INFORMED</h2>
+        </div>
+    </section>
+
+    <!-- Social Media Section -->
+    <section id="social" class="notice-social">
+        <div class="section-content">
+            <div class="notice-social-links">
+                <a href="https://www.linkedin.com/company/no-tech-criminalization-in-education-notice-coalition/?viewAsMember=true" target="_blank" rel="noopener noreferrer" class="social-icon">
+                    <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/e21f8602-46df-4d45-ae36-3abea3853857/254394.png?content-type=image%2Fpng" alt="LinkedIn">
+                </a>
+                <a href="https://x.com/NOTICETCIA" target="_blank" rel="noopener noreferrer" class="social-icon">
+                    <i class="fa-brands fa-square-x-twitter"></i>
+                </a>
+            </div>
+            
+            <a href="/noticecoalition" class="notice-footer-logo">
+                <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/301406ed-440a-4a15-b346-b8b0faff4729/Notice+Logo+Design+F-03.png?content-type=image%2Fpng" alt="Notice Coalition">
+            </a>
+        </div>
+    </section>
+
+    
+</section>
+
+<div id="registration-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <iframe 
+            src="https://app.youform.com/forms/zw92w9mu" 
+            class="registration-form"
+            frameborder="0" 
+            marginheight="0" 
+            marginwidth="0">
+            Loading form...
+        </iframe>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get all navigation links
+        const navLinks = document.querySelectorAll('.nav-links a');
+        
+        // Add click event listener to each link
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Get the target section id from the href
+                const targetId = this.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                
+                if (targetSection) {
+                    // Get the height of the fixed navigation bar
+                    const navHeight = document.querySelector('.notice-nav').offsetHeight;
+                    
+                    // Calculate the target position accounting for the nav bar
+                    const targetPosition = targetSection.getBoundingClientRect().top + window.pageYOffset - navHeight;
+                    
+                    // Smooth scroll to the target
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const modal = document.getElementById('registration-modal');
+        const closeBtn = document.querySelector('.close-modal');
+        const registerButtons = document.querySelectorAll('.register-btn');
+        
+        // Open modal when register buttons are clicked
+        registerButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                modal.style.display = 'block';
+                document.body.classList.add('modal-open');
+            });
+        });
+        
+        // Close modal when X is clicked
+        closeBtn.addEventListener('click', function() {
+            modal.style.display = 'none';
+            document.body.classList.remove('modal-open');
+        });
+        
+        // Close modal when clicking outside
+        window.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+                document.body.classList.remove('modal-open');
+            }
+        });
+        
+        // Close modal with escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modal.style.display === 'block') {
+                modal.style.display = 'none';
+                document.body.classList.remove('modal-open');
+            }
+        });
+    });
+</script>
+
+<script>
+    function updateCountdowns() {
+        const speakerCards = document.querySelectorAll('.speaker-card');
+        
+        speakerCards.forEach(card => {
+            const eventDateElement = card.querySelector('.event-date');
+            const countdownElement = card.querySelector('.countdown-value');
+            const countdownContainer = card.querySelector('.event-countdown');
+            
+            if (eventDateElement && countdownElement && countdownContainer) {
+                const eventDateStr = eventDateElement.getAttribute('data-event-datetime');
+                if (!eventDateStr) return;
+                
+                const eventDate = new Date(eventDateStr);
+                const now = new Date();
+                
+                // Calculate the difference in days
+                const diffTime = eventDate - now;
+                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                
+                if (diffDays > 0) {
+                    countdownElement.textContent = diffDays;
+                } else if (diffDays === 0) {
+                    countdownElement.textContent = 'Today!';
+                    countdownContainer.style.backgroundColor = 'var(--notice-accent)';
+                } else {
+                    // Hide countdown for past events
+                    countdownContainer.style.display = 'none';
+                }
+            }
+        });
+    }
+
+    // Update countdowns immediately and then every 24 hours
+    document.addEventListener('DOMContentLoaded', function() {
+        updateCountdowns();
+        // Update every 24 hours
+        setInterval(updateCountdowns, 24 * 60 * 60 * 1000);
+    });
+</script>
