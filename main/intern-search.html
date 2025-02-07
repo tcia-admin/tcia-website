@@ -1,0 +1,1368 @@
+<style>
+    :root {
+        /* Spacing Variables */
+        --spacing-xs: 0.25rem;
+        --spacing-sm: 0.5rem;
+        --spacing-md: 1rem;
+        --spacing-lg: 1.5rem;
+        --spacing-xl: 2rem;
+        --spacing-2xl: 3rem;
+        --spacing-3xl: 4rem;
+        --spacing-4xl: 5rem;
+
+        /* Layout Variables */
+        --container-max-width: 1200px;
+        --container-padding: 1rem;
+
+        /* Breakpoints (for reference in media queries) */
+        --mobile: 480px;
+        --tablet: 768px;
+        --desktop: 1024px;
+
+        /* Typography Scale */
+        --font-size-xs: 0.75rem;
+        --font-size-sm: 0.875rem;
+        --font-size-med: 1rem;
+        --font-size-base: 1.25rem;
+        --font-size-lg: 1.125rem;
+        --font-size-xl: 1.25rem;
+        --font-size-2xl: 1.5rem;
+        --font-size-3xl: 2rem;
+        --font-size-4xl: 2.5rem;
+        --font-size-8xl: 4.5rem;
+        --font-size-12xl: 6rem;
+
+        /* Brand Colors */
+        --notice-yellow: #fbc516;
+        --notice-black: #1a1919;
+        --notice-grey: #808285;
+        --notice-white: #ffffff;
+
+        --tcia-red: #ec1a3c;
+        --tcia-yellow: #f3b54a;
+        --tcia-green: #01752d;
+        --tcia-teal: #02a69e;
+        --tcia-navy: #061531;
+        --tcia-white: #f4f4f4;
+
+        /* Supporting Colors */
+        --tcia-black: #1D1D1B;
+        --tcia-gray-dark: #333333;
+        --tcia-gray-light: #666666;
+
+        /* Functional Colors */
+        --notice-bg-primary: var(--notice-black);
+        --notice-bg-secondary: #242424;  /* slightly lighter than black for layering */
+        --notice-text-primary: var(--notice-white);
+        --notice-text-secondary: var(--notice-grey);
+        --notice-accent: var(--notice-yellow);
+
+        
+        /* Notice Background tints for subtle variations */
+        --notice-bg-grey-light: rgba(128, 130, 133, 0.1);
+        --notice-bg-grey-medium: rgba(128, 130, 133, 0.2);
+
+        /* New background options */
+        --tcia-bg-navy-10: #e8eaef;     /* Light navy - 10% strength */
+        --tcia-bg-teal-10: #e6f5f4;     /* Light teal - 10% strength */
+        --tcia-bg-yellow-10: #fef8ed;   /* Light yellow - 10% strength */
+        
+        /* Or slightly darker options */
+        --tcia-bg-navy-20: #d1d5dd;     /* Navy - 20% strength */
+        --tcia-bg-teal-20: #cceae9;     /* Teal - 20% strength */
+        --tcia-bg-yellow-20: #fdf1db;   /* Yellow - 20% strength */
+        
+        /* Font Families */
+        /* Typography */
+        --font-primary: "Helvetica Neue Condensed Bold", "Arial Narrow Bold", sans-serif;
+        --font-secondary: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        --font-headline: "Interstate Condensed Bold", "Helvetica Neue Condensed Bold", "Arial Narrow Bold", sans-serif;
+        --font-body: "Interstate Condensed Regular", "Helvetica Neue", Arial, sans-serif;
+        --font-alt-bold: "Neuzeit Grotesk Bold", "Helvetica Neue Bold", Arial, sans-serif;
+        --font-alt-regular: "Neuzeit Grotesk Regular", "Helvetica Neue", Arial, sans-serif;
+
+        --font-notice-primary: 'Roboto', sans-serif;
+        /*--font-accent: 'Impact', sans-serif;*/
+        --font-notice-accent: 'Roboto', sans-serif;
+        
+        /* Font Weights */
+        --font-regular: 400;
+        --font-bold: 700;
+    }
+
+    /* Typography Styles */
+    h1, h2, h3 {
+        font-family: var(--font-headline);
+        font-weight: bold;
+    }
+
+    h2 {
+        text-transform: uppercase;
+    }
+
+    body {
+        font-family: var(--font-body);
+    }
+
+    .caption, .statistics, blockquote {
+        font-family: var(--font-headline);
+    }
+
+    .alt-text {
+        font-family: var(--font-alt-regular);
+    }
+
+    .alt-text-bold {
+        font-family: var(--font-alt-bold);
+    }
+
+    /* Reset and Base Styles - Update to remove any default margins */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+        scroll-padding-top: var(--nav-height); /* Add this variable to your root */
+    }
+
+    .intern-search-main {
+        width: 100%;
+        min-height: 100vh;
+        font-family: var(--font-primary);
+        color: var(--tcia-white);
+        background-color: var(--tcia-navy);
+        padding-bottom: var(--spacing-4xl);
+        display: flex;
+        flex-direction: column;
+        transition: padding-bottom 0.3s ease;
+    }
+
+    .hero-section {
+        min-height: 80vh;
+        background: linear-gradient(rgba(6, 21, 49, 0.3), rgba(6, 21, 49, 0.3)),
+                    url('https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/dec65ea2-dea2-4ce7-99f8-5ac0665431a4/pexels-fauxels-3184419.jpg?content-type=image%2Fjpeg');
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: var(--spacing-2xl);
+        position: relative;
+    }
+
+    .hero-title {
+        font-family: var(--font-notice-primary);
+        font-size: var(--font-size-12xl);
+        color: var(--tcia-white);
+        margin-bottom: var(--spacing-md);
+        text-align: center;
+    }
+
+    .hero-subtitle {
+        font-family: var(--font-alt-bold);
+        font-size: var(--font-size-2xl);
+        color: var(--tcia-white);
+        margin-bottom: var(--spacing-4xl);
+        text-align: center;
+    }
+
+    .cta-container {
+        display: flex;
+        gap: var(--spacing-2xl);
+        position: relative;
+    }
+
+    .cta-button {
+        width: 200px;
+        height: 80px;
+        background: var(--tcia-white);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.3s ease;
+    }
+
+    .cta-button:hover {
+        transform: translateY(-5px);
+    }
+
+    .cta-button img {
+        max-width: 80%;
+        height: auto;
+    }
+
+    /* Decorative lines */
+    .connecting-lines {
+        position: absolute;
+        top: -60px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        height: 60px;
+    }
+
+    .connecting-lines::before,
+    .connecting-lines::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        width: 2px;
+        height: 30px;
+        background: var(--tcia-white);
+    }
+
+    .connecting-lines::before {
+        left: 25%;
+        transform: rotate(30deg);
+    }
+
+    .connecting-lines::after {
+        right: 25%;
+        transform: rotate(-30deg);
+    }
+
+
+    /* Navigation */
+    .nav-section {
+        position: sticky;
+        top: 0;
+        width: 100%;
+        background-color: var(--tcia-navy);
+        padding: var(--spacing-md) 0;
+        z-index: 100;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-container {
+        max-width: var(--container-max-width);
+        margin: 0 auto;
+        padding: 0 var(--container-padding);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: var(--spacing-2xl);
+    }
+
+    .nav-links a {
+        color: var(--tcia-white);
+        text-decoration: none;
+        font-family: var(--font-alt-regular);
+        font-size: var(--font-size-sm);
+        padding: var(--spacing-xs) 0;
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-xs);
+    }
+
+    .nav-number {
+        color: var(--tcia-yellow);
+        font-family: var(--font-alt-bold);
+        font-size: var(--font-size-xs);
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+        color: var(--tcia-yellow);
+    }
+
+    .nav-links a::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: var(--tcia-yellow);
+        transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+        width: 100%;
+    }
+
+    /* Back to top button */
+    .back-to-top {
+        position: fixed;
+        bottom: var(--spacing-xl);
+        right: var(--spacing-xl);
+        background-color: var(--tcia-yellow);
+        color: var(--tcia-white);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: 100;
+    }
+
+    .back-to-top.visible {
+        opacity: 1;
+    }
+
+    .back-to-top:hover {
+        background-color: var(--tcia-navy);
+    }
+
+    .internships-section {
+        padding: var(--spacing-4xl) var(--spacing-2xl);
+        margin-top: var(--spacing-4xl);
+        background-color: var(--tcia-navy);
+        background-image: linear-gradient(to bottom, 
+            rgba(6, 21, 49, 0.3) 0%,
+            rgba(6, 21, 49, 0.4) 50%,
+            var(--tcia-navy) 100%),
+            url('https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/2b626438-ca9f-4ec4-863d-1179590ae127/STOCK-IMAGE_INTERNS-MEETING_1920x1281.jpg?content-type=image%2Fjpeg');
+        background-size: cover;
+        background-position: center;
+        text-align: center;
+    }
+
+    .section-label {
+        color: var(--tcia-yellow);
+        font-family: var(--font-alt-regular);
+        font-size: var(--font-size-3xl);
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: var(--spacing-xl);
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        -webkit-text-stroke: 0.5px rgba(0, 0, 0, 0.3); /* Subtle stroke for supported browsers */
+    }
+
+    .section-title {
+        color: var(--tcia-white);
+        font-family: var(--font-headline);
+        font-size: var(--font-size-4xl);
+        margin-bottom: var(--spacing-xl);
+    }
+
+    .section-description {
+        color: var(--tcia-white);
+        font-family: var(--font-body);
+        font-size: var(--font-size-lg);
+        max-width: 800px;
+        margin: 0 auto;
+        line-height: 1.6;
+    }
+
+    .section-description p {
+        margin-bottom: var(--spacing-lg);
+    }
+
+    /* Add styles for the program section */
+    .program-section {
+        padding: var(--spacing-4xl) var(--spacing-2xl);
+        background-color: var(--tcia-navy);
+        text-align: center;
+    }
+
+    .program-title {
+        color: var(--tcia-white);
+        font-family: var(--font-headline);
+        font-size: var(--font-size-4xl);
+        margin-bottom: var(--spacing-2xl);
+    }
+
+    .program-nav {
+        display: flex;
+        justify-content: center;
+        gap: var(--spacing-2xl);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        margin-bottom: var(--spacing-2xl);
+    }
+
+    .program-nav-item {
+        color: var(--tcia-white);
+        text-decoration: none;
+        padding: var(--spacing-md) 0;
+        font-family: var(--font-alt-regular);
+        font-size: var(--font-size-sm);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        position: relative;
+        opacity: 0.6;
+        transition: opacity 0.3s ease;
+    }
+
+    .program-nav-item.active {
+        opacity: 1;
+    }
+
+    .program-nav-item.active::after {
+        content: '';
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: var(--tcia-yellow);
+    }
+
+    .program-nav-item:hover {
+        opacity: 1;
+    }
+
+    .program-content {
+        display: none;
+        max-width: 1200px;
+        margin: var(--spacing-2xl) auto;
+        padding: 0 var(--spacing-2xl);
+    }
+
+    .program-content.active {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--spacing-4xl);
+        align-items: center;
+    }
+
+    .program-image {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .program-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .program-text {
+        text-align: left;
+        color: var(--tcia-white);
+    }
+
+    .program-text h3 {
+        font-size: var(--font-size-3xl);
+        margin-bottom: var(--spacing-xl);
+        text-transform: uppercase;
+        color: var(--tcia-white);
+        font-family: var(--font-headline);
+        letter-spacing: 1px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .program-text p {
+        font-family: var(--font-body);
+        font-size: var(--font-size-lg);
+        line-height: 1.6;
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .program-list {
+        list-style: none;
+        margin-top: var(--spacing-xl);
+    }
+
+    .program-list li {
+        margin-bottom: var(--spacing-md);
+        padding-left: var(--spacing-md);
+        position: relative;
+    }
+
+    .program-list li::before {
+        content: "○";
+        color: var(--tcia-yellow);
+        position: absolute;
+        left: -20px;
+    }
+
+    .faq-section {
+        padding: var(--spacing-4xl) var(--spacing-2xl);
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .faq-category {
+        margin-bottom: var(--spacing-4xl);
+    }
+
+    .category-label {
+        color: var(--tcia-white);
+        font-family: var(--font-headline);
+        font-size: var(--font-size-sm);
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-bottom: var(--spacing-xl);
+        opacity: 0.7;
+    }
+
+    .faq-item {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        margin-bottom: var(--spacing-md);
+    }
+
+    .faq-question {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: var(--spacing-xl) 0;
+        background: none;
+        border: none;
+        color: var(--tcia-white);
+        font-family: var(--font-headline);
+        font-size: var(--font-size-xl);
+        text-align: left;
+        cursor: pointer;
+        transition: color 0.3s ease;
+    }
+
+    .faq-question:hover {
+        color: var(--tcia-yellow);
+    }
+
+    .faq-toggle {
+        color: var(--tcia-yellow);
+        font-size: var(--font-size-2xl);
+        transition: transform 0.3s ease;
+    }
+
+    .faq-item.active .faq-toggle {
+        transform: rotate(45deg);
+    }
+
+    .faq-answer {
+        display: none;
+        padding-bottom: var(--spacing-xl);
+        color: var(--tcia-white);
+        font-family: var(--font-body);
+        font-size: var(--font-size-lg);
+        line-height: 1.6;
+        opacity: 0.8;
+    }
+
+    .faq-item.active .faq-answer {
+        display: block;
+    }
+
+    .apply-section {
+        padding: var(--spacing-4xl) var(--spacing-2xl);
+        background-color: var(--tcia-yellow);
+    }
+
+    .apply-label {
+        color: var(--tcia-navy);
+        font-family: var(--font-alt-regular);
+        font-size: var(--font-size-sm);
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: var(--spacing-2xl);
+    }
+
+    .apply-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-2xl);
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .apply-card {
+        position: relative;
+        border: 2px solid var(--tcia-white);
+        padding: var(--spacing-2xl);
+        color: var(--tcia-navy);
+        text-decoration: none;
+        transition: transform 0.3s ease;
+        background-color: transparent;
+        min-height: 300px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .apply-card:hover {
+        transform: translateY(-4px);
+    }
+
+    .apply-card-label {
+        text-transform: uppercase;
+        font-family: var(--font-alt-bold);
+        font-size: var(--font-size-sm);
+        margin-bottom: var(--spacing-xl);
+        color: var(--tcia-navy);
+    }
+
+    .apply-card-title {
+        font-family: var(--font-headline);
+        font-size: var(--font-size-2xl);
+        margin-top: auto;
+        color: var(--tcia-navy);
+    }
+
+    .hero-content {
+        max-width: 800px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .hero-label {
+        font-family: var(--font-alt-regular);
+        font-size: var(--font-size-sm);
+        color: var(--tcia-yellow);
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: var(--spacing-md);
+        display: block;
+    }
+
+    .search-container {
+        margin-top: var(--spacing-2xl);
+    }
+
+    .search-box {
+        position: relative;
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .search-input {
+        width: 100%;
+        height: 60px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 8px;
+        padding: 0 var(--spacing-xl);
+        color: var(--tcia-white);
+        font-family: var(--font-body);
+        font-size: var(--font-size-lg);
+        transition: all 0.3s ease;
+    }
+
+    .search-input:focus {
+        background: rgba(255, 255, 255, 0.15);
+        border-color: var(--tcia-yellow);
+        outline: none;
+    }
+
+    .search-input::placeholder {
+        color: rgba(255, 255, 255, 0.6);
+    }
+
+    .search-button {
+        position: absolute;
+        right: var(--spacing-md);
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        color: var(--tcia-white);
+        cursor: pointer;
+        padding: var(--spacing-xs);
+    }
+
+    .search-filters {
+        display: flex;
+        gap: var(--spacing-md);
+        justify-content: center;
+        margin-top: var(--spacing-xl);
+    }
+
+    .filter-button {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 4px;
+        padding: var(--spacing-sm) var(--spacing-lg);
+        color: var(--tcia-white);
+        font-family: var(--font-body);
+        font-size: var(--font-size-sm);
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .filter-button:hover {
+        background: rgba(255, 255, 255, 0.15);
+        border-color: var(--tcia-yellow);
+    }
+
+    .filter-dropdown {
+        position: relative;
+    }
+
+    .dropdown-content {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        min-width: 200px;
+        background: var(--tcia-navy);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 4px;
+        margin-top: var(--spacing-xs);
+        padding: var(--spacing-xs) 0;
+        display: none;  /* This ensures the dropdown is hidden by default */
+        z-index: 1000;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.2s ease, visibility 0.2s ease;
+    }
+
+    .dropdown-content.show {
+        display: block;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .dropdown-item {
+        display: flex;
+        align-items: center;
+        padding: var(--spacing-sm) var(--spacing-lg);
+        color: var(--tcia-white);
+        font-family: var(--font-body);
+        font-size: var(--font-size-sm);
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .dropdown-item:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .dropdown-item input[type="checkbox"] {
+        margin-right: var(--spacing-sm);
+        accent-color: var(--tcia-yellow);
+    }
+
+    /* Rotate arrow when dropdown is open */
+    .filter-button.active svg {
+        transform: rotate(180deg);
+    }
+
+    .filter-button svg {
+        transition: transform 0.3s ease;
+    }
+
+    .positions-list {
+        max-width: var(--container-max-width);
+        margin: var(--spacing-xl) auto 0;
+        padding: 0 var(--spacing-xs);
+    }
+
+    .positions-header {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        padding: var(--spacing-md) var(--spacing-xl);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .header-cell {
+        color: var(--tcia-white);
+        font-family: var(--font-alt-bold);
+        font-size: var(--font-size-sm);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: bold;
+    }
+
+    .position-row {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        padding: var(--spacing-xl);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        text-decoration: none;
+        color: var(--tcia-white);
+        transition: background-color 0.3s ease;
+    }
+
+    .position-row:hover {
+        background-color: rgba(255, 255, 255, 0.05);
+    }
+
+    .position-cell {
+        display: flex;
+        align-items: center;
+        font-family: var(--font-body);
+        font-size: var(--font-size-lg);
+    }
+
+    .position-title {
+        font-family: var(--font-alt-bold);
+    }
+
+    .arrow-icon {
+        margin-left: auto;
+        opacity: 0;
+        transform: translateX(-10px);
+        transition: all 0.3s ease;
+    }
+
+    .position-row:hover .arrow-icon {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    .role-description {
+        max-width: var(--container-max-width);
+        margin: var(--spacing-xl) auto 0;
+        padding: 0 var(--spacing-md);
+        color: var(--tcia-white);
+    }
+
+    .role-container {
+        position: relative;
+    }
+
+    .back-button {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+        background: none;
+        border: none;
+        color: var(--tcia-yellow);
+        font-family: var(--font-alt-bold);
+        font-size: var(--font-size-sm);
+        cursor: pointer;
+        padding: var(--spacing-sm) 0;
+        margin-bottom: var(--spacing-xl);
+    }
+
+    .back-button:hover {
+        color: var(--tcia-white);
+    }
+
+    .role-title {
+        font-family: var(--font-headline);
+        font-size: var(--font-size-4xl);
+        margin-bottom: var(--spacing-2xl);
+        color: var(--tcia-white);
+    }
+
+    .role-section {
+        margin-bottom: var(--spacing-3xl);
+    }
+
+    .role-section h2 {
+        font-family: var(--font-headline);
+        font-size: var(--font-size-2xl);
+        color: var(--tcia-yellow);
+        margin-bottom: var(--spacing-xl);
+    }
+
+    .role-description-text,
+    .role-requirements {
+        font-family: var(--font-body);
+        font-size: var(--font-size-lg);
+        line-height: 1.6;
+    }
+
+    .role-description-text p,
+    .role-requirements p {
+        margin-bottom: var(--spacing-md);
+    }
+
+    .role-description-text ul,
+    .role-requirements ul {
+        list-style: none;
+        padding-left: var(--spacing-xl);
+    }
+
+    .role-description-text li,
+    .role-requirements li {
+        margin-bottom: var(--spacing-md);
+        position: relative;
+    }
+
+    .role-description-text li::before,
+    .role-requirements li::before {
+        content: "•";
+        color: var(--tcia-yellow);
+        position: absolute;
+        left: -20px;
+    }
+
+    .apply-button {
+        background-color: var(--tcia-yellow);
+        color: var(--tcia-white);
+        border: none;
+        border-radius: 4px;
+        padding: var(--spacing-md) var(--spacing-2xl);
+        font-family: var(--font-alt-bold);
+        font-size: var(--font-size-lg);
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .apply-button:hover {
+        background-color: var(--tcia-white);
+        color: var(--tcia-navy);
+    }
+
+    /* Add these styles to hide the form-wrapper by default */
+    .form-wrapper {
+        display: none;
+        opacity: 0;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        margin-top: var(--spacing-4xl);
+        padding: 0 var(--spacing-2xl);
+        max-width: var(--container-max-width);
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* Squarespace form styles */
+    .form-wrapper form {
+        color: var(--tcia-white);
+    }
+
+    /* Squarespace form name field styles */
+    .form-wrapper fieldset.form-item.fields {
+        display: flex;
+        gap: var(--spacing-xl);
+        border: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .form-wrapper .field.first-name,
+    .form-wrapper .field.last-name {
+        flex: 1;
+    }
+
+    .form-wrapper .title {
+        margin-bottom: var(--spacing-md);
+    }
+
+    .form-wrapper .caption-text {
+        font-family: var(--font-body);
+        font-size: var(--font-size-xl);
+        color: var(--tcia-white);
+    }
+
+    .form-wrapper .form-input-effects {
+        position: relative;
+    }
+
+    .form-wrapper .form-input-effects-border {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: rgba(255, 255, 255, 0.1);
+        transition: background-color 0.3s ease;
+    }
+
+    .form-wrapper input[type="text"],
+    .form-wrapper input[type="email"] {
+        width: 100%;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 12px;
+        padding: var(--spacing-md);
+        color: var(--tcia-white);
+        font-family: var(--font-body);
+        font-size: var(--font-size-lg);
+    }
+
+    .form-wrapper input[type="text"]:focus + .form-input-effects .form-input-effects-border,
+    .form-wrapper input[type="email"]:focus + .form-input-effects .form-input-effects-border {
+        background: var(--tcia-yellow);
+    }
+
+    .form-wrapper.show {
+        display: block;
+        opacity: 1;
+        transform: translateY(0);
+    }
+</style>
+
+
+<section class="intern-search-main">
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <div class="section-title">JOIN THE TEAM</div>
+            <h1 class="hero-title">SUBTITLE IF YOU WANT</h1>
+            <div class="search-container">
+                <div class="search-box">
+                    <input type="text" placeholder="Search for positions..." class="search-input">
+                    <button class="search-button">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M21 21L16.5 16.5M16.5 16.5C18.1569 14.8431 19 12.5373 19 10C19 5.02944 14.9706 1 10 1C5.02944 1 1 5.02944 1 10C1 14.9706 5.02944 19 10 19C12.5373 19 14.8431 18.1569 16.5 16.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="search-filters">
+                    <div class="filter-dropdown">
+                        <button class="filter-button" id="department-filter">
+                            Department
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                                <path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </button>
+                        <div class="dropdown-content" id="department-dropdown"></div>
+                    </div>
+                    <div class="filter-dropdown">
+                        <button class="filter-button" id="type-filter">
+                            Type
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                                <path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </button>
+                        <div class="dropdown-content" id="type-dropdown"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="positions-list">
+        <div class="positions-header">
+            <div class="header-cell">Position</div>
+            <div class="header-cell">Department</div>
+        </div>
+        
+        <div id="positions-container">
+            <!-- Positions will be populated here -->
+        </div>
+    </section>
+
+    <!-- Add this section after the positions-list section -->
+    <section class="role-description" style="display: none;">
+        <div class="role-container">
+            <button class="back-button">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Back to Positions
+            </button>
+            
+            <h1 class="role-title"></h1>
+            <div class="role-content">
+                <div class="role-section">
+                    <h2>The Role</h2>
+                    <div class="role-description-text"></div>
+                </div>
+                
+                <div class="role-section">
+                    <h2>What We're Looking For</h2>
+                    <div class="role-requirements"></div>
+                </div>
+                
+                <button class="apply-button">Apply Now</button>
+            </div>
+        </div>
+    </section>
+
+</section>
+
+
+
+<script>
+    // Filter options data structure
+    const filterOptions = {
+        department: [
+            { value: 'tcia', label: 'TCIA' },
+            { value: 'notice coalition', label: 'NOTICE COALITION' }
+        ],
+        type: [
+            { value: 'intern', label: 'Intern' },
+            { value: 'regular', label: 'Regular' }
+        ]
+    };
+
+    const positions = [
+        {
+            id: 1,
+            title: "UX Design Intern",
+            department: "TCIA",
+            type: "intern",
+            description: `<p>As the Lead, Compliance Assurance you will lead testing and monitoring of compliance safeguards, processes, and policies to support Epic's adherence to applicable laws and regulations. You will play a key role in leading Epic's efforts to ensure compliance with applicable laws, regulations, and internal policies.</p>
+            <ul>
+                <li>Design program to test and monitor compliance as legally required and as needed to identify compliance risk</li>
+                <li>Design and implement testing methodologies and make recommendations to adjust the Compliance program as needed</li>
+                <li>Lead annual and periodic risk-based control testing across Compliance controls</li>
+                <!-- Add more list items as needed -->
+            </ul>`,
+            requirements: `<ul>
+                <li>8+ years of relevant work experience in compliance or auditing, preferably in a similar industry</li>
+                <li>Experience partnering with stakeholders across legal, finance, people, product, and engineering teams</li>
+                <li>Proactively identify process gaps, roadblocks, bottlenecks, and inefficiencies that will negatively impact risk and compliance efforts and mitigate them</li>
+            </ul>`,
+            url: "/positions/ux-design-intern"
+        },
+        {
+            id: 2,
+            title: "Web Development Intern",
+            department: "NOTICE COALITION",
+            type: "intern",
+            description: `<p>As the Lead, Compliance Assurance you will lead testing and monitoring of compliance safeguards, processes, and policies to support Epic's adherence to applicable laws and regulations. You will play a key role in leading Epic's efforts to ensure compliance with applicable laws, regulations, and internal policies.</p>
+            <ul>
+                <li>Design program to test and monitor compliance as legally required and as needed to identify compliance risk</li>
+                <li>Design and implement testing methodologies and make recommendations to adjust the Compliance program as needed</li>
+                <li>Lead annual and periodic risk-based control testing across Compliance controls</li>
+                <!-- Add more list items as needed -->
+            </ul>`,
+            requirements: `<ul>
+                <li>8+ years of relevant work experience in compliance or auditing, preferably in a similar industry</li>
+                <li>Experience partnering with stakeholders across legal, finance, people, product, and engineering teams</li>
+                <li>Proactively identify process gaps, roadblocks, bottlenecks, and inefficiencies that will negatively impact risk and compliance efforts and mitigate them</li>
+            </ul>`,
+            url: "/positions/web-dev-intern"
+        },
+        {
+            id: 3,
+            title: "Marketing Intern",
+            department: "TCIA",
+            type: "intern",
+            description: `<p>As the Lead, Compliance Assurance you will lead testing and monitoring of compliance safeguards, processes, and policies to support Epic's adherence to applicable laws and regulations. You will play a key role in leading Epic's efforts to ensure compliance with applicable laws, regulations, and internal policies.</p>
+            <ul>
+                <li>Design program to test and monitor compliance as legally required and as needed to identify compliance risk</li>
+                <li>Design and implement testing methodologies and make recommendations to adjust the Compliance program as needed</li>
+                <li>Lead annual and periodic risk-based control testing across Compliance controls</li>
+                <!-- Add more list items as needed -->
+            </ul>`,
+            requirements: `<ul>
+                <li>8+ years of relevant work experience in compliance or auditing, preferably in a similar industry</li>
+                <li>Experience partnering with stakeholders across legal, finance, people, product, and engineering teams</li>
+                <li>Proactively identify process gaps, roadblocks, bottlenecks, and inefficiencies that will negatively impact risk and compliance efforts and mitigate them</li>
+            </ul>`,
+            url: "/positions/marketing-intern"
+        },
+        {
+            id: 4,
+            title: "Content Creation Intern",
+            department: "NOTICE COALITION",
+            type: "intern",
+            description: `<p>As the Lead, Compliance Assurance you will lead testing and monitoring of compliance safeguards, processes, and policies to support Epic's adherence to applicable laws and regulations. You will play a key role in leading Epic's efforts to ensure compliance with applicable laws, regulations, and internal policies.</p>
+            <ul>
+                <li>Design program to test and monitor compliance as legally required and as needed to identify compliance risk</li>
+                <li>Design and implement testing methodologies and make recommendations to adjust the Compliance program as needed</li>
+                <li>Lead annual and periodic risk-based control testing across Compliance controls</li>
+                <!-- Add more list items as needed -->
+            </ul>`,
+            requirements: `<ul>
+                <li>8+ years of relevant work experience in compliance or auditing, preferably in a similar industry</li>
+                <li>Experience partnering with stakeholders across legal, finance, people, product, and engineering teams</li>
+                <li>Proactively identify process gaps, roadblocks, bottlenecks, and inefficiencies that will negatively impact risk and compliance efforts and mitigate them</li>
+            </ul>`,
+            url: "/positions/content-intern"
+        },
+        {
+            id: 5,
+            title: "Digital Strategy Intern",
+            department: "TCIA",
+            type: "intern",
+            description: `<p>As the Lead, Compliance Assurance you will lead testing and monitoring of compliance safeguards, processes, and policies to support Epic's adherence to applicable laws and regulations. You will play a key role in leading Epic's efforts to ensure compliance with applicable laws, regulations, and internal policies.</p>
+            <ul>
+                <li>Design program to test and monitor compliance as legally required and as needed to identify compliance risk</li>
+                <li>Design and implement testing methodologies and make recommendations to adjust the Compliance program as needed</li>
+                <li>Lead annual and periodic risk-based control testing across Compliance controls</li>
+                <!-- Add more list items as needed -->
+            </ul>`,
+            requirements: `<ul>
+                <li>8+ years of relevant work experience in compliance or auditing, preferably in a similar industry</li>
+                <li>Experience partnering with stakeholders across legal, finance, people, product, and engineering teams</li>
+                <li>Proactively identify process gaps, roadblocks, bottlenecks, and inefficiencies that will negatively impact risk and compliance efforts and mitigate them</li>
+            </ul>`,
+            url: "/positions/strategy-intern"
+        }
+    ];
+
+    // Add active filters tracking
+    const activeFilters = {
+        department: new Set(),
+        type: new Set()
+    };
+
+    function filterPositions(searchTerm = '') {
+        return positions.filter(position => {
+            // Check if position matches search term
+            const matchesSearch = position.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                                position.department.toLowerCase().includes(searchTerm.toLowerCase());
+
+            // Check if position matches department filters
+            const matchesDepartment = activeFilters.department.size === 0 || 
+                                    activeFilters.department.has(position.department.toLowerCase());
+
+            // Check if position matches type filters
+            const matchesType = activeFilters.type.size === 0 ||
+                              activeFilters.type.has(position.type);
+
+            return matchesSearch && matchesDepartment && matchesType;
+        });
+    }
+
+    function renderPositions(positionsToRender = positions) {
+        const container = document.getElementById('positions-container');
+        if (!container) return;
+        
+        container.innerHTML = '';
+
+        positionsToRender.forEach(position => {
+            const positionElement = document.createElement('a');
+            positionElement.href = 'javascript:void(0)'; // Prevent default link behavior
+            positionElement.className = 'position-row';
+            positionElement.innerHTML = `
+                <div class="position-cell position-title">${position.title}</div>
+                <div class="position-cell">
+                    ${position.department}
+                    <svg class="arrow-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 4L20 12L12 20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+            `;
+            positionElement.addEventListener('click', () => showRoleDescription(position));
+            container.appendChild(positionElement);
+        });
+    }
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        // Generate dropdown content from data structure
+        function populateDropdowns() {
+            Object.keys(filterOptions).forEach(filterType => {
+                const dropdown = document.getElementById(`${filterType}-dropdown`);
+                const options = filterOptions[filterType];
+                
+                options.forEach(option => {
+                    const label = document.createElement('label');
+                    label.className = 'dropdown-item';
+                    label.innerHTML = `
+                        <input type="checkbox" name="${filterType}" value="${option.value}">
+                        <span>${option.label}</span>
+                    `;
+                    dropdown.appendChild(label);
+                });
+            });
+        }
+    
+        // Initialize dropdowns
+        populateDropdowns();
+        
+        // Initialize positions list
+        renderPositions();
+
+        // Update checkbox change handler
+        document.addEventListener('change', function(event) {
+            if (event.target.matches('.dropdown-item input[type="checkbox"]')) {
+                const filterType = event.target.name;
+                const filterValue = event.target.value;
+                
+                if (event.target.checked) {
+                    activeFilters[filterType].add(filterValue);
+                } else {
+                    activeFilters[filterType].delete(filterValue);
+                }
+
+                // Get current search term
+                const searchTerm = document.querySelector('.search-input')?.value || '';
+                
+                // Apply both filters and search
+                const filteredPositions = filterPositions(searchTerm);
+                renderPositions(filteredPositions);
+            }
+        });
+
+        // Update search input handler to include filters
+        const searchInput = document.querySelector('.search-input');
+        if (searchInput) {
+            searchInput.addEventListener('input', function(e) {
+                const searchTerm = e.target.value;
+                const filteredPositions = filterPositions(searchTerm);
+                renderPositions(filteredPositions);
+            });
+        }
+
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.filter-dropdown')) {
+                closeAllDropdowns();
+            }
+        });
+        // Toggle dropdown when clicking filter button
+        const filterButtons = document.querySelectorAll('.filter-button');
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function(event) {
+                event.stopPropagation();
+                const dropdown = this.parentElement.querySelector('.dropdown-content');
+                const isOpen = dropdown.classList.contains('show');
+                
+                // Close all dropdowns first
+                closeAllDropdowns();
+                
+                if (!isOpen) {
+                    dropdown.classList.add('show');
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // Update the apply button click handler
+        document.querySelector('.apply-button').addEventListener('click', () => {
+            const formWrapper = document.querySelector('.form-wrapper');
+            const mainSection = document.querySelector('.intern-search-main');
+            
+            // Move form to the bottom of the main section if it's not already there
+            mainSection.appendChild(formWrapper);
+            
+            // Show form
+            formWrapper.classList.add('show');
+            
+            // Scroll to form with some padding at the top
+            formWrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            
+            // Add some padding to ensure proper spacing
+            mainSection.style.paddingBottom = '4rem';
+        });
+
+        // Modify the back button handler
+        document.querySelector('.back-button').addEventListener('click', () => {
+            const positionsList = document.querySelector('.positions-list');
+            const roleDescription = document.querySelector('.role-description');
+            const formWrapper = document.querySelector('.form-wrapper');
+            const mainSection = document.querySelector('.intern-search-main');
+            
+            // Show positions list and hide role description and form
+            positionsList.style.display = 'block';
+            roleDescription.style.display = 'none';
+            formWrapper.classList.remove('show');
+            
+            // Reset padding
+            mainSection.style.paddingBottom = 'var(--spacing-4xl)';
+        });
+    });
+
+    function closeAllDropdowns() {
+        document.querySelectorAll('.dropdown-content').forEach(dropdown => {
+            dropdown.classList.remove('show');
+        });
+        document.querySelectorAll('.filter-button').forEach(button => {
+            button.classList.remove('active');
+        });
+    }
+
+    // Add this to your existing JavaScript
+    function showRoleDescription(position) {
+        const positionsList = document.querySelector('.positions-list');
+        const roleDescription = document.querySelector('.role-description');
+        
+        // Update role content
+        roleDescription.querySelector('.role-title').textContent = position.title;
+        roleDescription.querySelector('.role-description-text').innerHTML = position.description;
+        roleDescription.querySelector('.role-requirements').innerHTML = position.requirements;
+        
+        // Hide positions list and show role description
+        positionsList.style.display = 'none';
+        roleDescription.style.display = 'block';
+    }
+</script>
