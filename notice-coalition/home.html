@@ -1,1269 +1,2022 @@
-<!-- Add these lines near the top of your HTML, before your existing styles -->
-<!-- Preload critical fonts -->
-<link rel="preload" 
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" 
-      as="style">
-<link rel="preload" 
-      href="https://fonts.cdnfonts.com/css/impact" 
-      as="style">
-
-<!-- Preload critical images -->
-<link rel="preload" 
-      href="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/301406ed-440a-4a15-b346-b8b0faff4729/Notice+Logo+Design+F-03.png" 
-      as="image" 
-      type="image/png">
-
-<!-- Preconnect to external domains -->
-<link rel="preconnect" href="https://images.squarespace-cdn.com">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<!-- DNS prefetch for older browsers -->
-<link rel="dns-prefetch" href="https://images.squarespace-cdn.com">
-<link rel="dns-prefetch" href="https://fonts.googleapis.com">
-
 <style>
     :root {
+        /* Spacing Variables */
+        --spacing-xs: 0.25rem;
+        --spacing-sm: 0.5rem;
+        --spacing-md: 1rem;
+        --spacing-lg: 1.5rem;
+        --spacing-xl: 2rem;
+        --spacing-2xl: 3rem;
+        --spacing-3xl: 4rem;
+        --spacing-4xl: 5rem;
+
+        /* Layout Variables */
+        --container-max-width: 1200px;
+        --container-padding: 1rem;
+
+        /* Breakpoints (for reference in media queries) */
+        --mobile: 480px;
+        --tablet: 768px;
+        --desktop: 1024px;
+
+        /* Typography Scale */
+        --font-size-xs: 0.75rem;
+        --font-size-sm: 0.875rem;
+        --font-size-med: 1rem;
+        --font-size-base: 1.25rem;
+        --font-size-lg: 1.125rem;
+        --font-size-xl: 1.25rem;
+        --font-size-2xl: 1.5rem;
+        --font-size-3xl: 2rem;
+        --font-size-4xl: 2.5rem;
+        --font-size-8xl: 4.5rem;
+        --font-size-12xl: 6rem;
+
+        /* Brand Colors */
         --notice-yellow: #fbc516;
         --notice-black: #1a1919;
         --notice-grey: #808285;
-        --font-size-base: 1rem;
-        --spacing-unit: 1rem;
-        --left-column-margin: 2%; /* New variable for left column margin */
-        /* New variables for glint effect */
-        --glint-duration: 1.2s;
-        --glint-timing-function: ease-in-out;
-        --glint-width: 150%;
-        --glint-start-position: 100%;
-        --glint-end-position: 0%;
-        --glint-after-end-position: -200%;
-        --glint-color: rgba(255, 255, 255, 0.8);
+        --notice-white: #ffffff;
+
+        /* Functional Colors */
+        --notice-bg-primary: var(--notice-black);
+        --notice-bg-secondary: #242424;  /* slightly lighter than black for layering */
+        --notice-text-primary: var(--notice-white);
+        --notice-text-secondary: var(--notice-grey);
+        --notice-accent: var(--notice-yellow);
+        
+        /* Background tints for subtle variations */
+        --notice-bg-grey-light: rgba(128, 130, 133, 0.1);
+        --notice-bg-grey-medium: rgba(128, 130, 133, 0.2);
+        
+        /* Font Families */
+        --font-primary: 'Roboto', sans-serif;
+        /*--font-accent: 'Impact', sans-serif;*/
+        --font-accent: 'Roboto', sans-serif;
+        
+        /* Font Weights */
+        --font-regular: 400;
+        --font-bold: 700;
     }
 
+    /* Reset and Base Styles - Update to remove any default margins */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-    #notice-page {
+    html {
+        scroll-behavior: smooth;
+        scroll-padding-top: var(--nav-height); /* Add this variable to your root */
+    }
+
+    /* Main Container Styles - Ensure no top margin/padding */
+    .notice-coalition-main {
         width: 100%;
-        max-width: none;
-        margin: 0;
-        padding: 0;
-        font-family: 'Roboto', sans-serif;
-        font-size: var(--font-size-base);
-        line-height: 1.6;
-        color: var(--notice-black);
-        background-image: 
-            url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIklEQVQIW2NkQAKrVq36zwjjgzhhYWGMYAEYB8RmROaABADeOQ8CXl/xfgAAAABJRU5ErkJggg=='),
-            linear-gradient(to bottom, var(--notice-grey), var(--notice-grey));        
-        background-size: cover;
-        background-position: center;
-        background-repeat: repeat;
-        background-attachment: fixed;
-        animation: backgroundMove 30s linear infinite; /* Adjust duration and timing as needed */
+        font-family: var(--font-primary);
+        color: var(--notice-text-primary);
+        background-color: var(--notice-bg-primary);
     }
+    
 
-    header, main, footer {
-        padding: var(--spacing-unit);
-    }
-
-    .logo {
-        width: 6.25rem; /* 100px */
-        height: auto;
-        margin-bottom: var(--spacing-unit);
-    }
-
-    .notice-yellow-bg {
-        background-color: var(--notice-yellow);
-    }
-
-    .notice-black-bg {
-        background-color: var(--notice-black);
-        color: #ffffff;
-    }
-
-    .regular-black-bg {
-        background-color: #000000;
-        color: #ffffff;
-    }
-
-    .notice-grey-bg {
-        background-color: var(--notice-grey);
-        color: #ffffff;
-    }
-
-    .notice-grey-text {
-        color: var(--notice-grey);
-    }
-
-    .two-column-layout {
-        display: flex;
-        gap: var(--spacing-unit);
-        max-width: none;
-        margin: 0;
-        padding: 0;
-        align-items: flex-start; /* Add this to align tops of columns */
-    }
-
-    .left-column {
-        flex: 2; 
-        margin-left: var(--left-column-margin);
-        position: relative; /* Add this */
-    }
-
-    .right-column {
-        flex: 7; 
-        max-width: 30.5rem; 
-        margin-right: auto;
-        position: sticky; /* Add this */
-        top: var(--spacing-unit); /* Add this to control the sticky position */
-    }
-
-    #leadership-team, #coalition-members {
-        display: flex;
-        flex-direction: column;
-        gap: var(--spacing-unit);
-    }
-
-    .team-member {
-        display: flex;
-        gap: var(--spacing-unit);
-    }
-
-    .team-member img {
-        width: 6.25rem; /* 100px */
-        height: 6.25rem;
-        object-fit: cover;
-    }
-
-    footer {
-        margin-top: var(--spacing-unit);
-        text-align: center;
-    }
-
-    #social-media {
-        display: flex;
-        justify-content: center;
-        gap: var(--spacing-unit);
-        margin-top: var(--spacing-unit);
-    }
-
-    @media (max-width: 75rem) { /* 1200px */
+    /* Responsive Design */
+    @media screen and (max-width: 1024px) {
         :root {
-            --left-column-margin: 2%; /* Adjust for smaller screens */
+            /* Adjust spacing for tablet */
+            --container-padding: 2rem;
         }
     }
 
-    @media (max-width: 48rem) { /* 768px */
-        .two-column-layout {
-            flex-direction: column;
-        }
-
-        .left-column, .right-column {
-            flex: none;
-            margin-left: 0;
-            margin-right: 0;
-            max-width: none;
+    @media screen and (max-width: 768px) {
+        :root {
+            /* Adjust spacing for mobile */
+            --container-padding: 1rem;
+            --font-size-4xl: 2rem;
+            --font-size-3xl: 1.75rem;
+            --font-size-2xl: 1.25rem;
         }
     }
 
-    .logo-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: var(--spacing-unit) 0;
+    /* Utility Classes for Typography */
+    .text-accent {
+        font-family: var(--font-accent);
     }
 
-    .header-logo {
-        width: 15.625rem; /* 250px */
-        height: auto;
-        max-width: 100%;
+    .text-yellow {
+        color: var(--notice-accent);
     }
 
-    @media (max-width: 48rem) { /* 768px */
-        .header-logo {
-            width: 9.375rem; /* 150px */
-        }
-    }
-
-    p {
-        margin-bottom: 1rem;
-    }
-
-    p:last-child {
-        margin-bottom: 0;
-    }
-
-    .notice-header {
-        font-family: 'Impact', 'Arial Black', sans-serif;
-        font-size: 1.5rem;
-        font-weight: bold;
-        font-style: italic; /* Add italic style */
-        text-transform: uppercase;
-        letter-spacing: 0.15em; /* Add letter spacing */
+    /* Button Styles */
+    .notice-btn {
+        background-color: var(--notice-accent);
         color: var(--notice-black);
-        background-color: var(--notice-yellow);
-        padding: 0.5rem 1rem;
-        display: inline-block;
-        position: relative;
-        margin-bottom: 0.3rem;
-        transform: skew(-10deg); /* Slant the entire text block */
+        font-family: var(--font-accent);
+        font-weight: var(--font-bold);
+        padding: var(--spacing-sm) var(--spacing-lg);
+        border: none;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+        border-radius: 4px;
     }
 
-    .notice-header span {
-        display: inline-block;
-        transform: skew(10deg); /* Counter-skew the text to keep it readable */
+    .notice-btn:hover {
+        transform: translateY(-2px);
     }
 
-    .notice-header::after {
-        content: '';
-        position: absolute;
-        left: 0;
-        bottom: -0.25rem;
+    /* Section Base Styles - Add content container */
+    .notice-coalition-main > section {
         width: 100%;
-        height: 0.25rem;
-        background-color: var(--notice-black);
-        transform: skew(-65deg);
+        padding: var(--spacing-2xl) 0; /* Remove horizontal padding */
     }
 
-    .text-blob {
-        background-color: var(--notice-black);
-        color: #ffffff;
-        padding: 1.5rem;
-        border-radius: 10px;
-        margin-bottom: 1.5rem;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        contain: content;
+    /* Add content container for each section */
+    .section-content {
+        max-width: var(--container-max-width);
+        margin: 0 auto;
+        padding: 0 var(--container-padding);
     }
 
-    .text-blob:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    /* Alternating Background Colors for Visual Separation */
+    .notice-intro {
+        position: relative;
+        width: 100%;
+        min-height: 100vh; /* Ensures full viewport height */
+        overflow: hidden; /* Prevents video from spilling out */
+        background-color: var(--notice-bg-primary);
+        margin: 0; /* Ensure no margins */
+        padding-top: calc(var(--nav-height) + 46px);
+        top: 0; /* Align to top */
     }
 
-    .text-blob h2 {
-        margin-top: 0;
-        margin-bottom: 1rem;
-    }
+    
 
-    .text-blob p {
-        margin-bottom: 1rem;
-    }
-
-    .text-blob p:last-child {
-        margin-bottom: 0;
-    }
-
-    .team-member-name {
-        margin-top: -0.5rem;
+    .notice-origin .section-title {
         text-align: center;
-        color: var(--notice-yellow);
-        font-size: 1.2em;
-        font-weight: bold;
-        margin-bottom: 0.1rem;
-        position: relative;
-        background-clip: text;
-        -webkit-background-clip: text;
-        color: transparent;
-        background-image: linear-gradient(
-            to right,
-            var(--notice-yellow),
-            var(--notice-yellow)
-        );
-        background-size: var(--glint-width) 100%;
-        background-position: var(--glint-start-position) 0;
-        transition: background-position var(--glint-duration) var(--glint-timing-function);
-        contain: layout style paint;
+        margin-bottom: var(--spacing-2xl); /* Might want to adjust spacing for centered title */
     }
 
-    .text-blob:hover .team-member-name {
-        background-position: var(--glint-end-position) 0;
+   
+    /* Responsive Adjustments */
+    @media screen and (max-width: 768px) {
+        .notice-coalition-main > section {
+            padding: var(--spacing-xl) var(--spacing-md);
+        }
     }
 
-    .team-member-name::after {
-        content: attr(data-text);
-        position: absolute;
-        left: 0;
+    /* Navigation Styles - Position at very top */
+    .notice-nav {
+        width: 100%;
+        padding: var(--spacing-md) 0;
+        position: fixed;
         top: 0;
-        right: 0;
-        background-image: linear-gradient(
-            90deg,
-            transparent,
-            var(--glint-color),
-            transparent
-        );
-        background-size: var(--glint-width) 100%;
-        background-clip: text;
-        -webkit-background-clip: text;
-        color: transparent;
-        transition: background-position var(--glint-duration) var(--glint-timing-function);
-        background-position: var(--glint-start-position) 0;
-        will-change: background-position;
-    }
-
-    .text-blob:hover .team-member-name::after {
-        background-position: var(--glint-after-end-position) 0;
-    }
-
-    .notice-link {
-        font-family: 'Impact', 'Arial Black', sans-serif;
-        font-weight: bold;
-        font-size: 1.6em;
-        letter-spacing: 0.15em; /* Add letter spacing */
-        color: var(--notice-yellow);
-        text-decoration: none;
-        position: relative;
-        transition: color 0.3s ease;
-        contain: layout style paint;
-    }
-
-    .notice-link::after {
-        content: '';
-        position: absolute;
         left: 0;
-        bottom: -2px;
-        width: 100%;
-        height: 3px;
-        background-color: var(--notice-yellow);
-        transform: scaleX(0);
-        transform-origin: right;
-        transition: transform 0.3s ease;
-        will-change: transform;
-    }
-
-    .notice-link:hover {
-        color: #ffffff;
-    }
-
-    .notice-link:hover::after {
-        transform: scaleX(1);
-        transform-origin: left;
-    }
-
-    .notice-link::before {
-        content: '';
-        position: absolute;
-        left: -4px;
-        top: -4px;
-        right: -4px;
-        bottom: -4px;
-        background-color: rgba(251, 197, 22, 0.2);
-        z-index: -1;
-        transform: skew(-5deg);
-        opacity: 0;
-        transition: opacity 0.3s ease;
-    }
-
-    .notice-link:hover::before {
-        opacity: 1;
-    }
-
-    @keyframes backgroundMove {
-        from {
-            transform: translate(0, 0);
-        }
-        to {
-            transform: translate(20px, 20px);
-        }
-    }
-
-    /* Adjust spacing for coalition members section */
-    #coalition-members {
-        margin-top: 0; /* Remove any top margin */
-    }
-
-    #coalition-members .notice-header {
-        margin-top: 0; /* Remove any top margin from the header */
-    }
-
-    /* Drop Cap Styles */
-    .drop-cap::first-letter {
-        font-family: 'Impact', 'Arial Black', sans-serif;
-        float: left;
-        font-size: 4.5em;
-        line-height: 0.8;
-        padding: 0.1em 0.1em 0 0;
-        color: var(--notice-yellow);
-        text-shadow: 2px 2px var(--notice-black);
-        margin-right: 0.05em;
-        transform: skew(-10deg);
-        position: relative;
-    }
-
-    .drop-cap::first-letter::after {
-        content: '';
-        position: absolute;
-        bottom: 0.1em;
-        left: 0.1em;
-        width: 100%;
-        height: 0.1em;
-        background-color: var(--notice-black);
-        transform: skew(-65deg);
-    }
-
-    /* Optional: Add a subtle animation when the paragraph comes into view */
-    .drop-cap {
-        opacity: 0;
-        animation: fadeIn 0.5s ease-in forwards;
-    }
-
-    @keyframes fadeIn {
-        to {
-            opacity: 1;
-        }
-    }
-
-    /* Lead-in Text Styles */
-    .lead-in {
-        font-family: 'Impact', 'Arial Black', sans-serif;
-        font-size: 2em;
-        line-height: 1;
-        color: var(--notice-yellow);
-        text-shadow: 2px 2px var(--notice-black);
-        transform: skew(-10deg);
-        display: block;
-        margin-bottom: 1.5rem;
-        opacity: 0;
-        animation: fadeIn 0.5s ease-in forwards;
-    }
-
-    /* Blob Enlarge and Focus Styles */
-    .blob-enlarge-and-focus {
-        cursor: pointer;
-        transition: all 0.7s ease;
-        position: relative;
-        transform: translateZ(0);
-        backface-visibility: hidden;
-        perspective: 1000px;
-    }
-
-    .blob-enlarge-and-focus.enlarged {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 80vw;
-        max-height: 80vh;
         z-index: 1000;
-        font-size: 1.3em;
-        overflow-y: auto;
-        box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.8);
-        padding: 2.5rem 2rem 2rem;
+        background-color: black;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     }
 
-    .blob-enlarge-and-focus .close-button {
-        display: none;
-        position: absolute;
-        top: 0.5rem;
-        right: 0.5rem;
-        background: var(--notice-yellow);
-        color: var(--notice-black);
-        border: none;
-        width: 2rem;
-        height: 2rem;
-        border-radius: 50%;
-        cursor: pointer;
-        font-weight: bold;
-        transition: all 0.7s ease;
-    }
 
-    .blob-enlarge-and-focus.enlarged .close-button {
-        display: block;
-    }
-
-    .blob-enlarge-and-focus .close-button:hover {
-        background: var(--notice-black);
-        color: var(--notice-yellow);
-    }
-
-    /* Prevent body scrolling when blob is enlarged */
-    body.blob-enlarged {
-        overflow: hidden;
-    }
-
-    /* Enlarge Message Styles */
-    .blob-enlarge-and-focus::before {
-        content: '';
-        position: absolute;
-        right: 1rem;
-        bottom: 1rem;
-        font-family: 'Impact', 'Arial Black', sans-serif;
-        color: var(--notice-yellow);
-        transform: skew(-10deg);
-        opacity: 0;
-        transition: opacity 0.3s ease;
-        white-space: nowrap;
-        letter-spacing: 0.15em;
-    }
-
-    .blob-enlarge-and-focus:hover::before {
-        content: 'ENLARGE';
-        font-size: 1.6em;
-        opacity: 1;
-        animation: typewriter 0.5s steps(7) forwards;
-    }
-
-    /* Underline effect */
-    .blob-enlarge-and-focus::after {
-        content: '';
-        position: absolute;
-        right: 1rem;
-        bottom: 0.8rem;
-        width: 0;
-        height: 3px;
-        background-color: var(--notice-yellow);
-        transform: skew(-10deg);
-        transition: width 0.5s ease;
-    }
-
-    .blob-enlarge-and-focus:hover::after {
-        width: 7em;
-    }
-
-    @keyframes typewriter {
-        from {
-            clip-path: inset(0 100% 0 0);
-        }
-        to {
-            clip-path: inset(0 0 0 0);
-        }
-    }
-
-    /* Hide enlarge message when blob is enlarged */
-    /*
-    .blob-enlarge-and-focus.enlarged::before,
-    .blob-enlarge-and-focus.enlarged::after {
-        display: none;
-    }*/
-
-    /* Or alternatively, if you want to keep the elements in the DOM but hide them: */
-    
-    .blob-enlarge-and-focus.enlarged::before,
-    .blob-enlarge-and-focus.enlarged::after {
-        opacity: 0;
-        pointer-events: none;
-    }
-
-    /* Team Member Blob Enlarge Styles */
-    .team-blob-enlarge {
-        cursor: pointer;
-        transition: all 0.7s ease;
-        position: relative;
-        transform: translateZ(0);
-        backface-visibility: hidden;
-        perspective: 1000px;
-    }
-
-    .team-blob-enlarge.enlarged {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 80vw;
-        max-height: 80vh;
-        z-index: 1000;
-        overflow-y: auto;
-        box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.8);
-        padding: 2.5rem 2rem 2rem;
-        background-color: var(--notice-black);
-    }
-
-    .team-blob-enlarge .close-button {
-        display: none;
-        position: absolute;
-        top: 0.5rem;
-        right: 0.5rem;
-        background: var(--notice-yellow);
-        color: var(--notice-black);
-        border: none;
-        width: 2rem;
-        height: 2rem;
-        border-radius: 50%;
-        cursor: pointer;
-        font-weight: bold;
-        transition: all 0.7s ease;
-    }
-
-    .team-blob-enlarge.enlarged .close-button {
-        display: block;
-    }
-
-    .team-blob-enlarge .close-button:hover {
-        background: var(--notice-black);
-        color: var(--notice-yellow);
-    }
-
-    /* Enlarge message for team blobs */
-    .team-blob-enlarge::before {
-        content: '';
-        position: absolute;
-        right: 1rem;
-        bottom: 1rem;
-        font-family: 'Impact', 'Arial Black', sans-serif;
-        color: var(--notice-yellow);
-        transform: skew(-10deg);
-        opacity: 0;
-        transition: opacity 0.3s ease;
-        white-space: nowrap;
-        letter-spacing: 0.15em;
-    }
-
-    .team-blob-enlarge:hover::before {
-        content: 'ENLARGE';
-        opacity: 1;
-        animation: typewriter 0.5s steps(7) forwards;
-    }
-
-    .team-blob-enlarge::after {
-        content: '';
-        position: absolute;
-        right: 1rem;
-        bottom: 0.8rem;
-        width: 0;
-        height: 3px;
-        background-color: var(--notice-yellow);
-        transform: skew(-10deg);
-        transition: width 0.5s ease;
-    }
-
-    .team-blob-enlarge:hover::after {
-        width: 6em;
-    }
-
-    /* Hide enlarge message when enlarged */
-    .team-blob-enlarge.enlarged::before,
-    .team-blob-enlarge.enlarged::after {
-        opacity: 0;
-        pointer-events: none;
-    }
-
-    /* Add specific font size increases for the content */
-    .team-blob-enlarge.enlarged p {
-        font-size: 1.4em;
-        line-height: 1.6;
-    }
-
-    .team-blob-enlarge.enlarged .team-member-name {
-        font-size: 1.6em;
-    }
-
-    .team-blob-enlarge.enlarged h4 {
-        font-size: 1.3em;
-    }
-
-    /* If needed, center the entire content div */
-    
-    .team-member > div {
+    .nav-container {
         display: flex;
-        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        gap: var(--spacing-xl);
+        padding: 0 var(--spacing-md);
+        max-width: 1400px;
     }
 
-    /* Keep paragraphs left-aligned */
-    .team-member p {
+    /* Logo Styles */
+    .nav-logo {
+        margin-right: var(--spacing-xl);
+    }
+
+    .nav-logo img {
+        height: 55px;
+        width: auto;
+    }
+
+    /* Navigation Links */
+    .nav-links {
+        display: flex;
+        gap: var(--spacing-xl);
+        margin-right: auto;
+    }
+
+    .nav-links a {
+        color: var(--notice-text-primary);
+        text-decoration: none;
+        font-size: var(--font-size-base);
+        font-weight: var(--font-bold);
+        font-family: var(--font-accent);
+        transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+        color: var(--notice-accent);
+    }
+
+    /* CTA Button */
+    .nav-cta-featured {
+        margin-left: var(--spacing-xl);
+        min-width: max-content;
+    }
+
+    /* Responsive Navigation */
+    @media screen and (max-width: 1200px) {
+        .nav-links {
+            gap: var(--spacing-lg);
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        .nav-container {
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: var(--spacing-sm);
+        }
+
+        .nav-links {
+            order: 2;
+            margin-right: 0;
+            justify-content: center;
+            width: 100%;
+            gap: var(--spacing-md);
+        }
+
+        .nav-cta-featured {
+            order: 3;
+            margin-left: 0;
+            margin-top: var(--spacing-sm);
+        }
+    }
+
+    /* Video Background Styles */
+    .video-background {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100vw;
+        height: 100vh;
+        pointer-events: none; /* Prevents interaction with the video */
+        z-index: 0;
+    }
+
+    .video-background iframe {
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        scale: 1.5; /* Makes video slightly larger to cover any gaps */
+    }
+
+    /* Overlay for darkening the video */
+    .video-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.4);
+        pointer-events: none;
+    }
+
+    /* Updated Intro Content Styles */
+    .intro-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        margin-top: var(--spacing-2xl); /* Added more space below navigation */
+    }
+
+    .intro-text-container {
+        max-width: 90%; /* Increased from previous max-width */
+        margin: 0 auto;
+        padding: 0 var(--container-padding);
+    }
+
+    .intro-catchphrase {
+        font-family: var(--font-accent);
+        font-size: var(--font-size-8xl);
+        color: var(--notice-white);
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        letter-spacing: 0.02em;
+        line-height: 0.9;
+        text-transform: uppercase;
+        text-align: left;
+        border-bottom: 4px solid var(--notice-white);
+        padding-bottom: var(--spacing-lg);
+        margin-bottom: var(--spacing-xl);
+    }
+
+    .intro-cta-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: var(--spacing-xl);
+    }
+
+    .intro-cta-text {
+        color: var(--notice-white);
+        font-size: var(--font-size-xl);
+        font-weight: var(--font-bold);
+        max-width: 60%;
         text-align: left;
     }
 
-    @media (max-width: 48rem) { /* 768px */
-        /* Adjust main container padding */
-        header, main, footer {
-            padding: var(--spacing-unit) 0; /* Remove horizontal padding */
-        }
-
-        /* Ensure full width of page container */
-        #notice-page {
-            width: 100vw;
-            margin-left: calc(-50vw + 50%);
-            margin-right: calc(-50vw + 50%);
-            padding: 0;
-            overflow-x: hidden; /* Prevent horizontal scrolling */
-        }
-
-        /* Adjust content padding */
-        .two-column-layout {
-            padding: 0 1rem; /* Add padding to the content instead */
-        }
-
-        /* Remove the text blob width expansion */
-        /*.text-blob {
-            margin-left: -1rem;
-            margin-right: -1rem;
-            padding-left: 1rem;
-            padding-right: 1rem;
-            width: calc(100% + 2rem);
-        }*/
-
-        /* Disable enlarge functionality */
-        .blob-enlarge-and-focus::before,
-        .blob-enlarge-and-focus::after,
-        .team-blob-enlarge::before,
-        .team-blob-enlarge::after {
-            display: none;
-        }
-
-        .blob-enlarge-and-focus,
-        .team-blob-enlarge {
-            cursor: default;
-        }
-
-        /* Remove hover effects */
-        .blob-enlarge-and-focus:hover,
-        .team-blob-enlarge:hover {
-            transform: none;
-        }
-
-        /* Reorganize team member layout for mobile */
-        .team-member {
-            flex-direction: column; /* Stack elements vertically */
-            align-items: flex-start; /* Align items to the left */
-            gap: 1rem; /* Adjust spacing between elements */
-        }
-
-        .team-member img {
-            width: 100%; /* Make image full width */
-            max-width: 200px; /* But limit maximum size */
-            height: auto; /* Maintain aspect ratio */
-            margin: 0 auto; /* Center the image */
-            display: block; /* Ensure margin auto works */
-        }
-
-        .team-member > div {
-            width: 100%; /* Full width for content */
-        }
-
-        .team-member p {
-            width: 100%; /* Ensure paragraph takes full width */
-            margin-top: 0.5rem; /* Add some space after name */
-        }
-
-        /* Adjust text blobs for mobile */
-        .text-blob {
-            max-height: 300px; /* Adjust this value as needed */
-            overflow-y: auto;
-            padding: 1.5rem;
-            font-size: 1.2em;
-            line-height: 1.6;
-        }
-
-        /* Specific adjustments for team member blobs */
-        .team-member.text-blob {
-            max-height: 400px; /* Slightly larger for team members due to image */
-            overflow-y: auto;
-        }
-
-        /* Increase font sizes for better readability */
-        .text-blob p {
-            font-size: 1.2em;
-            line-height: 1.6;
-        }
-
-        .team-member-name {
-            font-size: 1.4em;
-            margin-bottom: 1rem;
-        }
-
-        /* Add scrollbar styling for better visibility */
-        .text-blob::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        .text-blob::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 4px;
-        }
-
-        .text-blob::-webkit-scrollbar-thumb {
-            background: var(--notice-yellow);
-            border-radius: 4px;
-        }
-
-        /* Firefox scrollbar styling */
-        .text-blob {
-            scrollbar-width: thin;
-            scrollbar-color: var(--notice-yellow) rgba(255, 255, 255, 0.1);
-        }
-    }
-
-    .notice-subheader {
-        font-family: 'Impact', 'Arial Black', sans-serif;
-        font-size: 1.3rem;
-        color: var(--notice-yellow);
-        margin: 2rem 0 1rem;
-    }
-
-    .notice-bullet-list {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
-
-    .notice-bullet-item {
-        display: flex;
-        align-items: center; /* Center align logo with text */
-        gap: 1rem;
-        margin-bottom: 1rem;
-        position: relative; /* For absolute positioning of text */
-        height: 2.5rem; /* Match logo height to maintain consistent spacing */
-    }
-
-    .notice-bullet-logo {
-        width: 2.5rem;
-        height: 2.5rem;
+    .intro-cta-btn {
         flex-shrink: 0;
-        cursor: pointer;
-        transition: transform 0.3s ease;
-        will-change: transform;
+        font-size: var(--font-size-lg);
+        padding: var(--spacing-md) var(--spacing-xl);
+        background-color: transparent; /* Remove background */
+        border: 2px solid var(--notice-accent); /* Add border */
+        color: var(--notice-accent); /* Match text to border color */
+        transition: all 0.3s ease; /* Smooth transition for all changes */
+        border-radius: 4px;
     }
 
-    .notice-bullet-logo:hover {
-        transform: scale(1.1);
+    .intro-cta-btn:hover {
+        background-color: var(--notice-accent); /* Fill background on hover */
+        color: var(--notice-black); /* Change text color for contrast */
     }
 
-    .notice-bullet-text {
-        font-size: 1.1em;
+    /* Responsive adjustments */
+    @media screen and (max-width: 768px) {
+        .intro-catchphrase {
+            font-size: calc(var(--font-size-4xl) * 0.8);
+            letter-spacing: 0.1em;
+            line-height: 1.6;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .intro-cta-container {
+            flex-direction: column;
+            gap: var(--spacing-lg);
+        }
+
+        .intro-cta-text {
+            max-width: 100%;
+            font-size: var(--font-size-lg);
+            text-align: center;
+        }
+
+        .intro-cta-btn {
+            width: 100%;
+            text-align: center;
+        }
+    }
+
+    .origin-story-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--spacing-2xl);
+        margin-bottom: var(--spacing-2xl);
+    }
+
+    .story-column {
+        color: var(--notice-text-primary);
+        font-size: var(--font-size-base);
         line-height: 1.6;
-        color: rgba(255, 255, 255, 0.5); /* Start with semi-transparent text */
-        transition: all 0.3s ease;
     }
 
-    /* When hovering over list, dim all items except the hovered one */
-    .notice-bullet-list:hover .notice-bullet-text {
-        opacity: 0.3;
+    .story-column p {
+        margin-bottom: var(--spacing-lg);
+        font-size: var(--font-size-base);
+        font-weight: var(--font-bold);
     }
 
-    .notice-bullet-item:hover .notice-bullet-logo {
-        transform: scale(1.1);
+    .story-column p:last-child {
+        margin-bottom: 0;
     }
 
-    .notice-bullet-item:hover .notice-bullet-text {
-        color: #ffffff;
+    .story-link-container {
+        text-align: center;
+        margin-top: var(--spacing-2xl);
+    }
+
+    .story-link {
+        font-family: var(--font-accent);
+        font-size: var(--font-size-lg);
+        color: var(--notice-accent);
+        text-decoration: none;
+        position: relative;
+        padding-bottom: var(--spacing-xs);
+    }
+
+    .story-link::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: var(--notice-accent);
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+    }
+
+    .story-link:hover::after {
+        transform: scaleX(1);
+    }
+
+    /* Responsive Design */
+    @media screen and (max-width: 768px) {
+        .origin-story-content {
+            grid-template-columns: 1fr;
+            gap: var(--spacing-xl);
+        }
+
+        .section-title {
+            font-size: var(--font-size-2xl);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .story-column {
+            font-size: var(--font-size-base);
+        }
+    }
+
+    /* Section Header Styles */
+    .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: var(--spacing-2xl);
+    }
+
+    .section-title {
+        font-family: var(--font-accent);
+        font-size: var(--font-size-3xl);
+        color: var(--notice-white);
+    }
+
+    .section-link {
+        font-family: var(--font-accent);
+        font-size: var(--font-size-lg);
+        color: var(--notice-accent);
+        text-decoration: none;
+        position: relative;
+        padding-bottom: var(--spacing-xs);
+    }
+
+    .section-link::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: var(--notice-accent);
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+    }
+
+    .section-link:hover::after {
+        transform: scaleX(1);
+    }
+
+    /* Initiatives Grid */
+    .initiatives-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-2xl);
+    }
+
+    /* Initiative Card Styles */
+    .initiative-card {
+        position: relative;
+        width: 100%;
+        text-decoration: none;
+        display: block;
+        color: var(--notice-white);
+    }
+
+    .initiative-image {
+        position: relative;
+        overflow: hidden;
+        aspect-ratio: 16/9;
+    }
+
+    .initiative-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+
+    /* Update overlay styles to show title by default */
+    .initiative-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), transparent 50%);
+        color: var(--notice-white);
+        padding: var(--spacing-lg);
+        transition: background 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start; /* Align content to top */
+    }
+
+    .initiative-title {
+        color: var(--notice-white);
+        font-family: var(--font-accent);
+        font-size: var(--font-size-xl);
+        margin-bottom: var(--spacing-md);
+        opacity: 1; /* Always visible */
+    }
+
+    .initiative-description {
+        font-size: var(--font-size-base);
+        font-weight: var(--font-bold);
+        line-height: 1.5;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    /* Hover Effects */
+    .initiative-card:hover .initiative-overlay {
+        background: rgba(0, 0, 0, 0.7); /* Full overlay on hover */
+    }
+
+    .initiative-card:hover .initiative-description {
         opacity: 1;
-        font-size: 1.3em; /* Slightly larger on hover */
     }
 
-    /* Keep normal on mobile */
-    @media (max-width: 48rem) {
-        .notice-bullet-text {
-            color: #ffffff;
-            opacity: 1;
-            font-size: 1.1em;
+    .initiative-card:hover .initiative-image img {
+        transform: scale(1.05);
+    }
+
+    /* Responsive Design */
+    @media screen and (max-width: 768px) {
+        .initiatives-grid {
+            grid-template-columns: 1fr;
+            gap: var(--spacing-xl);
+        }
+
+        .initiative-title {
+            font-size: var(--font-size-lg);
+        }
+
+        .initiative-description {
+            font-size: var(--font-size-sm);
+        }
+    }
+
+    /* Resources Grid - adjust width */
+    .resources-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--spacing-xl);
+        max-width: 100%;
+    }
+
+    /* Resource Card */
+    .resource-card {
+        background-color: var(--notice-black); /* Slightly lighter than the main background */
+        border-radius: 4px;
+        overflow: hidden;
+    }
+
+    .resource-image {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 16/9;
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+    .resource-image a {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+
+    .resource-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+
+    /* Optional: Add hover effect for the clickable image */
+    .resource-image:hover img {
+        transform: scale(1.05);
+    }
+
+    /* Resource Content */
+    .resource-content {
+        padding: var(--spacing-lg);
+    }
+
+    /* Updated Resource Tag Style */
+    .resource-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        font-family: var(--font-accent);
+        font-size: var(--font-size-med);
+        font-weight: var(--font-bold);
+        color: var(--notice-accent);
+        padding: 4px 12px;
+        border-radius: 4px;
+        border: 2px solid var(--notice-accent);
+    }
+
+    .resource-description {
+        color: var(--notice-white);
+        font-size: var(--font-size-base);
+        font-weight: var(--font-bold);
+        line-height: 1.5;
+        margin-bottom: var(--spacing-lg);
+        min-height: 4.5em;
+    }
+
+    /* Updated Resource Footer */
+    .resource-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    .resource-link {
+        color: var(--notice-white);
+        text-decoration: none;
+        font-size: var(--font-size-base);
+        transition: color 0.3s ease;
+    }
+
+    .resource-link:hover {
+        color: var(--notice-accent);
+    }
+
+    .resource-action {
+        width: 24px; 
+        height: 24px;
+        font-size: var(--font-size-xl); /* Increase icon size */
+        transition: transform 0.3s ease;
+        color: var(--notice-accent); /* Color for the icons */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .resource-action:hover {
+        transform: translateY(-2px);
+    }
+
+    /* Responsive Design */
+    @media screen and (max-width: 1024px) {
+        .resources-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        .resources-grid {
+            grid-template-columns: 1fr;
         }
         
-        .notice-bullet-logo {
-            width: 2rem;
-            height: 2rem;
-        }
-
-        /* Disable hover effects on mobile */
-        .notice-bullet-list:hover .notice-bullet-text {
-            opacity: 1;
-        }
-
-        .notice-bullet-item:hover .notice-bullet-text {
-            font-size: 1.1em;
+        .resource-description {
+            min-height: auto;
         }
     }
 
-    .notice-bullet-marker {
-        width: 1rem;
-        height: 1rem;
-        background-color: var(--notice-yellow);
-        transform: rotate(45deg);
-        flex-shrink: 0;
-        margin: 0.75rem;
+    /* Update Resource Action Styles */
+
+
+    .resource-action i {
+        transition: transform 0.3s ease;
+        font-size: var(--font-size-3xl);
     }
 
-    .error-message {
-        background-color: #ff6b6b;
-        color: white;
-        padding: 1rem;
-        margin: 1rem;
+    .resource-action:hover i {
+        transform: translateY(-2px);
+    }
+
+    /* Specific hover effect for play button */
+    .resource-action .fa-circle-play:hover {
+        transform: scale(1.1);
+    }
+
+    /* News Carousel Styles */
+    .news-carousel {
+        position: relative;
+        width: 100%;
+        margin-top: var(--spacing-xl);
+        overflow: hidden; /* Add this to hide slides outside view */
+    }
+
+    .carousel-container {
+        display: flex;
+        position: relative;
+        transition: transform 0.5s ease-in-out;
+        width: 100%;
+    }
+
+    .carousel-item {
+        flex: 0 0 100%;
+        width: 100%;
+        position: relative;
+    }
+
+    .carousel-image {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 16/9;
+        overflow: hidden;
+    }
+
+    .carousel-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .carousel-tags {
+        position: absolute;
+        top: var(--spacing-md);
+        left: var(--spacing-md);
+        display: flex;
+        gap: var(--spacing-xs);
+    }
+
+    .tag {
+        background: rgba(0, 0, 0, 0.6);
+        color: var(--notice-white);
+        padding: 4px 12px;
         border-radius: 4px;
+        font-size: var(--font-size-sm);
+        font-family: var(--font-accent);
+    }
+
+    .carousel-content {
+        padding: var(--spacing-lg);
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)); /* Full overlay for better text visibility */
+        position: absolute;
+        top: 0;          /* Change from bottom: 0 to top: 0 */
+        left: 0;
+        right: 0;
+        bottom: 0;       /* Add bottom: 0 to cover full height */
+        text-align: center;
+        display: flex;           /* Add flex display */
+        flex-direction: column;  /* Stack title and date vertically */
+        justify-content: center; /* Center vertically */
+        align-items: center;     /* Center horizontally */
+    }
+
+    .carousel-title {
+        font-size: var(--font-size-2xl);
+        margin-bottom: var(--spacing-sm);
+        color: var(--notice-white);
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        font-family: var(--font-accent);
+        max-width: 80%;         /* Optional: prevent very long titles from stretching too wide */
+    }
+
+    .carousel-date {
+        font-size: var(--font-size-sm);
+        opacity: 0.8;
+        display: block;
+    }
+
+    /* Navigation Arrows */
+    .carousel-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0, 0, 0, 0.6);
+        color: var(--notice-white);
+        border: none;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background-color 0.3s ease;
+    }
+
+    .carousel-nav:hover {
+        background: rgba(0, 0, 0, 0.8);
+    }
+
+    .prev {
+        left: var(--spacing-md);
+    }
+
+    .next {
+        right: var(--spacing-md);
+    }
+
+    /* Carousel Dots */
+    .carousel-dots {
+        display: flex;
+        justify-content: center;
+        gap: var(--spacing-sm);
+        margin-top: var(--spacing-md);
+    }
+
+    .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .dot.active {
+        background: var(--notice-white);
+    }
+
+    
+
+    /* Members Section Styles */
+    .notice-members {
+        padding: var(--spacing-3xl) 0;
+    }
+
+    .members-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--spacing-2xl);
+    }
+
+    .member-item {
         text-align: center;
     }
 
-    /* Add CSS containment to isolate components and optimize browser rendering */
-    .text-blob {
-        contain: content;
+    .member-name {
+        font-family: var(--font-primary);
+        font-size: var(--font-size-lg);
+        color: var(--notice-white);
+        transition: color 0.3s ease;
+        font-weight: var(--font-medium);
     }
 
-    .team-member {
-        contain: layout style paint;
+    .members-cta {
+        text-align: center;
+        margin-top: var(--spacing-2xl);
     }
 
-    /* Use will-change for elements with animations */
-    .notice-bullet-logo {
-        will-change: transform;
+    .section-link {
+        font-family: var(--font-accent);
+        font-size: var(--font-size-lg);
+        color: var(--notice-accent);
+        text-decoration: none;
+        position: relative;
+        padding-bottom: var(--spacing-xs);
     }
 
-    .team-member-name::after {
-        will-change: background-position;
+    .section-link::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: var(--notice-accent);
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
     }
 
-    .notice-link::after {
-        will-change: transform;
+    .section-link:hover::after {
+        transform: scaleX(1);
     }
 
-    /* Hardware acceleration for animated elements */
-    .blob-enlarge-and-focus, 
-    .team-blob-enlarge {
-        transform: translateZ(0);
-        backface-visibility: hidden;
-        perspective: 1000px;
+    /* Update section title alignment */
+    .notice-members .section-title {
+        text-align: center;
+        margin-bottom: var(--spacing-2xl);
     }
 
-    /* Reduce paint operations for fixed elements */
-    .right-column {
-        transform: translateZ(0); /* Promotes to new layer */
-        will-change: transform;  /* Hints future changes */
+    /* Update member name font */
+    .member-name {
+        font-family: var(--font-primary); /* Roboto */
+        font-size: var(--font-size-lg);
+        color: var(--notice-white);
+        transition: color 0.3s ease;
+        font-weight: var(--font-medium); /* Add some weight to Roboto */
     }
 
-    /* Optimize animations by using opacity and transform */
-    @keyframes backgroundMove {
-        from {
-            transform: translate(0, 0);
+    /* Newsletter Section Styles */
+    .notice-newsletter {
+        padding: var(--spacing-3xl) 0;
+        /*min-height: 600px;*/
+        display: flex;
+        align-items: center;
+    }
+
+
+    .newsletter-widget-container {
+        margin-top: var(--spacing-xl);
+    }
+
+    /* Responsive adjustments */
+    @media screen and (max-width: 768px) {
+        .notice-newsletter {
+            min-height: 300px;
+            padding: var(--spacing-2xl) 0;
         }
-        to {
-            transform: translate(20px, 20px);
+    }
+
+    /* Social Media Section / Footer Styles */
+    .notice-social {
+        padding: var(--spacing-3xl) 0;
+        text-align: center;
+    }
+
+    .notice-social-links {
+        display: flex;
+        justify-content: center;
+        gap: var(--spacing-xl);
+        margin-bottom: var(--spacing-2xl);
+    }
+
+    .social-icon {
+        width: 64px;
+        height: 64px;
+        background-color: var(--notice-bg-secondary);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.3s ease;
+    }
+
+    .social-icon:hover {
+        transform: translateY(-2px);
+    }
+
+    .social-icon img {
+        width: 32px;
+        height: 32px;
+        filter: brightness(0) invert(1);
+    }
+
+    .social-icon i {
+        font-size: 32px;
+        color: var(--notice-white);
+    }
+
+    .notice-footer-logo {
+        display: block;
+        margin: 0 auto;
+        transition: opacity 0.3s ease;
+    }
+
+    .notice-footer-logo img {
+        height: 60px;
+        width: auto;
+    }
+
+    .notice-footer-logo:hover {
+        opacity: 0.8;
+    }
+
+    /* Responsive adjustments */
+    @media screen and (max-width: 768px) {
+        .notice-social {
+            padding: var(--spacing-2xl) 0;
+        }
+
+        .notice-social-links {
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .social-icon {
+            width: 48px;
+            height: 48px;
+        }
+
+        .social-icon img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .notice-footer-logo img {
+            height: 48px;
         }
     }
 
+    /* Add new alternating background colors */
+    .notice-coalition-main > section:not(.notice-intro):nth-child(odd) {
+        background-color: var(--notice-bg-primary);
+    }
+
+    .notice-coalition-main > section:not(.notice-intro):nth-child(even) {
+        background-color: var(--notice-bg-secondary);
+    }
+
+    .video-modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        z-index: 1000;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .modal-content {
+        position: relative;
+        width: 90%;
+        max-width: 800px;
+        background: var(--notice-bg-primary);
+        padding: var(--spacing-md);
+        border-radius: 4px;
+    }
+
+    .modal-close {
+        position: absolute;
+        right: -30px;
+        top: -30px;
+        background: none;
+        border: none;
+        color: var(--notice-white);
+        font-size: var(--font-size-2xl);
+        cursor: pointer;
+        z-index: 1001;
+    }
+
+    .modal-close:hover {
+        color: var(--notice-accent);
+    }
+
+    /* Update the video player container */
+    .plyr__video-embed {
+        aspect-ratio: 16/9;
+        width: 100%;
+    }
+
+    .member-name {
+        font-family: var(--font-primary);
+        font-size: var(--font-size-lg);
+        color: var(--notice-white);
+        transition: color 0.3s ease;
+        font-weight: var(--font-medium);
+        text-decoration: none;
+    }
+
+    .member-name:hover {
+        color: var(--notice-accent);
+    }
+
+    .member-name.disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        position: relative;
+    }
+
+    
+
+    
+    /* Temporary About Us Section */
+    .notice-aboutus-temp {
+        background-color: var(--notice-bg-primary);
+        padding: var(--spacing-3xl) 0;
+    }
+
+    .notice-aboutus-temp .section-title {
+        text-align: center;
+        margin-bottom: var(--spacing-2xl); /* Might want to adjust spacing for centered title */
+    }
+
+    .temp-about-text {
+        color: var(--notice-text-primary);
+        font-size: var(--font-size-xl);
+        line-height: 1.6;
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 var(--spacing-md);
+    }
+
+    /* Responsive adjustment */
+    @media screen and (max-width: 768px) {
+        .temp-about-text {
+            font-size: var(--font-size-lg);
+        }
+    }
+    
+
+    .resource-links {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-md);
+    }
+
+    .resource-action {
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.3s ease;
+        color: var(--notice-accent);
+        font-size: var(--font-size-xl);
+    }
+
+    .resource-action i {
+        transition: transform 0.3s ease;
+    }
+
+    .resource-action:hover i {
+        transform: translateY(-2px);
+    }
+
+    /* Specific hover effect for play button */
+    .resource-action .fa-circle-play:hover {
+        transform: scale(1.1);
+    }
+
+    
+
+    /* Standard disabled styling */
+    .disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        position: relative;
+    }
+
+    /* Universal disabled icon */
+    .disabled::before {
+        /*content: '⊘';*/  /* Unicode for circled backslash */
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 1.5em;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .disabled:hover::before {
+        opacity: 1;
+    }
+
+    /* Optional tooltip - only appears if title attribute is present */
+    .disabled[title]:hover::after {
+        content: attr(title);
+        position: absolute;
+        bottom: -30px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: var(--notice-bg-secondary);
+        color: var(--notice-white);
+        padding: 5px 10px;
+        border-radius: 4px;
+        font-size: var(--font-size-sm);
+        white-space: nowrap;
+        z-index: 1000;
+    }
+
+    /* Generic tooltip styles */
+    .text-tooltip,
+    .image-tooltip {
+        position: relative;
+    }
+
+    .text-tooltip:hover::after,
+    .image-tooltip:hover::after {
+        content: attr(title);
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: var(--notice-bg-secondary);
+        color: var(--notice-white);
+        padding: 5px 10px;
+        border-radius: 4px;
+        font-size: var(--font-size-sm);
+        white-space: nowrap;
+        z-index: 1000;
+    }
+
+    /* Text tooltip appears below the element */
+    .text-tooltip:hover::after {
+        bottom: -30px;
+    }
+
+    /* Image tooltip appears above the element */
+    .image-tooltip:hover::after {
+        top: -30px;
+    }
+
+    .invisible {
+        visibility: hidden;
+        pointer-events: none;
+        opacity: 0;
+    }
+
+    /* Update resource content layout */
+    .resource-content {
+        padding: var(--spacing-lg);
+    }
+
+    /* Create a flex container for tags and links */
+    .resource-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: var(--spacing-lg);
+    }
+
+    /* Adjust resource tag styling */
+    
+
+    /* Update resource links styling */
+    .resource-links {
+        display: flex;
+        gap: var(--spacing-md);
+    }
+
+    .hidden {
+        display: none;
+    }
+    
+    .youtube-video,
+    .vimeo-video,
+    .self-hosted-video {
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        scale: 1.5;
+    }
+
+    .google-drive-video {
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        scale: 1.5;
+        border: none;
+    }
+
+    /* Add these styles */
+    .featured-alert {
+        background-color: var(--notice-accent);
+        width: 100%;
+        position: fixed;
+        top: var(--nav-height);
+        z-index: 999;
+    }
+
+    .alert-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: var(--spacing-md);
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+
+    .alert-text {
+        color: var(--notice-black);
+        font-family: var(--font-accent);
+        font-weight: var(--font-bold);
+        font-size: var(--font-size-base);
+    }
+
+    .alert-cta {
+        color: var(--notice-black);
+        text-decoration: none;
+        font-weight: var(--font-bold);
+        padding: var(--spacing-xs) var(--spacing-md);
+        border: 2px solid var(--notice-black);
+        border-radius: 4px;
+        transition: all 0.3s ease;
+    }
+
+    .alert-cta:hover {
+        background-color: var(--notice-black);
+        color: var(--notice-accent);
+    }
+
+    /* Update intro section padding to account for alert banner */
+    .notice-intro {
+        padding-top: calc(var(--nav-height) + 46px);
+    }
+
+    @media screen and (max-width: 768px) {
+        .alert-container {
+            flex-direction: column;
+            text-align: center;
+            padding: var(--spacing-xs) var(--spacing-md);
+        }
+    }
+
+    /* Update nav CTA styles */
+    .nav-cta-featured {
+        background-color: var(--notice-accent);
+        color: var(--notice-black);
+        border: 2px solid var(--notice-accent);
+        animation: pulse 2s infinite;
+    }
+
+    .nav-cta-featured:hover {
+        background-color: transparent;
+        color: var(--notice-accent);
+        border-color: var(--notice-accent);
+        animation: none;
+    }
+
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.05);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    /* Ensure button text stays on one line on mobile */
+    @media screen and (max-width: 768px) {
+        .nav-cta-featured {
+            font-size: var(--font-size-sm);
+            white-space: nowrap;
+            margin-top: var(--spacing-sm);
+        }
+    }
 </style>
 
+<link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css">
+<script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
 
-<section id="notice-page">
-    <header class="regular-black-bg">
-        <div class="logo-container">
-            <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/301406ed-440a-4a15-b346-b8b0faff4729/Notice+Logo+Design+F-03.png?content-type=image%2Fpng" alt="NOTICE Coalition Logo" class="header-logo">
+
+<section class="notice-coalition-main">
+
+    <nav class="notice-nav">
+        <div class="section-content nav-container">
+            <a href="/noticecoalition" class="nav-logo">
+                <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/301406ed-440a-4a15-b346-b8b0faff4729/Notice+Logo+Design+F-03.png?content-type=image%2Fpng" alt="Notice Coalition Logo">
+            </a>
+            
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#initiatives">Initiatives</a>
+                <a href="#news">News & Events</a>
+                <a href="#resources">Resources</a>
+            </div>
+
+            <a href="/ending-youth-surveillance-initiative" class="notice-btn nav-cta nav-cta-featured">New Speaker Series: Ending Youth Surveillance →</a>
         </div>
-    </header>
-    <main class="two-column-layout">
-        <div class="left-column">
-            <section id="about-notice">
-                <!-- Content will be dynamically inserted here -->
-            </section>
-            <section id="origin-story">
-                <!-- Content will be dynamically inserted here -->
-            </section>
-            <section id="leadership-team">
-                <!-- Content will be dynamically inserted here -->
-            </section>
+    </nav>
+    
+
+
+    <!-- Introduction Section -->
+    <section class="notice-intro">
+        <div class="video-background">
+
+            <!--Youtube Video-->
+            <!--
+            <iframe 
+                src="https://www.youtube.com/embed/tV_yE4ftCck?si=fH0U4PEM_BBEW4V4&autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&playlist=tV_yE4ftCck&playsinline=1&enablejsapi=1&version=3&hd=1"
+                title="Background Video"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+            -->
+
+            <!--Vimeo Video-->
+            <iframe 
+                src="https://player.vimeo.com/video/1053217692?h=9ee9d4b062&background=1&autoplay=1&loop=1&byline=0&title=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+                title="Background Video"
+                frameborder="0"
+                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+                allowfullscreen
+                class="vimeo-video">
+            </iframe>
+    
+            <!-- For self-hosted videos -->
+             <!--
+            <video 
+                autoplay 
+                muted 
+                loop 
+                playsinline 
+                class="self-hosted-video">
+                <source src="https://drive.google.com/file/d/1KcHfuMR75YMfIhsRv_L4hoYnjP-NHfDP/view" type="video/mp4">
+            </video>
+            -->
+            <div class="video-overlay"></div>
         </div>
-        <div class="right-column">
-            <section id="reports">
-                <h2 class="notice-header"><span>REPORTS</span></h2>
-                <!-- Content will be dynamically inserted here -->
-            </section>
-            <section id="resources">
-                <h2 class="notice-header"><span>RESOURCES</span></h2>
-                <!-- Content will be dynamically inserted here -->
-            </section>
-            <section id="coalition-members">
-                <!-- Content will be dynamically inserted here -->
-            </section>
+
+        <div class="section-content intro-content">
+            <div class="intro-text-container">
+                <h1 class="intro-catchphrase">
+                    Defending Youth<br>
+                    Justice<br>
+                    In The Digital Age
+                </h1>
+                <div class="intro-cta-container">
+                    <p class="intro-cta-text">
+                        Join us in the fight to end surveillance and build a future where all youth thrive with dignity and justice!
+                    </p>
+                    <!--<span class="notice-btn intro-cta-btn">GET INVOLVED</span>-->
+                </div>
+            </div>
         </div>
-    </main>
-    <footer>
-        <h3>Sign up for our NEWSLETTER to stay connected for updates about youth data surveillance and criminalization (policy updates and resources) featuring NOTICE coalition members and their work</h3>
-        <div id="newsletter-signup">
-            <!-- Squarespace signup form will be inserted here -->
+    </section>
+
+    <!-- Add this section after notice-intro and before notice-origin -->
+    <section class="notice-aboutus-temp" id="about">
+        <div class="section-content">
+            <h2 class="section-title">ABOUT US</h2>
+            <div class="origin-story-content">
+                <div class="story-column">
+                    <p>The NOTICE Coalition: No Tech Criminalization in Education is a national network of advocates, researchers and organizers building a movement to end youth surveillance in schools and defend youth justice in the digital age. We empower Black, Brown, Indigenous, disabled, LGBTQIA+ and other historically marginalized people to build liberated futures.</p>
+                </div>
+                <div class="story-column">
+                    <p>Since 2021, the NOTICE Coalition has sounded the alarm on the impact of police surveillance, digital pushout, and data criminalization on the rights and freedoms of youth and young adults in public education and beyond.</p>
+                </div>
+            </div>
         </div>
-        <div id="social-media">
-            <!-- Social media icons will be inserted here -->
-        </div>
-    </footer>
-</section>
+    </section>
 
-
-
-<script>
-    const NOTICE_CACHE = new Map();
-
-    function getNoticeData(key) {
-        if (!NOTICE_CACHE.has(key)) {
-            NOTICE_CACHE.set(key, noticeData[key]);
-        }
-        return NOTICE_CACHE.get(key);
-    }
-
-    const noticeData = {
-        logoUrl: "https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/0424f978-c6c8-437a-b310-bf03f110d3cc/Notice+Logo+Design+F-02.png",
-        aboutNotice: {
-            title: "ABOUT NOTICE COALITION",
-            content: [
-                "The mission of the NOTICE Coalition is to build a national movement to end the use of data and technology that surveils, polices, and/or criminalizes young people and their communities. These technologies include predictive policing, data-sharing agreements, facial recognition, social media monitoring, automated license plate readers, gang databases, school hardening, biometric surveillance, and student device monitoring, and so-called 'early warning systems'. We recognize that these technologies intensify harm in Black, Brown, Indigenous, disabled, LGBTQIA+, and otherwise marginalized communities."
-            ],
-            subheader: "The Notice Coalition...",
-            bullets: [
-                "Expands our national network of communities actively resisting and refusing youth data criminalization, school hardening, and related harms across educational institutions and other systems that serve youth and young adults.",
-                "Documents and disseminates the stories, challenges, and victories of community resistance to youth data criminalization, including the PASCO Coalition and Stop the Cradle to Prison Algorithm Coalition.",
-                "Builds public awareness to identify and confront the harms of data-driven technologies and techniques that criminalize youth and young adults.",
-                "Uplifts youth-led, community-driven ideas, strategies, and solutions that build school safety and community safety without law enforcement or other punitive systems.",
-                "Builds capacity of educators, caregivers, advocates, and other allies to identify and resist youth data criminalization.",
-                "Co-creates innovative legal and policy solutions with youth and young adults that integrate civil rights, human rights, and data privacy rights into 21st century protections against data criminalization."
-            ]
-        },
-        originStory: {
-            title: "OUR ORIGIN STORY",
-            leadIn: "From a conversation, a coalition was born...",
-            content: [
-                "Marika Pfefferkorn and Clarence Okoh were attending the Twin Cities Innovation Alliance's (TCIA) Data for Public Good Conference (D4PG) conference in 2021, and a conversation was sparked about how communities were responding to the emergence of criminalizing technologies in education and the need to support grassroots communities on their journey, and NOTICE was born. At the time, Clarence Okoh was a member of the PASCO Coalition and was organizing and pushing back against predictive policing in Tampa Bay, Florida, and Marika Pfefferkorn was a member of the Stop the Cradle to Prison Algorithm Coalition and the Safety Not Surveillance Coalition in Minnesota, successfully pushing back against a problematic early warning system in Ramsey County and facial recognition technologies in Minneapolis. The two noted that between the local efforts of the coalitions, a new road map was being built for pushing back at the community level on youth data criminalization and the work must be shared across communities while connecting the dots nationally. From that point on, the new NOTICE Coalition worked to engage with communities around the country to elevate the work and share resources, strategies, tools, and learnings. Early projects of NOTICE include the NOTICE National Summit in 2022 and the Freedom of Information Act (FOIA) Learning Lab. The coalition continues to grow and expand programming with the launch of the No Data About Us Without Us Fellowship in 2024."
-            ]
-        },
-        leadershipTeam: [
-            {
-                name: "Clarence Okoh, J.D. (pronouns: he/him/his)",
-                title: "",
-                bio: "Clarence Okoh is a civil rights attorney and racial justice advocate whose work addresses the impact of mass criminalization, algorithmic racism, and economic divestment in Black communities, with a particular focus on Black youth and young adults. Clarence is Senior Policy Counsel at the Center for Law and Social Policy (CLASP), where he leads the organization’s cross-team policy agenda to advance abolitionist approaches to community safety by challenging systems that surveil and punish economically marginalized Black, brown and Indigenous youth and their communities. He is also an inaugural member of the Just Tech Fellows at the Social Science Research Council. In this capacity Clarence leads an interdisciplinary advocacy project that blends legal research and analysis, public policy advocacy, and public education strategies to challenge the use of algorithmic technologies, including artificial intelligence (AI), that criminalize Black and brown youth and systematically violate their civil and human rights.",
-                image: "https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/c2883652-abc2-4304-80e7-8196134100fe/Clarence+Okoh.png?content-type=image%2Fpng"
-            },
-            {
-                name: "Marika Pfefferkorn, (pronouns: she/her/hers)",
-                title: "",
-                bio: "As an interdisciplinary and cross-sector thought leader and community advocate, Marika is a change agent working to transform systems and scale successes across education, technology, civic leadership and entrepreneurship. Ms. Pfefferkorn works along the continuum from community to theory to practice, integrating collective cultural wisdom and applying a restorative lens to upend punitive conditions in education, and to reimagine education through a liberatory lens. She has successfully co-led campaigns to end discriminatory suspension practices in Minnesota schools, to remove the presence of police in Minneapolis and St. Paul schools, to increase investment in indigenous restorative practices in education and community settings and successfully advocated for a Ethnic Studies requirement in Minnesota schools. Marika has cofounded and led the Solutions not Suspensions Coalition, and Education for Liberation MN Network, and participates as a member of the Safety Not Surveillance Coalition and Dignity in Schools Campaign.",
-                image: "https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/5540b7ab-5b4b-489f-bbe7-77e3dbf2f131/Marika-2.jpeg?content-type=image%2Fjpeg"
-            },
-            {
-                name: "Chelsea Barabas, Ph. D. (pronouns: she/her/hers)",
-                title: "",
-                bio: "Dr. Chelsea Barabas is a community-centered researcher working on a wide range of issues related to the ways that technology serves as a battleground for transformational social change and racial justice in the United States. Much of her recent work examines the ways that student surveillance and digitized school security measures push marginalized students out of school and into the criminal legal system. Chelsea collaborates with local abolitionist and youth organizations to uncover the downstream consequences of digitized surveillance in the classroom, as well as develop alternative visions of student safety and well-being. Formerly, Chelsea was a Technology Fellow at the Carr Center for Human Rights Policy at the Harvard Kennedy School of Government and a research scientist for the AI Ethics and Governance Initiative at the MIT Media Lab.",
-                image: "https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/f25e062f-1f66-4c25-af64-ab3cfec984bf/DN-Chelsea-Barabas-.jpg?content-type=image%2Fjpeg"
-            },
-            {
-                name: "Ed Vogel (pronouns: He/Him/His)",
-                title: "",
-                bio: "Ed is the Senior Policy Researcher with the Surveillance Resistance Lab. He has more than fifteen years of experience in movement spaces and organizing in Chicago as a member of Lucy Parsons Labs, Chicago Community Bond Fund, Believers Bail Out, and Free Us: the Chicago EM Collective. Ed is currently a board member with Chicago Torture Justice Center, Corporate Accountability Lab, Ecosystems of Care, and DontCallThePolice.com.",
-                image: "https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/82b923fd-e1d2-42b8-9593-519c5cfd590d/Ed_Vogel_-_SRL-removebg-preview.png?content-type=image%2Fpng"
-            },
-            // Add more team members here
-        ],
-        reports: [
-            // Add more reports here
-        ],
-        resources: [
-            // Add more resources here
-        ],
-        coalitionMembers: [
-            { name: "PASCO COALITION", url: "https://www.splcenter.org/PASCOcoalition" },
-            { name: "SAFETY NOT SURVEILLANCE COALITION ", url: "https://safetynotsurveillance.org/" },
-            { name: "STOP THE CRADLE TO PRISON ALGORITHM", url: "https://www.tciamn.org/cpa-journey" },
-            { name: "CLASP", url: "https://clasp.org/"},
-            { name: "ENCODE JUSTICE", url: "https://encodejustice.org/"},
-            { name: "ACLU FLORIDA", url: "https://www.aclufl.org/" },
-            { name: "ACLU MINNESOTA", url: "https://www.aclu-mn.org/en"},
-            { name: "DISABILITY RIGHTS FLORIDA", url: "https://disabilityrightsflorida.org/"},
-            { name: "SOUTHERN POVERTY LAW CENTER", url: "https://www.splcenter.org/"},
-            { name: "LEGAL DEFENSE FUND", url: "https://www.naacpldf.org/"},
-            { name: "SURVEILLANCE RESISTANCE LAB", url: "https://surveillanceresistancelab.org/"},
-            { name: "CENTER FOR DEMOCRACY AND TECHNOLOGY", url: "https://cdt.org/"},
-            { name: "MUSLIM JUSTICE LEAGUE", url: "https://muslimjusticeleague.org/"},
-            { name: "FORT BEND INDEPENDENT SCHOOL DISTRICT EQUITY COUNCIL", url: "https://fbisdequity.com/"},
-            { name: "THE FOIA (Freedom of Information Act) BAKERY", url: ""},
-            { name: "LUCY PARSONS LAB", url: "https://www.lucyparsonslabs.com/"}
-
-            // Add more coalition members here
-        ]
-    };
-
-    function populateNoticePage() {
-        try {
-            const fragment = document.createDocumentFragment();
-
-            // Helper function to create elements
-            function createElement(type, className, content) {
-                const element = document.createElement(type);
-                if (className) element.className = className;
-                if (content) element.innerHTML = content;
-                return element;
-            }
-
-            // Create About Section
-            function createAboutSection() {
-                const section = createElement('section', null);
-                section.id = 'about-notice';
-
-                const aboutData = getNoticeData('aboutNotice');
+    <!-- Origin Story Section -->
+     <!-- To be placed on separate page
+    <section class="notice-origin">
+        <div class="section-content">
+            <h2 class="section-title">OUR ORIGIN STORY</h2>
+            
+            <div class="origin-story-content">
+                <div class="story-column">
+                    <p>The NOTICE Coalition is the consequence of connection and collaboration. Conversations between our co-founders at the 2021 Data 4 Public Good conference surfaced the need for a coordinated national strategy to dismantle digital pushout and data criminalization while reimagining youth justice for the digital age.</p>
+                </div>
                 
-                const header = createElement('h2', 'notice-header');
-                header.innerHTML = `<span>${aboutData.title}</span>`;
+                <div class="story-column">
+                    <p>Since then, the NOTICE Coalition has grown into a broad, national network of individuals and organizations committed to this fight.</p>
+                </div>
+            </div>
 
-                // Create main content blob
-                const contentBlob = createElement('p', 'text-blob blob-enlarge-and-focus drop-cap');
-                contentBlob.innerHTML = `
-                    <button class="close-button" aria-label="Close">×</button>
-                    ${aboutData.content}
-                `;
+            <div class="story-link-container">
+                <a href="/noticecoalition/about" class="story-link" title="Coming Soon">LEARN MORE</a>
+            </div>
+        </div>
+    </section>
+    -->
 
-                // Create subheader and bullets
-                const subheader = createElement('h3', 'notice-subheader', aboutData.subheader);
-                const bulletList = createElement('div', 'notice-bullet-list');
-                
-                bulletList.innerHTML = aboutData.bullets.map(bullet => `
-                    <div class="notice-bullet-item">
-                        <img src="${noticeData.logoUrl}" alt="NOTICE logo" class="notice-bullet-logo">
-                        <div class="notice-bullet-text">${bullet}</div>
+    <!-- Initiatives Section -->
+    <section class="notice-initiatives" id="initiatives">
+        <div class="section-content">
+            <div class="section-header">
+                <h2 class="section-title">INITIATIVES</h2>
+                <!--<a href="/noticecoalition/initiatives" class="section-link">SEE ALL</a>-->
+            </div>
+            
+            <div class="initiatives-grid">
+                <a href="#initiatives" class="initiative-card">
+                    <div class="initiative-image">
+                        <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/02f04f50-bbdf-4004-bba6-d52262d94fce/AdobeStock_1015556916.jpeg?content-type=image%2Fjpeg" alt="Digital Privacy Rights">
+                        <div class="initiative-overlay">
+                            <h3 class="initiative-title">No Data About Us Without Us</h3>
+                            <p class="initiative-description">
+                                Protecting youth privacy rights in the digital age through advocacy and education.
+                            </p>
+                        </div>
                     </div>
-                `).join('');
+                </a>
 
-                // Append all elements to section
-                section.append(header, contentBlob, subheader, bulletList);
-                return section;
-            }
+                <a href="/ending-youth-surveillance-initiative" class="initiative-card">
+                    <div class="initiative-image">
+                        <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/6a073631-26c7-44dd-9882-6341a3ac97a1/AdobeStock_847227386.jpeg?content-type=image%2Fjpeg" alt="Ending Youth Surveillance">
+                        <div class="initiative-overlay">
+                            <h3 class="initiative-title">Ending Youth Surveillance</h3>
+                            <p class="initiative-description">
+                                Fighting against invasive surveillance technologies in schools and advocating for student privacy.
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
 
-            // Similar functions for other sections...
-            function createOriginSection() {
-                const section = createElement('section', null);
-                section.id = 'origin-story';
+    <!-- News & Events Section -->
+     <!--
+    <section class="notice-news" id="news">
+        <div class="section-content">
+            <div class="section-header">
+                <h2 class="section-title">NEWS & EVENTS</h2>
+                <a href="/noticecoalition/news" class="section-link">SEE ALL</a>
+            </div>
 
-                const originData = getNoticeData('originStory');
-
-                const header = createElement('h2', 'notice-header');
-                header.innerHTML = `<span>${originData.title}</span>`;
-
-                const leadIn = createElement('div', 'lead-in');
-                leadIn.textContent = originData.leadIn;
-
-                const contentBlob = createElement('div', 'text-blob blob-enlarge-and-focus drop-cap');
-                contentBlob.innerHTML = `
-                    <button class="close-button" aria-label="Close">×</button>
-                    ${originData.content}
-                `;
-
-                section.append(header, leadIn, contentBlob);
-                return section;
-            }
-
-            function createLeadershipSection() {
-                const section = createElement('section', null);
-                section.id = 'leadership-team';
-
-                const header = createElement('h2', 'notice-header');
-                header.innerHTML = '<span>LEADERSHIP TEAM</span>';
-
-                const teamMembers = noticeData.leadershipTeam.map(member => {
-                    const memberDiv = createElement('div', 'text-blob team-blob-enlarge drop-cap');
-                    memberDiv.innerHTML = `
-                        <button class="close-button" aria-label="Close">×</button>
-                        <div class="team-member">
-                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" 
-                                 data-src="${member.image}" 
-                                 loading="lazy" 
-                                 alt="${member.name}">
-                            <div>
-                                <h3 class="team-member-name" data-text="${member.name}">${member.name}</h3>
-                                <p>${member.bio}</p>
+            <div class="news-carousel">
+                <div class="carousel-container">
+                    
+                    <div class="carousel-item ">
+                        <div class="carousel-image">
+                            <img src="https://images.pexels.com/photos/7092613/pexels-photo-7092613.jpeg" 
+                                 alt="Community Forum">
+                            <div class="carousel-tags">
+                                <span class="tag">EVENTS</span>
                             </div>
                         </div>
-                    `;
-                    return memberDiv;
-                });
+                        <div class="carousel-content">
+                            <h3 class="carousel-title">Community Forum on School Safety</h3>
+                            <span class="carousel-date"></span>
+                        </div>
+                    </div>
 
-                section.append(header, ...teamMembers);
-                return section;
-            }
+                    <div class="carousel-item ">
+                        <div class="carousel-image">
+                            <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/123ddc1a-cf1f-4af3-aa19-6a764c10a6e1/cctv-surveillance-camera-stock-1920p.jpg?content-type=image%2Fjpeg" 
+                                 alt="Report Release">
+                            <div class="carousel-tags">
+                                <span class="tag">NEWS</span>
+                            </div>
+                        </div>
+                        <div class="carousel-content">
+                            <h3 class="carousel-title">New Report: Impact of Surveillance on Student Well-being</h3>
+                            <span class="carousel-date"></span>
+                        </div>
+                    </div>
 
-            function createCoalitionSection() {
-                const section = createElement('section', null);
-                section.id = 'coalition-members';
+                    <div class="carousel-item ">
+                        <div class="carousel-image">
+                            <img src="https://images.pexels.com/photos/8199562/pexels-photo-8199562.jpeg" 
+                                 alt="Youth Workshop">
+                            <div class="carousel-tags">
+                                <span class="tag">EVENTS</span>
+                            </div>
+                        </div>
+                        <div class="carousel-content">
+                            <h3 class="carousel-title">Youth Leadership Workshop Series</h3>
+                            <span class="carousel-date"></span>
+                        </div>
+                    </div>
 
-                const header = createElement('h2', 'notice-header');
-                header.innerHTML = '<span>COALITION MEMBERS</span>';
+                    <div class="carousel-item ">
+                        <div class="carousel-image">
+                            <img src="https://images.pexels.com/photos/8423475/pexels-photo-8423475.jpeg" 
+                                 alt="Policy Update">
+                            <div class="carousel-tags">
+                                <span class="tag">NEWS</span>
+                            </div>
+                        </div>
+                        <div class="carousel-content">
+                            <h3 class="carousel-title">Legislative Victory: New Privacy Protections for Students</h3>
+                            <span class="carousel-date"></span>
+                        </div>
+                    </div>
+                </div>
 
-                const membersList = createElement('div', 'text-blob');
-                membersList.innerHTML = noticeData.coalitionMembers.map(member => `
-                    <a href="${member.url}" class="notice-link" target="_blank" rel="noopener noreferrer">
-                        ${member.name}
-                    </a>
-                `).join('<br>');
+                <button class="carousel-nav prev" aria-label="Previous">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <button class="carousel-nav next" aria-label="Next">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
 
-                section.append(header, membersList);
-                return section;
-            }
+                <div class="carousel-dots">
+                    <button class="dot active"></button>
+                    <button class="dot"></button>
+                    <button class="dot"></button>
+                    <button class="dot"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+    -->
 
-            // Create all sections
-            const sections = {
-                about: createAboutSection(),
-                origin: createOriginSection(),
-                leadership: createLeadershipSection(),
-                coalition: createCoalitionSection()
-            };
+    <!-- Resources Section -->
+    <section class="notice-resources" id="resources">
+        <div class="section-content">
+            <div class="section-header">
+                <h2 class="section-title">RESOURCES</h2>
+                <!--<a href="/noticecoalition/resources" class="section-link">SEE ALL</a>-->
+            </div>
+            
+            <div class="resources-grid">
 
-            // Get the column containers
-            const leftColumn = document.querySelector('.left-column');
-            const rightColumn = document.querySelector('.right-column');
+                <!-- Resource Card 1 -->
+                <div class="resource-card">
+                    <div class="resource-image">
+                        <a href="https://www.tciamn.org/s/NoticeCoalitionMNVapeReport2.pdf" target="_blank" rel="noopener noreferrer">
+                            <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/a0a1ae2c-568f-42fd-9e89-eee2cf7151f4/Vape+Detection+Image2.png?content-type=image%2Fpng" alt="Fact Sheet">
+                        </a>
+                    </div>
+                    <div class="resource-content">
+                        <div class="resource-meta">
+                            <span class="resource-tag"><i class="fa-solid fa-hashtag"></i>REPORT</span>
+                            <div class="resource-links">
+                                <a href="https://www.tciamn.org/s/NoticeCoalitionMNVapeReport2.pdf" class="resource-action" title="Download - Vape Report" target="_blank" rel="noopener noreferrer">
+                                    <i class="fa-solid fa-cloud-arrow-down"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <p class="resource-description">
+                            Automating School Surveillance: How Student Vape Detection Technologies Threaten to Expand the School-to-Prison Pipeline in Minnesota and Beyond
+                        </p>
+                    </div>
+                </div>
 
-            // Append sections to appropriate columns
-            leftColumn.append(sections.about, sections.origin, sections.leadership);
-            rightColumn.append(sections.coalition);
+                <!-- Resource Card 2 -->
+                <div class="resource-card">
+                    <div class="resource-image">
+                        <a href="https://www.tciamn.org/s/MNVapeReportFactSheet1.pdf" target="_blank" rel="noopener noreferrer">
+                            <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/a0a1ae2c-568f-42fd-9e89-eee2cf7151f4/Vape+Detection+Image2.png?content-type=image%2Fpng" alt="Fact Sheet">
+                        </a>
+                    </div>
+                    <div class="resource-content">
+                        <div class="resource-meta">
+                            <span class="resource-tag"><i class="fa-solid fa-hashtag"></i>FACT SHEET</span>
+                            <div class="resource-links">
+                                <a href="https://www.tciamn.org/s/MNVapeReportFactSheet1.pdf" class="resource-action" title="Download - Vape Report Fact Sheet" target="_blank" rel="noopener noreferrer">
+                                    <i class="fa-solid fa-cloud-arrow-down"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <p class="resource-description">
+                            Vape Detection Report Fact Sheet
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Resource Card 3 -->
+                <div class="resource-card">
+                    <div class="resource-image">
+                        <a href="https://www.tciamn.org/s/2024NoticeCoalitionEDLetter.pdf" target="_blank" rel="noopener noreferrer">
+                            <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/123ddc1a-cf1f-4af3-aa19-6a764c10a6e1/cctv-surveillance-camera-stock-1920p.jpg?content-type=image%2Fjpeg" alt="School Report">
+                        </a>
+                    </div>
+                    <div class="resource-content">
+                        <div class="resource-meta">
+                            <span class="resource-tag"><i class="fa-solid fa-hashtag"></i>REPORT</span>
+                            <div class="resource-links">
+                                <a href="https://www.tciamn.org/s/2024NoticeCoalitionEDLetter.pdf" class="resource-action" title="Download - NOTICE Coalition Open Letter" target="_blank" rel="noopener noreferrer">
+                                    <i class="fa-solid fa-cloud-arrow-down"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <p class="resource-description">
+                            NOTICE Coalition Open Letter to the U.S. Department of Education
+                        </p>
+                    </div>
+                </div>
 
-            // Finally, append the fragment to the page
-            document.getElementById('notice-page').appendChild(fragment);
+                <!-- Resource Card 4 -->
+                <div class="resource-card">
+                    <div class="resource-image">
+                        <a href="https://www.tciamn.org/s/dangerous_data_brochure_v6.pdf" target="_blank" rel="noopener noreferrer">
+                            <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/2244eb1a-d6ed-446e-b230-f133497de37b/Dangerous+Data+Image.png?content-type=image%2Fpng" alt="Fact Sheet">
+                        </a>
+                    </div>
+                    <div class="resource-content">
+                        <div class="resource-meta">
+                            <span class="resource-tag"><i class="fa-solid fa-hashtag"></i>REPORT</span>
+                            <div class="resource-links">
+                                <a href="https://www.tciamn.org/s/dangerous_data_brochure_v6.pdf" class="resource-action" title="Download - Dangerous Data Brochure" target="_blank" rel="noopener noreferrer">
+                                    <i class="fa-solid fa-cloud-arrow-down"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <p class="resource-description">
+                            Dangerous Data: What Communities Should Know about Artificial Intelligence, the School-to-Prison Pipeline, and School Surveillance, Center for Law and Social Policy (CLASP)
+                        </p>
+                    </div>
+                </div>
 
-            console.log('Page population complete');
-        } catch (error) {
-            console.error('Error populating page:', error);
-            // Optionally show a user-friendly error message
-            const errorMessage = createElement('div', 'error-message');
-            errorMessage.textContent = 'Sorry, there was an error loading the page content.';
-            document.getElementById('notice-page').appendChild(errorMessage);
+                <!-- Resource Card 5 -->
+                <div class="resource-card">
+                    <div class="resource-image">
+                        <a href="https://www.tciamn.org/s/2024-11-26-LDF-Pasco-Report27.pdf" target="_blank" rel="noopener noreferrer">
+                            <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/34516a90-5459-4064-8649-702b9d1cd38b/Digitizing+Image.png?content-type=image%2Fpng" alt="Fact Sheet">
+                        </a>
+                    </div>
+                    <div class="resource-content">
+                        <div class="resource-meta">
+                            <span class="resource-tag"><i class="fa-solid fa-hashtag"></i>REPORT</span>
+                            <div class="resource-links">
+                                <a href="https://www.tciamn.org/s/2024-11-26-LDF-Pasco-Report27.pdf" class="resource-action" title="Download - Pasco Report" target="_blank" rel="noopener noreferrer">
+                                    <i class="fa-solid fa-cloud-arrow-down"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <p class="resource-description">
+                            Digitizing the School to Prison Pipeline: Pasco County's At-Risk Youth Program, NAACP Legal Defense Fund
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="videoModal" class="video-modal">
+            <div class="modal-content">
+                <button class="modal-close">&times;</button>
+                <div class="plyr__video-embed" id="player">
+                    <div class="video-placeholder"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <!-- Coalition Members Section -->
+    <section class="notice-members">
+        <div class="section-content">
+            <h2 class="section-title">OUR NETWORK</h2>
+            
+            <div class="members-grid">
+                <!-- Member 1 -->
+                <div class="member-item">
+                    <a href="https://www.splcenter.org/PASCOcoalition" target="_blank" rel="noopener noreferrer" class="member-name">PASCO COALITION</a>
+                </div>
+
+                <!-- Member 2 -->
+                <div class="member-item">
+                    <a href="https://safetynotsurveillance.org/" target="_blank" rel="noopener noreferrer" class="member-name">SAFETY NOT SURVEILLANCE COALITION</a>
+                </div>
+
+                <!-- Member 3 -->
+                <div class="member-item">
+                    <a href="https://www.tciamn.org/cpa-journey" target="_blank" rel="noopener noreferrer" class="member-name">STOP THE CRADLE TO PRISON ALGORITHM</a>
+                </div>
+
+                <!-- Continue pattern for all members -->
+                <div class="member-item">
+                    <a href="https://www.clasp.org/" target="_blank" rel="noopener noreferrer" class="member-name">CLASP</a>
+                </div>
+
+                <div class="member-item">
+                    <a href="https://encodejustice.org/" target="_blank" rel="noopener noreferrer" class="member-name">ENCODE JUSTICE</a>
+                </div>
+
+                <div class="member-item">
+                    <a href="https://www.aclufl.org/" target="_blank" rel="noopener noreferrer" class="member-name">ACLU FLORIDA</a>
+                </div>
+
+                <div class="member-item">
+                    <a href="https://www.aclu-mn.org/en" target="_blank" rel="noopener noreferrer" class="member-name">ACLU MINNESOTA</a>
+                </div>
+
+                <div class="member-item">
+                    <a href="https://disabilityrightsflorida.org/" target="_blank" rel="noopener noreferrer" class="member-name">DISABILITY RIGHTS FLORIDA</a>
+                </div>
+
+                <div class="member-item">
+                    <a href="https://www.splcenter.org/" target="_blank" rel="noopener noreferrer" class="member-name">SOUTHERN POVERTY LAW CENTER</a>
+                </div>
+
+                <div class="member-item">
+                    <a href="https://www.naacpldf.org/" target="_blank" rel="noopener noreferrer" class="member-name">LEGAL DEFENSE FUND</a>
+                </div>
+
+
+                <div class="member-item">
+                    <a href="https://cdt.org/" target="_blank" rel="noopener noreferrer" class="member-name">CENTER FOR DEMOCRACY AND TECHNOLOGY</a>
+                </div>
+
+                <div class="member-item">
+                    <a href="https://muslimjusticeleague.org/" target="_blank" rel="noopener noreferrer" class="member-name">MUSLIM JUSTICE LEAGUE</a>
+                </div>
+
+                <div class="member-item">
+                    <a href="https://www.fortbendisd.com" target="_blank" rel="noopener noreferrer" class="member-name">FORT BEND INDEPENDENT SCHOOL DISTRICT EQUITY COUNCIL</a>
+                </div>
+
+
+                <div class="member-item">
+                    <a href="https://www.lucyparsonslabs.com/" target="_blank" rel="noopener noreferrer" class="member-name">LUCY PARSONS LAB</a>
+                </div>
+            </div>
+
+            <div class="members-cta">
+                <!--<a href="/noticecoalition/members" class="section-link">SEE ALL MEMBERS</a>-->
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="notice-newsletter">
+        <div class="section-content">
+            <h2 class="section-title">STAY INFORMED</h2>
+        </div>
+    </section>
+
+    <!-- Social Media Section -->
+    <section class="notice-social">
+        <div class="section-content">
+            <div class="notice-social-links">
+                <a href="https://www.linkedin.com/company/no-tech-criminalization-in-education-notice-coalition/?viewAsMember=true" target="_blank" rel="noopener noreferrer" class="social-icon">
+                    <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/e21f8602-46df-4d45-ae36-3abea3853857/254394.png?content-type=image%2Fpng" alt="LinkedIn">
+                </a>
+                <a href="https://x.com/NOTICETCIA" target="_blank" rel="noopener noreferrer" class="social-icon">
+                    <i class="fa-brands fa-square-x-twitter"></i>
+                </a>
+            </div>
+            
+            <a href="/noticecoalition" class="notice-footer-logo">
+                <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/301406ed-440a-4a15-b346-b8b0faff4729/Notice+Logo+Design+F-03.png?content-type=image%2Fpng" alt="Notice Coalition">
+            </a>
+        </div>
+    </section>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const container = document.querySelector('.carousel-container');
+        const items = document.querySelectorAll('.carousel-item');
+        const dots = document.querySelectorAll('.dot');
+        const prevBtn = document.querySelector('.prev');
+        const nextBtn = document.querySelector('.next');
+        let currentIndex = 0;
+
+        function updateCarousel() {
+            container.style.transform = `translateX(-${currentIndex * 100}%)`;
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentIndex);
+            });
         }
-    }
 
-    function initializeBlobEnlarge() {
-        // Single event listener for all blob clicks
-        document.addEventListener('click', function(e) {
-            // Check if clicked element or its parent is a blob
-            const blob = e.target.closest('.blob-enlarge-and-focus, .team-blob-enlarge');
-            const closeButton = e.target.closest('.close-button');
-            
-            if (closeButton) {
-                const parentBlob = closeButton.closest('.enlarged');
-                if (parentBlob) {
-                    parentBlob.classList.remove('enlarged');
-                    document.body.classList.remove('blob-enlarged');
-                }
-                return;
-            }
-            
-            if (blob && !blob.classList.contains('enlarged')) {
-                blob.classList.add('enlarged');
-                document.body.classList.add('blob-enlarged');
-            }
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + items.length) % items.length;
+            updateCarousel();
         });
 
-        // Single event listener for escape key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                const enlargedBlob = document.querySelector('.blob-enlarge-and-focus.enlarged, .team-blob-enlarge.enlarged');
-                if (enlargedBlob) {
-                    enlargedBlob.classList.remove('enlarged');
-                    document.body.classList.remove('blob-enlarged');
-                }
-            }
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % items.length;
+            updateCarousel();
         });
-    }
 
-    // Add this function at the top level of your script
-    function initializeLazyLoading() {
-        // Check if Intersection Observer is supported
-        if ('IntersectionObserver' in window) {
-            const imageObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const img = entry.target;
-                        img.src = img.dataset.src; // Load the actual image
-                        imageObserver.unobserve(img); // Stop observing once loaded
-                    }
-                });
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentIndex = index;
+                updateCarousel();
             });
+        });
 
-            // Observe all images with data-src attribute
-            document.querySelectorAll('img[data-src]').forEach(img => {
-                imageObserver.observe(img);
-            });
-        }
-    }
-
-    // Update your DOMContentLoaded event handler to initialize lazy loading
-    document.addEventListener('DOMContentLoaded', () => {
-        populateNoticePage();
-        initializeBlobEnlarge(); // Your existing initialization function
-        initializeLazyLoading();
+        setInterval(() => {
+            currentIndex = (currentIndex + 1) % items.length;
+            updateCarousel();
+        }, 5000);
     });
+</script>
+
+<div id="videoModal" class="video-modal">
+    <div class="modal-content">
+        <button class="modal-close">&times;</button>
+        <div class="plyr__video-embed" id="player">
+            <div class="video-placeholder"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialize video modal functionality
+        const videoModal = document.getElementById('videoModal');
+        const videoPlaceholder = document.querySelector('.video-placeholder');
+        const modalClose = document.querySelector('.modal-close');
+        let player;
+
+        // Function to extract video ID from various video platform URLs
+        function getVideoEmbed(url) {
+            // YouTube
+            const youtubeRegex = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/;
+            const youtubeMatch = url.match(youtubeRegex);
+            
+            if (youtubeMatch) {
+                return {
+                    type: 'youtube',
+                    id: youtubeMatch[1],
+                    embed: `https://www.youtube.com/embed/${youtubeMatch[1]}?origin=${window.location.origin}&iv_load_policy=3&modestbranding=1&playsinline=1&showinfo=0&rel=0&enablejsapi=1`
+                };
+            }
+            
+            // Vimeo
+            const vimeoRegex = /(?:vimeo\.com\/)([0-9]+)/;
+            const vimeoMatch = url.match(vimeoRegex);
+            
+            if (vimeoMatch) {
+                return {
+                    type: 'vimeo',
+                    id: vimeoMatch[1],
+                    embed: `https://player.vimeo.com/video/${vimeoMatch[1]}?loop=false&byline=false&portrait=false&title=false&speed=true&transparent=0&gesture=media`
+                };
+            }
+            
+            return null;
+        }
+
+        // Handle video link clicks
+        document.querySelectorAll('.resource-action').forEach(link => {
+            link.addEventListener('click', function(e) {
+                const videoUrl = this.getAttribute('href');
+                if (videoUrl && this.querySelector('.fa-circle-play')) {
+                    e.preventDefault();
+                    
+                    const videoData = getVideoEmbed(videoUrl);
+                    if (videoData) {
+                        // Create iframe with proper embed URL
+                        videoPlaceholder.innerHTML = `<iframe
+                            src="${videoData.embed}"
+                            allowfullscreen
+                            allowtransparency
+                            allow="autoplay"
+                        ></iframe>`;
+                        
+                        // Initialize Plyr
+                        if (player) {
+                            player.destroy();
+                        }
+                        player = new Plyr('#player iframe', {
+                            controls: ['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'captions', 'settings', 'pip', 'airplay', 'fullscreen'],
+                            hideControls: false
+                        });
+                        
+                        // Show modal
+                        videoModal.style.display = 'flex';
+                    }
+                }
+            });
+        });
+
+        // Close modal functionality
+        modalClose.addEventListener('click', () => {
+            videoModal.style.display = 'none';
+            if (player) {
+                player.destroy();
+            }
+            videoPlaceholder.innerHTML = '';
+        });
+
+        // Close on background click
+        videoModal.addEventListener('click', (e) => {
+            if (e.target === videoModal) {
+                videoModal.style.display = 'none';
+                if (player) {
+                    player.destroy();
+                }
+                videoPlaceholder.innerHTML = '';
+            }
+        });
+
+        // Close on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && videoModal.style.display === 'flex') {
+                videoModal.style.display = 'none';
+                if (player) {
+                    player.destroy();
+                }
+                videoPlaceholder.innerHTML = '';
+            }
+        });
+    });
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Get all navigation links
+    const navLinks = document.querySelectorAll('.nav-links a');
+    
+    // Add click event listener to each link
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Get the target section id from the href
+            const targetId = this.getAttribute('href').substring(1);
+            const targetSection = document.getElementById(targetId);
+            
+            if (targetSection) {
+                // Get the height of the fixed navigation bar
+                const navHeight = document.querySelector('.notice-nav').offsetHeight;
+                
+                // Calculate the target position accounting for the nav bar
+                const targetPosition = targetSection.getBoundingClientRect().top + window.pageYOffset - navHeight;
+                
+                // Smooth scroll to the target
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+});
 </script>
