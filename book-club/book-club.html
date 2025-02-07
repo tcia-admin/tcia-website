@@ -1,0 +1,1880 @@
+<style>
+    :root {
+        /* Spacing Variables */
+        --spacing-xs: 0.25rem;
+        --spacing-sm: 0.5rem;
+        --spacing-md: 1rem;
+        --spacing-lg: 1.5rem;
+        --spacing-xl: 2rem;
+        --spacing-2xl: 3rem;
+        --spacing-3xl: 4rem;
+        --spacing-4xl: 5rem;
+
+        /* Layout Variables */
+        --container-max-width: 1200px;
+        --container-padding: 1rem;
+
+        /* Breakpoints (for reference in media queries) */
+        --mobile: 480px;
+        --tablet: 768px;
+        --desktop: 1024px;
+
+        /* Typography Scale */
+        --font-size-xs: 0.75rem;
+        --font-size-sm: 0.875rem;
+        --font-size-med: 1rem;
+        --font-size-base: 1.25rem;
+        --font-size-lg: 1.125rem;
+        --font-size-xl: 1.25rem;
+        --font-size-2xl: 1.5rem;
+        --font-size-3xl: 2rem;
+        --font-size-4xl: 2.5rem;
+        --font-size-8xl: 4.5rem;
+        --font-size-12xl: 6rem;
+
+        /* Brand Colors */
+        --blue-900: #1a365d;
+        --blue-700: #2c5282;
+        --blue-500: #3182ce;
+        --blue-300: #63b3ed;
+        --blue-100: #ebf8ff;
+        
+        --orange-900: #9c2f2f;
+        --orange-700: #c53030;
+        --orange-500: #f56565;
+        --orange-300: #fc8181;
+        --orange-100: #fff5f5;
+        
+        --grey-900: #1a202c;
+        --grey-700: #4a5568;
+        --grey-500: #718096;
+        --grey-300: #e2e8f0;
+        --grey-100: #f7fafc;
+
+        /* Supporting Colors */
+        --cream: #faf6f1;
+        --paper: #fff9f0;
+        --coffee: #483c32;
+        --warm-white: #fcfbf7;
+
+        /* Functional Colors */
+        --bg-primary: var(--warm-white);
+        --bg-secondary: var(--cream);
+        --text-primary: var(--grey-900);
+        --text-secondary: var(--grey-700);
+        --accent: var(--orange-500);
+
+        /* Notice Background tints for subtle variations */
+        --blue-tint: rgba(49, 130, 206, 0.1);
+        --orange-tint: rgba(245, 101, 101, 0.1);
+        --grey-tint: rgba(113, 128, 150, 0.1);
+
+        /* Background options */
+        --bg-light: var(--paper);
+        --bg-dark: var(--blue-900);
+        --bg-accent: var(--orange-100);
+
+        
+        /* Font Families */
+        --font-primary: 'Playfair Display', serif;        /* Elegant serif for headlines */
+        --font-secondary: 'Source Serif Pro', serif;      /* Clean serif for body text */
+        --font-headline: 'Libre Baskerville', serif;      /* Classic book-like serif */
+        --font-body: 'Lora', serif;                       /* Readable serif for longer text */
+        --font-alt-bold: 'Montserrat', sans-serif;        /* Modern sans-serif for UI elements */
+        --font-alt-regular: 'Open Sans', sans-serif;      /* Clean sans-serif for captions */
+        --font-accent: 'Abril Fatface', cursive;          /* Distinctive display font for special elements */
+        
+        /* Font Weights */
+        --font-regular: 400;
+        --font-bold: 700;
+    }
+
+    /* Typography Styles */
+    h1, h2, h3 {
+        font-family: var(--font-headline);
+        font-weight: bold;
+    }
+
+    h2 {
+        text-transform: uppercase;
+    }
+
+    body {
+        font-family: var(--font-body);
+    }
+
+    .caption, .statistics, blockquote {
+        font-family: var(--font-headline);
+    }
+
+    .alt-text {
+        font-family: var(--font-alt-regular);
+    }
+
+    .alt-text-bold {
+        font-family: var(--font-alt-bold);
+    }
+
+    /* Reset and Base Styles - Update to remove any default margins */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+        scroll-padding-top: var(--nav-height); /* Add this variable to your root */
+    }
+
+    .book-club-main {
+        width: 100%;
+        font-family: var(--font-primary);
+        color: var(--text-primary);
+        background-color: var(--bg-primary);
+    }
+
+    /* Responsive Design */
+    @media screen and (max-width: 1024px) {
+        :root {
+            /* Adjust spacing for tablet */
+            --container-padding: 2rem;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        :root {
+            /* Adjust spacing for mobile */
+            --container-padding: 1rem;
+            --font-size-4xl: 2rem;
+            --font-size-3xl: 1.75rem;
+            --font-size-2xl: 1.25rem;
+        }
+    }
+
+    .book-club-container {
+        max-width: var(--container-max-width);
+        margin: 0 auto;
+        padding: var(--spacing-xl);
+    }
+
+    /* Hero Styles */
+    .hero {
+        text-align: center;
+        padding: var(--spacing-lg) 0;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--spacing-xs);
+    }
+
+    .hero-content {
+        z-index: 1;
+    }
+
+    .hero-illustration {
+        margin-top: var(--spacing-xs);
+        animation: float 6s ease-in-out infinite;
+    }
+
+    /* Book stack animation */
+    @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+    }
+
+    /* CTA Button Styles */
+    .cta-button {
+        font-family: var(--font-alt-bold);
+        font-size: var(--font-size-base);
+        background-color: var(--orange-500);
+        color: white;
+        border: none;
+        border-radius: 30px;
+        padding: var(--spacing-md) var(--spacing-xl);
+        margin-top: var(--spacing-xl);
+        cursor: pointer;
+        transition: transform 0.2s ease, background-color 0.2s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .cta-button:hover {
+        background-color: var(--orange-700);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .cta-button:active {
+        transform: translateY(0);
+    }
+
+    /* Responsive adjustments */
+    @media screen and (max-width: 768px) {
+        .hero-illustration svg {
+            width: 300px;
+            height: 225px;
+        }
+        
+        .cta-button {
+            font-size: var(--font-size-med);
+            padding: var(--spacing-sm) var(--spacing-lg);
+        }
+    }
+
+    /* Optional: Add a subtle gradient background to hero */
+    .hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(circle at center, var(--blue-tint) 0%, transparent 70%);
+        opacity: 0.5;
+        z-index: 0;
+    }
+
+    .hero-title {
+        font-family: var(--font-headline);
+        font-size: var(--font-size-4xl);
+        color: var(--text-primary);
+        margin-bottom: var(--spacing-md);
+    }
+
+    .accent-text {
+        font-family: var(--font-accent);
+        color: var(--orange-700);
+        font-size: 1.2em;
+        display: block;
+    }
+
+    .hero-subtitle {
+        font-family: var(--font-secondary);
+        font-size: var(--font-size-xl);
+        color: var(--text-secondary);
+    }
+
+    /* Featured Book Styles */
+    .section-title {
+        font-family: var(--font-alt-bold);
+        font-size: var(--font-size-sm);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--grey-500);
+        margin-bottom: var(--spacing-xl);
+    }
+
+    .featured-book {
+        background-color: var(--bg-secondary);
+        padding: var(--spacing-2xl);
+        border-radius: 8px;
+        margin: var(--spacing-2xl) 0;
+    }
+
+    .featured-book-title {
+        font-family: var(--font-accent);
+        font-size: var(--font-size-3xl);
+        color: var(--blue-900);
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .book-author {
+        font-family: var(--font-alt-regular);
+        font-size: var(--font-size-med);
+        color: var(--text-secondary);
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .book-quote {
+        font-family: var(--font-headline);
+        font-size: var(--font-size-xl);
+        font-style: italic;
+        color: var(--orange-700);
+        border-left: 4px solid var(--orange-300);
+        padding-left: var(--spacing-md);
+        margin: var(--spacing-xl) 0;
+    }
+
+    .book-description {
+        font-family: var(--font-body);
+        font-size: var(--font-size-base);
+        line-height: 1.6;
+        color: var(--text-primary);
+    }
+
+    /* Statistics Styles */
+    .reading-stats {
+        text-align: center;
+        margin-top: var(--spacing-3xl);
+    }
+
+    .statistics {
+        font-family: var(--font-alt-bold);
+        font-size: var(--font-size-sm);
+        color: var(--blue-700);
+        letter-spacing: 0.05em;
+    }
+
+    /* Responsive Adjustments */
+    @media screen and (max-width: 768px) {
+        .hero-title {
+            font-size: var(--font-size-3xl);
+        }
+        
+        .featured-book-title {
+            font-size: var(--font-size-2xl);
+        }
+        
+        .book-quote {
+            font-size: var(--font-size-lg);
+        }
+    }
+
+    /* Carousel Styles */
+    .carousel-container {
+        margin: var(--spacing-3xl) 0;
+        padding: 0 var(--spacing-lg);
+    }
+
+    .carousel {
+        position: relative;
+        overflow: hidden;
+        padding: var(--spacing-xl) 0;
+    }
+
+    .carousel-track {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+    }
+
+    .carousel-slide {
+        min-width: 100%;
+        padding: 0 var(--spacing-md);
+    }
+
+    .highlight-card {
+        background: var(--bg-secondary);
+        border-radius: 12px;
+        padding: var(--spacing-xl);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+    }
+
+    .highlight-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .highlight-tag {
+        font-family: var(--font-alt-bold);
+        font-size: var(--font-size-xs);
+        text-transform: uppercase;
+        color: var(--orange-500);
+        letter-spacing: 0.1em;
+        margin-bottom: var(--spacing-sm);
+        display: inline-block;
+    }
+
+    .highlight-title {
+        font-family: var(--font-accent);
+        font-size: var(--font-size-2xl);
+        color: var(--text-primary);
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .highlight-date,
+    .highlight-author {
+        font-family: var(--font-alt-regular);
+        font-size: var(--font-size-sm);
+        color: var(--text-secondary);
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .highlight-desc {
+        font-family: var(--font-body);
+        font-size: var(--font-size-base);
+        color: var(--text-secondary);
+        line-height: 1.6;
+    }
+
+    /* Navigation Buttons */
+    .carousel-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: var(--bg-primary);
+        border: 2px solid var(--grey-300);
+        color: var(--text-primary);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        z-index: 2;
+    }
+
+    .carousel-nav:hover {
+        background: var(--grey-100);
+        border-color: var(--grey-500);
+    }
+
+    .carousel-nav.prev {
+        left: var(--spacing-md);
+    }
+
+    .carousel-nav.next {
+        right: var(--spacing-md);
+    }
+
+    /* Indicators */
+    .carousel-indicators {
+        display: flex;
+        justify-content: center;
+        gap: var(--spacing-sm);
+        margin-top: var(--spacing-lg);
+    }
+
+    .indicator {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        border: none;
+        background: var(--grey-300);
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .indicator.active {
+        background: var(--orange-500);
+        transform: scale(1.2);
+    }
+
+    /* Responsive Adjustments */
+    @media screen and (max-width: 768px) {
+        .carousel-nav {
+            display: none;
+        }
+        
+        .highlight-card {
+            padding: var(--spacing-lg);
+        }
+        
+        .highlight-title {
+            font-size: var(--font-size-xl);
+        }
+    }
+
+    /* Book Grid Styles */
+    .book-grid-section {
+        margin: var(--spacing-3xl) 0;
+        padding: 0 var(--spacing-lg);
+    }
+
+    .book-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: var(--spacing-xl);
+        margin-top: var(--spacing-xl);
+    }
+
+    .book-card {
+        position: relative;
+        aspect-ratio: 2/3;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+        cursor: pointer;
+    }
+
+    .book-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .book-cover {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .book-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(
+            transparent,
+            rgba(0, 0, 0, 0.8) 30%,
+            rgba(0, 0, 0, 0.95)
+        );
+        padding: var(--spacing-xl);
+        color: white;
+        transform: translateY(100%);
+        transition: transform 0.3s ease;
+    }
+
+    .book-card:hover .book-overlay {
+        transform: translateY(0);
+    }
+
+    .book-title {
+        font-family: var(--font-accent);
+        font-size: var(--font-size-lg);
+        margin-bottom: var(--spacing-xs);
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        color: white;
+    }
+
+    .book-author {
+        font-family: var(--font-alt-regular);
+        font-size: var(--font-size-sm);
+        opacity: 0.9;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        color: white;
+    }
+
+    .details-button {
+        font-family: var(--font-alt-bold);
+        font-size: var(--font-size-sm);
+        background-color: var(--orange-500);
+        color: white;
+        border: none;
+        border-radius: 20px;
+        padding: var(--spacing-xs) var(--spacing-md);
+        margin-top: var(--spacing-md);
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .details-button:hover {
+        background-color: var(--orange-600);
+    }
+
+    /* Modal Styles */
+    .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+        padding: var(--spacing-lg);
+        overflow-y: auto;
+    }
+
+    .modal.active {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .modal-content {
+        background-color: var(--bg-primary);
+        border-radius: 12px;
+        max-width: 800px;
+        width: 90%;
+        position: relative;
+        padding: var(--spacing-xl);
+    }
+
+    .modal-grid {
+        display: grid;
+        grid-template-columns: 300px 1fr;
+        gap: var(--spacing-xl);
+    }
+
+    .modal-close {
+        position: absolute;
+        top: var(--spacing-md);
+        right: var(--spacing-md);
+        background: none;
+        border: none;
+        font-size: var(--font-size-2xl);
+        cursor: pointer;
+        color: var(--text-secondary);
+    }
+
+    .modal-image img {
+        width: 100%;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .modal-title {
+        font-family: var(--font-accent);
+        font-size: var(--font-size-2xl);
+        color: var(--text-primary);
+        margin-bottom: var(--spacing-xs);
+    }
+
+    .modal-author {
+        font-family: var(--font-alt-regular);
+        font-size: var(--font-size-lg);
+        color: var(--text-secondary);
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .modal-description {
+        font-family: var(--font-body);
+        font-size: var(--font-size-base);
+        line-height: 1.6;
+        color: var(--text-primary);
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .book-metadata {
+        display: flex;
+        gap: var(--spacing-md);
+        font-family: var(--font-alt-regular);
+        font-size: var(--font-size-sm);
+        color: var(--text-secondary);
+    }
+
+    /* Responsive Adjustments */
+    @media screen and (max-width: 768px) {
+        .modal-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .modal-image {
+            max-width: 300px;
+            margin: 0 auto;
+        }
+    }
+
+    /* Events Section Styles */
+    .events-section {
+        margin: var(--spacing-3xl) 0;
+        padding: 0 var(--spacing-lg);
+    }
+
+    .events-timeline {
+        position: relative;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: var(--spacing-lg) 0;
+    }
+
+    /* Timeline line */
+    .events-timeline::before {
+        content: '';
+        position: absolute;
+        left: 90px;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: var(--grey-300);
+    }
+
+    .event-card {
+        display: flex;
+        gap: var(--spacing-xl);
+        margin-bottom: var(--spacing-xl);
+        position: relative;
+    }
+
+    .event-card:last-child {
+        margin-bottom: 0;
+    }
+
+    /* Date Circle */
+    .event-date {
+        min-width: 80px;
+        height: 80px;
+        background: var(--bg-primary);
+        border: 2px solid var(--orange-500);
+        border-radius: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 1;
+    }
+
+    .event-date .date {
+        font-family: var(--font-accent);
+        font-size: var(--font-size-2xl);
+        color: var(--orange-700);
+        line-height: 1;
+    }
+
+    .event-date .month {
+        font-family: var(--font-alt-bold);
+        font-size: var(--font-size-xs);
+        color: var(--text-secondary);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+    }
+
+    .event-content {
+        background: var(--bg-secondary);
+        border-radius: 12px;
+        padding: var(--spacing-lg);
+        flex-grow: 1;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease;
+    }
+
+    .event-content:hover {
+        transform: translateY(-2px);
+    }
+
+    .event-tag {
+        display: inline-block;
+        padding: var(--spacing-xs) var(--spacing-sm);
+        border-radius: 20px;
+        font-family: var(--font-alt-bold);
+        font-size: var(--font-size-xs);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .event-tag.virtual {
+        background: var(--blue-tint);
+        color: var(--blue-700);
+    }
+
+    .event-tag.in-person {
+        background: var(--orange-tint);
+        color: var(--orange-700);
+    }
+
+    .event-tag.hybrid {
+        background: var(--grey-tint);
+        color: var(--grey-700);
+    }
+
+    .event-title {
+        font-family: var(--font-headline);
+        font-size: var(--font-size-xl);
+        color: var(--text-primary);
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .event-details {
+        display: flex;
+        gap: var(--spacing-lg);
+        color: var(--text-secondary);
+        font-family: var(--font-alt-regular);
+        font-size: var(--font-size-sm);
+    }
+
+    .event-time,
+    .event-location {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-xs);
+    }
+
+    /* Responsive Adjustments */
+    @media screen and (max-width: 768px) {
+        .events-timeline::before {
+            left: 40px;
+        }
+
+        .event-date {
+            min-width: 60px;
+            height: 60px;
+        }
+
+        .event-date .date {
+            font-size: var(--font-size-xl);
+        }
+
+        .event-date .month {
+            font-size: var(--font-size-xs);
+        }
+
+        .event-details {
+            flex-direction: column;
+            gap: var(--spacing-xs);
+        }
+    }
+
+    /* After events section */
+    .community-section {
+        margin: var(--spacing-3xl) 0;
+        padding: 0 var(--spacing-lg);
+    }
+
+    .community-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: var(--spacing-xl);
+    }
+
+    .benefits-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: var(--spacing-xl);
+        margin: var(--spacing-2xl) 0;
+    }
+
+    .benefit-card {
+        background-color: var(--bg-secondary);
+        border-radius: 8px;
+        padding: var(--spacing-xl) var(--spacing-2xl);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+    }
+
+    .benefit-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .benefit-icon {
+        width: 40px;
+        height: 40px;
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .benefit-title {
+        font-family: var(--font-accent);
+        font-size: var(--font-size-2xl);
+        color: var(--text-primary);
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .benefit-desc {
+        font-family: var(--font-body);
+        font-size: var(--font-size-base);
+        color: var(--text-secondary);
+        line-height: 1.6;
+    }
+
+    .community-gallery {
+        margin-top: var(--spacing-xl);
+        padding: var(--spacing-xl);
+        background-color: var(--bg-secondary);
+        border-radius: 8px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .gallery-text {
+        text-align: center;
+        margin-bottom: var(--spacing-xl);
+    }
+
+    .gallery-title {
+        font-family: var(--font-accent);
+        font-size: var(--font-size-4xl);
+        color: var(--text-primary);
+        margin-bottom: var(--spacing-md);
+    }
+
+    .gallery-desc {
+        font-family: var(--font-body);
+        font-size: var(--font-size-base);
+        color: var(--text-secondary);
+        line-height: 1.6;
+        margin-bottom: var(--spacing-xl);
+    }
+
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: var(--spacing-xl);
+    }
+
+    .gallery-item {
+        position: relative;
+        aspect-ratio: 2/3;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover {
+        transform: translateY(-5px);
+    }
+
+    .gallery-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .gallery-caption {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.5);
+        padding: var(--spacing-md);
+        color: white;
+        font-family: var(--font-accent);
+        font-size: var(--font-size-lg);
+    }
+
+    .testimonials {
+        margin-top: var(--spacing-xl);
+        padding: var(--spacing-xl);
+        background-color: var(--bg-secondary);
+        border-radius: 8px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .testimonial-card {
+        background-color: var(--bg-primary);
+        border-radius: 8px;
+        padding: var(--spacing-xl);
+        margin-bottom: var(--spacing-xl);
+    }
+
+    .testimonial-text {
+        font-family: var(--font-body);
+        font-size: var(--font-size-base);
+        color: var(--text-primary);
+        line-height: 1.6;
+        margin-bottom: var(--spacing-md);
+    }
+
+    .testimonial-author {
+        font-family: var(--font-alt-bold);
+        font-size: var(--font-size-sm);
+        color: var(--text-secondary);
+    }
+
+    .join-button {
+    font-size: var(--font-size-lg);
+    padding: var(--spacing-sm) var(--spacing-2xl);
+    }
+
+    /* Responsive Adjustments */
+    @media screen and (max-width: 1240px) {
+        .community-content {
+            max-width: 90%;
+        }
+    }
+
+    @media screen and (max-width: 968px) {
+        .community-gallery {
+            grid-template-columns: 1fr;
+            gap: var(--spacing-xl);
+        }
+
+        .gallery-text {
+            padding-right: 0;
+            text-align: center;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        .community-content {
+            width: 100%;
+            max-width: none;
+            padding: 0 var(--spacing-md);
+        }
+
+        .gallery-text {
+            padding: 0;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .gallery-grid {
+            grid-template-columns: 1fr;
+            gap: var(--spacing-md);
+            margin: 0 calc(-1 * var(--spacing-md));  /* Extend to screen edges */
+            width: calc(100% + (var(--spacing-md) * 2));
+        }
+
+        .gallery-item {
+            margin: 0;
+        }
+
+        .gallery-img {
+            border-radius: 0;  /* Remove border radius on mobile */
+        }
+
+        .testimonials {
+            margin: var(--spacing-2xl) calc(-1 * var(--spacing-md));
+            padding: 0 var(--spacing-md);
+        }
+
+        .testimonial-card {
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .partners-grid {
+            margin: var(--spacing-xl) calc(-1 * var(--spacing-md));
+            padding: 0 var(--spacing-md);
+        }
+
+        .partner-card {
+            max-width: none;
+            margin: 0;
+        }
+    }
+
+    /* About Section Styles */
+    .about-section {
+        padding: var(--spacing-4xl) var(--spacing-lg);
+        background-color: var(--bg-light);
+    }
+
+    .about-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--spacing-3xl);
+        margin-top: var(--spacing-2xl);
+    }
+
+    /* Content Styles */
+    .about-headline {
+        font-family: var(--font-headline);
+        font-size: var(--font-size-3xl);
+        color: var(--text-primary);
+        margin-bottom: var(--spacing-lg);
+        line-height: 1.2;
+    }
+
+    .about-text {
+        font-family: var(--font-body);
+        font-size: var(--font-size-lg);
+        color: var(--text-secondary);
+        line-height: 1.8;
+        margin-bottom: var(--spacing-2xl);
+    }
+
+    /* Milestones Grid */
+    .milestone-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--spacing-lg);
+        margin-bottom: var(--spacing-3xl);
+    }
+
+    .milestone {
+        text-align: center;
+        padding: var(--spacing-lg);
+        background: var(--bg-primary);
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .milestone-number {
+        display: block;
+        font-family: var(--font-accent);
+        font-size: var(--font-size-3xl);
+        color: var(--orange-500);
+        margin-bottom: var(--spacing-xs);
+    }
+
+    .milestone-label {
+        font-family: var(--font-alt-bold);
+        font-size: var(--font-size-sm);
+        color: var(--text-secondary);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    /* Values Styles */
+    .about-values {
+        display: grid;
+        gap: var(--spacing-xl);
+    }
+
+    .value-item {
+        padding-left: var(--spacing-lg);
+        border-left: 3px solid var(--orange-500);
+    }
+
+    .value-title {
+        font-family: var(--font-alt-bold);
+        font-size: var(--font-size-lg);
+        color: var(--text-primary);
+        margin-bottom: var(--spacing-xs);
+    }
+
+    .value-text {
+        font-family: var(--font-body);
+        font-size: var(--font-size-base);
+        color: var(--text-secondary);
+        line-height: 1.6;
+    }
+
+    /* Visual Styles */
+    .visual-container {
+        position: relative;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .about-image {
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .main-image {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+
+    .image-stack {
+        position: absolute;
+        right: -30px;
+        bottom: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+
+    .stack-image {
+        width: 200px;
+        height: 150px;
+        object-fit: cover;
+        border: 8px solid var(--bg-primary);
+        transform: rotate(3deg);
+        transition: transform 0.3s ease;
+    }
+
+    .stack-image:hover {
+        transform: rotate(0deg) scale(1.05);
+    }
+
+    /* Responsive Adjustments */
+    @media screen and (max-width: 1024px) {
+        .about-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .visual-container {
+            margin-top: var(--spacing-2xl);
+        }
+
+        .image-stack {
+            right: 0;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        .milestone-grid {
+            grid-template-columns: 1fr;
+            gap: var(--spacing-md);
+        }
+
+        .about-headline {
+            font-size: var(--font-size-2xl);
+        }
+
+        .about-text {
+            font-size: var(--font-size-base);
+        }
+
+        .image-stack {
+            display: none;
+        }
+    }
+
+    /* Partner Section Styles */
+    .partners-section {
+        margin-top: var(--spacing-4xl);
+    }
+
+    .partners-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: var(--spacing-xl);
+        margin-top: var(--spacing-xl);
+    }
+
+    .partner-card {
+        background: var(--bg-primary);
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease;
+    }
+
+    .partner-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .partner-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+
+    .partner-info {
+        padding: var(--spacing-lg);
+    }
+
+    .partner-name {
+        font-family: var(--font-headline);
+        font-size: var(--font-size-lg);
+        color: var(--text-primary);
+        margin-bottom: var(--spacing-xs);
+    }
+
+    .partner-location {
+        font-family: var(--font-body);
+        font-size: var(--font-size-base);
+        color: var(--text-secondary);
+        margin-bottom: var(--spacing-xs);
+    }
+
+    .partner-benefit {
+        font-family: var(--font-alt-bold);
+        font-size: var(--font-size-sm);
+        color: var(--orange-600);
+        padding-top: var(--spacing-sm);
+        border-top: 1px solid var(--grey-200);
+    }
+
+    /* Responsive Adjustments */
+    @media screen and (max-width: 768px) {
+        .partners-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .partner-card {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+    }
+
+    /* Quick Navigation Styles */
+    .quick-nav {
+        position: sticky;
+        top: 0;
+        background: var(--bg-primary);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        padding: var(--spacing-sm) 0;
+    }
+
+    .quick-nav-container {
+        max-width: var(--container-width);
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        gap: var(--spacing-xl);
+        padding: 0 var(--spacing-lg);
+    }
+
+    .quick-nav-link {
+        font-family: var(--font-alt-bold);
+        font-size: var(--font-size-sm);
+        color: var(--text-secondary);
+        text-decoration: none;
+        padding: var(--spacing-xs) var(--spacing-sm);
+        border-radius: 20px;
+        transition: all 0.3s ease;
+    }
+
+    .quick-nav-link:hover {
+        color: var(--orange-600);
+        background: var(--orange-tint);
+    }
+
+    .quick-nav-link.active {
+        color: var(--orange-600);
+        background: var(--orange-tint);
+    }
+
+    /* Add smooth scrolling to the page */
+    html {
+        scroll-behavior: smooth;
+    }
+
+    /* Responsive Adjustments */
+    @media screen and (max-width: 768px) {
+        .quick-nav-container {
+            gap: var(--spacing-md);
+            overflow-x: auto;
+            justify-content: flex-start;
+            padding-bottom: var(--spacing-xs); /* For scroll bar */
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .quick-nav-link {
+            white-space: nowrap;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        .book-card {
+            pointer-events: none; /* Disable click events */
+        }
+        
+        .book-overlay {
+            transform: translateY(0); /* Always show the overlay */
+            background: linear-gradient(
+                transparent,
+                rgba(0, 0, 0, 0.9) 40%
+            );
+            padding: var(--spacing-md);
+        }
+
+        .details-button {
+            display: none; /* Hide the details button */
+        }
+
+        .book-title {
+            font-size: var(--font-size-base);
+        }
+
+        .book-author {
+            font-size: var(--font-size-sm);
+        }
+    }
+</style>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Serif+Pro:wght@400;700&family=Libre+Baskerville:wght@400;700&family=Lora:wght@400;700&family=Montserrat:wght@400;700&family=Open+Sans:wght@400;700&family=Abril+Fatface&display=swap" rel="stylesheet">
+
+<section class="book-club-main">
+
+    <nav class="quick-nav">
+        <div class="quick-nav-container">
+            <a href="#about" class="quick-nav-link">Our Story</a>
+            <a href="#featured" class="quick-nav-link">Book of the Month</a>
+            <a href="#events" class="quick-nav-link">Events</a>
+            <a href="#community" class="quick-nav-link">Community</a>
+        </div>
+    </nav>
+
+    <div class="book-club-container">
+        <!-- Hero Section -->
+        <div class="hero">
+            <div class="hero-illustration">
+                <svg width="400" height="300" viewBox="0 0 400 300">
+                    <!-- Book stack illustration -->
+                    <path class="book-1" d="M100,200 h200 v30 h-200 z" fill="var(--blue-500)"/>
+                    <path class="book-2" d="M80,170 h240 v30 h-240 z" fill="var(--orange-500)"/>
+                    <path class="book-3" d="M120,140 h180 v30 h-180 z" fill="var(--blue-300)"/>
+                    <path class="book-4" d="M90,110 h220 v30 h-220 z" fill="var(--orange-300)"/>
+                    <!-- Add subtle shadow -->
+                    <path class="shadow" d="M70,230 h260 v10" fill="rgba(0,0,0,0.1)"/>
+                </svg>
+            </div>
+            <div class="hero-content">
+                <h1 class="hero-title">Welcome to <span class="accent-text">Chapter Club</span></h1>
+                <p class="hero-subtitle">Where stories bring people together</p>
+                <button class="cta-button">Join Our Club</button>
+            </div>
+        </div>
+
+        <!-- After hero section, before featured books -->
+        <section id="about" class="about-section">
+            <div class="about-container">
+                <h2 class="section-title">Our Story</h2>
+                
+                <div class="about-grid">
+                    <!-- Story Column -->
+                    <div class="about-content">
+                        <h3 class="about-headline">A Community of Readers <span class="accent-text">Since 2018</span></h3>
+                        <p class="about-text">Chapter Club began as a small gathering of book lovers in a local coffee shop. What started with just seven members has grown into a vibrant community of over 300 passionate readers.</p>
+                        
+                        <div class="milestone-grid">
+                            <div class="milestone">
+                                <span class="milestone-number">300+</span>
+                                <span class="milestone-label">Active Members</span>
+                            </div>
+                            <div class="milestone">
+                                <span class="milestone-number">150+</span>
+                                <span class="milestone-label">Books Discussed</span>
+                            </div>
+                            <div class="milestone">
+                                <span class="milestone-number">48</span>
+                                <span class="milestone-label">Author Visits</span>
+                            </div>
+                        </div>
+
+                        <div class="about-values">
+                            <div class="value-item">
+                                <h4 class="value-title">Diverse Perspectives</h4>
+                                <p class="value-text">We celebrate literature from all cultures and viewpoints, enriching our understanding of the world.</p>
+                            </div>
+                            <div class="value-item">
+                                <h4 class="value-title">Inclusive Community</h4>
+                                <p class="value-text">Every reader's voice matters. We create a welcoming space for meaningful discussions.</p>
+                            </div>
+                            <div class="value-item">
+                                <h4 class="value-title">Literary Growth</h4>
+                                <p class="value-text">From classics to contemporary works, we explore various genres and writing styles.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Visual Column -->
+                    <div class="about-visual">
+                        <div class="visual-container">
+                            <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/05cda43d-5810-4902-9de9-e54cdefbbf81/books-8934573_1920.jpg?content-type=image%2Fjpeg" alt="Historic library interior" class="about-image main-image">
+                            <div class="image-stack">
+                                <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/03aa26c0-d020-48b8-83f6-76bdc161bd0e/pexels-pixabay-159866.jpg?content-type=image%2Fjpeg" alt="Book club meeting" class="about-image stack-image">
+                                <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/3423f948-6807-4379-a8e0-544eeaa12104/pexels-shottrotter-1309778.jpg?content-type=image%2Fjpeg" alt="Reading corner" class="about-image stack-image">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="carousel-container">
+            <h2 class="section-title">Featured Highlights</h2>
+            <div class="carousel">
+                <div class="carousel-track">
+                    <!-- Slide 1 -->
+                    <div class="carousel-slide">
+                        <div class="highlight-card">
+                            <span class="highlight-tag">Next Meeting</span>
+                            <h3 class="highlight-title">The Thursday Book Club</h3>
+                            <p class="highlight-date">Thursday, 7:00 PM</p>
+                            <p class="highlight-desc">Join us for an evening discussing "The Midnight Library"</p>
+                        </div>
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="carousel-slide">
+                        <div class="highlight-card">
+                            <span class="highlight-tag">Featured Book</span>
+                            <h3 class="highlight-title">Project Hail Mary</h3>
+                            <p class="highlight-author">by Andy Weir</p>
+                            <p class="highlight-desc">A thrilling space adventure from the author of The Martian</p>
+                        </div>
+                    </div>
+                    <!-- Slide 3 -->
+                    <div class="carousel-slide">
+                        <div class="highlight-card">
+                            <span class="highlight-tag">Special Event</span>
+                            <h3 class="highlight-title">Author Meet & Greet</h3>
+                            <p class="highlight-date">Saturday, 3:00 PM</p>
+                            <p class="highlight-desc">Virtual Q&A session with bestselling author</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Navigation -->
+                <button class="carousel-nav prev" aria-label="Previous slide">←</button>
+                <button class="carousel-nav next" aria-label="Next slide">→</button>
+                
+                <!-- Indicators -->
+                <div class="carousel-indicators">
+                    <button class="indicator active" aria-label="Slide 1"></button>
+                    <button class="indicator" aria-label="Slide 2"></button>
+                    <button class="indicator" aria-label="Slide 3"></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Featured Book Section -->
+        <div id="featured" class="featured-book">
+            <h2 class="section-title">Book of the Month</h2>
+            <div class="book-highlight">
+                <h3 class="featured-book-title">The Midnight Library</h3>
+                <p class="book-author">by Matt Haig</p>
+                <blockquote class="book-quote">
+                    "Between life and death there is a library"
+                </blockquote>
+                <p class="book-description">A dazzling novel about all the choices that go into a life well lived.</p>
+            </div>
+        </div>
+
+        <div class="book-grid-section">
+            <h2 class="section-title">Recommended Reading</h2>
+            <div class="book-grid">
+                <!-- Book 1 -->
+                <div class="book-card" data-book-id="1">
+                    <img src="https://cdn.imagecomics.com/assets/i/releases/894028/bitter-root-omnibus_c3a9e0b2aa.jpg" alt="Book Cover 1" class="book-cover">
+                    <div class="book-overlay">
+                        <h3 class="book-title">The Silent Patient</h3>
+                        <p class="book-author">Alex Michaelides</p>
+                        <button class="details-button">View Details</button>
+                    </div>
+                </div>
+                <!-- Book 2 -->
+                <div class="book-card" data-book-id="2">
+                    <img src="https://cdn.imagecomics.com/assets/i/releases/577616/bitter-root-vol-2-rage-redemption-tp_1ee8e527a2.jpg" alt="Book Cover 2" class="book-cover">
+                    <div class="book-overlay">
+                        <h3 class="book-title">Klara and the Sun</h3>
+                        <p class="book-author">Kazuo Ishiguro</p>
+                        <button class="details-button">View Details</button>
+                    </div>
+                </div>
+                <!-- Book 3 -->
+                <div class="book-card" data-book-id="3">
+                    <img src="https://cdn.imagecomics.com/assets/i/releases/673223/bitter-root-vol-3-legacy-tp_3e38ce2d44.jpg" alt="Book Cover 3" class="book-cover">
+                    <div class="book-overlay">
+                        <h3 class="book-title">Cloud Cuckoo Land</h3>
+                        <p class="book-author">Anthony Doerr</p>
+                        <button class="details-button">View Details</button>
+                    </div>
+                </div>
+                <!-- Book 4 -->
+                <div class="book-card" data-book-id="4">
+                    <img src="https://cdn.imagecomics.com/assets/i/releases/454969/bitter-root-vol-1-family-business-tp_2c268055ae.jpg" alt="Book Cover 4" class="book-cover">
+                    <div class="book-overlay">
+                        <h3 class="book-title">Tomorrow Will Be Different</h3>
+                        <p class="book-author">Sarah McBride</p>
+                        <button class="details-button">View Details</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal" id="bookModal">
+            <div class="modal-content">
+                <button class="modal-close">&times;</button>
+                <div class="modal-grid">
+                    <div class="modal-image">
+                        <img src="" alt="Book Cover" id="modalBookCover">
+                    </div>
+                    <div class="modal-info">
+                        <h3 class="modal-title"></h3>
+                        <p class="modal-author"></p>
+                        <div class="modal-details">
+                            <p class="modal-description"></p>
+                            <div class="book-metadata">
+                                <span class="book-genre"></span>
+                                <span class="book-pages"></span>
+                                <span class="book-year"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Events -->
+        <div id="events" class="events-section">
+            <h2 class="section-title">Upcoming Events</h2>
+            <div class="events-timeline">
+                <!-- Event 1 -->
+                <div class="event-card">
+                    <div class="event-date">
+                        <span class="date">15</span>
+                        <span class="month">MAY</span>
+                    </div>
+                    <div class="event-content">
+                        <div class="event-tag virtual">Virtual Event</div>
+                        <h3 class="event-title">The Midnight Library Discussion</h3>
+                        <div class="event-details">
+                            <span class="event-time">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                    <path d="M8 0C3.58 0 0 3.58 0 8s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm.5-9.5h-1v4.5l3.5 2.1.66-1.1-2.66-1.6V4.5z"/>
+                                </svg>
+                                7:00 PM EST
+                            </span>
+                            <span class="event-location">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                    <path d="M8 0C4.69 0 2 2.69 2 6c0 4.5 6 10 6 10s6-5.5 6-10c0-3.31-2.69-6-6-6zm0 8.5c-1.38 0-2.5-1.12-2.5-2.5S6.62 3.5 8 3.5s2.5 1.12 2.5 2.5S9.38 8.5 8 8.5z"/>
+                                </svg>
+                                Zoom Meeting
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event 2 -->
+                <div class="event-card">
+                    <div class="event-date">
+                        <span class="date">22</span>
+                        <span class="month">MAY</span>
+                    </div>
+                    <div class="event-content">
+                        <div class="event-tag in-person">In Person</div>
+                        <h3 class="event-title">Author Meet & Greet: Local Writers</h3>
+                        <div class="event-details">
+                            <span class="event-time">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                    <path d="M8 0C3.58 0 0 3.58 0 8s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm.5-9.5h-1v4.5l3.5 2.1.66-1.1-2.66-1.6V4.5z"/>
+                                </svg>
+                                3:00 PM EST
+                            </span>
+                            <span class="event-location">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                    <path d="M8 0C4.69 0 2 2.69 2 6c0 4.5 6 10 6 10s6-5.5 6-10c0-3.31-2.69-6-6-6zm0 8.5c-1.38 0-2.5-1.12-2.5-2.5S6.62 3.5 8 3.5s2.5 1.12 2.5 2.5S9.38 8.5 8 8.5z"/>
+                                </svg>
+                                City Library - Main Hall
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event 3 -->
+                <div class="event-card">
+                    <div class="event-date">
+                        <span class="date">29</span>
+                        <span class="month">MAY</span>
+                    </div>
+                    <div class="event-content">
+                        <div class="event-tag hybrid">Hybrid Event</div>
+                        <h3 class="event-title">Science Fiction Book Club</h3>
+                        <div class="event-details">
+                            <span class="event-time">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                    <path d="M8 0C3.58 0 0 3.58 0 8s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm.5-9.5h-1v4.5l3.5 2.1.66-1.1-2.66-1.6V4.5z"/>
+                                </svg>
+                                6:30 PM EST
+                            </span>
+                            <span class="event-location">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                    <path d="M8 0C4.69 0 2 2.69 2 6c0 4.5 6 10 6 10s6-5.5 6-10c0-3.31-2.69-6-6-6zm0 8.5c-1.38 0-2.5-1.12-2.5-2.5S6.62 3.5 8 3.5s2.5 1.12 2.5 2.5S9.38 8.5 8 8.5z"/>
+                                </svg>
+                                Community Center + Zoom
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- After events section -->
+        <div id="community" class="community-section">
+            <div class="community-content">
+                <h2 class="section-title">Join Our Community</h2>
+                
+                <!-- Benefits Grid -->
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <svg width="40" height="40" viewBox="0 0 40 40" fill="currentColor">
+                                <!-- Book icon -->
+                                <path d="M35 7.5h-7.5V5c0-1.4-1.1-2.5-2.5-2.5h-10C13.6 2.5 12.5 3.6 12.5 5v2.5H5C3.6 7.5 2.5 8.6 2.5 10v25c0 1.4 1.1 2.5 2.5 2.5h30c1.4 0 2.5-1.1 2.5-2.5V10c0-1.4-1.1-2.5-2.5-2.5zM15 5c0-.3.2-.5.5-.5h10c.3 0 .5.2.5.5.5.5.5.5.5v2.5H15V5z"/>
+                            </svg>
+                        </div>
+                        <h3 class="benefit-title">Monthly Book Selections</h3>
+                        <p class="benefit-desc">Carefully curated reads that expand horizons and spark discussions</p>
+                    </div>
+                    
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <svg width="40" height="40" viewBox="0 0 40 40" fill="currentColor">
+                                <!-- Group icon -->
+                                <path d="M20 20c5.5 0 10-4.5 10-10S25.5 0 20 0 10 4.5 10 10s4.5 10 10 10zm-9.4 2C4.7 22 0 26.7 0 32.5V35c0 2.8 2.2 5 5 5h30c2.8 0 5-2.2 5-5v-2.5c0-5.8-4.7-10.5-10.6-10.5H10.6z"/>
+                            </svg>
+                        </div>
+                        <h3 class="benefit-title">Vibrant Community</h3>
+                        <p class="benefit-desc">Connect with fellow book lovers and make lasting friendships</p>
+                    </div>
+                    
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <svg width="40" height="40" viewBox="0 0 40 40" fill="currentColor">
+                                <!-- Calendar icon -->
+                                <path d="M35 4h-4V2c0-1.1-.9-2-2-2h-2c-1.1 0-2 .9-2 2v2H15V2c0-1.1-.9-2-2-2h-2c-1.1 0-2 .9-2 2v2H5C2.2 4 0 6.2 0 9v26c0 2.8 2.2 5 5 5h30c2.8 0 5-2.2 5-5V9c0-2.8-2.2-5-5-5zm1 31c0 .6-.4 1-1 1H5c-.6 0-1-.4-1-1V15h32v20z"/>
+                            </svg>
+                        </div>
+                        <h3 class="benefit-title">Regular Events</h3>
+                        <p class="benefit-desc">Author meet-ups, reading sessions, and themed discussions</p>
+                    </div>
+                </div>
+
+                <!-- Community Gallery -->
+                <div class="community-gallery">
+                    <div class="gallery-text">
+                        <h3 class="gallery-title">Experience the Joy of Reading Together</h3>
+                        <p class="gallery-desc">Join a welcoming community of book enthusiasts where every story leads to meaningful connections and engaging conversations. Whether you're a casual reader or a literary aficionado, there's a place for you at Chapter Club.</p>
+                        <button class="cta-button join-button">Become a Member</button>
+                    </div>
+                    <div class="gallery-grid">
+                        <div class="gallery-item">
+                            <img src="https://images.pexels.com/photos/1015568/pexels-photo-1015568.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Book club meeting in library" class="gallery-img">
+                            <div class="gallery-caption">Monthly Book Discussion</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://images.pexels.com/photos/1813466/pexels-photo-1813466.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Members enjoying coffee and books" class="gallery-img">
+                            <div class="gallery-caption">Coffee & Classics Meetup</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://images.pexels.com/photos/3321796/pexels-photo-3321796.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Author giving a talk" class="gallery-img">
+                            <div class="gallery-caption">Author Visit Series</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonials -->
+                <div class="testimonials">
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"Finding Chapter Club was like discovering a second home. The discussions are always enlightening, and the people are wonderful!"</p>
+                        <p class="testimonial-author">— Sarah M., Member since 2022</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"I've read more diverse books in the past year than in my entire life, thanks to this amazing community."</p>
+                        <p class="testimonial-author">— James L., Member since 2021</p>
+                    </div>
+                </div>
+
+                <!-- Add inside community-section, after testimonials -->
+                <div class="partners-section">
+                    <h3 class="section-title">Nos Librairies Partenaires</h3>
+                    <div class="partners-grid">
+                        <div class="partner-card">
+                            <img src="https://images.pexels.com/photos/1813466/pexels-photo-1813466.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Librairie du Centre" class="partner-image">
+                            <div class="partner-info">
+                                <h4 class="partner-name">Librairie du Centre</h4>
+                                <p class="partner-location">42 Rue Saint-Denis</p>
+                                <p class="partner-benefit">10% de réduction pour les membres</p>
+                            </div>
+                        </div>
+                        
+                        <div class="partner-card">
+                            <img src="https://images.pexels.com/photos/1813466/pexels-photo-1813466.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Les Mots Voyageurs" class="partner-image">
+                            <div class="partner-info">
+                                <h4 class="partner-name">Les Mots Voyageurs</h4>
+                                <p class="partner-location">15 Avenue des Livres</p>
+                                <p class="partner-benefit">Événements exclusifs mensuels</p>
+                            </div>
+                        </div>
+                        
+                        <div class="partner-card">
+                            <img src="https://images.pexels.com/photos/1813466/pexels-photo-1813466.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Page & Plume" class="partner-image">
+                            <div class="partner-info">
+                                <h4 class="partner-name">Page & Plume</h4>
+                                <p class="partner-location">8 Rue des Écrivains</p>
+                                <p class="partner-benefit">Ateliers d'écriture gratuits</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Example Reading Stats -->
+        <div class="reading-stats">
+            <p class="statistics">324 Members • 12 Active Clubs • 156 Books Read</p>
+        </div>
+    </div>
+</section>
+
+
+<script>
+
+const bookData = {
+    1: {
+        title: "The Silent Patient",
+        author: "Alex Michaelides",
+        description: "A woman shoots her husband five times and then never speaks another word. A criminal psychotherapist is determined to uncover her motive.",
+        genre: "Psychological Thriller",
+        pages: "336 pages",
+        year: "2019",
+        cover: "https://cdn.imagecomics.com/assets/i/releases/894028/bitter-root-omnibus_c3a9e0b2aa.jpg"
+    },
+    2: {
+        title: "Klara and the Sun",
+        author: "Kazuo Ishiguro",
+        description: "From the Nobel Prize-winning author, a story about an artificial friend with outstanding observational qualities, who watches the world eagerly learning all she can about human behavior.",
+        genre: "Literary Fiction",
+        pages: "320 pages",
+        year: "2021",
+        cover: "https://cdn.imagecomics.com/assets/i/releases/577616/bitter-root-vol-2-rage-redemption-tp_1ee8e527a2.jpg"
+    },
+    3: {
+        title: "Cloud Cuckoo Land",
+        author: "Anthony Doerr",
+        description: "A masterpiece about children on the cusp of adulthood in a broken world, who find resilience, hope, and story. Spanning centuries and continents.",
+        genre: "Historical Fiction",
+        pages: "640 pages",
+        year: "2021",
+        cover: "https://cdn.imagecomics.com/assets/i/releases/673223/bitter-root-vol-3-legacy-tp_3e38ce2d44.jpg"
+    },
+    4: {
+        title: "Tomorrow Will Be Different",
+        author: "Sarah McBride",
+        description: "A timely and captivating memoir about gender identity, love, and fighting for equality, written by a leading activist in the transgender movement.",
+        genre: "Memoir",
+        pages: "288 pages",
+        year: "2018",
+        cover: "https://cdn.imagecomics.com/assets/i/releases/454969/bitter-root-vol-1-family-business-tp_2c268055ae.jpg"
+    }
+};
+
+// Featured Events Carousel
+document.addEventListener('DOMContentLoaded', function() {
+    const track = document.querySelector('.carousel-track');
+    const slides = document.querySelectorAll('.carousel-slide');
+    const nextButton = document.querySelector('.carousel-nav.next');
+    const prevButton = document.querySelector('.carousel-nav.prev');
+    const indicators = document.querySelectorAll('.indicator');
+    
+    let currentIndex = 0;
+    const slideCount = slides.length;
+    
+    function updateCarousel() {
+        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+        
+        // Update indicators
+        indicators.forEach((indicator, index) => {
+            indicator.classList.toggle('active', index === currentIndex);
+        });
+    }
+    
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % slideCount;
+        updateCarousel();
+    }
+    
+    function prevSlide() {
+        currentIndex = (currentIndex - 1 + slideCount) % slideCount;
+        updateCarousel();
+    }
+    
+    // Event Listeners
+    nextButton?.addEventListener('click', nextSlide);
+    prevButton?.addEventListener('click', prevSlide);
+    
+    indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => {
+            currentIndex = index;
+            updateCarousel();
+        });
+    });
+    
+    // Optional: Auto-advance slides
+    const autoAdvance = setInterval(nextSlide, 5000);
+    
+    // Pause auto-advance on hover
+    track.addEventListener('mouseenter', () => clearInterval(autoAdvance));
+});
+
+// Book Details Modal
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('bookModal');
+    const bookCards = document.querySelectorAll('.book-card');
+    const modalClose = document.querySelector('.modal-close');
+
+    bookCards.forEach(card => {
+        card.addEventListener('click', () => {
+            const bookId = card.dataset.bookId;
+            const book = bookData[bookId];
+            
+            // Populate modal content
+            document.getElementById('modalBookCover').src = book.cover;
+            modal.querySelector('.modal-title').textContent = book.title;
+            modal.querySelector('.modal-author').textContent = book.author;
+            modal.querySelector('.modal-description').textContent = book.description;
+            modal.querySelector('.book-genre').textContent = book.genre;
+            modal.querySelector('.book-pages').textContent = book.pages;
+            modal.querySelector('.book-year').textContent = book.year;
+            
+            // Show modal
+            modal.classList.add('active');
+        });
+    });
+
+    // Close modal when clicking close button or outside
+    modalClose.addEventListener('click', () => {
+        modal.classList.remove('active');
+    });
+
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.classList.remove('active');
+        }
+    });
+});
+</script>
