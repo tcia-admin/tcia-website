@@ -1,5 +1,5 @@
 <section id="about-page">
-    <canvas id="star-background"></canvas>
+    <canvas id="star-background" style="display:none;"></canvas>
     <div id="content">
         <div id="title-container">
             <h1 id="main-title"></h1>
@@ -83,16 +83,17 @@
         background-color: transparent;
         color: var(--text-color);
         padding-top: 0;
+        z-index: 0;
+        overflow: hidden;
     }
 
     #star-background {
-        position: fixed;
+        position: absolute;
         top: 0;
         left: 0;
         width: 100vw;
         height: 100vh;
         z-index: -1;
-        pointer-events: none;
         background-color: black;
     }
 
@@ -242,6 +243,10 @@
         font-family: 'Arial', sans-serif;
         transition: transform 0.3s ease-out, box-shadow 0.3s ease-in-out;
         border-radius: 10px;
+        will-change: transform;
+        transform: translateZ(0);
+        backface-visibility: hidden;
+        z-index: 1000;
     }
 
     .team-member-card:nth-child(odd) {
@@ -270,7 +275,6 @@
         -webkit-backface-visibility: hidden;
         backface-visibility: hidden;
         border-radius: 10px;
-        overflow: hidden;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -289,6 +293,8 @@
         color: white;
         transform: rotateY(180deg);
         cursor: pointer;
+        pointer-events: auto !important;
+        z-index: 10;
     }
 
     .member-image {
@@ -668,8 +674,148 @@
     .team-member-card.board-member .member-image {
         border: 2px solid #C0C0C0;
     }
+
+    /* Reduce animation complexity */
+    @media (prefers-reduced-motion: reduce) {
+        .team-member-card, .card-inner {
+            transform: none;
+            transition: none;
+        }
+        
+        #star-background {
+            display: none;
+        }
+    }
 </style>
+
+<script>
+    // Improved error handler that handles null errors better
+    window.addEventListener('error', function(e) {
+        console.error('Global error handler:', e.error || e.message || 'Unknown error', e);
+    });
+    
+    // Throttle the star background animation
+    let lastFrame = 0;
+    const FRAME_LIMIT = 1000 / 30; // 30 FPS limit
+    
+    function throttleAnimation(timestamp) {
+        if (timestamp - lastFrame < FRAME_LIMIT) return;
+        lastFrame = timestamp;
+        // Original animation code here
+    }
+</script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
-<script src="https://leon-tcia.github.io/tcia-js-files/tcia-about-new.js" defer></script>
+<!-- Add defer and async to prevent blocking -->
+<script src="https://leon-tcia.github.io/tcia-js-files/tcia-about-new.js" defer async></script>
+
+<script>
+    // Add this after your existing error handler
+    document.addEventListener('DOMContentLoaded', () => {
+        const images = document.querySelectorAll('.member-image, .popup-image');
+        
+        if ('loading' in HTMLImageElement.prototype) {
+            // Browser supports native lazy loading
+            images.forEach(img => {
+                img.loading = 'lazy';
+                img.decoding = 'async'; // Add async decoding for better performance
+            });
+        } else {
+            // Fallback for browsers that don't support lazy loading
+            const script = document.createElement('script');
+            script.src = 'https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js';
+            script.onload = () => {
+                const observer = lozad(images);
+                observer.observe();
+            };
+            document.body.appendChild(script);
+        }
+    });
+</script>
+
+<script>
+    // Add this before loading the external JS
+    let retryCount = 0;
+    const maxRetries = 3;
+
+    function checkAndInitializeTeamMembers() {
+        const teamContainer = document.getElementById('team-members');
+        if (!teamContainer) return;
+
+        // If container is empty and we haven't exceeded max retries
+        if (!teamContainer.children.length && retryCount < maxRetries) {
+            retryCount++;
+            console.log(`Attempt ${retryCount} to initialize team members`);
+
+            // Remove and re-add the script to force a reload
+            const oldScript = document.querySelector('script[src*="tcia-about-new.js"]');
+            if (oldScript) {
+                oldScript.remove();
+                
+                const newScript = document.createElement('script');
+                newScript.src = 'https://leon-tcia.github.io/tcia-js-files/tcia-about-new.js';
+                newScript.onload = () => {
+                    console.log('Script reloaded successfully');
+                };
+                newScript.onerror = () => {
+                    console.error('Script reload failed');
+                };
+                document.body.appendChild(newScript);
+            }
+        }
+    }
+
+    // Check immediately after DOM is ready
+    document.addEventListener('DOMContentLoaded', () => {
+        // Initial check
+        checkAndInitializeTeamMembers();
+
+        // Set up additional checks
+        setTimeout(checkAndInitializeTeamMembers, 1000);
+        setTimeout(checkAndInitializeTeamMembers, 2000);
+    });
+
+    // Also check when the window loads completely
+    window.addEventListener('load', checkAndInitializeTeamMembers);
+</script>
+
+<!-- Modify the script tag to add an ID and error handling -->
+<script 
+    src="https://leon-tcia.github.io/tcia-server-files/tcia-about-new.js" 
+    onerror="checkAndInitializeTeamMembers()"
+    id="tcia-main-script">
+</script>
+
+<script>
+    // Add this after your existing scripts to handle ResizeObserver errors
+    (function() {
+        // Detect and suppress ResizeObserver loop limit errors
+        const consoleError = window.console.error;
+        window.console.error = function(message) {
+            if (message && typeof message === 'string' && 
+                message.indexOf('ResizeObserver loop') !== -1) {
+                // Ignore ResizeObserver loop errors
+                return;
+            }
+            consoleError.apply(this, arguments);
+        };
+        
+        // Create a debounced resize handler for any ResizeObserver usage
+        window.createDebouncedResizeObserver = function(callback, delay = 100) {
+            let timeoutId;
+            
+            const observer = new ResizeObserver(entries => {
+                // Clear any existing timeout
+                clearTimeout(timeoutId);
+                
+                // Set a new timeout to run the callback
+                timeoutId = setTimeout(() => {
+                    callback(entries);
+                }, delay);
+            });
+            
+            return observer;
+        };
+    })();
+</script>
