@@ -195,13 +195,15 @@
         overflow-x: hidden;  /* Prevent horizontal scrolling within sections */
     }
 
-    /* Alternating Background Colors for Visual Separation */
     .notice-intro {
         position: relative;
-        width: 100%;
-        min-height: 100vh; /* Ensures full viewport height */
-        overflow: hidden; /* Prevents video from spilling out */
-        background-color: var(--notice-bg-primary);
+        min-height: 80vh;
+        display: flex;
+        align-items: center;
+        background-image: url('https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/6e391794-d948-42f7-9101-012d7949d059/AdobeStock_880759896.jpeg?content-type=image%2Fjpeg'); 
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
         margin: 0; /* Ensure no margins */
         padding-top: var(--nav-height);
         top: 0; /* Align to top */
@@ -317,6 +319,42 @@
         transform: scaleX(1);
     }
 
+    /* Temporary About Us Section */
+    .notice-aboutus-temp {
+    background-color: var(--notice-bg-primary);
+    padding: var(--spacing-3xl) 0;
+    }
+
+    .notice-aboutus-temp .section-title {
+        text-align: center;
+        margin-bottom: var(--spacing-2xl); /* Might want to adjust spacing for centered title */
+    }
+
+
+
+    .origin-story-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--spacing-2xl);
+        margin-bottom: var(--spacing-2xl);
+    }
+
+    .story-column {
+        color: var(--notice-text-primary);
+        font-size: var(--font-size-base);
+        line-height: 1.6;
+    }
+
+    .story-column p {
+        margin-bottom: var(--spacing-lg);
+        font-size: var(--font-size-base);
+        font-weight: var(--font-bold);
+    }
+
+    .story-column p:last-child {
+        margin-bottom: 0;
+    }
+
     /* Newsletter Section Styles */
     .notice-newsletter {
         padding: var(--spacing-3xl) 0;
@@ -427,12 +465,9 @@
         }
 
         .nav-links {
-            /*
             flex-wrap: wrap;
             justify-content: center;
             gap: var(--spacing-md);
-            */
-            display:none;
         }
 
         .nav-cta {
@@ -461,6 +496,15 @@
         .intro-cta-btn {
             width: 100%;
             text-align: center;
+        }
+
+        .origin-story-content {
+            grid-template-columns: 1fr;
+            gap: var(--spacing-xl);
+        }
+
+        .story-column {
+            font-size: var(--font-size-base);
         }
 
         .notice-newsletter {
@@ -492,6 +536,95 @@
             height: 48px;
         }
     }
+
+    .notice-team {
+        padding: var(--spacing-3xl) 0;
+    }
+
+    .team-section {
+        margin-bottom: var(--spacing-3xl);
+    }
+
+    .team-section:last-child {
+        margin-bottom: 0;
+    }
+
+    .team-section-title {
+        font-family: var(--font-accent);
+        font-size: var(--font-size-2xl);
+        color: var(--notice-accent);
+        margin-bottom: var(--spacing-xl);
+    }
+
+    .team-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--spacing-xl);
+    }
+
+    .team-member {
+        background-color: var(--notice-bg-grey-light);
+        padding: var(--spacing-lg);
+        border-radius: 8px;
+        transition: transform 0.3s ease;
+        position: relative; /* Add position relative for modal positioning */
+        cursor: pointer; /* Add cursor pointer to indicate interactivity */
+    }
+
+    .team-member:hover {
+        transform: translateY(-4px);
+    }
+
+    .member-name {
+        font-family: var(--font-accent);
+        font-size: var(--font-size-xl);
+        color: var(--notice-white);
+        margin-bottom: var(--spacing-xs);
+    }
+
+    .member-role {
+        font-size: var(--font-size-base);
+        color: var(--notice-text-secondary);
+    }
+
+    /* Add styles for the member image modal */
+    .member-image-modal {
+        position: absolute;
+        top: -150px;
+        left: 50%;
+        transform: translateX(-50%) scale(0);
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        opacity: 0;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        z-index: 100;
+        background-color: var(--notice-bg-secondary);
+        border: 3px solid var(--notice-accent);
+    }
+
+    .member-image-modal img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .team-member:hover .member-image-modal {
+        transform: translateX(-50%) scale(1);
+        opacity: 1;
+    }
+
+    @media screen and (max-width: 768px) {
+        .team-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .team-section {
+            margin-bottom: var(--spacing-2xl);
+        }
+    }
 </style>
 
 <section class="notice-coalition-main">
@@ -503,13 +636,11 @@
             </a>
             
             <div class="nav-links">
-                <a href="#about">About</a>
-                <a href="#initiatives">Initiatives</a>
-                <a href="#news">News & Events</a>
-                <a href="#resources">Resources</a>
+                <a href="#about">About Us</a>
+                <a href="#team">Our Team</a>
             </div>
 
-            <span class="notice-btn nav-cta invisible">Connect With Us</span>
+            <!--<span class="notice-btn nav-cta invisible">Connect With Us</span>-->
         </div>
     </nav>
     
@@ -519,12 +650,11 @@
         <div class="section-content intro-content">
             <div class="intro-text-container">
                 <h1 class="intro-catchphrase">
-                    TURNING IDEAS INTO<br>
-                    ACTION
+                    LEARN ABOUT NOTICE COALITION
                 </h1>
                 <div class="intro-cta-container">
                     <p class="intro-cta-text">
-                        Perhaps use this space to describe the goal or purpose of initiatives.
+                        
                     </p>
                     <!--<a href="/noticecoalition/get-involved" class="notice-btn intro-cta-btn">GET INVOLVED</a>-->
                 </div>
@@ -532,7 +662,104 @@
         </div>
     </section>
 
- 
+
+    <section class="notice-aboutus-temp" id="about">
+        <div class="section-content">
+            <h2 class="section-title">ABOUT US</h2>
+            <div class="origin-story-content">
+                <div class="story-column">
+                    <p>The NOTICE Coalition: No Tech Criminalization in Education is a national network of advocates, researchers and organizers building a movement to end youth surveillance in schools and defend youth justice in the digital age. We empower Black, Brown, Indigenous, disabled, LGBTQIA+ and other historically marginalized people to build liberated futures.</p>
+                </div>
+                <div class="story-column">
+                    <p>Since 2021, the NOTICE Coalition has sounded the alarm on the impact of police surveillance, digital pushout, and data criminalization on the rights and freedoms of youth and young adults in public education and beyond.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="notice-team" id="team">
+        <div class="section-content">
+            <h2 class="section-title">OUR TEAM</h2>
+
+            <!-- Leadership Team Section -->
+            <div class="team-section">
+                <h3 class="team-section-title">Leadership Team</h3>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="member-image-modal">
+                            <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/5540b7ab-5b4b-489f-bbe7-77e3dbf2f131/Marika-2.jpeg?content-type=image%2Fjpeg" alt="Marika">
+                        </div>
+                        <h4 class="member-name">Marika</h4>
+                        <p class="member-role">Co-Founder</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-image-modal">
+                            <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/c2883652-abc2-4304-80e7-8196134100fe/Clarence+Okoh.png?content-type=image%2Fpng" alt="Clarence">
+                        </div>
+                        <h4 class="member-name">Clarence</h4>
+                        <p class="member-role">Co-Founder</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-image-modal">
+                            <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/0424f978-c6c8-437a-b310-bf03f110d3cc/Notice+Logo+Design+F-02.png?content-type=image%2Fpng" alt="Ed">
+                        </div>
+                        <h4 class="member-name">Ed</h4>
+                        <p class="member-role">Leadership Team</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-image-modal">
+                            <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/1cb385a7-00fb-4d21-b3b1-ca9e91113403/DN-Chelsea-Barabas--removebg-preview.png?content-type=image%2Fpng" alt="Chelsea">
+                        </div>
+                        <h4 class="member-name">Chelsea</h4>
+                        <p class="member-role">Leadership Team</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-image-modal">
+                            <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/0424f978-c6c8-437a-b310-bf03f110d3cc/Notice+Logo+Design+F-02.png?content-type=image%2Fpng" alt="Chelsea">
+                        </div>
+                        <h4 class="member-name">Rian</h4>
+                        <p class="member-role">No Data About Us Without Us</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-image-modal">
+                            <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/0424f978-c6c8-437a-b310-bf03f110d3cc/Notice+Logo+Design+F-02.png?content-type=image%2Fpng" alt="Sophie">
+                        </div>
+                        <h4 class="member-name">Sophie</h4>
+                        <p class="member-role">No Data About Us Without Us</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interns Section -->
+            <div class="team-section">
+                <h3 class="team-section-title">Interns</h3>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="member-image-modal">
+                            <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/0424f978-c6c8-437a-b310-bf03f110d3cc/Notice+Logo+Design+F-02.png?content-type=image%2Fpng" alt="Ariah">
+                        </div>
+                        <h4 class="member-name">Ariah</h4>
+                        <p class="member-role">Intern</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-image-modal">
+                            <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/0424f978-c6c8-437a-b310-bf03f110d3cc/Notice+Logo+Design+F-02.png?content-type=image%2Fpng" alt="m">
+                        </div>
+                        <h4 class="member-name">Makkah</h4>
+                        <p class="member-role">Intern</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-image-modal">
+                            <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/0424f978-c6c8-437a-b310-bf03f110d3cc/Notice+Logo+Design+F-02.png?content-type=image%2Fpng" alt="Ellie Spangler">
+                        </div>
+                        <h4 class="member-name">Ellie</h4>
+                        <p class="member-role">Intern</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Newsletter Section -->
     <section class="notice-newsletter">
@@ -548,8 +775,21 @@
                 <a href="https://www.linkedin.com/company/no-tech-criminalization-in-education-notice-coalition/?viewAsMember=true" target="_blank" rel="noopener noreferrer" class="social-icon">
                     <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/e21f8602-46df-4d45-ae36-3abea3853857/254394.png?content-type=image%2Fpng" alt="LinkedIn">
                 </a>
+                <!--
                 <a href="https://x.com/NOTICETCIA" target="_blank" rel="noopener noreferrer" class="social-icon">
                     <i class="fa-brands fa-square-x-twitter"></i>
+                </a>
+                -->
+                <a href="https://bsky.app/profile/noticecoalition.bsky.social" target="_blank" rel="noopener noreferrer" class="social-icon">
+                    <i class="fa-brands fa-bluesky"></i>
+                </a>
+
+                <a href="mailto:thenoticecoalition@gmail.com" target="_blank" rel="noopener noreferrer" class="social-icon">
+                    <i class="fa-solid fa-envelope"></i>
+                </a>
+
+                <a href="https://thenoticecoalition.substack.com/" target="_blank" rel="noopener noreferrer" class="social-icon">
+                    <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/211166a9-1777-4257-9e9e-4d912133cc4b/substack-icon.png?content-type=image%2Fpng" alt="Substack">
                 </a>
             </div>
             

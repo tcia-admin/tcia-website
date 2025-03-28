@@ -30,6 +30,9 @@
         --font-size-2xl: 1.5rem;
         --font-size-3xl: 2rem;
         --font-size-4xl: 2.5rem;
+        --font-size-5xl: 3rem;
+        --font-size-6xl: 3.5rem;
+        --font-size-7xl: 4rem;
         --font-size-8xl: 4.5rem;
         --font-size-12xl: 6rem;
 
@@ -66,6 +69,17 @@
         padding: 0;
         box-sizing: border-box;
     }
+
+    html, body {
+        overflow-x: hidden;  /* Prevent horizontal scrolling */
+        position: relative;  /* Create new stacking context */
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        overscroll-behavior-x: none;  /* Prevent horizontal overscroll */
+        touch-action: pan-y pinch-zoom;  /* Only allow vertical touch actions */
+    }
+
 
     html {
         scroll-behavior: smooth;
@@ -182,6 +196,7 @@
     .notice-coalition-main > section {
         width: 100%;
         padding: var(--spacing-2xl) 0; /* Remove horizontal padding */
+        overflow-x: hidden;  /* Prevent horizontal scrolling within sections */
     }
 
     /* Intro Section Styles */
@@ -190,10 +205,16 @@
         min-height: 80vh;
         display: flex;
         align-items: center;
-        background-image: url('https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/33d8803b-19ba-43ca-b068-d454a4771440/SPEAKER+SERIES+STOCK+IMAGE.jpg?content-type=image%2Fjpeg'); /* Add your background image URL */
+        background-image: url('https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/33d8803b-19ba-43ca-b068-d454a4771440/SPEAKER+SERIES+STOCK+IMAGE.jpg?content-type=image%2Fjpeg');
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        overflow: hidden;
+        left: 0;
+        right: 0;
     }
 
     /* Add an overlay to ensure text remains readable */
@@ -225,23 +246,32 @@
 
     .intro-catchphrase {
         font-family: var(--font-accent);
-        font-size: var(--font-size-8xl);
+        font-size: var(--font-size-7xl);
         color: var(--notice-white);
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        letter-spacing: 0.02em;
-        line-height: 0.9;
+        letter-spacing: 0.08em;
+        line-height: 1.2;
         text-transform: uppercase;
         text-align: left;
         border-bottom: 4px solid var(--notice-white);
         padding-bottom: var(--spacing-lg);
         margin-bottom: var(--spacing-xl);
+        white-space: normal;
+        word-wrap: break-word;
+        max-width: 100%;
+    }
+
+    .series-subtitle {
+        display: block;
+        margin-top: var(--spacing-md);
     }
 
     .intro-cta-container {
         display: flex;
         justify-content: space-between;
-        align-items: center;
+        align-items: flex-start;
         gap: var(--spacing-xl);
+        flex-wrap: wrap;
     }
 
     .intro-cta-text {
@@ -250,24 +280,28 @@
         font-weight: var(--font-bold);
         max-width: 60%;
         text-align: left;
+        min-width: 300px;
     }
 
-    .intro-buttons {
+    .intro-cta-buttons {
         display: flex;
         gap: var(--spacing-md);
+        flex-wrap: wrap;
+        flex: 1;
+        justify-content: flex-end;
     }
 
     .intro-cta-btn {
-        flex-shrink: 0;
-        font-size: var(--font-size-lg);
-        padding: var(--spacing-md) var(--spacing-xl);
+        flex: 1;
+        min-width: 200px;
+        max-width: 300px;
+        text-align: center;
+        white-space: nowrap;
         background-color: transparent;
         border: 2px solid var(--notice-accent);
         color: var(--notice-accent);
-        transition: all 0.3s ease;
-        border-radius: 4px;
-        text-decoration: none;
     }
+
 
     .intro-cta-btn:hover {
         background-color: var(--notice-accent);
@@ -404,6 +438,25 @@
             /* Adjust spacing for tablet */
             --container-padding: 2rem;
         }
+
+        .intro-cta-container {
+            flex-direction: column;
+            gap: var(--spacing-lg);
+        }
+
+        .intro-cta-text {
+            max-width: 100%;
+            min-width: unset;
+        }
+
+        .intro-cta-buttons {
+            width: 100%;
+            justify-content: flex-start;
+        }
+
+        .intro-cta-btn {
+            min-width: 150px;
+        }
     }
 
     @media screen and (max-width: 768px) {
@@ -413,10 +466,17 @@
             --font-size-4xl: 2rem;
             --font-size-3xl: 1.75rem;
             --font-size-2xl: 1.25rem;
+            --font-size-7xl: 2.5rem;
         }
 
         .notice-coalition-main > section {
             padding: var(--spacing-xl) var(--spacing-md);
+        }
+
+        .notice-coalition-main {
+            margin-left: 0;
+            width: 100%;
+            padding-top: var(--nav-height); /* Add space for mobile nav */
         }
 
         /* Navigation Styles */
@@ -430,9 +490,12 @@
         }
 
         .nav-links {
+            /*
             flex-wrap: wrap;
             justify-content: center;
             gap: var(--spacing-md);
+            */
+            display:none;
         }
 
         .nav-cta {
@@ -440,32 +503,53 @@
         }
 
         /* Intro Section Styles */
-        .intro-catchphrase {
-            font-size: calc(var(--font-size-4xl) * 0.8);
-            letter-spacing: 0.1em;
-            line-height: 1.6;
-            margin-bottom: var(--spacing-lg);
+        .notice-intro {
+            width: 100%;
+            left: 0;
+            right: 0;
+            margin: 0;
+            padding: 0;
+            position: relative;
         }
-
-        .intro-cta-container {
-            flex-direction: column;
-            gap: var(--spacing-lg);
+        
+        .intro-content {
+            width: 100%;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            position: relative;
         }
-
-        .intro-cta-text {
+        
+        .intro-text-container {
             max-width: 100%;
-            font-size: var(--font-size-lg);
+            padding: var(--spacing-md);
             text-align: center;
         }
-
-        .intro-buttons {
-            flex-direction: column;
-            width: 100%;
+        
+        .intro-catchphrase {
+            font-size: var(--font-size-7xl);
+            letter-spacing: 0.05em; /* Reduce letter spacing on mobile */
+            padding-bottom: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+            text-align: center;
+        }
+        
+        .series-subtitle {
+            margin-top: var(--spacing-sm);
+        }
+        
+        .intro-cta-text {
+            text-align: center;
+        }
+        
+        .intro-cta-buttons {
+            justify-content: center;
         }
 
         .intro-cta-btn {
             width: 100%;
-            text-align: center;
+            max-width: none;
+            margin-bottom: var(--spacing-sm);
         }
 
         .notice-newsletter {
@@ -806,6 +890,36 @@
         padding: 0;
         display: block;
     }
+
+    /* Add intermediate breakpoint for smoother transition */
+    @media screen and (max-width: 1200px) {
+        .intro-catchphrase {
+            font-size: var(--font-size-6xl);
+        }
+    }
+
+    @media screen and (max-width: 1024px) {
+        .intro-catchphrase {
+            font-size: var(--font-size-5xl);
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        :root {
+            --font-size-7xl: 2.5rem;
+        }
+
+        .intro-catchphrase {
+            font-size: var(--font-size-7xl);
+            letter-spacing: 0.05em; /* Reduce letter spacing on mobile */
+            padding-bottom: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .series-subtitle {
+            margin-top: var(--spacing-sm);
+        }
+    }
 </style>
 
 <section class="notice-coalition-main">
@@ -828,15 +942,14 @@
         <div class="section-content intro-content">
             <div class="intro-text-container">
                 <h1 class="intro-catchphrase">
-                    ENDING YOUTH<br>
-                    SURVEILLANCE<br>
+                    ENDING YOUTH SURVEILLANCE<br>
                     <span class="series-subtitle">SPEAKER SERIES</span>
                 </h1>
                 <div class="intro-cta-container">
                     <p class="intro-cta-text">
                         Join leading experts and advocates in the fight against surveillance technologies in educational spaces.
                     </p>
-                    <div class="intro-buttons">
+                    <div class="intro-cta-buttons">
                         <a href="" class="notice-btn register-btn intro-cta-btn">REGISTER FOR EVENTS</a>
                         <a href="#past-talks" class="notice-btn intro-cta-btn secondary">WATCH PAST TALKS</a>
                     </div>
@@ -852,37 +965,40 @@
             <h2 class="section-title">UPCOMING SPEAKERS & EVENTS</h2>
             
             <div class="speakers-grid">
-                <article class="speaker-card">
-                    <div class="speaker-flyer">
-                        <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/9e124ee7-f112-4884-a9bb-83c063a10516/Ending+Youth+Surveillance+Series+Flyers.jpg?content-type=image%2Fjpeg" alt="February Speaker Series Event Flyer">
-                        <div class="event-countdown">
-                            <span class="countdown-value">10</span>
-                            <span class="countdown-label">Days Until Event</span>
-                        </div>
-                    </div>
-                    <div class="speaker-details">
-                        <h3 class="event-date" data-event-datetime="2025-01-30T19:00:00-05:00">January 30, 2025 • 5:30 PM EST</h3>
-                        <h4 class="speaker-name">Dr. Rua Williams</h4>
-                        <p class="event-topic">Disability Justice & Tech</p>
-                        <a href="" class="notice-btn register-btn">Register Now</a>
-                    </div>
-                </article>
 
                 <article class="speaker-card">
                     <div class="speaker-flyer">
-                        <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/e4f97b6e-a0f6-4bf7-bd2c-d15df15a2a38/EYS+-+Kert+Bertash+-+Flyer.jpg?content-type=image%2Fjpeg" alt="February Speaker Series Event Flyer">
+                        <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/eb023378-3b89-41ea-9885-a031bf768588/EYS+-+4.png?content-type=image%2Fpng" alt="February Speaker Series Event Flyer">
                         <div class="event-countdown">
                             <span class="countdown-value">10</span>
                             <span class="countdown-label">Days Until Event</span>
                         </div>
                     </div>
                     <div class="speaker-details">
-                        <h3 class="event-date" data-event-datetime="2025-02-13T17:30:00-05:00">February 13, 2025 • 5:30 PM EST</h3>
-                        <h4 class="speaker-name">Kate Bertash</h4>
-                        <p class="event-topic">Ancestral Technologies of Uprising/Resistance</p>
+                        <h3 class="event-date" data-event-datetime="2025-03-13T17:30:00-05:00">March 13, 2025 • 5:30 PM EST</h3>
+                        <h4 class="speaker-name">Report Launch: Houston Youth Surveillance</h4>
+                        <p class="event-topic">Report Launch: Houston Youth Surveillance</p>
                         <a href="" class="notice-btn register-btn">Register Now</a>
                     </div>
                 </article>
+                
+                <article class="speaker-card">
+                    <div class="speaker-flyer">
+                        <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/24d649b1-8b69-4fb6-8424-5a1311d43791/EYS+-+Dr.+Roderick+Crooks.png?content-type=image%2Fpng" alt="February Speaker Series Event Flyer">
+                        <div class="event-countdown">
+                            <span class="countdown-value">10</span>
+                            <span class="countdown-label">Days Until Event</span>
+                        </div>
+                    </div>
+                    <div class="speaker-details">
+                        <h3 class="event-date" data-event-datetime="2025-03-20T17:30:00-05:00">March 20, 2025 • 5:30 PM EST</h3>
+                        <h4 class="speaker-name">Dr. Roderick Crooks</h4>
+                        <p class="event-topic">How EdTech Reproduces Racial Inequality</p>
+                        <a href="" class="notice-btn register-btn">Register Now</a>
+                    </div>
+                </article>
+                
+                
             </div>
         </div>
     </section>
@@ -898,11 +1014,11 @@
             
             <div class="past-talks-grid">
                 <!-- January 30th Talk -->
-                 <!--
+                 
                 <article class="past-talk-card">
                     <div class="video-container">
                         <iframe 
-                            src="https://www.youtube.com/embed/VIDEO_ID"
+                            src="https://www.youtube.com/embed/d6ngRKFCdk8?si=ut5Xzojt1grBMb9r"
                             class="lazy-video"
                             title="January 30th Talk - Disability Justice & Tech with Rua Williams"
                             frameborder="0"
@@ -949,34 +1065,6 @@
                         </div>
                     </div>
                 </article>
-
-                <!-- November 21st Talk -->
-                 <!--
-                <article class="past-talk-card">
-                    <div class="video-container">
-                        <iframe 
-                            src="https://www.youtube.com/embed/VIDEO_ID"
-                            class="lazy-video"
-                            title="November 21st Talk - School Safety & Ed Tech with Mark Keierleber"
-                            frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen>
-                        </iframe>
-                    </div>
-                    <div class="talk-details">
-                        <div class="talk-header">
-                            <h3 class="talk-title">School Safety & Ed Tech</h3>
-                            <span class="talk-date">November 21, 2024</span>
-                        </div>
-                        <div class="speaker-info">
-                            <h4 class="speaker-name">Mark Keierleber</h4>
-                            <p class="talk-description">
-                                Investigating the relationship between educational technology, surveillance, and school safety measures.
-                            </p>
-                        </div>
-                    </div>
-                </article>
-                -->
 
                 <!-- November 7th Talk -->
                 <article class="past-talk-card">
@@ -1041,14 +1129,27 @@
     </section>
 
     <!-- Social Media Section -->
-    <section id="social" class="notice-social">
+    <section class="notice-social">
         <div class="section-content">
             <div class="notice-social-links">
                 <a href="https://www.linkedin.com/company/no-tech-criminalization-in-education-notice-coalition/?viewAsMember=true" target="_blank" rel="noopener noreferrer" class="social-icon">
                     <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/e21f8602-46df-4d45-ae36-3abea3853857/254394.png?content-type=image%2Fpng" alt="LinkedIn">
                 </a>
+                <!--
                 <a href="https://x.com/NOTICETCIA" target="_blank" rel="noopener noreferrer" class="social-icon">
                     <i class="fa-brands fa-square-x-twitter"></i>
+                </a>
+                -->
+                <a href="https://bsky.app/profile/noticecoalition.bsky.social" target="_blank" rel="noopener noreferrer" class="social-icon">
+                    <i class="fa-brands fa-bluesky"></i>
+                </a>
+
+                <a href="mailto:thenoticecoalition@gmail.com" target="_blank" rel="noopener noreferrer" class="social-icon">
+                    <i class="fa-solid fa-envelope"></i>
+                </a>
+
+                <a href="https://thenoticecoalition.substack.com/" target="_blank" rel="noopener noreferrer" class="social-icon">
+                    <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/211166a9-1777-4257-9e9e-4d912133cc4b/substack-icon.png?content-type=image%2Fpng" alt="Substack">
                 </a>
             </div>
             
