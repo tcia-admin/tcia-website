@@ -9,6 +9,9 @@
         --spacing-2xl: 3rem;
         --spacing-3xl: 4rem;
         --spacing-4xl: 5rem;
+        --spacing-5xl: 6rem;
+        --spacing-6xl: 7rem;
+        --spacing-7xl: 8rem;
 
         /* Layout Variables */
         --container-max-width: 1200px;
@@ -761,6 +764,7 @@
     .positions-header {
         display: grid;
         grid-template-columns: 2fr 1fr;
+        gap: var(--spacing-7xl);  /* Add significant gap between columns */
         padding: var(--spacing-md) var(--spacing-xl);
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
@@ -777,6 +781,7 @@
     .position-row {
         display: grid;
         grid-template-columns: 2fr 1fr;
+        gap: var(--spacing-7xl);  /* Match header gap */
         padding: var(--spacing-xl);
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         text-decoration: none;
@@ -984,15 +989,283 @@
         opacity: 1;
         transform: translateY(0);
     }
+
+    /* Add these styles where the other styles are defined */
+    .application-note {
+        margin-top: var(--spacing-2xl);
+        font-family: var(--font-body);
+        font-size: var(--font-size-xl);
+        color: var(--tcia-white);
+    }
+
+    /* Mobile Responsive Styles */
+    @media screen and (max-width: 768px) {
+        /* Hero Section */
+        .hero-section {
+            min-height: 60vh;
+            padding: var(--spacing-xl);
+        }
+
+        .hero-title {
+            font-size: var(--font-size-4xl);
+        }
+
+        /* Search Container */
+        .search-container {
+            width: 100%;
+        }
+
+        .search-box {
+            max-width: 100%;
+        }
+
+        .search-filters {
+            flex-direction: column;
+            gap: var(--spacing-sm);
+            width: 100%;
+        }
+
+        .filter-dropdown {
+            width: 100%;
+        }
+
+        .filter-button {
+            width: 100%;
+            justify-content: space-between;
+        }
+
+        .dropdown-content {
+            width: 100%;
+            left: 0;
+        }
+
+        /* Positions List */
+        .positions-header {
+            gap: var(--spacing-md);
+        }
+
+        .position-row {
+            gap: var(--spacing-md);
+            padding: var(--spacing-md);
+        }
+
+        .header-cell, .position-cell {
+            font-size: var(--font-size-sm);
+        }
+
+        /* Role Description */
+        .role-description {
+            padding: var(--spacing-xl);
+        }
+
+        .role-title {
+            font-size: var(--font-size-2xl);
+        }
+
+        .role-section h2 {
+            font-size: var(--font-size-xl);
+        }
+
+        .role-description-text,
+        .role-requirements {
+            font-size: var(--font-size-base);
+        }
+
+        .apply-button {
+            width: 100%;
+        }
+
+        /* Form Wrapper */
+        .form-wrapper {
+            padding: var(--spacing-xl);
+        }
+
+        .hero-back-button {
+            top: var(--spacing-md);
+            left: var(--spacing-md);
+            font-size: var(--font-size-base);
+            padding: var(--spacing-sm) var(--spacing-md);
+        }
+        
+        .hero-back-button svg {
+            width: 24px;
+            height: 24px;
+        }
+    }
+
+    /* Additional breakpoint for very small screens */
+    @media screen and (max-width: 480px) {
+        /* Positions Grid */
+        .positions-header,
+        .position-row {
+            grid-template-columns: 1.5fr 1fr;
+            gap: var(--spacing-sm);
+        }
+
+        .arrow-icon {
+            display: none;
+        }
+
+        /* Search and Filters */
+        .search-input {
+            height: 50px;
+            font-size: var(--font-size-base);
+        }
+
+        .dropdown-item {
+            padding: var(--spacing-sm) var(--spacing-md);
+        }
+
+        /* Role Description */
+        .back-button {
+            font-size: var(--font-size-sm);
+        }
+
+        .role-section {
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .application-note {
+            font-size: var(--font-size-base);
+        }
+    }
+
+    /* Fix for iOS Safari momentum scrolling */
+    @supports (-webkit-touch-callout: none) {
+        .dropdown-content {
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .intern-search-main {
+            -webkit-overflow-scrolling: touch;
+        }
+    }
+
+    /* Fix for notched devices */
+    /*
+    @supports (padding: max(0px)) {
+        .intern-search-main {
+            padding-left: max(var(--spacing-md), env(safe-area-inset-left));
+            padding-right: max(var(--spacing-md), env(safe-area-inset-right));
+        }
+    }
+
+    /* Fix for devices with dynamic toolbars */
+    @supports (height: 100dvh) {
+        .hero-section {
+            min-height: 60dvh;
+        }
+    }
+
+    .hero-back-button {
+        position: absolute;
+        top: var(--spacing-xl);
+        left: var(--spacing-xl);
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-md);
+        background: rgba(0, 0, 0, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        color: var(--tcia-yellow);
+        font-family: var(--font-alt-bold);
+        font-size: var(--font-size-lg);
+        text-decoration: none;
+        padding: var(--spacing-md) var(--spacing-lg);
+        transition: all 0.3s ease;
+        z-index: 10;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+    }
+
+    .hero-back-button svg {
+        width: 28px;
+        height: 28px;
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+    }
+
+    .hero-back-button:hover {
+        color: var(--tcia-white);
+        background: rgba(0, 0, 0, 0.4);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+    }
+
+    .hero-back-button:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Application message styles */
+    .application-message {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 2000;
+        animation: fadeIn 0.3s ease;
+    }
+
+    .message-content {
+        background-color: var(--tcia-navy);
+        border: 2px solid var(--tcia-yellow);
+        border-radius: 8px;
+        padding: var(--spacing-xl);
+        max-width: 500px;
+        width: 90%;
+        position: relative;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .message-content p {
+        color: var(--tcia-white);
+        font-family: var(--font-body);
+        font-size: var(--font-size-lg);
+        text-align: center;
+        margin: 0;
+    }
+
+    .message-close {
+        position: absolute;
+        top: var(--spacing-sm);
+        right: var(--spacing-sm);
+        background: none;
+        border: none;
+        color: var(--tcia-white);
+        font-size: var(--font-size-xl);
+        cursor: pointer;
+        padding: var(--spacing-xs);
+    }
+
+    .message-close:hover {
+        color: var(--tcia-yellow);
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
 </style>
 
 
 <section class="intern-search-main">
     <!-- Hero Section -->
     <section class="hero-section">
+        <a href="/internship-about" class="hero-back-button">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Back to Internship Main
+        </a>
         <div class="hero-content">
-            <div class="section-title">JOIN THE TEAM</div>
-            <h1 class="hero-title">SUBTITLE IF YOU WANT</h1>
+            <div class="section-title"></div>
+            <h1 class="hero-title">JOIN THE TEAM</h1>
             <div class="search-container">
                 <div class="search-box">
                     <input type="text" placeholder="Search for positions..." class="search-input">
@@ -1084,97 +1357,189 @@
     const positions = [
         {
             id: 1,
-            title: "UX Design Intern",
+            title: "Web Development Intern",
             department: "TCIA",
             type: "intern",
-            description: `<p>As the Lead, Compliance Assurance you will lead testing and monitoring of compliance safeguards, processes, and policies to support Epic's adherence to applicable laws and regulations. You will play a key role in leading Epic's efforts to ensure compliance with applicable laws, regulations, and internal policies.</p>
+            description: `<p>The TCIA Internship program seeks undergraduate/graduate students for a part-time paid opportunity that will run during the Spring – Summer of 2025. Interns will work up to 15 hours a week and will be paid $15-20 per hour. Start and end dates are flexible. An internship at TCIA will provide an opportunity to work with a fast-paced, growing company in Minneapolis's vibrant technology scene, although all work can be completed remotely. The purpose of the internship is to give the students professional skills and competencies as well as organizational and personal knowledge regarding the field in which they are studying.</p>
+
+            <p>Mission of the Twin Cities Innovation Alliance (TCIA): To build and develop a problem-solving ecosystem for public interest technology, fueled by a critical mass of diverse, highly-engaged residents, policymakers, educators, visionaries, business owners, and problem-solvers made up of Black, Indigenous, and People of Color communities and coalitions.</p>
+
             <ul>
-                <li>Design program to test and monitor compliance as legally required and as needed to identify compliance risk</li>
-                <li>Design and implement testing methodologies and make recommendations to adjust the Compliance program as needed</li>
-                <li>Lead annual and periodic risk-based control testing across Compliance controls</li>
-                <!-- Add more list items as needed -->
+                <li>Design, edit, manage, and add content to the TCIA website</li>
+                <li>Use media queries to adjust the layout of your site based on device type</li>
+                <li>Work with content management systems like WordPress, Squarespace, Drip</li>
+                <li>Plan, organize, and implement your web design projects</li>
+                <li>Help determine needs around web pages and content for intranet site housed in SharePoint/Teams and help create those webpages</li>
+                <li>Work with MIS and other departments around analyzing web analytics data to determine changes around content and structure of web sites</li>
+                <li>Help conduct troubleshooting for technical problems that may arise, including debugging code and reinstalling software</li>
+                <li>Execute handle change requests around websites and web development</li>
+                <li>Optimizes user experience and site content for ranking in search engines including HTML, site structure, page layout, and navigation</li>
+                <li>Performs ongoing maintenance of Squarespace website</li>
+                <li>Is a self-starter with the ability to be productive independently while hand multiple projects</li>
+                <li>Other duties not yet defined, but related to UX/UI this work</li>
             </ul>`,
             requirements: `<ul>
-                <li>8+ years of relevant work experience in compliance or auditing, preferably in a similar industry</li>
-                <li>Experience partnering with stakeholders across legal, finance, people, product, and engineering teams</li>
-                <li>Proactively identify process gaps, roadblocks, bottlenecks, and inefficiencies that will negatively impact risk and compliance efforts and mitigate them</li>
+                <li>Competent Front and back-end development experience</li>
+                <li>Competent in UI/UX design</li>
+                <li>Experience in configuring digital meeting platforms i.e. Zoom, LinkedIn live, and Teams</li>
+                <li>Support social media integrations for BlueSky, LinkedIn page</li>
+                <li>Experience in WordPress, Squarespace, CMS</li>
             </ul>`,
-            url: "/positions/ux-design-intern"
-        },
-        {
-            id: 2,
-            title: "Web Development Intern",
-            department: "NOTICE COALITION",
-            type: "intern",
-            description: `<p>As the Lead, Compliance Assurance you will lead testing and monitoring of compliance safeguards, processes, and policies to support Epic's adherence to applicable laws and regulations. You will play a key role in leading Epic's efforts to ensure compliance with applicable laws, regulations, and internal policies.</p>
-            <ul>
-                <li>Design program to test and monitor compliance as legally required and as needed to identify compliance risk</li>
-                <li>Design and implement testing methodologies and make recommendations to adjust the Compliance program as needed</li>
-                <li>Lead annual and periodic risk-based control testing across Compliance controls</li>
-                <!-- Add more list items as needed -->
-            </ul>`,
-            requirements: `<ul>
-                <li>8+ years of relevant work experience in compliance or auditing, preferably in a similar industry</li>
-                <li>Experience partnering with stakeholders across legal, finance, people, product, and engineering teams</li>
-                <li>Proactively identify process gaps, roadblocks, bottlenecks, and inefficiencies that will negatively impact risk and compliance efforts and mitigate them</li>
-            </ul>`,
+            applicationNote: `<p>Please attach a resume/CV and a work sample OR cover letter to apply.</p>`,
             url: "/positions/web-dev-intern"
         },
         {
-            id: 3,
-            title: "Marketing Intern",
+            id: 2,
+            title: "Video Production Intern",
             department: "TCIA",
             type: "intern",
-            description: `<p>As the Lead, Compliance Assurance you will lead testing and monitoring of compliance safeguards, processes, and policies to support Epic's adherence to applicable laws and regulations. You will play a key role in leading Epic's efforts to ensure compliance with applicable laws, regulations, and internal policies.</p>
+            description: `<p>The TCIA Summer Internship program seeks undergraduate/graduate students for a part-time paid opportunity that will run during the Spring - Summer of 2025. Interns will work up to 15 hours a week and will be paid $15-20 per hour. Start and end dates are flexible. An internship at TCIA will provide an opportunity to work with a fast-paced, growing company in Minneapolis's vibrant technology scene, although all work can be completed remotely. The purpose of the internship is to give the students professional skills and competencies as well as organizational and personal knowledge regarding the field in which they are studying. For this position, we are hiring one fully remote intern, and one that will work mostly remotely, but will occasionally need to be on site in the Twin Cities.</p>
+            
+            <p>Mission of the Twin Cities Innovation Alliance (TCIA): To build and develop a problem-solving ecosystem for public interest technology, fueled by a critical mass of diverse, highly engaged residents, policymakers, educators, visionaries, business owners, and problem-solvers made up of Black, Indigenous, and People of Color communities and coalitions.</p>
+            
             <ul>
-                <li>Design program to test and monitor compliance as legally required and as needed to identify compliance risk</li>
-                <li>Design and implement testing methodologies and make recommendations to adjust the Compliance program as needed</li>
-                <li>Lead annual and periodic risk-based control testing across Compliance controls</li>
-                <!-- Add more list items as needed -->
+                <li>Execute logistics of all video productions for in-person events, webinars, and podcasts</li>
+                <li>Can collaborate with other team members to ensure digital marketing efforts are aligned</li>
+                <li>Lead all components of production, including sound, lighting, cameras, computers, editing, and postproduction</li>
+                <li>Attend the team meetings, Daily Stand-ups, Iteration and program planning</li>
+                <li>Publish, organize, and optimize media on TCIA website and social media platforms including YouTube, Vimeo, Squarespace, WordPress, and LinkedIn</li>
+                <li>Research and utilize platforms (in alignment with TCIA's work) to use for uploading and sharing videos, webinars, podcasts, and other media materials</li>
+                <li>Research and report on best technology to record webinars, podcasts, and live events (in alignment with TCIA's work)</li>
+                <li>Video editing: edit recorded raw footage into the finished product</li>
+                <li>Ensure equipment is charged and properly stored before and after events</li>
+                <li>Help arrange and coordinate video production</li>
+                <li>Create thumbnails from video selects</li>
+                <li>Administrative and editorial duties associated with video releases may be assigned</li>
+                <li>Work with content manager to suggest and develop new media content</li>
             </ul>`,
             requirements: `<ul>
-                <li>8+ years of relevant work experience in compliance or auditing, preferably in a similar industry</li>
-                <li>Experience partnering with stakeholders across legal, finance, people, product, and engineering teams</li>
-                <li>Proactively identify process gaps, roadblocks, bottlenecks, and inefficiencies that will negatively impact risk and compliance efforts and mitigate them</li>
+                <li>Demonstrates a commitment to social and racial justice</li>
+                <li>Is interested in working in the fields of public interest technology or digital justice</li>
+                <li>Has experience filming and producing live events</li>
+                <li>Has experience with podcasting and/or webinar series</li>
+                <li>Is a self-starter with the ability to be productive independently while hand multiple projects</li>
             </ul>`,
-            url: "/positions/marketing-intern"
+            applicationNote: `<p>Please attach a resume/CV and a work sample OR cover letter to apply.</p>`,
+            url: "/positions/video-production-intern"
+        },
+        {
+            id: 3,
+            title: "Marketing Data Analyst Intern",
+            department: "TCIA",
+            type: "intern",
+            description: `<p>The TCIA Summer Internship program seeks undergraduate/graduate students for a part-time paid opportunity that will run during the Spring – Summer of 2025. Interns will work up to 15 hours a week and will be paid $15-20 per hour. Start and end dates are flexible. An internship at TCIA will provide an opportunity to work with a fast-paced, growing company in Minneapolis's vibrant technology scene, although all work can be completed remotely. The purpose of the internship is to give the students professional skills and competencies as well as organizational and personal knowledge regarding the field in which they are studying. For this position, we are hiring one fully remote intern, and one that will work mostly remotely, but will occasionally need to be on site in the Twin Cities.</p>
+
+            <p>Mission of the Twin Cities Innovation Alliance (TCIA): To build and develop a problem-solving ecosystem for public interest technology, fueled by a critical mass of diverse, highly engaged residents, policymakers, educators, visionaries, business owners, and problem-solvers made up of Black, Indigenous, and People of Color communities and coalitions.</p>
+
+            <ul>
+                <li>Acquire, clean, and maintain data from various sources, structuring it for databases and systems.</li>
+                <li>Utilize programming languages like Python and R for data analysis and algorithm development.</li>
+                <li>Analyze data trends and patterns, applying statistical techniques to provide insights, reports, and simplified content for various audiences.</li>
+                <li>Develop, prototype, and test predictive algorithms to enhance decision-making.</li>
+                <li>Implement data collection systems to improve statistical efficiency and ensure data quality.</li>
+                <li>Solve problems using data science tools, analyzing large datasets (Excel, SPSS, SAS) for actionable insights.</li>
+                <li>Apply expertise in data models, mining, and segmentation to inform organizational strategies.</li>
+                <li>Synthesize and present findings with attention to detail and accuracy, including queries for digital platforms and marketing tools.</li>
+                <li>Collaborate with the team to refine real-time digital marketing and content strategies.</li>
+                <li>Conduct audience segmentation and develop marketing personas, with a focus on college students.</li>
+                <li>Provide organization-wide insights through open communication and real-time data sharing.</li>
+                <li>Lead D4PG 2025 conference speaker identification, recruitment, and engagement.</li>
+                <li>Apply marketing analytics skills (Google Analytics, Google Ads) and SEO techniques to enhance digital engagement and accessibility.</li>
+                <li>Research social media algorithms (BlueSky, LinkedIn, Squarespace) and alternatives to Twitter, developing reports with actionable insights.</li>
+                <li>Create data visualization models using Power BI and Tableau for improved storytelling.</li>
+                <li>Draft participant feedback survey templates for events like D4PG.</li>
+                <li>Collaborate with the Full Stack Developer Intern to integrate student association data for engagement strategies.</li>
+                <li>Act as a TCIA student ambassador, promoting the organization's work at your university.</li>
+                <li>Is a self-starter with the ability to be productive independently while hand multiple projects</li>
+                <li>Perform other duties as assigned to support organizational objectives.</li>
+            </ul>`,
+            requirements: `<ul>
+                <li>Experience in data analysis, statistical modeling, or digital marketing, with internships or projects demonstrating relevant skills.</li>
+                <li>Ability to work independently, adapt to feedback, and meet deadlines.</li>
+                <li>Strong analytical skills to identify trends, interpret data, and provide actionable insights.</li>
+                <li>Experience with audience segmentation and marketing persona development.</li>
+                <li>Ability to conduct research on algorithms, social media platforms, and market trends.</li>
+                <li>Proficiency in programming languages such as Python and R.</li>
+                <li>Familiarity with data visualization tools like Power BI and Tableau.</li>
+                <li>Experience with statistical tools and software (e.g., Excel, SPSS, SAS).</li>
+                <li>Knowledge of digital marketing platforms and tools (e.g., Google Analytics, Google Ads).</li>
+                <li>Understanding of SEO principles, keyword research, and algorithm analysis.</li>
+                <li>Ability to develop predictive algorithms and perform data mining.</li>
+                <li>Interest in digital marketing, data science, and analytics.</li>
+                <li>Demonstrated problem-solving abilities and creativity in developing solutions.</li>
+                <li>Enthusiasm for collaborating on initiatives such as D4PG conference planning and university engagement.</li>
+            </ul>`,
+            applicationNote: `<p>Please attach a resume/CV and a work sample OR cover letter to apply.</p>`,
+            url: "/positions/marketing-data-analyst-intern"
         },
         {
             id: 4,
-            title: "Content Creation Intern",
-            department: "NOTICE COALITION",
+            title: "Content/Copywriting Intern",
+            department: "TCIA",
             type: "intern",
-            description: `<p>As the Lead, Compliance Assurance you will lead testing and monitoring of compliance safeguards, processes, and policies to support Epic's adherence to applicable laws and regulations. You will play a key role in leading Epic's efforts to ensure compliance with applicable laws, regulations, and internal policies.</p>
+            description: `<p>The TCIA Summer Internship program seeks undergraduate/graduate students for a part-time paid opportunity that will run during the Spring - Summer of 2025. Interns will work up to 15 hours a week and will be paid $15-20 per hour. Start and end dates are flexible. An internship at TCIA will provide an opportunity to work with a fast-paced, growing company in Minneapolis's vibrant technology scene, although all work can be completed remotely. The purpose of the internship is to give the students professional skills and competencies as well as organizational and personal knowledge regarding the field in which they are studying.</p>
+
+            <p>Mission of the Twin Cities Innovation Alliance (TCIA): To build and develop a problem-solving ecosystem for public interest technology, fueled by a critical mass of diverse, highly-engaged residents, policymakers, educators, visionaries, business owners, and problem-solvers made up of Black, Indigenous, and People of Color communities and coalitions.</p>
+
+            <p>Content Writers are responsible for style and format consistency across all projects and communicating with other team members to create the best content possible. Other duties and responsibilities include:</p>
+
             <ul>
-                <li>Design program to test and monitor compliance as legally required and as needed to identify compliance risk</li>
-                <li>Design and implement testing methodologies and make recommendations to adjust the Compliance program as needed</li>
-                <li>Lead annual and periodic risk-based control testing across Compliance controls</li>
-                <!-- Add more list items as needed -->
+                <li>Completing writing projects, meeting deadlines, and following content requirements in terms of style and project specifications</li>
+                <li>Revising content whenever changes are requested</li>
+                <li>Help create style guides to ensure content is consistent and clear</li>
+                <li>Working with internal team to define content needs</li>
+                <li>Conducting research on organizational- & industry-related topics (combining online sources, interviews, and studies)</li>
+                <li>Optimizing articles for SEO and accessibility</li>
+                <li>Writing clear, engaging content for blogs, case studies, video scripts, infographics and other assets to promote our programs, events, and broader work</li>
+                <li>Identifying gaps in content and recommending new topics</li>
+                <li>Writing and editing content to ensure voice, grammar and style is on point; Prepare well-structured drafts using Content Management Systems</li>
+                <li>Promote content on social media platforms</li>
+                <li>Staying up to date on related topics to support content development</li>
+                <li>Distilling complex concepts and language into content that is easily understood</li>
+                <li>Working closely with internal stakeholders to ensure alignment and consistency in messaging, branding, and style</li>
+                <li>Managing and completing work on time for multiple content writing projects</li>
+                <li>Create editorial calendars</li>
+                <li>Proofread and edit blog posts before publication</li>
+                <li>Submit work to editors for input and approval</li>
+                <li>Coordinate with marketing and design teams to have written content turned into illustrated articles</li>
+                <li>Conduct keyword research, apply SEO guidelines to boost web traffic, maintain consistency in style, fonts, images, and tone, and update website content as needed</li>
             </ul>`,
-            requirements: `<ul>
-                <li>8+ years of relevant work experience in compliance or auditing, preferably in a similar industry</li>
-                <li>Experience partnering with stakeholders across legal, finance, people, product, and engineering teams</li>
-                <li>Proactively identify process gaps, roadblocks, bottlenecks, and inefficiencies that will negatively impact risk and compliance efforts and mitigate them</li>
-            </ul>`,
+            requirements: ``,
+            applicationNote: `<p>Please attach a resume/CV and a work sample OR cover letter to apply.</p>`,
             url: "/positions/content-intern"
         },
         {
             id: 5,
-            title: "Digital Strategy Intern",
+            title: "Digital Marketing & Graphic Design Intern",
             department: "TCIA",
             type: "intern",
-            description: `<p>As the Lead, Compliance Assurance you will lead testing and monitoring of compliance safeguards, processes, and policies to support Epic's adherence to applicable laws and regulations. You will play a key role in leading Epic's efforts to ensure compliance with applicable laws, regulations, and internal policies.</p>
+            description: `<p>The TCIA Summer Internship program seeks undergraduate/graduate students for a part-time paid opportunity that will run during the Spring - Summer of 2025. Interns will work up to 15 hours a week and will be paid $15-20 per hour. Start and end dates are flexible. An internship at TCIA will provide an opportunity to work with a fast-paced, growing company in Minneapolis's vibrant technology scene, although all work can be completed remotely. The purpose of the internship is to give the students professional skills and competencies as well as organizational and personal knowledge regarding the field in which they are studying.</p>
+
+            <p>Mission of the Twin Cities Innovation Alliance (TCIA): To build and develop a problem-solving ecosystem for public interest technology, fueled by a critical mass of diverse, highly engaged residents, policymakers, educators, visionaries, business owners, and problem-solvers made up of Black, Indigenous, and People of Color communities and coalitions.</p>
+
             <ul>
-                <li>Design program to test and monitor compliance as legally required and as needed to identify compliance risk</li>
-                <li>Design and implement testing methodologies and make recommendations to adjust the Compliance program as needed</li>
-                <li>Lead annual and periodic risk-based control testing across Compliance controls</li>
-                <!-- Add more list items as needed -->
+                <li>Develop and implement engaging graphics and marketing content, including visual designs for reports, articles, and events.</li>
+                <li>Attend team meetings, iteration and Program Planning</li>
+                <li>Manage projects effectively to meet deadlines, adapting quickly to feedback.</li>
+                <li>Collaborate within the team to achieve desired outcomes and proactively suggest solutions to improve marketing results.</li>
+                <li>Lead the creation of a brand and style guide in collaboration with team members.</li>
+                <li>Conduct social media and email marketing for TCIA programs and events, including drafting, editing, and recommending content.</li>
+                <li>Support email marketing through audience segmentation, calendar maintenance, and strategic recommendations.</li>
+                <li>Contribute to campaign strategies by researching competitors, identifying target audiences, and recommending best practices.</li>
+                <li>Analyze and report on marketing performance, engagement rates, and campaign outcomes.</li>
+                <li>Assist with the implementation of additional related projects and tasks.</li>
             </ul>`,
             requirements: `<ul>
-                <li>8+ years of relevant work experience in compliance or auditing, preferably in a similar industry</li>
-                <li>Experience partnering with stakeholders across legal, finance, people, product, and engineering teams</li>
-                <li>Proactively identify process gaps, roadblocks, bottlenecks, and inefficiencies that will negatively impact risk and compliance efforts and mitigate them</li>
+                <li>Competence graphic design software such as Adobe, Affinity, Canva, etc.</li>
+                <li>Competence working knowledge of social media platforms, including and not limited to Google, LinkedIn, BlueSky, Twitter, and CMS, like Squarespace and WordPress</li>
+                <li>Competence, Google Workspace and working knowledge of Office 365</li>
+                <li>Strong attention to detail, excellent communication skills (written, oral, interpersonal) and a knack for grammar</li>
+                <li>Perform market analysis using Google Analytics, Hootsuite Analytics, Squarespace analytics and research on the competitive landscape including evaluation of competitor marketing, positioning, and digital content</li>
+                <li>Contribute to the creation of mock-ups, email campaigns, and social media content</li>
+                <li>Help design and present new social media campaign ideas and monitor all social media platforms for trending news, ideas, and feedback</li>
+                <li>A self-starter with the ability to be productive independently while hand multiple projects</li>
             </ul>`,
+            applicationNote: `<p>Please attach a resume and a brief sample of your graphic design work in Adobe, Affinity, Canva, or similar software to apply.</p>`,
             url: "/positions/strategy-intern"
         }
     ];
@@ -1340,6 +1705,89 @@
             // Reset padding
             mainSection.style.paddingBottom = 'var(--spacing-4xl)';
         });
+
+        // Listen for clicks on the Squarespace submit button
+        document.addEventListener('click', function(event) {
+            // Check if the clicked element is the form submit button or one of its children
+            const submitButton = event.target.closest('.form-submit-button');
+            if (submitButton) {
+                // Get current position ID
+                const currentPositionTitle = document.querySelector('.role-title').textContent;
+                const currentPosition = positions.find(p => p.title === currentPositionTitle);
+                
+                if (!currentPosition) return;
+                
+                // Check if user has already applied
+                const appliedPositions = JSON.parse(localStorage.getItem('appliedPositions') || '[]');
+                
+                if (appliedPositions.includes(currentPosition.id)) {
+                    // Prevent form submission
+                    event.preventDefault();
+                    event.stopPropagation();
+                    
+                    // Show message
+                    showApplicationMessage('You have already applied for this position. Thank you for your interest!');
+                } else {
+                    // Allow form submission but record that they've applied
+                    // We'll do this by listening for the form's submit event
+                    const form = submitButton.closest('form');
+                    if (form) {
+                        form.addEventListener('submit', function() {
+                            // Save to localStorage that user has applied
+                            appliedPositions.push(currentPosition.id);
+                            localStorage.setItem('appliedPositions', JSON.stringify(appliedPositions));
+                            
+                            // Set a timeout to remove extra space after successful submission
+                            setTimeout(function() {
+                                const mainSection = document.querySelector('.intern-search-main');
+                                const formWrapper = document.querySelector('.form-wrapper');
+                                
+                                if (mainSection && formWrapper) {
+                                    // Reset padding
+                                    mainSection.style.paddingBottom = 'var(--spacing-4xl)';
+                                    // Hide form wrapper
+                                    formWrapper.classList.remove('show');
+                                }
+                            }, 5000); // Check after 2 seconds - adjust as needed
+                        });
+                    }
+                }
+            }
+        });
+        
+        // Function to show application message
+        function showApplicationMessage(message) {
+            // Remove any existing message
+            const existingMessage = document.querySelector('.application-message');
+            if (existingMessage) {
+                existingMessage.remove();
+            }
+            
+            // Create message element
+            const messageElement = document.createElement('div');
+            messageElement.className = 'application-message';
+            messageElement.innerHTML = `
+                <div class="message-content">
+                    <button class="message-close">&times;</button>
+                    <p>${message}</p>
+                </div>
+            `;
+            
+            // Add to page
+            document.body.appendChild(messageElement);
+            
+            // Add event listener to close button
+            messageElement.querySelector('.message-close').addEventListener('click', () => {
+                messageElement.remove();
+            });
+            
+            // Auto-remove after 5 seconds
+            setTimeout(() => {
+                if (document.body.contains(messageElement)) {
+                    messageElement.remove();
+                }
+            }, 5000);
+        }
     });
 
     function closeAllDropdowns() {
@@ -1351,15 +1799,89 @@
         });
     }
 
-    // Add this to your existing JavaScript
+    // Update the showRoleDescription function to check if user already applied
     function showRoleDescription(position) {
         const positionsList = document.querySelector('.positions-list');
         const roleDescription = document.querySelector('.role-description');
         
-        // Update role content
+        // Update role title
         roleDescription.querySelector('.role-title').textContent = position.title;
-        roleDescription.querySelector('.role-description-text').innerHTML = position.description;
-        roleDescription.querySelector('.role-requirements').innerHTML = position.requirements;
+        
+        // Update description section
+        const descriptionText = roleDescription.querySelector('.role-description-text');
+        const descriptionSection = descriptionText.closest('.role-section');
+        if (position.description && position.description.trim()) {
+            descriptionSection.style.display = 'block';
+            descriptionText.innerHTML = position.description;
+        } else {
+            descriptionSection.style.display = 'none';
+        }
+        
+        // Update requirements section
+        const requirementsText = roleDescription.querySelector('.role-requirements');
+        const requirementsSection = requirementsText.closest('.role-section');
+        if (position.requirements && position.requirements.trim()) {
+            requirementsSection.style.display = 'block';
+            requirementsText.innerHTML = position.requirements;
+        } else {
+            requirementsSection.style.display = 'none';
+        }
+        
+        // Check if user has already applied for this position
+        const appliedPositions = JSON.parse(localStorage.getItem('appliedPositions') || '[]');
+        const applyButton = roleDescription.querySelector('.apply-button');
+        
+        if (appliedPositions.includes(position.id)) {
+            // User has already applied - disable button and change text
+            applyButton.disabled = true;
+            applyButton.textContent = 'Application Submitted';
+            applyButton.style.backgroundColor = '#888'; // Gray out the button
+            applyButton.style.cursor = 'not-allowed';
+            
+            // Add a note about the previous application
+            const existingNote = roleDescription.querySelector('.application-submitted-note');
+            if (!existingNote) {
+                const noteElement = document.createElement('div');
+                noteElement.className = 'application-submitted-note';
+                noteElement.innerHTML = '<p>You have already submitted an application for this position.</p>';
+                noteElement.style.color = 'var(--tcia-yellow)';
+                noteElement.style.marginTop = 'var(--spacing-md)';
+                noteElement.style.fontStyle = 'italic';
+                applyButton.insertAdjacentElement('afterend', noteElement);
+            }
+        } else {
+            // Reset button if user hasn't applied
+            applyButton.disabled = false;
+            applyButton.textContent = 'Apply Now';
+            applyButton.style.backgroundColor = ''; // Reset to default
+            applyButton.style.cursor = '';
+            
+            // Remove any existing note
+            const existingNote = roleDescription.querySelector('.application-submitted-note');
+            if (existingNote) {
+                existingNote.remove();
+            }
+        }
+        
+        // Remove any existing application note
+        const existingAppNote = roleDescription.querySelector('.application-note');
+        if (existingAppNote) {
+            existingAppNote.remove();
+        }
+        
+        // Add new application note after the last visible section
+        if (position.applicationNote) {
+            const lastVisibleSection = [...roleDescription.querySelectorAll('.role-section')]
+                .filter(section => section.style.display !== 'none')
+                .pop();
+            
+            if (lastVisibleSection) {
+                const noteWrapper = document.createElement('div');
+                noteWrapper.className = 'application-note';
+                noteWrapper.innerHTML = position.applicationNote;
+                lastVisibleSection.insertAdjacentElement('afterend', noteWrapper);
+            }
+        }
         
         // Hide positions list and show role description
         positionsList.style.display = 'none';

@@ -1,0 +1,2620 @@
+<style>
+    :root {
+        /* Spacing Variables */
+        --spacing-xs: 0.25rem;
+        --spacing-sm: 0.5rem;
+        --spacing-md: 1rem;
+        --spacing-lg: 1.5rem;
+        --spacing-xl: 2rem;
+        --spacing-2xl: 3rem;
+        --spacing-3xl: 4rem;
+        --spacing-4xl: 5rem;
+
+        /* Layout Variables */
+        --container-max-width: 1200px;
+        --container-padding: 1rem;
+
+        /* Breakpoints (for reference in media queries) */
+        --mobile: 480px;
+        --tablet: 768px;
+        --desktop: 1024px;
+
+        /* Typography Scale */
+        --font-size-xs: 0.75rem;
+        --font-size-sm: 0.875rem;
+        --font-size-med: 1rem;
+        --font-size-base: 1.25rem;
+        --font-size-lg: 1.125rem;
+        --font-size-xl: 1.25rem;
+        --font-size-2xl: 1.5rem;
+        --font-size-3xl: 2rem;
+        --font-size-4xl: 2.5rem;
+        --font-size-5xl: 3rem;
+        --font-size-6xl: 3.5rem;
+        --font-size-7xl: 4rem;
+        --font-size-8xl: 4.5rem;
+        --font-size-12xl: 6rem;
+
+        /* Brand Colors */
+        --notice-yellow: #fbc516;
+        --notice-black: #1a1919;
+        --notice-grey: #808285;
+        --notice-white: #ffffff;
+
+        /* Functional Colors */
+        --notice-bg-primary: var(--notice-black);
+        --notice-bg-secondary: #242424;  /* slightly lighter than black for layering */
+        --notice-text-primary: var(--notice-white);
+        --notice-text-secondary: var(--notice-grey);
+        --notice-accent: var(--notice-yellow);
+        
+        /* Background tints for subtle variations */
+        --notice-bg-grey-light: rgba(128, 130, 133, 0.1);
+        --notice-bg-grey-medium: rgba(128, 130, 133, 0.2);
+        
+        /* Font Families */
+        --font-primary: 'Roboto', sans-serif;
+        /*--font-accent: 'Impact', sans-serif;*/
+        --font-accent: 'Roboto', sans-serif;
+        
+        /* Font Weights */
+        --font-regular: 400;
+        --font-bold: 700;
+    }
+
+    /* Reset and Base Styles - Update to remove any default margins */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html, body {
+        overflow-x: hidden;  /* Prevent horizontal scrolling */
+        position: relative;  /* Create new stacking context */
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        overscroll-behavior-x: none;  /* Prevent horizontal overscroll */
+        touch-action: pan-y pinch-zoom;  /* Only allow vertical touch actions */
+    }
+
+    html {
+        scroll-behavior: smooth;
+        scroll-padding-top: var(--nav-height); /* Add this variable to your root */
+    }
+
+    /* Main Container Styles - Ensure no top margin/padding */
+    .notice-coalition-main {
+        width: 100%;
+        font-family: var(--font-primary);
+        color: var(--notice-text-primary);
+        background-color: var(--notice-bg-primary);
+        position: relative;
+        overflow-x: clip;  /* Clip any horizontal overflow */
+    }
+    
+
+    /* Responsive Design */
+    @media screen and (max-width: 1024px) {
+        :root {
+            /* Adjust spacing for tablet */
+            --container-padding: 2rem;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        :root {
+            /* Adjust spacing for mobile */
+            --container-padding: 1rem;
+            --font-size-4xl: 2rem;
+            --font-size-3xl: 1.75rem;
+            --font-size-2xl: 1.25rem;
+        }
+    }
+
+    /* Utility Classes for Typography */
+    .text-accent {
+        font-family: var(--font-accent);
+    }
+
+    .text-yellow {
+        color: var(--notice-accent);
+    }
+
+    /* Button Styles */
+    .notice-btn {
+        background-color: var(--notice-accent);
+        color: var(--notice-black);
+        font-family: var(--font-accent);
+        font-weight: var(--font-bold);
+        padding: var(--spacing-sm) var(--spacing-lg);
+        border: none;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+        border-radius: 4px;
+    }
+
+    .notice-btn:hover {
+        transform: translateY(-2px);
+    }
+
+    /* Section Base Styles - Add content container */
+    .notice-coalition-main > section {
+        width: 100%;
+        padding: var(--spacing-2xl) 0;
+        overflow-x: hidden;  /* Prevent horizontal scrolling within sections */
+    }
+
+    /* Add content container for each section */
+    .section-content {
+        max-width: var(--container-max-width);
+        margin: 0 auto;
+        padding: 0 var(--container-padding);
+    }
+
+    /* Alternating Background Colors for Visual Separation */
+    .notice-intro {
+        position: relative;
+        width: 100%;
+        min-height: 100vh; /* Ensures full viewport height */
+        overflow: hidden; /* Prevents video from spilling out */
+        background-color: var(--notice-bg-primary);
+        margin: 0; /* Ensure no margins */
+        padding-top: calc(var(--nav-height) + 46px);
+        top: 0; /* Align to top */
+        left: 0;
+        right: 0;
+    }
+
+    
+
+    .notice-origin .section-title {
+        text-align: center;
+        margin-bottom: var(--spacing-2xl); /* Might want to adjust spacing for centered title */
+    }
+
+
+   
+    /* Responsive Adjustments */
+    @media screen and (max-width: 768px) {
+        .notice-coalition-main > section {
+            padding: var(--spacing-xl) var(--spacing-md);
+        }
+
+        .notice-intro {
+            width: 100%;
+            left: 0;
+            right: 0;
+            margin: 0;
+            padding: 0;
+            position: relative;
+        }
+        
+        .intro-content {
+            width: 100%;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            position: relative;
+        }
+
+    }
+
+    /* Navigation Styles - Position at very top */
+    .notice-nav {
+        width: 100%;
+        padding: var(--spacing-md) 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        background-color: black;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+
+    .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: var(--spacing-xl);
+        padding: 0 var(--spacing-md);
+        max-width: 1400px;
+    }
+
+    /* Logo Styles */
+    .nav-logo {
+        margin-right: var(--spacing-xl);
+    }
+
+    .nav-logo img {
+        height: 55px;
+        width: auto;
+    }
+
+    /* Navigation Links */
+    .nav-links {
+        display: flex;
+        gap: var(--spacing-xl);
+        margin-right: auto;
+    }
+
+    .nav-links a {
+        color: var(--notice-text-primary);
+        text-decoration: none;
+        font-size: var(--font-size-base);
+        font-weight: var(--font-bold);
+        font-family: var(--font-accent);
+        transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+        color: var(--notice-accent);
+    }
+
+    /* CTA Button */
+    .nav-cta-featured {
+        margin-left: var(--spacing-xl);
+        min-width: max-content;
+    }
+
+    /* Responsive Navigation */
+    @media screen and (max-width: 1200px) {
+        .nav-links {
+            gap: var(--spacing-lg);
+        }
+
+        .nav-logo{
+            display: none;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        .nav-container {
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: var(--spacing-sm);
+        }
+
+        .nav-links {
+            display: none;
+        }
+
+        .nav-cta-featured {
+            order: 3;
+            margin-left: 0;
+            margin-top: var(--spacing-sm);
+        }
+    }
+
+    /* Video Background Styles */
+    .video-background {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100vw;
+        height: 100vh;
+        pointer-events: none; /* Prevents interaction with the video */
+        z-index: 0;
+    }
+
+    .video-background iframe {
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        scale: 1.5; /* Makes video slightly larger to cover any gaps */
+    }
+
+    /* Overlay for darkening the video */
+    .video-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.4);
+        pointer-events: none;
+    }
+
+    /* Updated Intro Content Styles */
+    .intro-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        margin-top: var(--spacing-2xl); /* Added more space below navigation */
+    }
+
+    .intro-text-container {
+        max-width: 90%; /* Increased from previous max-width */
+        margin: 0 auto;
+        padding: 0 var(--container-padding);
+    }
+
+    .intro-catchphrase {
+        font-family: var(--font-accent);
+        font-size: var(--font-size-7xl);
+        color: var(--notice-white);
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        letter-spacing: 0.03em;
+        line-height: 1.25;
+        text-transform: uppercase;
+        text-align: left;
+        border-bottom: 4px solid var(--notice-white);
+        padding-bottom: var(--spacing-lg);
+        margin-bottom: var(--spacing-xl);
+    }
+
+    .intro-cta-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: var(--spacing-xl);
+    }
+
+    .intro-cta-text {
+        color: var(--notice-white);
+        font-size: var(--font-size-xl);
+        font-weight: var(--font-bold);
+        max-width: 60%;
+        text-align: left;
+    }
+
+    .intro-cta-btn {
+        flex-shrink: 0;
+        font-size: var(--font-size-lg);
+        padding: var(--spacing-md) var(--spacing-xl);
+        background-color: transparent; /* Remove background */
+        border: 2px solid var(--notice-accent); /* Add border */
+        color: var(--notice-accent); /* Match text to border color */
+        transition: all 0.3s ease; /* Smooth transition for all changes */
+        border-radius: 4px;
+    }
+
+    .intro-cta-btn:hover {
+        background-color: var(--notice-accent); /* Fill background on hover */
+        color: var(--notice-black); /* Change text color for contrast */
+    }
+
+    /* Responsive adjustments */
+    @media screen and (max-width: 768px) {
+        .intro-catchphrase {
+            font-size: calc(var(--font-size-4xl) * 0.8);
+            letter-spacing: 0.1em;
+            line-height: 1.6;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .intro-cta-container {
+            flex-direction: column;
+            gap: var(--spacing-lg);
+        }
+
+        .intro-cta-text {
+            max-width: 100%;
+            font-size: var(--font-size-lg);
+            text-align: center;
+        }
+
+        .intro-cta-btn {
+            width: 100%;
+            text-align: center;
+        }
+    }
+
+    .story-link-container {
+        text-align: center;
+        margin-top: var(--spacing-2xl);
+    }
+
+    .story-link {
+        font-family: var(--font-accent);
+        font-size: var(--font-size-lg);
+        color: var(--notice-accent);
+        text-decoration: none;
+        position: relative;
+        padding-bottom: var(--spacing-xs);
+    }
+
+    .story-link::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: var(--notice-accent);
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+    }
+
+    .story-link:hover::after {
+        transform: scaleX(1);
+    }
+
+    /* Responsive Design */
+    @media screen and (max-width: 768px) {
+
+        .section-title {
+            font-size: var(--font-size-2xl);
+            margin-bottom: var(--spacing-xl);
+        }
+
+    }
+
+    /* Section Header Styles */
+    .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: var(--spacing-2xl);
+    }
+
+    .section-title {
+        font-family: var(--font-accent);
+        font-size: var(--font-size-3xl);
+        color: var(--notice-white);
+    }
+
+    .section-link {
+        font-family: var(--font-accent);
+        font-size: var(--font-size-lg);
+        color: var(--notice-accent);
+        text-decoration: none;
+        position: relative;
+        padding-bottom: var(--spacing-xs);
+    }
+
+    .section-link::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: var(--notice-accent);
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+    }
+
+    .section-link:hover::after {
+        transform: scaleX(1);
+    }
+
+    /* Initiatives Grid */
+    .initiatives-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-2xl);
+    }
+
+    /* Initiative Card Styles */
+    .initiative-card {
+        position: relative;
+        width: 100%;
+        text-decoration: none;
+        display: block;
+        color: var(--notice-white);
+    }
+
+    .initiative-image {
+        position: relative;
+        overflow: hidden;
+        aspect-ratio: 16/9;
+    }
+
+    .initiative-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+
+    /* Update overlay styles to show title by default */
+    .initiative-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), transparent 50%);
+        color: var(--notice-white);
+        padding: var(--spacing-lg);
+        transition: background 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start; /* Align content to top */
+    }
+
+    .initiative-title {
+        color: var(--notice-white);
+        font-family: var(--font-accent);
+        font-size: var(--font-size-xl);
+        margin-bottom: var(--spacing-md);
+        opacity: 1; /* Always visible */
+    }
+
+    .initiative-description {
+        font-size: var(--font-size-base);
+        font-weight: var(--font-bold);
+        line-height: 1.5;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    /* Hover Effects */
+    .initiative-card:hover .initiative-overlay {
+        background: rgba(0, 0, 0, 0.7); /* Full overlay on hover */
+    }
+
+    .initiative-card:hover .initiative-description {
+        opacity: 1;
+    }
+
+    .initiative-card:hover .initiative-image img {
+        transform: scale(1.05);
+    }
+
+    /* Responsive Design */
+    @media screen and (max-width: 768px) {
+        .initiatives-grid {
+            grid-template-columns: 1fr;
+            gap: var(--spacing-xl);
+        }
+
+        .initiative-title {
+            font-size: var(--font-size-lg);
+        }
+
+        .initiative-description {
+            font-size: var(--font-size-sm);
+        }
+    }
+
+    /* Resources Grid - adjust width */
+    .resources-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--spacing-xl);
+        max-width: 100%;
+    }
+
+    /* Resource Card */
+    .resource-card {
+        background-color: var(--notice-black); /* Slightly lighter than the main background */
+        border-radius: 4px;
+        overflow: hidden;
+    }
+
+    .resource-image {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 16/9;
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+    .resource-image a {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+
+    .resource-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+
+    /* Optional: Add hover effect for the clickable image */
+    .resource-image:hover img {
+        transform: scale(1.05);
+    }
+
+    /* Resource Content */
+    .resource-content {
+        padding: var(--spacing-lg);
+    }
+
+    /* Updated Resource Tag Style */
+    .resource-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        font-family: var(--font-accent);
+        font-size: var(--font-size-med);
+        font-weight: var(--font-bold);
+        color: var(--notice-accent);
+        padding: 4px 12px;
+        border-radius: 4px;
+        border: 2px solid var(--notice-accent);
+    }
+
+    .resource-description {
+        color: var(--notice-white);
+        font-size: var(--font-size-base);
+        font-weight: var(--font-bold);
+        line-height: 1.5;
+        margin-bottom: var(--spacing-lg);
+        min-height: 4.5em;
+    }
+
+    /* Updated Resource Footer */
+    .resource-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    .resource-link {
+        color: var(--notice-white);
+        text-decoration: none;
+        font-size: var(--font-size-base);
+        transition: color 0.3s ease;
+    }
+
+    .resource-link:hover {
+        color: var(--notice-accent);
+    }
+
+    .resource-action {
+        width: 24px; 
+        height: 24px;
+        font-size: var(--font-size-xl); /* Increase icon size */
+        transition: transform 0.3s ease;
+        color: var(--notice-accent); /* Color for the icons */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .resource-action:hover {
+        transform: translateY(-2px);
+    }
+
+    /* Responsive Design */
+    @media screen and (max-width: 1024px) {
+        .resources-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        .resources-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .resource-description {
+            min-height: auto;
+        }
+    }
+
+    /* Update Resource Action Styles */
+
+
+    .resource-action i {
+        transition: transform 0.3s ease;
+        font-size: var(--font-size-3xl);
+    }
+
+    .resource-action:hover i {
+        transform: translateY(-2px);
+    }
+
+    /* Specific hover effect for play button */
+    .resource-action .fa-circle-play:hover {
+        transform: scale(1.1);
+    }
+
+    /* Enhanced Feed Section Styles */
+    .notice-news {
+        padding: var(--spacing-3xl) 0;
+        background-color: var(--notice-bg-primary);
+    }
+
+    .feed-container {
+        margin-top: var(--spacing-xl);
+    }
+
+    .feed-items {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: var(--spacing-xl);
+        max-width: 100%;
+    }
+
+    .feed-item {
+        background-color: var(--notice-bg-secondary);
+        border-radius: 12px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .feed-item:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        border-color: var(--notice-accent);
+    }
+
+    .feed-item-image {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+
+    .feed-item:hover .feed-item-image {
+        transform: scale(1.05);
+    }
+
+    .feed-item-content {
+        padding: var(--spacing-lg);
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .feed-item-source {
+        font-size: var(--font-size-sm);
+        color: var(--notice-accent);
+        margin-bottom: var(--spacing-xs);
+        font-weight: var(--font-bold);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .feed-item-title {
+        font-family: var(--font-accent);
+        font-size: var(--font-size-xl);
+        margin-bottom: var(--spacing-md);
+        color: var(--notice-white);
+        line-height: 1.3;
+        flex-grow: 0;
+    }
+
+    .feed-item-description {
+        font-size: var(--font-size-med);
+        color: var(--notice-text-secondary);
+        margin-bottom: var(--spacing-lg);
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        line-height: 1.5;
+        flex-grow: 1;
+    }
+
+    .feed-item-date {
+        font-size: var(--font-size-sm);
+        color: var(--notice-text-secondary);
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: var(--spacing-md);
+    }
+
+    .feed-item-link {
+        text-decoration: none;
+        color: inherit;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+
+    @media screen and (max-width: 768px) {
+        .feed-items {
+            grid-template-columns: 1fr;
+            gap: var(--spacing-lg);
+        }
+        
+        .feed-item-image {
+            height: 200px;
+        }
+        
+        .feed-item-content {
+            padding: var(--spacing-md);
+        }
+        
+        .feed-item-title {
+            font-size: var(--font-size-lg);
+        }
+        
+        .feed-item-description {
+            font-size: var(--font-size-base);
+            margin-bottom: var(--spacing-md);
+        }
+    }
+
+    /* News Carousel Styles */
+    .news-carousel {
+        position: relative;
+        width: 100%;
+        margin-top: var(--spacing-xl);
+        overflow: hidden; /* Add this to hide slides outside view */
+    }
+
+    .carousel-container {
+        display: flex;
+        position: relative;
+        transition: transform 0.5s ease-in-out;
+        width: 100%;
+    }
+
+    .carousel-item {
+        flex: 0 0 100%;
+        width: 100%;
+        position: relative;
+    }
+
+    .carousel-image {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 16/9;
+        overflow: hidden;
+    }
+
+    .carousel-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .carousel-tags {
+        position: absolute;
+        top: var(--spacing-md);
+        left: var(--spacing-md);
+        display: flex;
+        gap: var(--spacing-xs);
+    }
+
+    .tag {
+        background: rgba(0, 0, 0, 0.6);
+        color: var(--notice-white);
+        padding: 4px 12px;
+        border-radius: 4px;
+        font-size: var(--font-size-sm);
+        font-family: var(--font-accent);
+    }
+
+    .carousel-content {
+        padding: var(--spacing-lg);
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)); /* Full overlay for better text visibility */
+        position: absolute;
+        top: 0;          /* Change from bottom: 0 to top: 0 */
+        left: 0;
+        right: 0;
+        bottom: 0;       /* Add bottom: 0 to cover full height */
+        text-align: center;
+        display: flex;           /* Add flex display */
+        flex-direction: column;  /* Stack title and date vertically */
+        justify-content: center; /* Center vertically */
+        align-items: center;     /* Center horizontally */
+    }
+
+    .carousel-title {
+        font-size: var(--font-size-2xl);
+        margin-bottom: var(--spacing-sm);
+        color: var(--notice-white);
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        font-family: var(--font-accent);
+        max-width: 80%;         /* Optional: prevent very long titles from stretching too wide */
+    }
+
+    .carousel-date {
+        font-size: var(--font-size-sm);
+        opacity: 0.8;
+        display: block;
+    }
+
+    /* Navigation Arrows */
+    .carousel-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0, 0, 0, 0.6);
+        color: var(--notice-white);
+        border: none;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background-color 0.3s ease;
+    }
+
+    .carousel-nav:hover {
+        background: rgba(0, 0, 0, 0.8);
+    }
+
+    .prev {
+        left: var(--spacing-md);
+    }
+
+    .next {
+        right: var(--spacing-md);
+    }
+
+    /* Carousel Dots */
+    .carousel-dots {
+        display: flex;
+        justify-content: center;
+        gap: var(--spacing-sm);
+        margin-top: var(--spacing-md);
+    }
+
+    .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .dot.active {
+        background: var(--notice-white);
+    }
+
+    
+
+    /* Members Section Styles */
+    .notice-members {
+        padding: var(--spacing-3xl) 0;
+    }
+
+    .members-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--spacing-2xl);
+    }
+
+    .member-item {
+        text-align: center;
+    }
+
+    .member-name {
+        font-family: var(--font-primary);
+        font-size: var(--font-size-lg);
+        color: var(--notice-white);
+        transition: color 0.3s ease;
+        font-weight: var(--font-medium);
+    }
+
+    .members-cta {
+        text-align: center;
+        margin-top: var(--spacing-2xl);
+    }
+
+    .section-link {
+        font-family: var(--font-accent);
+        font-size: var(--font-size-lg);
+        color: var(--notice-accent);
+        text-decoration: none;
+        position: relative;
+        padding-bottom: var(--spacing-xs);
+    }
+
+    .section-link::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: var(--notice-accent);
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+    }
+
+    .section-link:hover::after {
+        transform: scaleX(1);
+    }
+
+    /* Update section title alignment */
+    .notice-members .section-title {
+        text-align: center;
+        margin-bottom: var(--spacing-2xl);
+    }
+
+    /* Update member name font */
+    .member-name {
+        font-family: var(--font-primary); /* Roboto */
+        font-size: var(--font-size-lg);
+        color: var(--notice-white);
+        transition: color 0.3s ease;
+        font-weight: var(--font-medium); /* Add some weight to Roboto */
+    }
+
+    /* Newsletter Section Styles */
+    .notice-newsletter {
+        padding: var(--spacing-3xl) 0;
+        /*min-height: 600px;*/
+        display: flex;
+        align-items: center;
+    }
+
+
+    .newsletter-widget-container {
+        margin-top: var(--spacing-xl);
+    }
+
+    /* Responsive adjustments */
+    @media screen and (max-width: 768px) {
+        .notice-newsletter {
+            min-height: 300px;
+            padding: var(--spacing-2xl) 0;
+        }
+    }
+
+    /* Social Media Section / Footer Styles */
+    .notice-social {
+        padding: var(--spacing-3xl) 0;
+        text-align: center;
+    }
+
+    .notice-social-links {
+        display: flex;
+        justify-content: center;
+        gap: var(--spacing-xl);
+        margin-bottom: var(--spacing-2xl);
+    }
+
+    .social-icon {
+        width: 64px;
+        height: 64px;
+        background-color: var(--notice-bg-secondary);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.3s ease;
+    }
+
+    .social-icon:hover {
+        transform: translateY(-2px);
+    }
+
+    .social-icon img {
+        width: 32px;
+        height: 32px;
+        filter: brightness(0) invert(1);
+    }
+
+    .social-icon i {
+        font-size: 32px;
+        color: var(--notice-white);
+    }
+
+    .notice-footer-logo {
+        display: block;
+        margin: 0 auto;
+        transition: opacity 0.3s ease;
+    }
+
+    .notice-footer-logo img {
+        height: 60px;
+        width: auto;
+    }
+
+    .notice-footer-logo:hover {
+        opacity: 0.8;
+    }
+
+    /* Responsive adjustments */
+    @media screen and (max-width: 768px) {
+        .notice-social {
+            padding: var(--spacing-2xl) 0;
+        }
+
+        .notice-social-links {
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .social-icon {
+            width: 48px;
+            height: 48px;
+        }
+
+        .social-icon img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .notice-footer-logo img {
+            height: 48px;
+        }
+    }
+
+    /* Add new alternating background colors */
+    .notice-coalition-main > section:not(.notice-intro):nth-child(odd) {
+        background-color: var(--notice-bg-primary);
+    }
+
+    .notice-coalition-main > section:not(.notice-intro):nth-child(even) {
+        background-color: var(--notice-bg-secondary);
+    }
+
+    .video-modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        z-index: 1000;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .modal-content {
+        position: relative;
+        width: 90%;
+        max-width: 800px;
+        background: var(--notice-bg-primary);
+        padding: var(--spacing-md);
+        border-radius: 4px;
+    }
+
+    .modal-close {
+        position: absolute;
+        right: -30px;
+        top: -30px;
+        background: none;
+        border: none;
+        color: var(--notice-white);
+        font-size: var(--font-size-2xl);
+        cursor: pointer;
+        z-index: 1001;
+    }
+
+    .modal-close:hover {
+        color: var(--notice-accent);
+    }
+
+    /* Update the video player container */
+    .plyr__video-embed {
+        aspect-ratio: 16/9;
+        width: 100%;
+    }
+
+    .member-name {
+        font-family: var(--font-primary);
+        font-size: var(--font-size-lg);
+        color: var(--notice-white);
+        transition: color 0.3s ease;
+        font-weight: var(--font-medium);
+        text-decoration: none;
+    }
+
+    .member-name:hover {
+        color: var(--notice-accent);
+    }
+
+    .member-name.disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        position: relative;
+    }
+    
+    .resource-links {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-md);
+    }
+
+    .resource-action {
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.3s ease;
+        color: var(--notice-accent);
+        font-size: var(--font-size-xl);
+    }
+
+    .resource-action i {
+        transition: transform 0.3s ease;
+    }
+
+    .resource-action:hover i {
+        transform: translateY(-2px);
+    }
+
+    /* Specific hover effect for play button */
+    .resource-action .fa-circle-play:hover {
+        transform: scale(1.1);
+    }
+
+    
+
+    /* Standard disabled styling */
+    .disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        position: relative;
+    }
+
+    /* Universal disabled icon */
+    .disabled::before {
+        /*content: '⊘';*/  /* Unicode for circled backslash */
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 1.5em;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .disabled:hover::before {
+        opacity: 1;
+    }
+
+    /* Optional tooltip - only appears if title attribute is present */
+    .disabled[title]:hover::after {
+        content: attr(title);
+        position: absolute;
+        bottom: -30px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: var(--notice-bg-secondary);
+        color: var(--notice-white);
+        padding: 5px 10px;
+        border-radius: 4px;
+        font-size: var(--font-size-sm);
+        white-space: nowrap;
+        z-index: 1000;
+    }
+
+    /* Generic tooltip styles */
+    .text-tooltip,
+    .image-tooltip {
+        position: relative;
+    }
+
+    .text-tooltip:hover::after,
+    .image-tooltip:hover::after {
+        content: attr(title);
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: var(--notice-bg-secondary);
+        color: var(--notice-white);
+        padding: 5px 10px;
+        border-radius: 4px;
+        font-size: var(--font-size-sm);
+        white-space: nowrap;
+        z-index: 1000;
+    }
+
+    /* Text tooltip appears below the element */
+    .text-tooltip:hover::after {
+        bottom: -30px;
+    }
+
+    /* Image tooltip appears above the element */
+    .image-tooltip:hover::after {
+        top: -30px;
+    }
+
+    .invisible {
+        visibility: hidden;
+        pointer-events: none;
+        opacity: 0;
+    }
+
+    /* Update resource content layout */
+    .resource-content {
+        padding: var(--spacing-lg);
+    }
+
+    /* Create a flex container for tags and links */
+    .resource-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: var(--spacing-lg);
+    }
+
+    /* Adjust resource tag styling */
+    
+
+    /* Update resource links styling */
+    .resource-links {
+        display: flex;
+        gap: var(--spacing-md);
+    }
+
+    .hidden {
+        display: none;
+    }
+    
+    .youtube-video,
+    .vimeo-video,
+    .self-hosted-video {
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        scale: 1.5;
+    }
+
+    .google-drive-video {
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        scale: 1.5;
+        border: none;
+    }
+
+    /* Add these styles */
+    .featured-alert {
+        background-color: var(--notice-accent);
+        width: 100%;
+        position: fixed;
+        top: var(--nav-height);
+        z-index: 999;
+    }
+
+    .alert-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: var(--spacing-md);
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+
+    .alert-text {
+        color: var(--notice-black);
+        font-family: var(--font-accent);
+        font-weight: var(--font-bold);
+        font-size: var(--font-size-base);
+    }
+
+    .alert-cta {
+        color: var(--notice-black);
+        text-decoration: none;
+        font-weight: var(--font-bold);
+        padding: var(--spacing-xs) var(--spacing-md);
+        border: 2px solid var(--notice-black);
+        border-radius: 4px;
+        transition: all 0.3s ease;
+    }
+
+    .alert-cta:hover {
+        background-color: var(--notice-black);
+        color: var(--notice-accent);
+    }
+
+    /* Update intro section padding to account for alert banner */
+    .notice-intro {
+        padding-top: calc(var(--nav-height) + 46px);
+    }
+
+    @media screen and (max-width: 768px) {
+        .alert-container {
+            flex-direction: column;
+            text-align: center;
+            padding: var(--spacing-xs) var(--spacing-md);
+        }
+    }
+
+    /* Update nav CTA styles */
+    .nav-cta-featured {
+        background-color: var(--notice-accent);
+        color: var(--notice-black);
+        border: 2px solid var(--notice-accent);
+        animation: pulse 2s infinite;
+    }
+
+    .nav-cta-featured:hover {
+        background-color: transparent;
+        color: var(--notice-accent);
+        border-color: var(--notice-accent);
+        animation: none;
+    }
+
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.05);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    /* Ensure button text stays on one line on mobile */
+    @media screen and (max-width: 768px) {
+        .nav-cta-featured {
+            font-size: var(--font-size-sm);
+            white-space: nowrap;
+            margin-top: var(--spacing-sm);
+        }
+    }
+
+    /* Modal Styles */
+    .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        z-index: 2000;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .modal-content {
+        position: relative;
+        background-color: var(--notice-bg-primary);
+        width: 90%;
+        max-width: 800px;
+        max-height: 90vh;
+        border-radius: 4px;
+        overflow: hidden;
+    }
+
+    .close-modal {
+        position: absolute;
+        right: var(--spacing-md);
+        top: var(--spacing-md);
+        color: var(--notice-white);
+        font-size: var(--font-size-2xl);
+        cursor: pointer;
+        z-index: 2001;
+        transition: color 0.3s ease;
+        background: none;
+        border: none;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+    }
+
+    .close-modal:hover {
+        color: var(--notice-accent);
+    }
+
+    .registration-form {
+        width: 100%;
+        height: 80vh;
+        border: none;
+    }
+
+    /* Update intro-cta-container styles */
+    .intro-cta-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: var(--spacing-xl);
+    }
+
+    .intro-cta-buttons {
+        display: flex;
+        gap: var(--spacing-md);
+    }
+
+    /* Substack Popup Styles */
+    .substack-popup {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        z-index: 3000; /* Higher than other modals */
+        justify-content: center;
+        align-items: center;
+    }
+
+    .popup-content {
+        position: relative;
+        background-color: rgba(255, 255, 255, 0.13);
+        padding: var(--spacing-lg);
+        border-radius: 5px;
+        max-width: 530px;
+        width: 90%;
+    }
+
+    .popup-content {
+        transition: outline-offset 1s ease, background-color 0.5s ease, transform 1s ease;
+    }
+    
+    .popup-content:hover {
+        outline: 2px solid var(--notice-accent);
+        outline-offset: 4px;
+        background-color: rgba(26, 48, 112, 0.1);
+        transform: scale(1.02);
+    }
+
+    .close-popup {
+        position: absolute;
+        right: -15px;
+        top: -15px;
+        width: 30px;
+        height: 30px;
+        background-color: var(--notice-black);
+        color: var(--notice-white);
+        border: none;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: var(--font-size-lg);
+        z-index: 3001;
+        transition: all 0.3s ease;
+    }
+
+    .close-popup:hover {
+        background-color: var(--notice-accent);
+        color: var(--notice-black);
+        transform: rotate(90deg);
+    }
+
+    /* Responsive adjustments for smaller screens */
+    @media screen and (max-width: 768px) {
+        .popup-content {
+            width: 95%;
+            padding: var(--spacing-md);
+        }
+        
+        .popup-content iframe {
+            width: 100%;
+            height: 300px;
+        }
+    }
+
+    /* New badge and recent resource styling */
+    .new-badge {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: var(--notice-accent);
+        color: var(--notice-black);
+        font-family: var(--font-accent);
+        font-weight: var(--font-bold);
+        font-size: var(--font-size-sm);
+        padding: 4px 8px;
+        border-radius: 4px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        z-index: 2;
+        animation: pulse-badge 2s infinite;
+    }
+
+    .recent-resource {
+        box-shadow: 0 0 0 2px var(--notice-accent);
+        position: relative;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .recent-resource:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 0 0 2px var(--notice-accent), 0 8px 16px rgba(251, 197, 22, 0.15);
+    }
+
+    .resource-date {
+        font-size: var(--font-size-sm);
+        color: var(--notice-text-secondary);
+        margin-top: var(--spacing-sm);
+    }
+
+    @keyframes pulse-badge {
+        0% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.05);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    /* Make sure the resource image container is positioned relatively */
+    .resource-image {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 16/9;
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+    /* Style for nav links with new content */
+    .nav-links a.has-new-content {
+        color: var(--notice-accent) !important;
+        position: relative;
+    }
+    
+    /* Add a subtle dot indicator using ::after pseudo-element */
+    .nav-links a.has-new-content::after {
+        content: "";
+        position: absolute;
+        top: 0px;
+        right: -8px;
+        width: 6px;
+        height: 6px;
+        background-color: var(--notice-accent);
+        border-radius: 50%;
+        animation: pulse-dot 2s infinite;
+    }
+    
+    /* Pulse animation for the dot */
+    @keyframes pulse-dot {
+        0% {
+            transform: scale(0.8);
+            opacity: 0.8;
+        }
+        50% {
+            transform: scale(1.2);
+            opacity: 1;
+        }
+        100% {
+            transform: scale(0.8);
+            opacity: 0.8;
+        }
+    }
+</style>
+
+<link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css">
+<script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
+
+
+<section class="notice-coalition-main">
+
+    <nav class="notice-nav">
+        <div class="section-content nav-container">
+            <a href="/noticecoalition" class="nav-logo">
+                <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/301406ed-440a-4a15-b346-b8b0faff4729/Notice+Logo+Design+F-03.png?content-type=image%2Fpng" alt="Notice Coalition Logo">
+            </a>
+            
+            <div class="nav-links">
+                <a href="/noticecoalition/about" target="_blank">About</a>
+                <a href="#initiatives">Initiatives</a>
+                <a href="#resources">Resources</a>
+                <!--<a href="#feed-items">Newsletter</a>-->
+            </div>
+
+            <a href="/noticecoalition/ending-youth-surveillance" class="notice-btn nav-cta nav-cta-featured">New Speaker Series: Ending Youth Surveillance →</a>
+        </div>
+    </nav>
+    
+
+
+    <!-- Introduction Section -->
+    <section class="notice-intro">
+        <div class="video-background">
+
+            <!--Youtube Video-->
+            <!--
+            <iframe 
+                src="https://www.youtube.com/embed/tV_yE4ftCck?si=fH0U4PEM_BBEW4V4&autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&playlist=tV_yE4ftCck&playsinline=1&enablejsapi=1&version=3&hd=1"
+                title="Background Video"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+            -->
+
+            <!--Vimeo Video-->
+            <iframe 
+                src="https://player.vimeo.com/video/1055447807?h=2cf5531092&background=1&autoplay=1&loop=1&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+                title="Background Video"
+                frameborder="0"
+                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+                allowfullscreen
+                class="vimeo-video">
+            </iframe>
+    
+            <!-- For self-hosted videos -->
+             <!--
+            <video 
+                autoplay 
+                muted 
+                loop 
+                playsinline 
+                class="self-hosted-video">
+                <source src="https://drive.google.com/file/d/1KcHfuMR75YMfIhsRv_L4hoYnjP-NHfDP/view" type="video/mp4">
+            </video>
+            -->
+            <div class="video-overlay"></div>
+        </div>
+
+        <div class="section-content intro-content">
+            <div class="intro-text-container">
+                <h1 class="intro-catchphrase">
+                    Defending Youth Justice<br>
+                    In The Digital Age
+                </h1>
+                <div class="intro-cta-container">
+                    <p class="intro-cta-text">
+                        Join us in the fight to end surveillance and build a future where all youth thrive with dignity and justice!
+                    </p>
+                    <div class="intro-cta-buttons">
+                        <button class="notice-btn intro-cta-btn" id="connectBtn">CONNECT WITH US</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+
+    <!-- Initiatives Section -->
+    <section class="notice-initiatives" id="initiatives">
+        <div class="section-content">
+            <div class="section-header">
+                <h2 class="section-title">INITIATIVES</h2>
+                <!--<a href="/noticecoalition/initiatives" class="section-link">SEE ALL</a>-->
+            </div>
+            
+            <div class="initiatives-grid">
+                <a href="noticecoalition/fellowship" class="initiative-card">
+                    <div class="initiative-image">
+                        <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/02f04f50-bbdf-4004-bba6-d52262d94fce/AdobeStock_1015556916.jpeg?content-type=image%2Fjpeg" alt="Digital Privacy Rights">
+                        <div class="initiative-overlay">
+                            <h3 class="initiative-title">No Data About Us Without Us Fellowship Program</h3>
+                            <p class="initiative-description">
+                                Protecting youth privacy rights in the digital age through advocacy and education.
+                            </p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/noticecoalition/ending-youth-surveillance" class="initiative-card">
+                    <div class="initiative-image">
+                        <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/6a073631-26c7-44dd-9882-6341a3ac97a1/AdobeStock_847227386.jpeg?content-type=image%2Fjpeg" alt="Ending Youth Surveillance">
+                        <div class="initiative-overlay">
+                            <h3 class="initiative-title">Ending Youth Surveillance Speaker Series</h3>
+                            <p class="initiative-description">
+                                Fighting against invasive surveillance technologies in schools and advocating for student privacy.
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Resources Section -->
+    <section class="notice-resources" id="resources">
+        <div class="section-content">
+            <div class="section-header">
+                <h2 class="section-title">RESOURCES</h2>
+                <a href="/noticecoalition/resources" class="section-link">SEE ALL</a>
+            </div>
+            
+            <div class="resources-grid">
+                <!-- Resources will be populated dynamically -->
+            </div>
+        </div>
+        <div id="videoModal" class="video-modal">
+            <div class="modal-content">
+                <button class="modal-close">&times;</button>
+                <div class="plyr__video-embed" id="player">
+                    <div class="video-placeholder"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    
+    <!-- Coalition Members Section -->
+    <section class="notice-members">
+        <div class="section-content">
+            <h2 class="section-title">OUR NETWORK</h2>
+            
+            <div class="members-grid">
+                <!-- Member 1 -->
+                <div class="member-item">
+                    <a href="https://www.splcenter.org/PASCOcoalition" target="_blank" rel="noopener noreferrer" class="member-name">PASCO COALITION</a>
+                </div>
+
+                <!-- Member 2 -->
+                <div class="member-item">
+                    <a href="https://safetynotsurveillance.org/" target="_blank" rel="noopener noreferrer" class="member-name">SAFETY NOT SURVEILLANCE COALITION</a>
+                </div>
+
+                <!-- Member 3 -->
+                <div class="member-item">
+                    <a href="https://www.tciamn.org/cpa-journey" target="_blank" rel="noopener noreferrer" class="member-name">STOP THE CRADLE TO PRISON ALGORITHM</a>
+                </div>
+
+                <!-- Continue pattern for all members -->
+                <div class="member-item">
+                    <a href="https://www.clasp.org/" target="_blank" rel="noopener noreferrer" class="member-name">CLASP</a>
+                </div>
+
+                <div class="member-item">
+                    <a href="https://encodejustice.org/" target="_blank" rel="noopener noreferrer" class="member-name">ENCODE JUSTICE</a>
+                </div>
+
+                <div class="member-item">
+                    <a href="https://www.aclufl.org/" target="_blank" rel="noopener noreferrer" class="member-name">ACLU FLORIDA</a>
+                </div>
+
+                <div class="member-item">
+                    <a href="https://www.aclu-mn.org/en" target="_blank" rel="noopener noreferrer" class="member-name">ACLU MINNESOTA</a>
+                </div>
+
+                <div class="member-item">
+                    <a href="https://disabilityrightsflorida.org/" target="_blank" rel="noopener noreferrer" class="member-name">DISABILITY RIGHTS FLORIDA</a>
+                </div>
+
+                <div class="member-item">
+                    <a href="https://www.splcenter.org/" target="_blank" rel="noopener noreferrer" class="member-name">SOUTHERN POVERTY LAW CENTER</a>
+                </div>
+
+                <div class="member-item">
+                    <a href="https://www.naacpldf.org/" target="_blank" rel="noopener noreferrer" class="member-name">LEGAL DEFENSE FUND</a>
+                </div>
+
+
+                <div class="member-item">
+                    <a href="https://cdt.org/" target="_blank" rel="noopener noreferrer" class="member-name">CENTER FOR DEMOCRACY AND TECHNOLOGY</a>
+                </div>
+
+                <div class="member-item">
+                    <a href="https://muslimjusticeleague.org/" target="_blank" rel="noopener noreferrer" class="member-name">MUSLIM JUSTICE LEAGUE</a>
+                </div>
+
+                <div class="member-item">
+                    <a href="https://www.fortbendisd.com" target="_blank" rel="noopener noreferrer" class="member-name">FORT BEND INDEPENDENT SCHOOL DISTRICT EQUITY COUNCIL</a>
+                </div>
+
+
+                <div class="member-item">
+                    <a href="https://www.lucyparsonslabs.com/" target="_blank" rel="noopener noreferrer" class="member-name">LUCY PARSONS LAB</a>
+                </div>
+            </div>
+
+            <div class="members-cta">
+                <!--<a href="/noticecoalition/members" class="section-link">SEE ALL MEMBERS</a>-->
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+     <!---->
+    <section class="notice-newsletter">
+        <div class="section-content">
+            <h2 class="section-title">STAY INFORMED</h2>
+        </div>
+    </section>
+
+    <!-- Social Media Section -->
+    <section class="notice-social">
+        <div class="section-content">
+            <div class="notice-social-links">
+                <a href="https://www.linkedin.com/company/no-tech-criminalization-in-education-notice-coalition/?viewAsMember=true" target="_blank" rel="noopener noreferrer" class="social-icon">
+                    <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/e21f8602-46df-4d45-ae36-3abea3853857/254394.png?content-type=image%2Fpng" alt="LinkedIn">
+                </a>
+                <!--
+                <a href="https://x.com/NOTICETCIA" target="_blank" rel="noopener noreferrer" class="social-icon">
+                    <i class="fa-brands fa-square-x-twitter"></i>
+                </a>
+                -->
+                <a href="https://bsky.app/profile/noticecoalition.bsky.social" target="_blank" rel="noopener noreferrer" class="social-icon">
+                    <i class="fa-brands fa-bluesky"></i>
+                </a>
+
+                <a href="mailto:thenoticecoalition@gmail.com" target="_blank" rel="noopener noreferrer" class="social-icon">
+                    <i class="fa-solid fa-envelope"></i>
+                </a>
+
+                <a href="https://thenoticecoalition.substack.com/" target="_blank" rel="noopener noreferrer" class="social-icon">
+                    <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/211166a9-1777-4257-9e9e-4d912133cc4b/substack-icon.png?content-type=image%2Fpng" alt="Substack">
+                </a>
+            </div>
+            
+            <a href="/noticecoalition" class="notice-footer-logo">
+                <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/301406ed-440a-4a15-b346-b8b0faff4729/Notice+Logo+Design+F-03.png?content-type=image%2Fpng" alt="Notice Coalition">
+            </a>
+        </div>
+    </section>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const container = document.querySelector('.carousel-container');
+        const items = document.querySelectorAll('.carousel-item');
+        const dots = document.querySelectorAll('.dot');
+        const prevBtn = document.querySelector('.prev');
+        const nextBtn = document.querySelector('.next');
+        let currentIndex = 0;
+
+        function updateCarousel() {
+            container.style.transform = `translateX(-${currentIndex * 100}%)`;
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentIndex);
+            });
+        }
+
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + items.length) % items.length;
+            updateCarousel();
+        });
+
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % items.length;
+            updateCarousel();
+        });
+
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentIndex = index;
+                updateCarousel();
+            });
+        });
+
+        setInterval(() => {
+            currentIndex = (currentIndex + 1) % items.length;
+            updateCarousel();
+        }, 5000);
+    });
+</script>
+
+<div id="videoModal" class="video-modal">
+    <div class="modal-content">
+        <button class="modal-close">&times;</button>
+        <div class="plyr__video-embed" id="player">
+            <div class="video-placeholder"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialize video modal functionality
+        const videoModal = document.getElementById('videoModal');
+        const videoPlaceholder = document.querySelector('.video-placeholder');
+        const modalClose = document.querySelector('.modal-close');
+        let player;
+
+        // Function to extract video ID from various video platform URLs
+        function getVideoEmbed(url) {
+            // YouTube
+            const youtubeRegex = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/;
+            const youtubeMatch = url.match(youtubeRegex);
+            
+            if (youtubeMatch) {
+                return {
+                    type: 'youtube',
+                    id: youtubeMatch[1],
+                    embed: `https://www.youtube.com/embed/${youtubeMatch[1]}?origin=${window.location.origin}&iv_load_policy=3&modestbranding=1&playsinline=1&showinfo=0&rel=0&enablejsapi=1`
+                };
+            }
+            
+            // Vimeo
+            const vimeoRegex = /(?:vimeo\.com\/)([0-9]+)/;
+            const vimeoMatch = url.match(vimeoRegex);
+            
+            if (vimeoMatch) {
+                return {
+                    type: 'vimeo',
+                    id: vimeoMatch[1],
+                    embed: `https://player.vimeo.com/video/${vimeoMatch[1]}?loop=false&byline=false&portrait=false&title=false&speed=true&transparent=0&gesture=media`
+                };
+            }
+            
+            return null;
+        }
+
+        // Handle video link clicks
+        document.querySelectorAll('.resource-action').forEach(link => {
+            link.addEventListener('click', function(e) {
+                const videoUrl = this.getAttribute('href');
+                if (videoUrl && this.querySelector('.fa-circle-play')) {
+                    e.preventDefault();
+                    
+                    const videoData = getVideoEmbed(videoUrl);
+                    if (videoData) {
+                        // Create iframe with proper embed URL
+                        videoPlaceholder.innerHTML = `<iframe
+                            src="${videoData.embed}"
+                            allowfullscreen
+                            allowtransparency
+                            allow="autoplay"
+                        ></iframe>`;
+                        
+                        // Initialize Plyr
+                        if (player) {
+                            player.destroy();
+                        }
+                        player = new Plyr('#player iframe', {
+                            controls: ['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'captions', 'settings', 'pip', 'airplay', 'fullscreen'],
+                            hideControls: false
+                        });
+                        
+                        // Show modal
+                        videoModal.style.display = 'flex';
+                    }
+                }
+            });
+        });
+
+        // Close modal functionality
+        modalClose.addEventListener('click', () => {
+            videoModal.style.display = 'none';
+            if (player) {
+                player.destroy();
+            }
+            videoPlaceholder.innerHTML = '';
+        });
+
+        // Close on background click
+        videoModal.addEventListener('click', (e) => {
+            if (e.target === videoModal) {
+                videoModal.style.display = 'none';
+                if (player) {
+                    player.destroy();
+                }
+                videoPlaceholder.innerHTML = '';
+            }
+        });
+
+        // Close on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && videoModal.style.display === 'flex') {
+                videoModal.style.display = 'none';
+                if (player) {
+                    player.destroy();
+                }
+                videoPlaceholder.innerHTML = '';
+            }
+        });
+    });
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Get all navigation links
+    const navLinks = document.querySelectorAll('.nav-links a');
+    
+    // Add click event listener to each link
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            
+            // Only handle links that start with # (i.e., scroll to section on current page)
+            if (href.startsWith('#')) {
+                e.preventDefault();
+                
+                // Get the target section id from the href
+                const targetId = href.substring(1);
+                const targetSection = document.getElementById(targetId);
+                
+                if (targetSection) {
+                    // Get the height of the fixed navigation bar
+                    const navHeight = document.querySelector('.notice-nav').offsetHeight;
+                    
+                    // Calculate the target position accounting for the nav bar
+                    const targetPosition = targetSection.getBoundingClientRect().top + window.pageYOffset - navHeight;
+                    
+                    // Smooth scroll to the target
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            }
+            // Links to other pages will work with default browser behavior
+        });
+    });
+});
+</script>
+
+<!-- Add Modal HTML -->
+<div id="connectModal" class="modal">
+    <div class="modal-content">
+        <button class="close-modal">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <iframe 
+            src="https://app.youform.com/forms/zw92w9mu" 
+            class="registration-form"
+            frameborder="0" 
+            marginheight="0" 
+            marginwidth="0">
+            Loading form...
+        </iframe>
+    </div>
+</div>
+
+<!-- Add Modal JavaScript -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('connectModal');
+    const btn = document.getElementById('connectBtn');
+    const closeBtn = document.querySelector('.close-modal');
+
+    btn.addEventListener('click', () => {
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    });
+
+    closeBtn.addEventListener('click', () => {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto'; // Restore scrolling
+    });
+
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.style.display === 'flex') {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    });
+});
+</script>
+
+<script>
+    async function fetchFeedData() {
+        try {
+            const response = await fetch('https://tcia-website.s3.us-west-2.amazonaws.com/processed_feeds.json');
+            const data = await response.json();
+            return data.items.slice(0, 6); // Get only the latest 6 items(limited b/c on homepage)
+        } catch (error) {
+            console.error('Error fetching feed data:', error);
+            return [];
+        }
+    }
+
+    function formatDate(dateString) {
+        const date = new Date(dateString);
+        return date.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+    }
+
+    async function displayFeedItems() {
+        const feedContainer = document.getElementById('feed-items');
+        const items = await fetchFeedData();
+
+        feedContainer.innerHTML = items.map(item => `
+            <article class="feed-item">
+                <a href="${item.link}" class="feed-item-link" target="_blank" rel="noopener noreferrer">
+                    <img src="${item.image_url}" alt="${item.title}" class="feed-item-image">
+                    <div class="feed-item-content">
+                        <div class="feed-item-source">${item.feed_name}</div>
+                        <h3 class="feed-item-title">${item.title}</h3>
+                        <p class="feed-item-description">${item.description}</p>
+                        <div class="feed-item-date">${formatDate(item.pubDate)}</div>
+                    </div>
+                </a>
+            </article>
+        `).join('');
+    }
+
+    // Call displayFeedItems when the page loads
+    document.addEventListener('DOMContentLoaded', () => {
+        displayFeedItems();
+    });
+</script>
+
+<!-- Add Substack Popup HTML -->
+<div id="substackPopup" class="substack-popup">
+    <div class="popup-content">
+        <button class="close-popup">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <iframe 
+            src="https://thenoticecoalition.substack.com/embed" 
+            width="480" 
+            height="320" 
+            style="border:1px solid #EEE; background:white;" 
+            frameborder="0" 
+            scrolling="no">
+        </iframe>
+    </div>
+</div>
+
+<!-- Add Substack Popup JavaScript -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const popup = document.getElementById('substackPopup');
+    const closeBtn = document.querySelector('.close-popup');
+    const initiativesSection = document.getElementById('resources');
+    let popupShown = false;
+    
+    // Cookie management functions
+    function setCookie(name, value, days) {
+        const date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        const expires = "expires=" + date.toUTCString();
+        document.cookie = name + "=" + value + ";" + expires + ";path=/";
+    }
+    
+    function getCookie(name) {
+        const cookieName = name + "=";
+        const decodedCookie = decodeURIComponent(document.cookie);
+        const cookieArray = decodedCookie.split(';');
+        for(let i = 0; i < cookieArray.length; i++) {
+            let cookie = cookieArray[i];
+            while (cookie.charAt(0) === ' ') {
+                cookie = cookie.substring(1);
+            }
+            if (cookie.indexOf(cookieName) === 0) {
+                return cookie.substring(cookieName.length, cookie.length);
+            }
+        }
+        return "";
+    }
+    
+    // Get today's date in YYYY-MM-DD format for the cookie
+    function getTodayString() {
+        const date = new Date();
+        return date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+    }
+    
+    // Check and initialize popup count
+    function getPopupCount() {
+        const today = getTodayString();
+        const storedDate = getCookie("popupDate");
+        const count = getCookie("popupCount");
+        
+        // If it's a new day, reset the count
+        if (storedDate !== today) {
+            setCookie("popupDate", today, 1);
+            setCookie("popupCount", "0", 1);
+            return 0;
+        }
+        
+        return count ? parseInt(count) : 0;
+    }
+    
+    // Increment popup count
+    function incrementPopupCount() {
+        const count = getPopupCount();
+        setCookie("popupCount", (count + 1).toString(), 1);
+    }
+    
+    // Function to show the popup
+    function showPopup() {
+        if (popupShown) return; // Don't show if already shown in this session
+        
+        const count = getPopupCount();
+        if (count < 3) { // Only show if less than 3 times today
+            popup.style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // Disable scrolling
+            popupShown = true;
+            incrementPopupCount();
+        }
+    }
+    
+    // Add scroll event listener to check if user has scrolled to initiatives section
+    window.addEventListener('scroll', function() {
+        if (!popupShown && initiativesSection) {
+            const rect = initiativesSection.getBoundingClientRect();
+            // Check if initiatives section is in viewport
+            if (rect.top <= window.innerHeight && rect.bottom >= 0) {
+                showPopup();
+            }
+        }
+    });
+    
+    // Close popup when close button is clicked
+    closeBtn.addEventListener('click', () => {
+        popup.style.display = 'none';
+        document.body.style.overflow = 'auto'; // Re-enable scrolling
+    });
+    
+    // Close popup when clicking outside the content
+    popup.addEventListener('click', (e) => {
+        if (e.target === popup) {
+            popup.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    });
+    
+    // Close popup when pressing Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && popup.style.display === 'flex') {
+            popup.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    });
+});
+</script>
+
+<!-- Add Resources JSON Fetching Script -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Debug mode detection - check for both general and specific debug parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const debugMode = urlParams.get('debugMode') === 'true';
+        const refreshResources = urlParams.get('refreshResources') === 'true';
+        
+        // Debug panel creation - will contain all debug controls and info
+        function createDebugPanel() {
+            if (debugMode && !document.getElementById('debugPanel')) {
+                const debugPanel = document.createElement('div');
+                debugPanel.id = 'debugPanel';
+                debugPanel.className = 'debug-panel';
+                debugPanel.innerHTML = `
+                    <h3>Debug Panel</h3>
+                    <div class="debug-section">
+                        <h4>Resources</h4>
+                        <div id="resourceDebugInfo"></div>
+                    </div>
+                `;
+                
+                // Apply styles to debug panel
+                debugPanel.style.position = 'fixed';
+                debugPanel.style.bottom = '20px';
+                debugPanel.style.right = '20px';
+                debugPanel.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+                debugPanel.style.color = 'var(--notice-white)';
+                debugPanel.style.padding = '15px';
+                debugPanel.style.borderRadius = '5px';
+                debugPanel.style.zIndex = '9999';
+                debugPanel.style.maxWidth = '400px';
+                debugPanel.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.5)';
+                debugPanel.style.fontSize = 'var(--font-size-sm)';
+                debugPanel.style.transition = 'all 0.3s ease';
+                
+                // Add a toggle button to minimize/expand
+                const toggleButton = document.createElement('button');
+                toggleButton.innerHTML = '−';
+                toggleButton.style.position = 'absolute';
+                toggleButton.style.top = '5px';
+                toggleButton.style.right = '5px';
+                toggleButton.style.background = 'none';
+                toggleButton.style.border = 'none';
+                toggleButton.style.color = 'var(--notice-white)';
+                toggleButton.style.cursor = 'pointer';
+                toggleButton.style.fontSize = '16px';
+                
+                let expanded = true;
+                const sections = [];
+                
+                toggleButton.addEventListener('click', () => {
+                    sections.forEach(section => {
+                        section.style.display = expanded ? 'none' : 'block';
+                    });
+                    expanded = !expanded;
+                    toggleButton.innerHTML = expanded ? '−' : '+';
+                });
+                
+                debugPanel.appendChild(toggleButton);
+                document.body.appendChild(debugPanel);
+                
+                // Collect all debug sections for the toggle functionality
+                sections.push(document.querySelector('.debug-section'));
+                
+                return debugPanel;
+            }
+            return null;
+        }
+        
+        // Function to update resource debug info in debug panel
+        function updateResourceDebugInfo(message, data) {
+            if (debugMode) {
+                const debugInfo = document.getElementById('resourceDebugInfo');
+                if (debugInfo) {
+                    // Show resource cache information
+                    let infoHTML = `<p>${message}</p>`;
+                    
+                    if (data && data.timestamp) {
+                        const cacheTime = new Date(data.timestamp).toLocaleString();
+                        infoHTML += `<p>Cache timestamp: ${cacheTime}</p>`;
+                    }
+                    
+                    // Add refresh button
+                    infoHTML += `<button id="refreshResourcesBtn" class="notice-btn">Refresh Resources Cache</button>`;
+                    
+                    debugInfo.innerHTML = infoHTML;
+                    
+                    // Add event listener to refresh button
+                    const refreshBtn = document.getElementById('refreshResourcesBtn');
+                    if (refreshBtn) {
+                        refreshBtn.style.fontSize = 'var(--font-size-sm)';
+                        refreshBtn.style.padding = '5px 10px';
+                        refreshBtn.style.marginTop = '10px';
+                        refreshBtn.addEventListener('click', async () => {
+                            localStorage.removeItem('noticeResourcesCache');
+                            await displayResources();
+                            updateResourceDebugInfo('Cache manually cleared and refreshed!');
+                        });
+                    }
+                }
+            }
+        }
+        
+        // Function to fetch resources from the API
+        async function fetchResourcesFromAPI() {
+            const response = await fetch('https://leon-tcia.github.io/tcia-server-files/notice-resources-list.json');
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            
+            const data = await response.json();
+            
+            // Save data to localStorage with timestamp
+            const cacheData = {
+                timestamp: Date.now(),
+                resources: data
+            };
+            
+            localStorage.setItem('noticeResourcesCache', JSON.stringify(cacheData));
+            
+            if (debugMode) {
+                updateResourceDebugInfo('Fresh data fetched from API', cacheData);
+            }
+            
+            return data;
+        }
+        
+        // Function to get resources (from cache or API)
+        async function getResources() {
+            // If refresh resources mode is enabled, skip cache and fetch fresh data
+            if (refreshResources) {
+                console.log('Refresh resources mode: Fetching fresh resources data');
+                return await fetchResourcesFromAPI();
+            }
+            
+            // Check if we have cached data
+            const cachedData = localStorage.getItem('noticeResourcesCache');
+            
+            if (cachedData) {
+                const cache = JSON.parse(cachedData);
+                const now = Date.now();
+                const hourInMs = 60 * 60 * 1000;
+                
+                // If cache is less than an hour old, use it
+                if (now - cache.timestamp < hourInMs) {
+                    console.log('Using cached resources data');
+                    if (debugMode) {
+                        updateResourceDebugInfo('Using cached resources data', cache);
+                    }
+                    return cache.resources;
+                }
+                
+                console.log('Cache expired: Fetching fresh resources data');
+                if (debugMode) {
+                    updateResourceDebugInfo('Cache expired: Fetching fresh data', cache);
+                }
+            } else {
+                console.log('No cache found: Fetching resources data for the first time');
+                if (debugMode) {
+                    updateResourceDebugInfo('No cache found: Fetching fresh data');
+                }
+            }
+            
+            // Cache is invalid or expired, fetch fresh data
+            return await fetchResourcesFromAPI();
+        }
+        
+        // Function to check if a resource is recent (less than 30 days old)
+        function isRecent(dateString) {
+            const resourceDate = new Date(dateString);
+            const now = new Date();
+            const thirtyDaysAgo = new Date();
+            thirtyDaysAgo.setDate(now.getDate() - 30);
+            return resourceDate >= thirtyDaysAgo;
+        }
+        
+        // Function to update the Resources navigation link when new content is available
+        function updateResourcesNavLink(hasNewResources) {
+            const resourcesLink = document.querySelector('.nav-links a[href="#resources"]');
+            if (resourcesLink) {
+                if (hasNewResources) {
+                    // Add class to mark that new resources are available
+                    resourcesLink.classList.add('has-new-content');
+                } else {
+                    // Remove the indicator if no new resources
+                    resourcesLink.classList.remove('has-new-content');
+                }
+            }
+        }
+        
+        // Main function to display resources
+        async function displayResources() {
+            const resourcesGrid = document.querySelector('.resources-grid');
+            
+            if (!resourcesGrid) return;
+            
+            try {
+                // Create debug panel if debug mode is enabled
+                if (debugMode) {
+                    createDebugPanel();
+                }
+                
+                const data = await getResources();
+                // Check if any resources are recent to update nav
+                const hasNewResources = data.some(item => isRecent(item.date));
+                updateResourcesNavLink(hasNewResources);
+                
+                // Limit to first 6 items for homepage
+                const resourceItems = data.slice(0, 6);
+                
+                resourcesGrid.innerHTML = '';
+                
+                // Display items
+                resourceItems.forEach(item => {
+                    const isRecentResource = isRecent(item.date);
+                    const resourceCard = document.createElement('div');
+                    resourceCard.className = isRecentResource ? 'resource-card recent-resource' : 'resource-card';
+                    
+                    resourceCard.innerHTML = `
+                        <div class="resource-image">
+                            <a href="${item.downloadUrl}" target="_blank" rel="noopener noreferrer">
+                                <img src="${item.image}" alt="${item.title}">
+                            </a>
+                            ${isRecentResource ? '<div class="new-badge">NEW</div>' : ''}
+                        </div>
+                        <div class="resource-content">
+                            <div class="resource-meta">
+                                <span class="resource-tag"><i class="fa-solid fa-hashtag"></i>${item.type}</span>
+                                <div class="resource-links">
+                                    <a href="${item.downloadUrl}" class="resource-action" title="${item.tooltip || 'Download'}" target="_blank" rel="noopener noreferrer">
+                                        <i class="fa-solid fa-cloud-arrow-down"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <p class="resource-description">${item.title}</p>
+                            ${debugMode ? `<div class="resource-date">${new Date(item.date).toLocaleDateString('en-US', {
+                                year: 'numeric',
+                                month: 'short',
+                                day: 'numeric'
+                            })}</div>` : ''}
+                        </div>
+                    `;
+                    resourcesGrid.appendChild(resourceCard);
+                });
+                
+            } catch (error) {
+                console.error('Error displaying resources:', error);
+                resourcesGrid.innerHTML = '<div class="resource-card"><div class="resource-content"><p class="resource-description">Unable to load resources. Please try again later.</p></div></div>';
+                
+                if (debugMode) {
+                    updateResourceDebugInfo(`Error loading resources: ${error.message}`);
+                }
+            }
+        }
+        
+        // Initial display of resources
+        displayResources();
+    });
+</script>
+

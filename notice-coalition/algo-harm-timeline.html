@@ -1,0 +1,313 @@
+<style>
+
+html, body {
+        overflow-x: hidden;  /* Prevent horizontal scrolling */
+        position: relative;  /* Create new stacking context */
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        overscroll-behavior-x: none;  /* Prevent horizontal overscroll */
+        touch-action: pan-y pinch-zoom;  /* Only allow vertical touch actions */
+    }
+    
+    .ndauwu-algo-harm {
+        position: relative;
+        width: 100vw;
+        margin-left: calc(-50vw + 50%);
+        margin-right: calc(-50vw + 50%);
+        background-color: #1a1919;
+    }
+    
+    .timeline {
+        position: relative;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0;
+        background-color: #1a1919;
+    }
+    
+    .timeline-item {
+        margin: 0;
+        width: 100%;
+        background-color: #1a1919;
+    }
+    
+    .timeline-content {
+        width: 100%;
+        padding: 0;
+        background-color: #1a1919;
+    }
+    
+    .timeline-content img {
+        width: 100%;
+        height: auto;
+        display: block;
+        vertical-align: bottom;
+    }
+    
+    /* Remove the vertical line and left/right alternating since they're in the images */
+    .timeline::before {
+        display: none;
+    }
+    
+    .timeline-item:nth-child(odd) .timeline-content,
+    .timeline-item:nth-child(even) .timeline-content {
+        margin: 0;
+    }
+    
+    .scroll-progress-horizontal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 6px;
+        background: linear-gradient(
+            90deg,
+            #3498db 0%,
+            #2ecc71 100%
+        );
+        opacity: 0.9;
+        transform-origin: 0 50%;
+        transform: scaleX(0);
+        z-index: 1000;
+        transition: transform 0.1s ease;
+    }
+    
+    .scroll-progress-vertical {
+        position: fixed;
+        right: calc(50% - 520px);
+        top: 50%;
+        width: 3px;
+        height: 50px;
+        background: linear-gradient(
+            180deg,
+            #3498db 0%,
+            #2ecc71 100%
+        );
+        opacity: 0.9;
+        z-index: 1000;
+        transform: translateY(-50%);
+        border-radius: 1.5px;
+    }
+    
+    .back-to-top {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: linear-gradient(
+            45deg,
+            #3498db 0%,
+            #2ecc71 100%
+        );
+        color: white;
+        border: none;
+        cursor: pointer;
+        opacity: 0;  /* Hidden by default */
+        transition: opacity 0.3s ease;
+        z-index: 1000;
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .back-to-top.visible {
+        opacity: 0.9;
+    }
+    
+    .back-to-top:hover {
+        opacity: 1;
+    }
+    </style>
+    
+    <div class="scroll-progress-horizontal"></div>
+    <div class="scroll-progress-vertical"></div>
+    <button class="back-to-top">↑</button>
+    
+    <section class="ndauwu-algo-harm">
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/a3eed3e6-8d7f-46d0-a938-5289d5bc01bd/1.png?content-type=image%2Fpng" alt="Timeline Event 1">
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/a9ee7b21-739b-47d7-b61c-4c4fcb477f66/2.png?content-type=image%2Fpng" alt="Timeline Event 2">
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/709a40c1-8a5f-4b81-93d2-aa6cb6e3e365/3.png?content-type=image%2Fpng" alt="Timeline Event 3">
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/7956e243-2fd3-47b6-b386-af5c66418400/4.png?content-type=image%2Fpng" alt="Timeline Event 4">
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/e83908d0-89b8-48fa-979a-7d605ec83bae/5.png?content-type=image%2Fpng" alt="Timeline Event 5">
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/253aa5b5-ecb4-49c8-8fff-e1822d1e7636/6.png?content-type=image%2Fpng" alt="Timeline Event 6">
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/e933c541-9fde-4295-9575-da089ab5c5a8/7.png?content-type=image%2Fpng" alt="Timeline Event 7">
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/ce5ce378-d03d-44e5-976a-0974072f36dc/8.png?content-type=image%2Fpng" alt="Timeline Event 8">
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/4f4b1661-5359-4e63-8608-4d517779283c/9.png?content-type=image%2Fpng" alt="Timeline Event 9">
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/478af343-ca21-4ecd-a439-f3d8d9a70eab/10.png?content-type=image%2Fpng" alt="Timeline Event 10">
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/1411abae-8438-41c6-89bd-a31e39eaa14e/11.png?content-type=image%2Fpng" alt="Timeline Event 11">
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/2e569d9b-57a2-4085-b992-906d6bbfd33b/12.png?content-type=image%2Fpng" alt="Timeline Event 12">
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/a22279d8-6fee-496e-9885-ee537a42f0f5/13.png?content-type=image%2Fpng" alt="Timeline Event 13">
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/50c3861b-bb7f-41e5-b528-2bd90da3af79/14.png?content-type=image%2Fpng" alt="Timeline Event 14">
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/8e17647a-3a6a-42fe-9ffa-e96be6b9277b/15.png?content-type=image%2Fpng" alt="Timeline Event 15">
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/83388f84-1610-4186-9858-115b787aea95/16.png?content-type=image%2Fpng" alt="Timeline Event 16">
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/64804e46-7c61-4161-8975-3a376e16a5bd/17.png?content-type=image%2Fpng" alt="Timeline Event 17">
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/a75b833d-0811-4f5c-8a74-f1500700c795/18.png?content-type=image%2Fpng" alt="Timeline Event 18">
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/4e032056-3fa2-4529-ab47-efdfdb43b4d1/19.png?content-type=image%2Fpng" alt="Timeline Event 19">
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/11488b83-c948-4306-9b5d-3e819817c478/20.png?content-type=image%2Fpng" alt="Timeline Event 20">
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/4d3670f1-d3f3-4fff-9553-0511f6f40583/21.png?content-type=image%2Fpng" alt="Timeline Event 21">
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/3ad445ec-e1b2-4f96-8b39-fd461479e8b0/22.png?content-type=image%2Fpng" alt="Timeline Event 22">
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/2bcbf7ba-6be0-4b60-a5c3-435232317ce6/23.png?content-type=image%2Fpng" alt="Timeline Event 23">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const timelineItems = document.querySelectorAll('.timeline-item');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        });
+    
+        timelineItems.forEach(item => {
+            item.style.opacity = 0;
+            item.style.transform = 'translateY(20px)';
+            item.style.transition = 'all 0.5s ease-in-out';
+            observer.observe(item);
+        });
+    
+        // Add scroll progress indicator
+        window.addEventListener('scroll', () => {
+            requestAnimationFrame(() => {
+                const windowHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const scrolled = window.scrollY / windowHeight;
+                
+                // Horizontal progress bar
+                document.querySelector('.scroll-progress-horizontal').style.transform = `scaleX(${scrolled})`;
+                
+                // Vertical progress indicator
+                const verticalPosition = scrolled * window.innerHeight;
+                document.querySelector('.scroll-progress-vertical').style.top = `${verticalPosition}px`;
+            });
+        });
+    
+        const backToTopButton = document.querySelector('.back-to-top');
+    
+        window.addEventListener('scroll', () => {
+            requestAnimationFrame(() => {
+                const windowHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const scrolled = window.scrollY / windowHeight;
+                
+                // Existing progress bars
+                document.querySelector('.scroll-progress-horizontal').style.transform = `scaleX(${scrolled})`;
+                document.querySelector('.scroll-progress-vertical').style.top = `${scrolled * window.innerHeight}px`;
+                
+                // Show/hide back to top button
+                if (window.scrollY > 500) {  // Show after scrolling 500px
+                    backToTopButton.classList.add('visible');
+                } else {
+                    backToTopButton.classList.remove('visible');
+                }
+            });
+        });
+    
+        // Smooth scroll to top when clicked
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    });
+    </script>

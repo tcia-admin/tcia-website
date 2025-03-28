@@ -1,0 +1,1248 @@
+<style>
+    
+    :root {
+        /* Spacing Variables */
+        --spacing-xs: 0.25rem;
+        --spacing-sm: 0.5rem;
+        --spacing-md: 1rem;
+        --spacing-lg: 1.5rem;
+        --spacing-xl: 2rem;
+        --spacing-2xl: 3rem;
+        --spacing-3xl: 4rem;
+        --spacing-4xl: 5rem;
+
+        /* Layout Variables */
+        --container-max-width: 1200px;
+        --container-padding: 1rem;
+
+        /* Breakpoints (for reference in media queries) */
+        --mobile: 480px;
+        --tablet: 768px;
+        --desktop: 1024px;
+
+        /* Typography Scale */
+        --font-size-xs: 0.75rem;
+        --font-size-sm: 0.875rem;
+        --font-size-med: 1rem;
+        --font-size-base: 1.25rem;
+        --font-size-lg: 1.125rem;
+        --font-size-xl: 1.25rem;
+        --font-size-2xl: 1.5rem;
+        --font-size-3xl: 2rem;
+        --font-size-4xl: 2.5rem;
+        --font-size-8xl: 4.5rem;
+        --font-size-12xl: 6rem;
+
+        /* Brand Colors */
+        --notice-yellow: #fbc516;
+        --notice-black: #1a1919;
+        --notice-grey: #808285;
+        --notice-white: #ffffff;
+
+        /* Functional Colors */
+        --notice-bg-primary: var(--notice-black);
+        --notice-bg-secondary: #242424;  /* slightly lighter than black for layering */
+        --notice-text-primary: var(--notice-white);
+        --notice-text-secondary: var(--notice-grey);
+        --notice-accent: var(--notice-yellow);
+        
+        /* Background tints for subtle variations */
+        --notice-bg-grey-light: rgba(128, 130, 133, 0.1);
+        --notice-bg-grey-medium: rgba(128, 130, 133, 0.2);
+        
+        /* Font Families */
+        --font-primary: 'Roboto', sans-serif;
+        /*--font-accent: 'Impact', sans-serif;*/
+        --font-accent: 'Roboto', sans-serif;
+        
+        /* Font Weights */
+        --font-regular: 400;
+        --font-bold: 700;
+
+        /* Add nav height variable if not already present */
+        --nav-height: 100px; /* Adjust this value to match your nav height */
+    }
+
+    /* Reset and Base Styles - Update to remove any default margins */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html, body {
+        overflow-x: hidden;  /* Prevent horizontal scrolling */
+        position: relative;  /* Create new stacking context */
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        overscroll-behavior-x: none;  /* Prevent horizontal overscroll */
+        touch-action: pan-y pinch-zoom;  /* Only allow vertical touch actions */
+    }
+    
+    html {
+        scroll-behavior: smooth;
+        scroll-padding-top: var(--nav-height); /* Add this variable to your root */
+    }
+    /* Utility Classes for Typography */
+    .text-accent {
+        font-family: var(--font-accent);
+    }
+
+    .text-yellow {
+        color: var(--notice-accent);
+    }
+
+
+    /* Main Container Styles - Ensure no top margin/padding */
+    .notice-coalition-main {
+        margin-left: 200px; /* Match nav width */
+        width: calc(100% - 200px);
+        font-family: var(--font-primary);
+        color: var(--notice-text-primary);
+        background-color: var(--notice-bg-primary);
+    }
+
+    /* Navigation Styles - Position at very top */
+    .notice-nav {
+        width: 200px; /* Set fixed width for sidebar */
+        height: 100vh; /* Full viewport height */
+        position: fixed;
+        top: 0;
+        left: 0;
+        padding: var(--spacing-xl) 0;
+        background-color: black;
+        box-shadow: 2px 0 4px rgba(0, 0, 0, 0.2);
+    }
+
+
+    .nav-container {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0 var(--spacing-md);
+        height: 100%;
+        display: flex;
+        justify-content: space-between; /* This will help distribute space */
+    }
+
+    /* Logo Styles */
+    .nav-logo {
+        margin-right: 0;
+        margin-bottom: 0; /* Remove bottom margin since we're using flex spacing */
+    }
+
+    .nav-logo img {
+        height: 55px;
+        width: auto;
+    }
+
+    /* Navigation Links */
+    .nav-links {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-xl);
+        margin: 0;
+        flex-grow: 1; /* Allow links section to grow */
+        display: flex;
+        justify-content: center; /* Center links vertically */
+    }
+
+    .nav-links a {
+        color: var(--notice-text-primary);
+        text-decoration: none;
+        font-size: var(--font-size-base);
+        font-weight: var(--font-bold);
+        font-family: var(--font-accent);
+        transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+        color: var(--notice-accent);
+    }
+
+    /* Add selected nav link style */
+    .nav-links a.selected {
+        color: var(--notice-accent);
+        position: relative;
+    }
+
+    .nav-links a.selected::after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: var(--notice-accent);
+    }
+
+    /* CTA Button */
+    .nav-cta {
+        margin-left: 0; /* Remove left margin */
+        align-self: center; /* Center the button horizontally */
+        margin-bottom: var(--spacing-xl); /* Add some space from bottom */
+    }
+
+     /* Button Styles */
+     .notice-btn {
+        background-color: var(--notice-accent);
+        color: var(--notice-black);
+        font-family: var(--font-accent);
+        font-weight: var(--font-bold);
+        padding: var(--spacing-sm) var(--spacing-lg);
+        border: none;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+        border-radius: 4px;
+    }
+
+    .notice-btn:hover {
+        transform: translateY(-2px);
+    }
+
+    /* Section Base Styles - Add content container */
+    .notice-coalition-main > section {
+        width: 100%;
+        padding: var(--spacing-2xl) 0; /* Remove horizontal padding */
+        overflow-x: hidden;  /* Prevent horizontal scrolling within sections */
+    }
+
+    /* Add new alternating background colors */
+    .notice-coalition-main > section:not(.notice-intro):nth-child(odd) {
+        background-color: var(--notice-bg-primary);
+    }
+
+    .notice-coalition-main > section:not(.notice-intro):nth-child(even) {
+        background-color: var(--notice-bg-secondary);
+    }
+
+    /* Fellows Section Styles */
+    .notice-fellows {
+        padding: var(--spacing-2xl) 0;
+        width: 100%;
+    }
+
+    /* Override section-content constraints for fellows section */
+    .notice-fellows .section-content {
+        max-width: none;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+    }
+
+    .fellows-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1px;
+        width: 100%;
+    }
+
+    .fellow-card {
+        position: relative;
+        aspect-ratio: 1;
+        overflow: hidden;
+    }
+
+    .fellow-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* Responsive adjustments */
+    @media screen and (max-width: 1024px) {
+        .fellows-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        .fellows-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    /* Update Intro Section Styles */
+    .notice-intro {
+        position: relative;
+        width: 100%;
+        min-height: 100vh;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Create two equal columns */
+        gap: 0;
+    }
+
+    /* Left column with NDAUWU image */
+    .intro-left {
+        background-image: url('https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/21f573e8-13db-4487-8381-7bbbf29b96cb/NDAUWU+Full+picture.png?content-type=image%2Fpng');
+        background-size: 80%; /* Reduced from contain to 80% */
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 100%;
+        width: 100%;
+    }
+
+    /* Right column with fellowship text image */
+    .intro-right {
+        background-image: url('https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/8928520a-7576-43cc-bcf0-2627a98625ad/Artboard+1_9.png?content-type=image%2Fpng'); /* Update with actual path */
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 100%;
+        width: 100%;
+    }
+
+    /* Remove or comment out unused intro content styles */
+    .intro-content,
+    .intro-text-container,
+    .intro-catchphrase,
+    .intro-cta-container {
+        display: none;
+    }
+
+    /* Updated Intro Content Styles */
+    .intro-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        margin-top: var(--spacing-2xl); /* Added more space below navigation */
+    }
+
+    .intro-text-container {
+        max-width: 90%; /* Increased from previous max-width */
+        margin: 0 auto;
+        padding: 0 var(--container-padding);
+    }
+
+    .intro-catchphrase {
+        font-family: var(--font-accent);
+        font-size: var(--font-size-8xl);
+        color: var(--notice-white);
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        letter-spacing: 0.02em;
+        line-height: 0.9;
+        text-transform: uppercase;
+        text-align: left;
+        border-bottom: 4px solid var(--notice-white);
+        padding-bottom: var(--spacing-lg);
+        margin-bottom: var(--spacing-xl);
+    }
+
+    .intro-cta-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: var(--spacing-xl);
+    }
+
+    .intro-cta-text {
+        color: var(--notice-white);
+        font-size: var(--font-size-xl);
+        font-weight: var(--font-bold);
+        max-width: 60%;
+        text-align: left;
+    }
+
+    .intro-cta-btn {
+        flex-shrink: 0;
+        font-size: var(--font-size-lg);
+        padding: var(--spacing-md) var(--spacing-xl);
+        background-color: transparent; /* Remove background */
+        border: 2px solid var(--notice-accent); /* Add border */
+        color: var(--notice-accent); /* Match text to border color */
+        transition: all 0.3s ease; /* Smooth transition for all changes */
+        border-radius: 4px;
+    }
+
+    .intro-cta-btn:hover {
+        background-color: var(--notice-accent); /* Fill background on hover */
+        color: var(--notice-black); /* Change text color for contrast */
+    }
+
+    /* Section Header Styles */
+    .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: var(--spacing-2xl);
+    }
+
+    .section-title {
+        font-family: var(--font-accent);
+        font-size: var(--font-size-3xl);
+        color: var(--notice-white);
+    }
+
+    /* Add content container for each section */
+    .section-content {
+        max-width: calc(var(--container-max-width) - 200px);
+        margin: 0 auto;
+        padding: 0 var(--container-padding);
+    }
+
+    .section-link {
+        font-family: var(--font-accent);
+        font-size: var(--font-size-lg);
+        color: var(--notice-accent);
+        text-decoration: none;
+        position: relative;
+        padding-bottom: var(--spacing-xs);
+    }
+
+    .section-link::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: var(--notice-accent);
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+    }
+
+    .section-link:hover::after {
+        transform: scaleX(1);
+    }
+
+    /* Newsletter Section Styles */
+    .notice-newsletter {
+        padding: var(--spacing-3xl) 0;
+        /*min-height: 600px;*/
+        display: flex;
+        align-items: center;
+    }
+
+
+    .newsletter-widget-container {
+        margin-top: var(--spacing-xl);
+    }
+
+    /* Override section-content constraints for newsletter section */
+    .notice-newsletter .section-content {
+        max-width: calc(var(--container-max-width) + 200px); /* Increase max-width */
+        padding: 0 var(--spacing-2xl); /* Increase padding */
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    /* Social Media Section / Footer Styles */
+    .notice-social {
+        padding: var(--spacing-3xl) 0;
+        text-align: center;
+    }
+
+    .notice-social-links {
+        display: flex;
+        justify-content: center;
+        gap: var(--spacing-xl);
+        margin-bottom: var(--spacing-2xl);
+    }
+
+    .social-icon {
+        width: 64px;
+        height: 64px;
+        background-color: var(--notice-bg-secondary);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.3s ease;
+    }
+
+    .social-icon:hover {
+        transform: translateY(-2px);
+    }
+
+    .social-icon img {
+        width: 32px;
+        height: 32px;
+        filter: brightness(0) invert(1);
+    }
+
+    .social-icon i {
+        font-size: 32px;
+        color: var(--notice-white);
+    }
+
+    .notice-footer-logo {
+        display: block;
+        margin: 0 auto;
+        transition: opacity 0.3s ease;
+    }
+
+    .notice-footer-logo img {
+        height: 60px;
+        width: auto;
+    }
+
+    .notice-footer-logo:hover {
+        opacity: 0.8;
+    }
+
+    /* Responsive Design */
+    @media screen and (max-width: 1024px) {
+        :root {
+            /* Adjust spacing for tablet */
+            --container-padding: 2rem;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        .notice-nav {
+            width: 100%;
+            height: auto;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: var(--spacing-md) 0;
+        }
+
+        .nav-container {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--spacing-md);
+        }
+
+        .notice-coalition-main {
+            margin-left: 0;
+            width: 100%;
+            padding-top: var(--nav-height); /* Add space for mobile nav */
+        }
+
+        .section-content {
+            max-width: var(--container-max-width);
+        }
+
+        .nav-logo {
+            margin-right: 0;
+        }
+
+        .nav-links {
+            flex-direction: row;
+            justify-content: center;
+            gap: var(--spacing-md);
+        }
+
+        .nav-cta {
+            margin-bottom: 0;
+        }
+
+        /* Intro Section Styles */
+        .notice-intro {
+            grid-template-columns: 1fr; /* Stack columns on mobile */
+        }
+        
+        .intro-left,
+        .intro-right {
+            min-height: 50vh; /* Ensure each section takes up half the viewport height */
+        }
+
+        .intro-catchphrase {
+            font-size: calc(var(--font-size-4xl) * 0.8);
+            letter-spacing: 0.1em;
+            line-height: 1.6;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .intro-cta-container {
+            flex-direction: column;
+            gap: var(--spacing-lg);
+        }
+
+        .intro-cta-text {
+            max-width: 100%;
+            font-size: var(--font-size-lg);
+            text-align: center;
+        }
+
+        .intro-cta-btn {
+            width: 100%;
+            text-align: center;
+        }
+
+        .notice-newsletter {
+            min-height: 300px;
+            padding: var(--spacing-2xl) 0;
+        }
+
+        /* Social Media Section / Footer Styles */
+        .notice-social {
+            padding: var(--spacing-2xl) 0;
+        }
+
+        .notice-social-links {
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .social-icon {
+            width: 48px;
+            height: 48px;
+        }
+
+        .social-icon img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .notice-footer-logo img {
+            height: 48px;
+        }
+    }
+
+    /* Modal Styles */
+    .fellow-modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.95);
+        z-index: 2000;
+        overflow-y: auto;
+        padding: var(--spacing-xl) 0;
+    }
+
+    .modal-content {
+        position: relative;
+        background-color: var(--notice-bg-secondary);
+        max-width: 1000px;
+        margin: 40px auto;
+        padding: var(--spacing-3xl);
+        border-radius: 8px;
+    }
+
+    .modal-close {
+        position: absolute;
+        right: var(--spacing-xl);
+        top: var(--spacing-xl);
+        font-size: var(--font-size-3xl);
+        width: 48px;
+        height: 48px;
+    }
+
+    .fellow-bio-header {
+        display: flex;
+        gap: var(--spacing-2xl);
+        margin-bottom: var(--spacing-3xl);
+        align-items: flex-start;
+    }
+
+    .fellow-bio-image {
+        width: 300px;
+        height: 300px;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+    .fellow-bio-info {
+        flex: 1;
+    }
+
+    .fellow-bio-name {
+        font-family: var(--font-accent);
+        font-size: var(--font-size-3xl);
+        color: var(--notice-text-primary);
+        margin-bottom: var(--spacing-md);
+    }
+
+    .fellow-bio-location {
+        color: var(--notice-accent);
+        font-size: var(--font-size-xl);
+        font-weight: var(--font-bold);
+        margin-bottom: var(--spacing-xl);
+    }
+
+    .fellow-bio-text {
+        color: var(--notice-text-primary);
+        font-size: var(--font-size-lg);
+        line-height: 1.8;
+        max-width: 70ch;
+    }
+
+    .fellow-bio-text p {
+        margin-bottom: var(--spacing-xl);
+    }
+
+    .fellow-bio-text p:last-child {
+        margin-bottom: 0;
+    }
+
+    /* Make cards clickable */
+    .fellow-card {
+        cursor: pointer;
+        transition: transform 0.2s ease;
+    }
+
+    .fellow-card:hover {
+        transform: translateY(-4px);
+    }
+
+    @media screen and (max-width: 1024px) {
+        .modal-content {
+            margin: 20px;
+            max-width: calc(100% - 40px);
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        .modal-content {
+            padding: var(--spacing-xl);
+        }
+
+        .fellow-bio-header {
+            flex-direction: column;
+            gap: var(--spacing-xl);
+        }
+
+        .fellow-bio-image {
+            width: 100%;
+            height: auto;
+            max-height: 400px;
+        }
+
+        .fellow-bio-text {
+            font-size: var(--font-size-base);
+            line-height: 1.6;
+        }
+    }
+
+    /* Announcement Popup Styles */
+    .announcement-popup {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background-color: rgba(18, 18, 18, 0.8); /* Semi-transparent version of notice-bg-secondary */
+        padding: var(--spacing-xs);
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        z-index: 1000;
+        max-width: 300px;
+        backdrop-filter: blur(5px); /* Optional: adds a slight blur effect to content behind */
+    }
+
+    .announcement-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--spacing-xs); /* Reduced from lg to md */
+    }
+
+    .d4pg-logo-container {
+        width: 140px; /* Increased from 100px */
+        height: 140px; /* Increased from 100px */
+    }
+
+    .d4pg-logo {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    .announcement-text {
+        color: var(--notice-text-primary);
+        font-size: var(--font-size-lg);
+        text-align: center;
+        font-weight: var(--font-bold);
+        line-height: 1.4;
+    }
+
+    /* Logo Animation */
+    .pulse-grow {
+        animation: pulse-grow 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-grow {
+        0%, 100% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.1);
+        }
+    }
+
+    /* Mobile Adjustments */
+    @media screen and (max-width: 768px) {
+        .announcement-popup {
+            bottom: 20px;
+            right: 20px;
+            left: 20px;
+            max-width: none;
+        }
+    }
+
+    /* Add close button styles */
+    .announcement-close {
+        position: absolute;
+        top: var(--spacing-xs);
+        right: var(--spacing-xs);
+        width: 24px;
+        height: 24px;
+        border: none;
+        background: transparent;
+        color: var(--notice-text-primary);
+        cursor: pointer;
+        font-size: var(--font-size-xl);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        opacity: 0.8;
+        transition: opacity 0.2s ease;
+    }
+
+    .announcement-close:hover {
+        opacity: 1;
+    }
+
+    /* Footer Grid Layout */
+    .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: var(--spacing-3xl); /* Increase gap between columns */
+        padding: var(--spacing-2xl) 0;
+    }
+
+    .footer-text {
+        color: var(--notice-text-primary);
+        font-size: var(--font-size-base);
+        line-height: 1.6;
+        margin-top: var(--spacing-md);
+    }
+
+    /* Footer Navigation */
+    .footer-nav {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-md);
+        margin-top: var(--spacing-md);
+    }
+
+    .footer-link {
+        color: var(--notice-text-primary);
+        text-decoration: none;
+        transition: color 0.2s ease;
+        font-size: var(--font-size-base);
+    }
+
+    .footer-link:hover {
+        color: var(--notice-accent);
+    }
+
+    /* Footer Social Icons */
+    .footer-social {
+        display: flex;
+        gap: var(--spacing-md);
+        margin: var(--spacing-md) 0;
+    }
+
+    .footer-social a {
+        color: var(--notice-text-primary);
+        font-size: var(--font-size-xl);
+        transition: color 0.2s ease;
+    }
+
+    .footer-social a:hover {
+        color: var(--notice-accent);
+    }
+
+    /* Responsive adjustments */
+    @media screen and (max-width: 1024px) {
+        .footer-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-xl);
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        .footer-grid {
+            grid-template-columns: 1fr;
+            gap: var(--spacing-xl);
+        }
+    }
+</style>
+
+<section class="notice-coalition-main">
+    <nav class="notice-nav">
+        <div class="section-content nav-container">
+            <a href="/noticecoalition" class="nav-logo">
+                <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/301406ed-440a-4a15-b346-b8b0faff4729/Notice+Logo+Design+F-03.png?content-type=image%2Fpng" alt="Notice Coalition Logo">
+            </a>
+            
+            <div class="nav-links">
+                <a href="#ndauwu-intro">NDAUWU</a>
+                <!--<a href="#fellows-section">FELLOWS</a>-->
+                <a href="#test">FELLOWS</a> <!-- idk what's going on here  -->
+            </div>
+
+            <!--<span class="notice-btn nav-cta invisible">BUTTON</span>-->
+        </div>
+    </nav>
+    
+    <!-- Add this after the nav but before the intro section -->
+    <div class="announcement-popup">
+        <button class="announcement-close">&times;</button>
+        <div class="announcement-content">
+            <div class="d4pg-logo-container">
+                <a href="/d4pg" target="_blank" rel="noopener noreferrer">
+                    <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/02b93e21-854f-47c4-b58b-353727abc012/Orange1.png?content-type=image%2Fpng" alt="D4PG Logo" class="d4pg-logo pulse-grow">
+                </a>
+            </div>
+            <p class="announcement-text">
+                Meet Us At D4PG! We'll be sharing our fellowship experience and presenting our projects
+            </p>
+        </div>
+    </div>
+
+    <!-- Introduction Section -->
+    <section class="notice-intro" id="ndauwu-intro">
+        <div class="intro-left"></div>
+            <div class="intro-right"></div>
+        <div class="section-content intro-content">
+            
+            <!--
+            <div class="intro-text-container">
+                <h1 class="intro-catchphrase">
+                    
+                </h1>
+                <div class="intro-cta-container">
+                    <p class="intro-cta-text">
+                    </p>
+                    <a href="/noticecoalition/get-involved" class="notice-btn intro-cta-btn">GET INVOLVED</a>
+                </div>
+            </div>
+            -->
+        </div>
+    </section>
+
+    <!-- Fellows Grid -->
+    <section id="fellows-section" class="notice-fellows">
+        <div class="section-content">
+            <h2 class="section-title">MEET THE FELLOWS</h2>
+            <div class="fellows-grid">
+                <div class="fellow-card">
+                    <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/1f54c545-b44e-4bb5-b1c5-02ac5efee0a9/F6.png?content-type=image%2Fpng" alt="NDAUWU Fellow Tammie Lang">
+                </div>
+
+                <div class="fellow-card">
+                    <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/e9856dc7-9340-484d-bdaf-90aed6fb4122/F3.png?content-type=image%2Fpng" alt="NDAUWU Fellow Christianna Thomas">
+                </div>
+
+                <div class="fellow-card">
+                    <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/484efd4d-3f14-4785-9546-7cca759886c4/F1.png?content-type=image%2Fpng" alt="NDAUWU Fellow Chinelo">
+                </div>
+
+                <div class="fellow-card">
+                    <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/c2662ea1-d62a-4ea3-ada1-3e883e366a94/F2.png?content-type=image%2Fpng" alt="NDAUWU Fellow Shayna">
+                </div>
+
+                <div class="fellow-card">
+                    <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/46896da7-8787-4a7c-b623-718174bbda84/F5.png?content-type=image%2Fpng" alt="NDAUWU Fellow Jeremy">
+                </div>
+
+                <div class="fellow-card">
+                    <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/414b9924-d5cd-43c5-9889-704b17bd1b00/F8.png?content-type=image%2Fpng" alt="NDAUWU Fellow Vanessa Dominguez">
+                </div>
+
+                <div class="fellow-card">
+                    <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/adaa6553-7697-4294-8603-22ceffa90ca0/F4.png?content-type=image%2Fpng" alt="NDAUWU Fellow Jonathan Rodriguez">
+                </div>
+
+                <div class="fellow-card">
+                    <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/2eaf7300-f935-416c-9d5e-824f093851cd/F7.png?content-type=image%2Fpng" alt="NDAUWU Fellow Joy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Add this after the fellows-grid but before closing the main section -->
+    <div class="fellow-modal" id="fellowModal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <div class="modal-body">
+                <div class="fellow-bio-header">
+                    <img src="" alt="" class="fellow-bio-image">
+                    <div class="fellow-bio-info">
+                        <h2 class="fellow-bio-name"></h2>
+                        <p class="fellow-bio-location"></p>
+                    </div>
+                </div>
+                <div class="fellow-bio-text">
+                    <!-- Bio text will be inserted here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <!-- Social Media Section -->
+    <section id="test" class="notice-social">
+        <div class="section-content">
+            <div class="notice-social-links">
+                <a href="https://www.linkedin.com/company/no-tech-criminalization-in-education-notice-coalition/?viewAsMember=true" target="_blank" rel="noopener noreferrer" class="social-icon">
+                    <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/e21f8602-46df-4d45-ae36-3abea3853857/254394.png?content-type=image%2Fpng" alt="LinkedIn">
+                </a>
+                <!--
+                <a href="https://x.com/NOTICETCIA" target="_blank" rel="noopener noreferrer" class="social-icon">
+                    <i class="fa-brands fa-square-x-twitter"></i>
+                </a>
+                -->
+                <a href="https://bsky.app/profile/noticecoalition.bsky.social" target="_blank" rel="noopener noreferrer" class="social-icon">
+                    <i class="fa-brands fa-bluesky"></i>
+                </a>
+
+                <a href="mailto:thenoticecoalition@gmail.com" target="_blank" rel="noopener noreferrer" class="social-icon">
+                    <i class="fa-solid fa-envelope"></i>
+                </a>
+
+                <a href="https://thenoticecoalition.substack.com/" target="_blank" rel="noopener noreferrer" class="social-icon">
+                    <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/211166a9-1777-4257-9e9e-4d912133cc4b/substack-icon.png?content-type=image%2Fpng" alt="Substack">
+                </a>
+            </div>
+            
+            <a href="/noticecoalition" class="notice-footer-logo">
+                <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/301406ed-440a-4a15-b346-b8b0faff4729/Notice+Logo+Design+F-03.png?content-type=image%2Fpng" alt="Notice Coalition">
+            </a>
+        </div>
+    </section>
+
+    <!-- Newsletter/Footer Section -->
+    <section class="notice-newsletter">
+        <div class="section-content footer-grid">
+            <div class="footer-about">
+                <h2 class="section-title">About TCIA</h2>
+                <p class="footer-text">
+                    The Twin Cities Innovation Alliance (TCIA) is a social venture, intended to spark, resource, and guide  entrepreneurs as they grow and scale their businesses across the Twin Cities.
+                </p>
+            </div>
+
+            <div class="footer-links">
+                <h2 class="section-title">Sitemap</h2>
+                <nav class="footer-nav">
+                    <a href="/about" class="footer-link">About</a>
+                    <a href="/news" class="footer-link">Stories + News</a>
+                    <a href="/events" class="footer-link">Events</a>
+                    <a href="/resources" class="footer-link">Resources</a>
+                    <a href="/d4pg" class="footer-link">Data 4 Public Good</a>
+                </nav>
+            </div>
+
+            <div class="footer-contact">
+                <h2 class="section-title">Contact</h2>
+                <p class="footer-text">info@noticecoalition.org</p>
+                <div class="footer-social">
+                    <a href="https://www.linkedin.com/company/twin-cities-innovation-alliance" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://twitter.com/TCIAMN" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://www.youtube.com/channel/UCf2vnOdVWHoJy4GBAFdk4xw?view_as=subscriber" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="http://tciacopowering.bsky.social/" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-brands fa-bluesky"></i>
+                    </a>
+                </div>
+                <p class="footer-text">
+                    Mailing Address:<br>
+                    1041 James Ave. N. Suite 1001<br>
+                    Minneapolis, MN 55411
+                </p>
+            </div>
+
+            <div class="footer-subscribe">
+                <h2 class="section-title">Subscribe</h2>
+                <!-- Leave space for Squarespace widget -->
+            </div>
+        </div>
+    </section>
+
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get all navigation links
+        const navLinks = document.querySelectorAll('.nav-links a');
+        
+        // Add click event listener to each link
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                
+                // Only prevent default for same-page section links
+                if (href.startsWith('#')) {
+                    e.preventDefault();
+                    
+                    // Get the target section id from the href
+                    const targetId = href.substring(1);
+                    const targetSection = document.getElementById(targetId);
+                    
+                    if (targetSection) {
+                        // Get the height of the fixed navigation bar
+                        const navHeight = document.querySelector('.notice-nav').offsetHeight;
+                        
+                        // Calculate the target position accounting for the nav bar
+                        const targetPosition = targetSection.getBoundingClientRect().top + window.pageYOffset - navHeight;
+                        
+                        // Smooth scroll to the target
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+                // Let all other links work with default browser navigation
+                // No preventDefault() for links to other pages
+            });
+        });
+        
+        // Check if URL has hash on page load and scroll to that section
+        if (window.location.hash) {
+            const targetId = window.location.hash.substring(1);
+            const targetSection = document.getElementById(targetId);
+            
+            if (targetSection) {
+                setTimeout(function() {
+                    const navHeight = document.querySelector('.notice-nav').offsetHeight;
+                    const targetPosition = targetSection.getBoundingClientRect().top + window.pageYOffset - navHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }, 300); // Small delay to ensure page is fully loaded
+            }
+        }
+    });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const fellowCards = document.querySelectorAll('.fellow-card');
+        const modal = document.getElementById('fellowModal');
+        const modalClose = modal.querySelector('.modal-close');
+        const bioImage = modal.querySelector('.fellow-bio-image');
+        const bioName = modal.querySelector('.fellow-bio-name');
+        const bioLocation = modal.querySelector('.fellow-bio-location');
+        const bioText = modal.querySelector('.fellow-bio-text');
+
+        // Fellow data - you'll need to add the actual bios
+        const fellowData = {
+            'Tammie Lang': {
+                location: 'Houston, TX',
+                bio: [
+                    'Tammie Lang Campbell is a nationally recognized, award-winning civil rights leader and founder of the Honey Brown Hope Foundation, a non-profit organization that provides resources and support connected to its causes civil rights and environmental stewardship. She has nearly three decades of experience advocating for criminal justice policy reform; addressing disparaging disciplinary policies fueling the school-to-prison pipeline; promoting environmental stewardship; and sharing the untold history of the civil rights era with youth and their families. Campbell is also an author and sought- after speaker who has received numerous national, state and local awards for her work. She is a graduate of Alcorn State University and considers her two adult children, Shar-day and Dennis Jr., as her greatest blessings.'
+                ]
+            },
+            'Christianna Thomas': {
+                location: 'Houston, TX',
+                bio: [
+                    'Christianna Thomas (she/her) is a junior at Heights High School in Houston Texas. She has galvanized protest against the HISD takeover as well as helped to organize local and state action across Texas, via educational boot camps and seminars for students.'
+                ]
+            },
+            'Chinelo': {
+                location: 'Houston, TX',
+                bio: [
+                    'Hello! My name is Chinelo, I use she/her pronouns and I\'m excited to be a fellow!! I\'m a recent graduate of the University of Houston and also based in Houston. Fun fact about me, I played the clarinet middle school through college!'
+                ]
+            },
+            'Shayna': {
+                location: 'Minneapolis, MN',
+                bio: [
+                    'A first-generation Asian American woman, Shayna is the daughter of social worker Pooi Seong Koong and doctor Philip Karuman. She is a middle sister to Zara and Avisha karuman two incredibly smart and strong women. She has also been shaped by several incredible educators including Cathy Weber Schwartz, Rashonda Ross, and Hollie Mackey, learning additionally from numerous community leaders, storytellers, aunties, uncles, and especially friends. other communities she has been a part of include Boston, Pittsburgh, Carmel, Minot and Singapore and Ipoh, Malaysia. Moving frequently has played a large part in how Shayna connects with others as well as recognizing the opportunity to translate emotion and otherness into art and opportunity.',
+                    'Inspired and Enraged by the rise in police brutality and asian american hate during and following Covid 19, during her bachelor\'s and master\'s degrees at North Dakota State University, shayna began to organize with other wonderful Asian American students and BIPOC youth to process and translate their shared realities into opportunities with the greater AAPI community. Co-Founder of the Asian Night Market alongside Hannah Flohr and Sacred Mauricio, Shayna enjoys furthering opportunities for AAPI entrepreneurs and organizations to connect with the Fargo Moorhead community. In the third year of its existence, the Asian night market has hosted about 30 different AAPI vendors across several industries growing from 500 to 1,400 attendees and is building an online community and database for AAPI entrepreneurship.',
+                    'Themes such as identity and love are Shayna\'s main inspiration and story behind her art and community organizing. Studying architecture, shayna is encouraged by the application of design principles and processes throughout racial justice and civic engagement. In Shayna\'s free time, she enjoys volunteering with organizations aiding in food security,playing rugby and experimenting with photography, textile dyeing and portraiture. Participation in her community helps ground her beliefs and understanding of the way others navigate their goals and identity. Recently relocating from the Fargo, Moorhead Area Shayna is honored to continue organizing in both communities in an effort to connect and grow intersection context around the histories of AAPI Racial Justice and activism amongst the legacy of Hmong, Vietnamese, and Laotian organizing.'
+                ]
+            },
+            'Jeremy': {
+                location: 'Houston, TX',
+                bio: [
+                    'Hi y\'all! I\'m Jeremy, I use he/they pronouns, and I\'m a teacher, union organizer, writer, and education activist. I\'m of Trinidadian heritage and I\'ve lived in Houston for 14 years.'
+                ]
+            },
+            'Vanessa Dominguez': {
+                location: 'Chicago, IL',
+                bio: [
+                    'Hi! My name is Vanessa Dominguez (she/her/ella) and I am a Chicago-based youth organizer with the Brighton Park Neighborhood Council. My organizing focuses on empowering young people on the southwest side, cultivating their leadership and organizing skills, and amplifying their voices in city-wide, abolitionist campaigns. I am also a Masters student in the Cultural and Educational Policy Studies program at Loyola University Chicago. In my free time, I love spending time with loved ones, reading, or painting and drawing :)'
+                ]
+            },
+            'Jonathan Rodriguez': {
+                location: 'Houston, TX',
+                bio: [
+                    'Jonathan Rodriguez is a proud Houstonian born in Fifth Ward and raised in Cloverleaf. He is eager to serve and give back to his community. He is motivated to help youth live above the odds by using his lived experience to help advocate for change in our communities. Jonathan has had to overcome adversity, and his Christian faith and education have helped him see how to change and empower others. He is particularly passionate about giving youth second chances and promoting alternatives to incarceration. Jonathan encouraged his brother, now an employee at NASA, to find himself and push for more. He hopes to do the same with the youth he serves. In his free time, he enjoys drawing portraits to uplift others. Jonathan lives by the motto, "Know yourself, and then you will be the best at what YOU can be!”.'
+                ]
+            },
+            'Joy': {
+                location: 'Houston, TX',
+                bio: [
+                    'Kill Joy\'s work is an interpretation of world mythology and a study of ancient symbols. Her practice centers around relief printmaking, painting, and puppet making. This work involves printing posters for people-led campaigns, youth workshops, painting community murals and constructing fantastical puppet theater. Mediums with a bold, graphic quality speak to the sort of narratives she enjoys exploring. Her work sits at the intersection where jungle meets desert.',
+                    'She was raised in Texas, but her family is from the archipelago known as the Philippines. Joy devotes time to thinking about and working with different cultural groups managing challenges and issues of the diaspora and also of the struggles faced by communities rooted in their homeland. Because community is intrinsically linked to the land, her work also incorporates themes and elements from the natural world. Stories are often told in imaginative settings: singing about Earth magic that is available to everyone, but often forgotten or hidden.'
+                ]
+            }
+        };
+
+        fellowCards.forEach(card => {
+            card.addEventListener('click', function() {
+                const img = card.querySelector('img');
+                const name = img.alt.replace('NDAUWU Fellow ', '');
+                const fellow = fellowData[name];
+
+                if (fellow) {
+                    bioImage.src = img.src;
+                    bioImage.alt = img.alt;
+                    bioName.textContent = name;
+                    bioLocation.textContent = fellow.location;
+                    
+                    // Clear existing bio text
+                    bioText.innerHTML = '';
+                    
+                    // Create paragraphs for each bio segment
+                    fellow.bio.forEach(paragraph => {
+                        const p = document.createElement('p');
+                        p.textContent = paragraph;
+                        p.style.marginBottom = 'var(--spacing-md)';
+                        bioText.appendChild(p);
+                    });
+                    
+                    modal.style.display = 'block';
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+        });
+
+        modalClose.addEventListener('click', function() {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+
+        window.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+    });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const closeButton = document.querySelector('.announcement-close');
+        const popup = document.querySelector('.announcement-popup');
+        
+        if (closeButton && popup) {
+            closeButton.addEventListener('click', function() {
+                popup.style.display = 'none';
+            });
+        }
+    });
+</script>
