@@ -596,12 +596,17 @@
     /* New styles for NOTICE card */
     .apply-card.notice-card {
         border-color: var(--notice-yellow);
+        opacity: 0.7;
+        cursor: not-allowed;
     }
 
     .apply-card.notice-card:hover {
-        transform: translateY(-4px);
-        background-color: rgba(251, 197, 22, 0.05); /* Light tint of notice-yellow */
-        box-shadow: 0 4px 12px rgba(251, 197, 22, 0.1);
+        /*transform: translateY(-4px);
+        background-color: rgba(251, 197, 22, 0.05);  Light tint of notice-yellow 
+        box-shadow: 0 4px 12px rgba(251, 197, 22, 0.1);*/
+        transform: none;
+        background-color: rgba(251, 197, 22, 0.02);
+        box-shadow: none;
     }
 
     .apply-card-label {
@@ -625,6 +630,209 @@
         margin-bottom: var(--spacing-xl);
         object-fit: contain;
     }
+
+    /* Mobile Responsive Styles */
+    @media screen and (max-width: 768px) {
+        /* Hero Section */
+        .hero-title {
+            font-size: var(--font-size-4xl);
+        }
+
+        .hero-subtitle {
+            font-size: var(--font-size-xl);
+        }
+
+        .cta-container {
+            flex-direction: column;
+            gap: var(--spacing-xl);
+        }
+
+        .connecting-lines {
+            display: none;
+        }
+
+        /* Navigation */
+        .nav-links {
+            gap: var(--spacing-md);
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .nav-links a {
+            font-size: var(--font-size-xs);
+        }
+
+        /* Program Section */
+        .program-content.active {
+            grid-template-columns: 1fr;
+            gap: var(--spacing-xl);
+        }
+
+        .program-nav {
+            flex-direction: column;
+            gap: var(--spacing-md);
+            align-items: center;
+        }
+
+        .program-text {
+            text-align: center;
+        }
+
+        .program-list {
+            text-align: left;
+            padding-left: var(--spacing-xl);
+        }
+
+        /* Apply Section */
+        .apply-grid {
+            grid-template-columns: 1fr;
+            gap: var(--spacing-xl);
+        }
+
+        .apply-card {
+            min-height: 200px;
+            align-items: center;
+            text-align: center;
+        }
+    }
+
+    /* Additional breakpoint for very small screens */
+    @media screen and (max-width: 480px) {
+        .hero-title {
+            font-size: var(--font-size-3xl);
+        }
+
+        .hero-subtitle {
+            font-size: var(--font-size-lg);
+        }
+
+        .section-title {
+            font-size: var(--font-size-2xl);
+        }
+
+        .section-description {
+            font-size: var(--font-size-base);
+        }
+
+        .faq-question {
+            font-size: var(--font-size-lg);
+        }
+
+        .cta-button {
+            width: 160px;
+            height: 64px;
+        }
+
+        .nav-links {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .back-to-top {
+            bottom: var(--spacing-md);
+            right: var(--spacing-md);
+        }
+    }
+
+    /* Fix for sticky nav on iOS */
+    @supports (-webkit-touch-callout: none) {
+        .nav-section {
+            position: -webkit-sticky;
+        }
+    }
+
+    /* Add these modal styles before the media queries */
+    .modal-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .modal-overlay.active {
+        display: flex;
+    }
+
+    .modal-content {
+        background-color: var(--tcia-navy);
+        padding: var(--spacing-2xl);
+        border-radius: 8px;
+        max-width: 400px;
+        position: relative;
+        border: 1px solid var(--notice-yellow);
+    }
+
+    .modal-title {
+        color: var(--notice-yellow);
+        font-family: var(--font-headline);
+        font-size: var(--font-size-xl);
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .modal-text {
+        color: var(--tcia-white);
+        font-family: var(--font-body);
+        font-size: var(--font-size-med);
+        line-height: 1.6;
+        margin-bottom: var(--spacing-xl);
+    }
+
+    .modal-close {
+        position: absolute;
+        top: var(--spacing-md);
+        right: var(--spacing-md);
+        background: none;
+        border: none;
+        color: var(--tcia-white);
+        font-size: var(--font-size-xl);
+        cursor: pointer;
+        padding: var(--spacing-xs);
+    }
+
+    .modal-close:hover {
+        color: var(--notice-yellow);
+    }
+
+    /* Modify the NOTICE CTA button styles */
+    .cta-button.notice-disabled {
+        opacity: 0.7;
+        cursor: not-allowed;
+        position: relative;
+    }
+
+    .cta-button.notice-disabled::before {
+        content: "No Current NOTICE Openings";
+        position: absolute;
+        bottom: -40px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: var(--tcia-navy);
+        color: var(--tcia-white);
+        padding: var(--spacing-xs) var(--spacing-md);
+        border-radius: 4px;
+        font-family: var(--font-body);
+        font-size: var(--font-size-sm);
+        white-space: nowrap;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.2s ease, visibility 0.2s ease;
+        border: 1px solid var(--notice-yellow);
+    }
+
+    .cta-button.notice-disabled:hover::before {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .cta-button.notice-disabled:hover {
+        transform: none;
+    }
 </style>
 
 <section class="internships-main">
@@ -636,7 +844,7 @@
             <a href="#tcia-positions" class="cta-button">
                 <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/1541710467176-A6CEEESS1B8XREC5EWPD/TWIN++CITIES+LOGO+Bridge+large.png?content-type=image%2Fpng" alt="TCIA Internships">
             </a>
-            <a href="#notice-positions" class="cta-button">
+            <a href="#notice-positions" class="cta-button notice-disabled">
                 <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/301406ed-440a-4a15-b346-b8b0faff4729/Notice+Logo+Design+F-03.png?content-type=image%2Fpng" alt="NOTICE Internships">
             </a>
         </div>
@@ -667,7 +875,7 @@
         <h2 class="program-title">The Intern Program</h2>
         <nav class="program-nav">
             <a href="#who-we-hire" class="program-nav-item active">WHO WE HIRE</a>
-            <a href="#what-to-expect" class="program-nav-item">WHAT TO EXPECT</a>
+            <!--<a href="#what-to-expect" class="program-nav-item">WHAT TO EXPECT</a>-->
             <a href="#internship-timing" class="program-nav-item">INTERNSHIP TIMING</a>
         </nav>
 
@@ -679,12 +887,12 @@
                 <h3>WHO WE HIRE</h3>
                 <p>Intern opportunities are diverse, ranging in level and discipline. Past internships have included:</p>
                 <ul class="program-list">
-                    <li>Creative Design</li>
+                    <li>Graphic Design</li>
                     <li>Web Development</li>
                     <li>Digital Marketing</li>
-                    <li>Content Creation</li>
-                    <li>Account Management</li>
-                    <li>Media Planning</li>
+                    <li>Video Production</li>
+                    <li>Content Copywriting</li>
+                    <li>Data Analyst</li>
                 </ul>
                 <p>TCIA considers both active students and recent grads within 1 year of graduation for the early career program.</p>
             </div>
@@ -696,19 +904,18 @@
             </div>
             <div class="program-text">
                 <h3>WHAT TO EXPECT</h3>
-                <p>I am currently learning about allophones. Allophones are different phonetic realizations of the same phoneme.</p>
-                <p>For example, the phoneme /p/ can be realized as /p/, /b/, or /pʰ/ (voiced alveolar plosive).</p>
+                <p></p>
+                <p></p>
             </div>
         </div>
 
         <div id="internship-timing" class="program-content">
             <div class="program-image">
-                <img src="https://images.pexels.com/photos/3009973/pexels-photo-3009973.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="TCIA Interns at Work">
+                <img src="https://images.pexels.com/photos/7971190/pexels-photo-7971190.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="TCIA Interns at Work">
             </div>
             <div class="program-text">
                 <h3>INTERNSHIP TIMING</h3>
-                <p>I am currently learning about allophones. Allophones are different phonetic realizations of the same phoneme.</p>
-                <p>For example, the phoneme /p/ can be realized as /p/, /b/, or /pʰ/ (voiced alveolar plosive).</p>
+                <p>Spring - Summer 2025</p>
             </div>
         </div>
     </section>
@@ -782,7 +989,7 @@
             
             <a href="#notice-positions" class="apply-card notice-card">
                 <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/301406ed-440a-4a15-b346-b8b0faff4729/Notice+Logo+Design+F-03.png?content-type=image%2Fpng" alt="NOTICE Logo" class="apply-card-logo">
-                <h3 class="apply-card-title">See All Open NOTICE Positions</h3>
+                <h3 class="apply-card-title">No Current NOTICE Openings</h3>
             </a>
         </div>
     </section>
@@ -792,6 +999,15 @@
 
 
 <script>
+    // Define the internship search URL
+    const INTERNSHIP_SEARCH_URL = '/internship-search';
+
+    // Update all internship search links
+    document.querySelectorAll('.cta-button, .apply-card').forEach(link => {
+        link.href = INTERNSHIP_SEARCH_URL;
+        link.target = "_blank";
+    });
+
     // Handle smooth scrolling for navigation links
     document.querySelectorAll('.nav-links a').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
