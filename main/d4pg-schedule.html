@@ -1,0 +1,2566 @@
+<style>
+    :root {
+        /* Spacing Variables */
+        --spacing-xs: 0.25rem;
+        --spacing-sm: 0.5rem;
+        --spacing-md: 1rem;
+        --spacing-lg: 1.5rem;
+        --spacing-xl: 2rem;
+        --spacing-2xl: 3rem;
+        --spacing-3xl: 4rem;
+        --spacing-4xl: 5rem;
+
+        /* Layout Variables */
+        --container-max-width: 2000px;
+        --container-padding: 1rem;
+        --border-radius: 8px;
+
+        /* Breakpoints (for reference in media queries) */
+        --mobile: 480px;
+        --tablet: 768px;
+        --desktop: 1024px;
+
+        /* Typography Scale */
+        --font-size-xs: 0.75rem;
+        --font-size-sm: 0.875rem;
+        --font-size-med: 1rem;
+        --font-size-base: 1.25rem;
+        --font-size-lg: 1.5rem;
+        --font-size-xl: 1.75rem;
+        --font-size-2xl: 2.5rem;
+        --font-size-3xl: 3.5rem;
+        --font-size-4xl: 4.5rem;
+        --font-size-5xl: 5.5rem;
+
+        /* D4PG Brand Colors */
+        --d4pg-navy: #0a1835;      /* Slightly lighter navy for better readability */
+        --d4pg-blue: #182654;      /* Adjusted blue for better contrast */
+        --d4pg-light-blue: #8a91c7; /* Brightened light blue for better visibility */
+        --d4pg-coral: #ff8977;     /* Slightly brighter coral for better visibility */
+        --d4pg-yellow: #f3e04b;    /* Keep yellow vibrant for contrast */
+        --d4pg-green: #4adb97;     /* Keep green vibrant */
+        --d4pg-pink: #ff3dc8;      /* Keep pink vibrant */
+        --d4pg-white: #f5f5f5;     /* Almost white for text */
+        
+        /* New Design Tokens for Modern UI */
+        --gradient-primary: linear-gradient(135deg, var(--d4pg-navy) 0%, #14285a 100%);
+        --gradient-accent: linear-gradient(135deg, var(--d4pg-coral) 0%, #ff6a54 100%);
+        --gradient-blue: linear-gradient(135deg, var(--d4pg-blue) 0%, #2a3b7a 100%);
+        --gradient-cool: linear-gradient(135deg, var(--d4pg-light-blue) 10%, #5767c9 90%);
+        
+        --surface-light: #f2f2f7; /* Light gray background */
+        --surface-dark: #0f1d3b; /* Darker navy for contrasting surfaces */
+        
+        --accent-border: rgba(255, 137, 119, 0.3); /* Coral-based border */
+        --blue-border: rgba(138, 145, 199, 0.3); /* Light blue border */
+        
+        --card-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        --button-shadow: 0 4px 10px rgba(10, 24, 53, 0.2);
+        --button-active-shadow: 0 6px 15px rgba(255, 137, 119, 0.4);
+
+        /* Speaker Card Colors */
+        --speaker-bg-red: rgba(255, 127, 109, 0.2);
+        --speaker-bg-blue: rgba(110, 127, 243, 0.2);
+        --speaker-bg-yellow: rgba(243, 224, 75, 0.12); /* More transparent yellow for better text contrast */
+        --speaker-bg-pink: rgba(255, 61, 200, 0.15);
+        
+        /* Font Families */
+        --font-primary: "All Round Gothic", Arial, sans-serif;
+        --font-secondary: "Proxima Nova", sans-serif;
+        --font-accent: "Quicksand", sans-serif;
+    }
+
+    /* Reset and Base Styles */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: var(--font-primary);
+        color: var(--d4pg-white);
+        background-color: var(--d4pg-navy);
+        line-height: 1.6;
+    }
+
+    /* Typography Styles */
+    h1, h2, h3, h4 {
+        font-family: var(--font-accent);
+        font-weight: bold;
+    }
+
+    h2 {
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    /* Layout Components */
+    .container {
+        max-width: var(--container-max-width);
+        margin: 0 auto;
+        padding: 0 var(--container-padding);
+    }
+
+    /* Schedule-specific styles */
+    .schedule-container {
+        background-color: var(--surface-light);
+        position: relative;
+    }
+
+    .schedule-title {
+        font-size: var(--font-size-3xl);
+        color: var(--d4pg-white);
+        margin-bottom: var(--spacing-md);
+        position: relative;
+        z-index: 2;
+    }
+
+    .schedule-subtitle {
+        font-size: var(--font-size-lg);
+        color: var(--d4pg-white);
+        margin-bottom: var(--spacing-xl);
+        position: relative;
+        z-index: 2;
+    }
+
+    .schedule-dates {
+        display: inline-block;
+        background-color: rgba(31, 48, 112, 0.8);
+        backdrop-filter: blur(5px);
+        color: var(--d4pg-white);
+        padding: var(--spacing-md) var(--spacing-lg);
+        border-radius: 30px;
+        font-size: var(--font-size-lg);
+        font-weight: bold;
+        margin-bottom: var(--spacing-lg);
+        position: relative;
+        z-index: 2;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Day navigation styles */
+    .day-nav-container {
+        position: relative;
+        padding: var(--spacing-lg) 0 var(--spacing-xl);
+        background: linear-gradient(to bottom, rgba(243, 224, 75, 0.15), rgba(138, 145, 199, 0.2));
+        margin-bottom: 0;
+        overflow: hidden;
+    }
+
+    .day-nav-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: radial-gradient(circle at 20% 50%, rgba(255, 137, 119, 0.1) 0%, transparent 50%),
+                          radial-gradient(circle at 80% 50%, rgba(138, 145, 199, 0.15) 0%, transparent 50%);
+        z-index: 1;
+    }
+
+    .day-nav {
+        display: flex;
+        justify-content: center;
+        margin: var(--spacing-md) 0;
+        gap: var(--spacing-lg);
+        flex-wrap: wrap;
+        position: relative;
+        z-index: 10;
+        max-width: 900px;
+        margin: 0 auto;
+        padding: var(--spacing-md) var(--spacing-lg);
+    }
+
+    .day-button {
+        display: flex;
+        align-items: center;
+        background-color: rgba(255, 255, 255, 0.9);
+        color: var(--d4pg-navy);
+        border: none;
+        padding: var(--spacing-sm) var(--spacing-xl);
+        border-radius: 30px;
+        font-family: var(--font-accent);
+        font-size: var(--font-size-med);
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        box-shadow: var(--button-shadow);
+        position: relative;
+        overflow: hidden;
+        min-width: 200px;
+        justify-content: center;
+    }
+
+    .day-button::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.3),
+            transparent
+        );
+        transition: 0.5s;
+    }
+
+    .day-button:hover {
+        transform: translateY(-2px) scale(1.05);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .day-button:hover::before {
+        left: 100%;
+    }
+
+    .day-button.active {
+        background: var(--gradient-accent);
+        color: white;
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: var(--button-active-shadow);
+    }
+
+    .day-number {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 28px;
+        height: 28px;
+        background: rgba(255, 255, 255, 0.25);
+        border-radius: 50%;
+        margin-right: var(--spacing-sm);
+        font-size: var(--font-size-med);
+    }
+
+    .day-button.active .day-number {
+        background: rgba(255, 255, 255, 0.3);
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+
+    .day-nav-divider {
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 100%;
+        height: 40px;
+        z-index: 5;
+        filter: drop-shadow(0px -2px 3px rgba(0, 0, 0, 0.1));
+    }
+
+    .day-nav-divider svg {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+
+    @media screen and (max-width: 768px) {
+        .day-button {
+            min-width: auto;
+            padding: var(--spacing-sm) var(--spacing-md);
+        }
+        
+        .day-text {
+            font-size: var(--font-size-sm);
+        }
+        
+        .day-number {
+            width: 24px;
+            height: 24px;
+            font-size: var(--font-size-sm);
+        }
+        
+        .day-nav {
+            gap: var(--spacing-sm);
+        }
+    }
+
+    @media screen and (max-width: 480px) {
+        .day-nav {
+            flex-direction: column;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+        
+        .day-button {
+            width: 80%;
+        }
+        
+        .day-nav-divider {
+            height: 30px;
+        }
+    }
+
+    .time-tracker-logo {
+        margin-right: var(--spacing-2xl);
+        max-width: 100px;
+    }
+
+    .time-tracker-logo img {
+        width: 100%;
+        height: auto;
+    }
+
+    /* Time tracker styles */
+    .time-tracker {
+        position: sticky;
+        top: 0;
+        background: var(--gradient-primary);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        padding: var(--spacing-md) var(--spacing-lg);
+        z-index: 100; /* Higher than sidebar */
+        border-bottom: 1px solid var(--accent-border);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: var(--spacing-xl);
+    }
+
+    .current-time {
+        font-size: var(--font-size-lg);
+        color: var(--d4pg-yellow);
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        background: rgba(243, 224, 75, 0.1);
+        padding: 4px 12px;
+        border-radius: 20px;
+    }
+
+    .now-indicator {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        background-color: var(--d4pg-yellow);
+        border-radius: 50%;
+        margin-right: var(--spacing-xs);
+        box-shadow: 0 0 0 rgba(243, 224, 75, 0.6);
+        animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+        0% { transform: scale(1); opacity: 1; }
+        50% { transform: scale(1.2); opacity: 0.7; }
+        100% { transform: scale(1); opacity: 1; }
+    }
+
+    .happening-now {
+        font-size: var(--font-size-med);
+        color: var(--d4pg-coral);
+        font-weight: 500;
+        background: rgba(255, 137, 119, 0.1);
+        padding: 4px 12px;
+        border-radius: 20px;
+        border-left: 3px solid var(--d4pg-coral);
+    }
+
+    /* Hero Section  */
+    .hero-section {
+        min-height: 100vh;
+        background-color: var(--d4pg-light-blue);
+        background-image: url('https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/e4dc25b9-e87d-40b7-85ae-ef6905c20f90/B1-Blank.png?content-type=image%2Fpng');
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: var(--spacing-4xl) 0;
+        position: relative;
+        text-align: center;
+    }
+
+    .hero-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        height: 100%;
+        max-width: 1000px;
+        padding: var(--spacing-2xl) 0;
+    }
+
+    .hero-logo {
+        margin-bottom: var(--spacing-2xl);
+        max-width: 300px;
+    }
+
+    .hero-logo img {
+        width: 100%;
+        height: auto;
+    }
+
+    .hero-tagline {
+        font-size: var(--font-size-4xl);
+        font-weight: bold;
+        color: var(--d4pg-white);
+        text-transform: uppercase;
+        margin-bottom: var(--spacing-2xl);
+    }
+
+    .word-cloud {
+        position: absolute;
+        top: var(--spacing-xl);
+        left: 0;
+        width: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+        font-size: 1.2rem;
+        font-family: 'Quicksand', sans-serif;
+        color: rgba(255, 255, 255, 0.8);
+        padding: var(--spacing-md) 0;
+        height: 50px;
+        /* Create a mask for fading edges instead of pseudo-elements */
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, white 10%, white 90%, transparent 100%);
+        mask-image: linear-gradient(to right, transparent 0%, white 10%, white 90%, transparent 100%);
+    }
+
+    /* Remove the pseudo-elements completely */
+    .word-cloud::before,
+    .word-cloud::after {
+        display: none;
+    }
+
+    .word-cloud-content {
+        display: inline-block;
+        padding-right: 50px;
+        animation: wave-scroll 60s linear infinite; /* Slowed down from 30s to 60s */
+        position: relative;
+    }
+
+    /* Wave animation that combines horizontal scrolling with vertical wave motion */
+    @keyframes wave-scroll {
+        0% { 
+            transform: translateX(0) translateY(0); 
+        }
+        25% { 
+            transform: translateX(-25%) translateY(8px); 
+        }
+        50% { 
+            transform: translateX(-50%) translateY(0); 
+        }
+        75% { 
+            transform: translateX(-75%) translateY(-8px); 
+        }
+        100% { 
+            transform: translateX(-100%) translateY(0); 
+        }
+    }
+
+    .word-cloud-word {
+        display: inline-block;
+        padding: 0 15px;
+        animation: word-float 8s ease-in-out infinite;
+        animation-delay: calc(var(--delay) * 1s);
+    }
+
+    @keyframes word-float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(calc(var(--float-y) * 1px)); }
+    }
+
+    @media screen and (max-width: 1200px) {
+ 
+    }
+
+    @media screen and (max-width: 1024px) {
+
+    }
+
+    @media screen and (max-width: 768px) {
+        .hero-tagline {
+            font-size: var(--font-size-3xl);
+        }
+    }
+
+    @media screen and (max-width: 480px) {
+
+    }
+
+    /* Schedule content */
+    .schedule-content {
+        padding: var(--spacing-xl) var(--spacing-lg);
+        transition: margin-left 0.3s ease;
+        margin-left: 0; /* Explicitly set initial margin */
+    }
+
+    .main-content.sidebar-open .schedule-content {
+        margin-left: 280px; /* This should apply when sidebar is open */
+    }
+
+    /* Make sure it's visible when debugging */
+    .filter-sidebar.open + .main-content .schedule-content {
+        margin-left: 280px; /* Alternative selector if needed */
+    }
+
+    .day-schedule {
+        margin-bottom: var(--spacing-3xl);
+        display: none; /* Hide all by default */
+    }
+
+    .day-schedule.active {
+        display: block; /* Show only active day */
+    }
+
+    /* Update day title styles */
+    .day-title {
+        font-size: var(--font-size-2xl);
+        margin-bottom: var(--spacing-xl);
+        color: var(--d4pg-navy);
+        text-align: center;
+        position: relative;
+    }
+
+    .day-title::after {
+        content: '';
+        display: block;
+        width: 80px;
+        height: 4px;
+        background: var(--gradient-accent);
+        margin: var(--spacing-sm) auto 0;
+        border-radius: 2px;
+    }
+
+    /* Update event block styles */
+    .event-block {
+        padding: var(--spacing-lg);
+        padding-left: 30px;
+        position: relative;
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: var(--border-radius);
+        margin-bottom: var(--spacing-xl);
+        margin-left: 20px;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(138, 145, 199, 0.2);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        z-index: 2;
+        color: var(--d4pg-navy);
+    }
+
+    .event-block:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Update timeline styles */
+    .timeline::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 4px;
+        background: var(--gradient-cool);
+        left: 50px;
+        margin-left: 10px;
+        border-radius: 2px;
+        z-index: 1;
+    }
+
+    .event-time {
+        position: absolute;
+        width: 80px;
+        text-align: right;
+        left: -160px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-weight: bold;
+        color: var(--d4pg-navy);
+        font-size: var(--font-size-med);
+        z-index: 2;
+    }
+
+    .event-time::after {
+        content: '';
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        background: var(--gradient-accent);
+        border-radius: 50%;
+        right: -90px;
+        top: 50%;
+        transform: translateY(-50%);
+        border: 3px solid white;
+        box-shadow: 0 0 0 2px rgba(255, 137, 119, 0.3);
+        z-index: 3;
+    }
+
+    /* Different event type styling */
+    .event-block.keynote {
+        background-color: rgba(255, 255, 255, 0.9);
+        border-left: 4px solid var(--d4pg-coral);
+    }
+
+    .event-block.panel {
+        background-color: rgba(255, 255, 255, 0.9);
+        border-left: 4px solid var(--d4pg-light-blue);
+    }
+
+    .event-block.workshop {
+        background-color: rgba(255, 255, 255, 0.9);
+        border-left: 4px solid var(--d4pg-yellow);
+    }
+
+    .event-block.break {
+        background-color: rgba(255, 255, 255, 0.9);
+        border-left: 4px solid var(--d4pg-green);
+    }
+
+    .event-block.social {
+        background-color: rgba(255, 255, 255, 0.9);
+        border-left: 4px solid var(--d4pg-pink);
+    }
+
+    /* Event details styling */
+    .event-title {
+        font-size: var(--font-size-lg);
+        margin-bottom: var(--spacing-sm);
+        color: var(--d4pg-navy);
+        font-weight: bold;
+    }
+
+    .event-location {
+        font-size: var(--font-size-sm);
+        color: var(--d4pg-blue);
+        margin-bottom: var(--spacing-sm);
+        display: flex;
+        align-items: center;
+    }
+
+    .event-description {
+        margin-bottom: var(--spacing-md);
+        font-size: var(--font-size-med);
+        color: var(--d4pg-navy);
+    }
+
+    /* Button styling */
+    .event-details-toggle {
+        background-color: transparent;
+        border: none;
+        color: var(--d4pg-light-blue);
+        font-size: var(--font-size-sm);
+        cursor: pointer;
+        padding: var(--spacing-xs) 0;
+        display: flex;
+        align-items: center;
+        margin-top: var(--spacing-sm);
+        transition: all 0.3s ease;
+    }
+
+    .event-details-toggle:hover {
+        color: var(--d4pg-coral);
+        transform: translateY(-1px);
+    }
+
+    .event-details-toggle::after {
+        content: '▼';
+        font-size: 10px;
+        margin-left: var(--spacing-xs);
+        transition: transform 0.3s ease;
+    }
+
+    .event-details-toggle.active::after {
+        transform: rotate(180deg);
+    }
+
+    .event-details {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease;
+    }
+
+    .event-details.active {
+        max-height: 500px;
+    }
+
+    /* Fix location icon */
+    .event-location::before {
+        content: '📍';
+        margin-right: var(--spacing-xs);
+    }
+
+    /* Highlighting for current events */
+    .event-block.current {
+        border: 2px solid var(--d4pg-yellow);
+        box-shadow: 0 0 15px rgba(243, 224, 75, 0.3);
+    }
+
+    /* Fix timeline layout */
+    .timeline {
+        position: relative;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding-left: 100px; /* Add padding to ensure content doesn't overlap with timeline */
+    }
+
+    /* Mobile responsive styles */
+    @media screen and (max-width: 768px) {
+        .timeline {
+            padding-left: 60px; /* Reduce padding on mobile */
+        }
+
+        .timeline::before {
+            left: 30px; /* Adjust line position on mobile */
+        }
+
+        .event-block {
+            margin-left: 10px; /* Less margin on mobile */
+            padding-left: 15px; /* Less padding on mobile */
+        }
+
+        .event-time {
+            left: -60px; /* Adjust time position on mobile */
+            width: 50px;
+            font-size: var(--font-size-sm);
+        }
+
+        .event-time::after {
+            width: 12px;
+            height: 12px;
+            right: -20px;
+        }
+
+        .day-button {
+            padding: var(--spacing-sm) var(--spacing-lg);
+            font-size: var(--font-size-sm);
+        }
+
+        .filter-button {
+            padding: var(--spacing-xs) var(--spacing-md);
+            font-size: var(--font-size-xs);
+        }
+
+        .time-tracker {
+            flex-direction: column;
+            gap: var(--spacing-xs);
+            padding: var(--spacing-sm);
+        }
+    }
+
+    @media screen and (max-width: 480px) {
+        .day-title {
+            font-size: var(--font-size-xl);
+        }
+
+        .event-title {
+            font-size: var(--font-size-med);
+        }
+    }
+
+    /* Print styles for paper schedule */
+    @media print {
+        body {
+            background-color: white;
+            color: black;
+        }
+
+        .schedule-header, .day-nav, .filter-controls, .time-tracker {
+            display: none !important;
+        }
+
+        .timeline::before {
+            display: none;
+        }
+
+        .event-block {
+            break-inside: avoid;
+            border: 1px solid #ccc;
+            background-color: white !important;
+            color: black;
+            margin-bottom: 10px;
+            page-break-inside: avoid;
+        }
+
+        .event-time {
+            color: black;
+        }
+
+        .event-time::after {
+            display: none;
+        }
+
+        .event-title, .event-description, .event-location {
+            color: black;
+        }
+
+        .day-schedule {
+            display: block !important;
+            margin-bottom: 20px;
+            page-break-before: always;
+        }
+
+        .day-title {
+            color: black;
+        }
+    }
+
+    /* Remove duplicated close brace for filter-sidebar */
+   
+
+    /* Sidebar header styles */
+    .sidebar-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: var(--spacing-lg);
+        padding-bottom: var(--spacing-sm);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .sidebar-title {
+        color: var(--d4pg-white);
+        font-size: var(--font-size-lg);
+        font-weight: bold;
+    }
+
+    .sidebar-close {
+        background: rgba(255, 255, 255, 0.1);
+        border: none;
+        color: var(--d4pg-white);
+        font-size: var(--font-size-lg);
+        cursor: pointer;
+        width: 28px;
+        height: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        transition: all 0.2s ease;
+    }
+
+    .sidebar-close:hover {
+        background: rgba(255, 255, 255, 0.3);
+    }
+
+    /* Active filters display */
+    .active-filters {
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .active-filters-title {
+        color: var(--d4pg-white);
+        font-size: var(--font-size-med);
+        margin-bottom: var(--spacing-sm);
+        font-weight: bold;
+    }
+
+    .active-filter-pill {
+        display: inline-flex;
+        align-items: center;
+        background: var(--gradient-accent);
+        color: white;
+        border-radius: 30px;
+        padding: var(--spacing-xs) var(--spacing-md);
+        margin: 0 var(--spacing-xs) var(--spacing-xs) 0;
+        font-size: var(--font-size-xs);
+        box-shadow: 0 2px 5px rgba(255, 137, 119, 0.3);
+    }
+
+    .remove-filter {
+        background: none;
+        border: none;
+        color: white;
+        margin-left: var(--spacing-xs);
+        cursor: pointer;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Sidebar filter groups */
+    .sidebar-filter-group {
+        margin-bottom: var(--spacing-xl);
+    }
+
+    .sidebar-filter-heading {
+        color: var(--d4pg-white);
+        font-size: var(--font-size-med);
+        font-weight: bold;
+        margin-bottom: var(--spacing-md);
+    }
+
+    .sidebar-filter-options {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+
+    /* Improve sidebar filter option layout and spacing */
+    .sidebar-filter-option {
+        display: flex;
+        align-items: center;
+        padding: var(--spacing-xs) var(--spacing-sm);
+        border-radius: 6px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+
+    /* Add more spacing between checkbox and label */
+    .sidebar-filter-checkbox {
+        margin-right: var(--spacing-md);
+        accent-color: var(--d4pg-coral);
+        width: 18px;
+        height: 18px;
+    }
+
+    /* Enhance the sidebar filter label */
+    .sidebar-filter-label {
+        color: var(--d4pg-white);
+        font-size: var(--font-size-med);
+        position: relative;
+        transition: all 0.3s ease;
+        padding: 2px 8px 2px 0;
+    }
+
+    /* Create interesting hover effect for the entire option */
+    .sidebar-filter-option:hover {
+        background-color: rgba(255, 255, 255, 0.15);
+        transform: translateX(4px);
+    }
+
+    /* Additional hover effect for the label itself */
+    .sidebar-filter-option:hover .sidebar-filter-label {
+        color: var(--d4pg-coral);
+        text-shadow: 0 0 8px rgba(255, 137, 119, 0.3);
+    }
+
+    /* Add a subtle left indicator on hover */
+    .sidebar-filter-option:hover::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 3px;
+        height: 70%;
+        background: var(--d4pg-coral);
+        border-radius: 2px;
+    }
+
+
+
+    .mode-toggle-label {
+        color: var(--d4pg-white);
+        font-size: var(--font-size-med);
+        margin-bottom: var(--spacing-sm);
+        display: block;
+        font-weight: bold;
+    }
+
+    .mode-toggle {
+        display: flex;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 4px;
+        overflow: hidden;
+    }
+
+    .mode-toggle-btn {
+        flex: 1;
+        text-align: center;
+        padding: var(--spacing-xs) var(--spacing-md);
+        border: none;
+        background: none;
+        color: var(--d4pg-white);
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+    .mode-toggle-btn:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .mode-toggle-btn.active {
+        background: var(--gradient-accent);
+        color: white;
+        font-weight: bold;
+    }
+
+    /* Add modal styles for speakers/panelists and locations */
+    .speaker-image-modal,
+    .location-image-modal {
+        position: absolute;
+        top: -120px;
+        left: 50%;
+        transform: translateX(-50%) scale(0);
+        width: 120px;
+        height: 120px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        opacity: 0;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        z-index: 100;
+        background-color: var(--d4pg-blue);
+    }
+
+    .speaker-image-modal {
+        border-radius: 50%;
+        border: 3px solid var(--d4pg-coral);
+    }
+
+    .location-image-modal {
+        border-radius: 8px;
+        border: 3px solid var(--d4pg-green);
+        width: 180px;
+        height: 120px;
+    }
+
+    .speaker-image-modal img,
+    .location-image-modal img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* Show on hover */
+    .event-speaker:hover .speaker-image-modal,
+    .event-moderator:hover .speaker-image-modal,
+    .panelist:hover .speaker-image-modal,
+    .event-location:hover .location-image-modal {
+        transform: translateX(-50%) scale(1);
+        opacity: 1;
+    }
+
+    /* Add position relative to container elements */
+    .event-speaker, .event-moderator, .panelist, .event-location {
+        position: relative;
+        cursor: pointer;
+    }
+
+    /* Add a tooltip indicator */
+    .modal-indicator {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        margin-left: 5px;
+        vertical-align: middle;
+    }
+
+    .event-speaker .modal-indicator,
+    .event-moderator .modal-indicator,
+    .panelist .modal-indicator {
+        background-color: var(--d4pg-coral);
+    }
+
+    .event-location .modal-indicator {
+        background-color: var(--d4pg-green);
+    }
+
+    /* Add wave divider styles */
+    .wave-divider {
+        position: relative;
+        height: 60px;
+        width: 100%;
+        margin-top: -30px;
+        margin-bottom: -30px;
+        z-index: 5;
+    }
+
+    .wave-divider::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: var(--surface-light);
+        clip-path: polygon(
+            0% 100%, 
+            100% 100%, 
+            100% 0%, 
+            0% 0%, 
+            0% 45%, 
+            5% 40%, 
+            10% 45%, 
+            15% 50%, 
+            20% 45%, 
+            25% 40%, 
+            30% 45%, 
+            35% 50%, 
+            40% 45%, 
+            45% 40%, 
+            50% 45%, 
+            55% 50%, 
+            60% 45%, 
+            65% 40%, 
+            70% 45%, 
+            75% 50%, 
+            80% 45%, 
+            85% 40%, 
+            90% 45%, 
+            95% 50%, 
+            100% 45%
+        );
+    }
+
+    /* Content container styles */
+    .schedule-content-container {
+        background-color: var(--surface-light);
+        padding: var(--spacing-xl) 0;
+        position: relative;
+        z-index: 2;
+        box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.1);
+        color: var(--d4pg-navy);
+    }
+
+    /* Responsive content shifting */
+    .main-content.sidebar-open .schedule-content {
+        margin-left: 280px;
+    }
+
+    .filter-toggle {
+        background: var(--gradient-accent);
+        color: white;
+        border: none;
+        padding: var(--spacing-sm) var(--spacing-lg);
+        border-radius: 30px;
+        margin: 0 auto var(--spacing-lg);
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        font-family: var(--font-accent);
+        font-weight: bold;
+        box-shadow: var(--button-shadow);
+        transition: all 0.3s ease;
+    }
+
+    .filter-toggle:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--button-active-shadow);
+    }
+
+    .filter-toggle-icon {
+        margin-left: var(--spacing-xs);
+    }
+
+    .filter-view-selector {
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+        z-index: 100;
+        display: block; /* Always visible */
+    }
+
+    .filter-view-toggle {
+        background: var(--gradient-accent);
+        color: white;
+        border: none;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: var(--button-shadow);
+        transition: all 0.3s ease;
+    }
+
+    .filter-view-toggle:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--button-active-shadow);
+    }
+
+    .filter-icon {
+        width: 24px;
+        height: 24px;
+    }
+
+    /* Styles for the upcoming event in time tracker */
+    .upcoming-event {
+        font-size: var(--font-size-med);
+        color: var(--d4pg-light-blue);
+        background: rgba(138, 145, 199, 0.1);
+        padding: 4px 12px;
+        border-radius: 20px;
+        border-left: 3px solid var(--d4pg-light-blue);
+    }
+
+    .upcoming-label {
+        font-weight: bold;
+        margin-right: var(--spacing-xs);
+    }
+
+    /* Add tag styling */
+    .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--spacing-xs);
+        margin-top: var(--spacing-sm);
+    }
+
+    .tag {
+        background-color: rgba(138, 145, 199, 0.1);
+        color: var(--d4pg-navy);
+        font-size: var(--font-size-xs);
+        padding: 2px 8px;
+        border-radius: 12px;
+        border: 1px solid var(--blue-border);
+    }
+
+    /* Speaker and moderator styling */
+    .event-people {
+        margin: var(--spacing-sm) 0;
+    }
+
+    .event-speaker, .event-moderator {
+        margin-bottom: var(--spacing-xs);
+    }
+
+    .speaker-label, .moderator-label {
+        font-weight: bold;
+        color: var(--d4pg-coral);
+        margin-right: var(--spacing-xs);
+    }
+
+    .event-panelists {
+        margin-top: var(--spacing-xs);
+    }
+
+    .panelists-title {
+        font-weight: bold;
+        color: var(--d4pg-light-blue);
+        margin-bottom: var(--spacing-xs);
+    }
+
+    .panelist-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--spacing-xs) var(--spacing-md);
+    }
+
+    /* Collapsed filter controls */
+    .filter-controls.collapsed {
+        max-height: 0;
+        overflow: hidden;
+        padding: 0;
+        margin: 0;
+        border: none;
+        opacity: 0;
+        transition: all 0.3s ease;
+    }
+
+    /* Mini Sidebar styles */
+    .mini-sidebar {
+        position: fixed;
+        top: auto; /* Will be set dynamically based on tracker position */
+        left: 0;
+        width: 60px;
+        height: calc(100vh - var(--tracker-height, 120px));
+        background-color: var(--d4pg-blue);
+        z-index: 90;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: var(--spacing-md) 0;
+        border-right: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+        transition: opacity 0.3s ease;
+    }
+
+    .mini-sidebar.hidden {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .mini-sidebar-toggle {
+        background: var(--gradient-accent);
+        color: white;
+        border: none;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: var(--button-shadow);
+        transition: all 0.3s ease;
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .mini-sidebar-toggle:hover {
+        transform: scale(1.1);
+        box-shadow: var(--button-active-shadow);
+    }
+
+    .mini-sidebar-icon {
+        width: 40px;
+        height: 40px;
+        margin: var(--spacing-sm) 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--d4pg-white);
+        opacity: 0.7;
+        transition: all 0.3s ease;
+        border-radius: 8px;
+    }
+
+    .mini-sidebar-icon:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        opacity: 1;
+        transform: translateX(2px);
+    }
+
+    .mini-sidebar-icon svg {
+        width: 22px;
+        height: 22px;
+    }
+
+    /* Update filter sidebar styles to work with mini sidebar */
+    .filter-sidebar {
+        width: 280px;
+        position: fixed;
+        top: auto; /* Not at the top of the page */
+        left: -280px;
+        height: calc(100vh - var(--tracker-height, 120px)); /* Dynamic height based on tracker position */
+        background-color: var(--d4pg-blue);
+        z-index: 90; /* Below time tracker but above content */
+        padding: var(--spacing-lg);
+        box-shadow: 5px 0 20px rgba(0, 0, 0, 0.1);
+        transition: left 0.3s ease;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        color: var(--d4pg-white);
+        border-right: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .filter-sidebar.open {
+        left: 60px; /* Start after the mini sidebar */
+        border-left: none;
+    }
+
+    /* Update main content styles */
+    .main-content.sidebar-open .schedule-content {
+        margin-left: 340px; /* 60px mini sidebar + 280px filter sidebar */
+    }
+
+    /* Remove the floating filter button styles */
+    .filter-view-selector {
+        display: none;
+    }
+
+    /* Mobile overlay for when sidebar is open */
+    .mobile-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 95;
+    }
+
+    .mobile-overlay.active {
+        display: block;
+    }
+</style>
+
+<section class="schedule-container">
+    <section class="hero-section">
+        <!-- Word cloud of professions/personas -->
+        <div class="word-cloud">
+            <div class="word-cloud-content" id="word-cloud-content">
+                <!-- Words will be generated by JavaScript -->
+            </div>
+        </div>
+        
+        <div class="hero-container">
+            <!-- 1. D4PG Logo (placeholder for your uploaded image) -->
+            <div class="hero-logo">
+                <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/ee979ddd-9728-4cfd-9a8a-9bfd0a81ae05/logo-blank-transparent.png?content-type=image%2Fpng" alt="D4PG Logo">
+            </div>
+            
+            <!-- 2. IMAGINE THAT Tagline -->
+            <h1 class="hero-tagline">CONFERENCE SCHEDULE (DEMO)</h1>
+        
+            
+        </div>
+    </section>
+
+    <div class="schedule-layout">
+        <!-- Filter Sidebar -->
+        <div class="filter-sidebar">
+            <div class="sidebar-header">
+                <h3 class="sidebar-title">FILTER</h3>
+                <!-- Close button removed -->
+            </div>
+            
+            <div class="active-filters">
+                <div class="active-filters-title">Active filters</div>
+                <div class="active-filter-pills">
+                    <!-- Active filters will be added here by JavaScript -->
+                </div>
+            </div>
+            
+            <div class="sidebar-filter-group">
+                <h4 class="sidebar-filter-heading">Event Type</h4>
+                <div class="sidebar-filter-options">
+                    <div class="sidebar-filter-option">
+                        <input type="checkbox" id="sidebar-all" class="sidebar-filter-checkbox" data-filter="all" checked>
+                        <label for="sidebar-all" class="sidebar-filter-label">All Events</label>
+                    </div>
+                    <div class="sidebar-filter-option">
+                        <input type="checkbox" id="sidebar-keynote" class="sidebar-filter-checkbox" data-filter="keynote">
+                        <label for="sidebar-keynote" class="sidebar-filter-label">Keynotes</label>
+                    </div>
+                    <div class="sidebar-filter-option">
+                        <input type="checkbox" id="sidebar-panel" class="sidebar-filter-checkbox" data-filter="panel">
+                        <label for="sidebar-panel" class="sidebar-filter-label">Panels</label>
+                    </div>
+                    <div class="sidebar-filter-option">
+                        <input type="checkbox" id="sidebar-workshop" class="sidebar-filter-checkbox" data-filter="workshop">
+                        <label for="sidebar-workshop" class="sidebar-filter-label">Workshops</label>
+                    </div>
+                    <div class="sidebar-filter-option">
+                        <input type="checkbox" id="sidebar-break" class="sidebar-filter-checkbox" data-filter="break">
+                        <label for="sidebar-break" class="sidebar-filter-label">Breaks</label>
+                    </div>
+                    <div class="sidebar-filter-option">
+                        <input type="checkbox" id="sidebar-social" class="sidebar-filter-checkbox" data-filter="social">
+                        <label for="sidebar-social" class="sidebar-filter-label">Social Events</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="sidebar-filter-group">
+                <h4 class="sidebar-filter-heading">Location</h4>
+                <div class="sidebar-filter-options">
+                    <div class="sidebar-filter-option">
+                        <input type="checkbox" id="sidebar-loc-all" class="sidebar-filter-checkbox" data-filter-location="all" checked>
+                        <label for="sidebar-loc-all" class="sidebar-filter-label">All Locations</label>
+                    </div>
+                    <div class="sidebar-filter-option">
+                        <input type="checkbox" id="sidebar-loc-auditorium" class="sidebar-filter-checkbox" data-filter-location="main-auditorium">
+                        <label for="sidebar-loc-auditorium" class="sidebar-filter-label">Main Auditorium</label>
+                    </div>
+                    <div class="sidebar-filter-option">
+                        <input type="checkbox" id="sidebar-loc-dining" class="sidebar-filter-checkbox" data-filter-location="dining-hall">
+                        <label for="sidebar-loc-dining" class="sidebar-filter-label">Dining Hall</label>
+                    </div>
+                    <div class="sidebar-filter-option">
+                        <input type="checkbox" id="sidebar-loc-workshop-a" class="sidebar-filter-checkbox" data-filter-location="workshop-a">
+                        <label for="sidebar-loc-workshop-a" class="sidebar-filter-label">Workshop Room A</label>
+                    </div>
+                    <div class="sidebar-filter-option">
+                        <input type="checkbox" id="sidebar-loc-workshop-b" class="sidebar-filter-checkbox" data-filter-location="workshop-b">
+                        <label for="sidebar-loc-workshop-b" class="sidebar-filter-label">Workshop Room B</label>
+                    </div>
+                    <div class="sidebar-filter-option">
+                        <input type="checkbox" id="sidebar-loc-main-hall" class="sidebar-filter-checkbox" data-filter-location="main-hall">
+                        <label for="sidebar-loc-main-hall" class="sidebar-filter-label">Main Hall</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="main-content">
+
+            <!-- Day Navigation -->
+            <div class="day-nav-container">
+                <div class="day-nav-background"></div>
+                <div class="day-nav">
+                    <button class="day-button active" data-day="day1">
+                        <span class="day-number">1</span>
+                        <span class="day-text">Day 1 (July 16)</span>
+                    </button>
+                    <button class="day-button" data-day="day2">
+                        <span class="day-number">2</span>
+                        <span class="day-text">Day 2 (July 17)</span>
+                    </button>
+                    <button class="day-button" data-day="day3">
+                        <span class="day-number">3</span>
+                        <span class="day-text">Day 3 (July 18)</span>
+                    </button>
+                </div>
+                <div class="day-nav-divider">
+                    <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                        <path d="M0,0 C240,95 480,100 720,80 C960,60 1200,40 1440,100 L1440,100 L0,100 Z" fill="var(--d4pg-navy)"></path>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Time Tracker (shows current time and what's happening now) -->
+            <div class="time-tracker">
+                <!--<div class="time-tracker-logo">
+                    <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/75514939-a151-4787-be12-be41770528be/logo-light-transparent-bg.png?content-type=image%2Fpng" alt="D4PG Logo">
+                </div>-->
+                <div class="current-time">
+                    <span class="now-indicator"></span>
+                    <span id="current-time-display">9:00 AM</span>
+                </div>
+                <div class="happening-now" id="happening-now">
+                    Registration & Breakfast
+                </div>
+                <div class="upcoming-event">
+                    <span class="upcoming-label">Next:</span>
+                    <span id="upcoming-event">Welcome & Opening Remarks</span>
+                </div>
+            </div>
+
+            <!-- Schedule Content -->
+            <div class="schedule-content">
+                <!-- Day 1 Schedule -->
+                <div class="day-schedule active" id="day1">
+                    <h2 class="day-title">Day 1 - Wednesday, July 16</h2>
+                    <div class="timeline">
+                        <!-- Events will be loaded dynamically -->
+                        <div class="loading-indicator">Loading schedule...</div>
+                    </div>
+                </div>
+
+                <!-- Day 2 Schedule -->
+                <div class="day-schedule" id="day2">
+                    <h2 class="day-title">Day 2 - Thursday, July 17</h2>
+                    <div class="timeline">
+                        <!-- Events will be loaded dynamically -->
+                        <div class="loading-indicator">Loading schedule...</div>
+                    </div>
+                </div>
+
+                <!-- Day 3 Schedule -->
+                <div class="day-schedule" id="day3">
+                    <h2 class="day-title">Day 3 - Friday, July 18</h2>
+                    <div class="timeline">
+                        <!-- Events will be loaded dynamically -->
+                        <div class="loading-indicator">Loading schedule...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    const urlPrefix = 'https://tcia-admin.github.io/tcia-server-files/';
+    const schedulefile = 'd4pg-schedule.json';
+
+    document.addEventListener('DOMContentLoaded', function() {
+        // Load the main configuration file
+        fetch(urlPrefix + schedulefile)
+            .then(response => response.json())
+            .then(data => {
+                conferenceData = data;
+                // Initialize with day 1
+                loadDaySchedule('day1');
+                
+                // Initialize the time trackers
+                updateCurrentTime();
+                updateCurrentEvents();
+                
+                // Initialize other UI features
+                setupFilters();
+                setupSidebar();
+                setupPrintButton();
+            })
+            .catch(error => console.error('Error loading schedule config:', error));
+    });
+
+    // Create a cache object to store loaded schedules
+    let scheduleCache = {};
+
+    // Modify the loadDaySchedule function to use the cache
+    function loadDaySchedule(day) {
+        // First, update the day button active state
+        document.querySelectorAll('.day-button').forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.getAttribute('data-day') === day) {
+                btn.classList.add('active');
+            }
+        });
+        
+        // Show the correct day schedule container
+        document.querySelectorAll('.day-schedule').forEach(schedule => {
+            schedule.classList.remove('active');
+            if (schedule.id === day) {
+                schedule.classList.add('active');
+            }
+        });
+        
+        // Find the specific day schedule container to load into
+        const dayScheduleContainer = document.getElementById(day);
+        if (!dayScheduleContainer) return;
+        
+        // Get the timeline element
+        const timeline = dayScheduleContainer.querySelector('.timeline');
+        if (!timeline) return;
+        
+        // Check if we already have events loaded in the timeline
+        if (timeline.children.length > 0 && !timeline.querySelector('.loading-indicator') && !timeline.querySelector('.error-indicator')) {
+            // Events are already loaded, no need to reload
+            // Just update current events highlighting
+            updateCurrentEvents();
+            return;
+        }
+        
+        // Show loading indicator
+        timeline.innerHTML = '<div class="loading-indicator">Loading schedule...</div>';
+
+        // Check if we have cached data for this day
+        if (scheduleCache[day]) {
+            console.log(`Using cached data for ${day}`);
+            renderSchedule(scheduleCache[day], day);
+            return;
+        }
+
+        // If not cached, load from server
+        console.log(`Fetching data for ${day} from server`);
+        fetch(`${urlPrefix}d4pg-schedule-${day}.json`)
+            .then(response => response.json())
+            .then(data => {
+                // Cache the data
+                scheduleCache[day] = data;
+                // Render schedule
+                renderSchedule(data, day);
+            })
+            .catch(error => {
+                console.error(`Error loading ${day} schedule:`, error);
+                if (timeline) {
+                    timeline.innerHTML = '<div class="error-indicator">Error loading schedule</div>';
+                }
+            });
+    }
+
+    // Render schedule from JSON data
+    function renderSchedule(data, day) {
+        const dayScheduleContainer = document.getElementById(day);
+        if (!dayScheduleContainer) return;
+        
+        // Only clear the timeline, preserve the title
+        const timeline = dayScheduleContainer.querySelector('.timeline');
+        if (!timeline) return;
+        
+        timeline.innerHTML = '';
+        
+        // Render events
+        data.events.forEach(event => {
+            const eventElement = createEventElement(event);
+            timeline.appendChild(eventElement);
+        });
+        
+        // Update event details toggle functionality
+        setupEventToggles();
+        
+        // Update current events
+        updateCurrentEvents();
+        
+        // Apply current filters to newly loaded events
+        if (window.updateEventVisibility) {
+            window.updateEventVisibility();
+        }
+    }
+
+    // Create event element from JSON data
+    function createEventElement(event) {
+        const eventElement = document.createElement('div');
+        eventElement.className = `event-block ${event.type}`;
+        eventElement.setAttribute('data-type', event.type);
+        eventElement.setAttribute('data-start', event.startTime);
+        eventElement.setAttribute('data-end', event.endTime);
+        
+        // Add location data attribute
+        const locationKey = event.location.toLowerCase().replace(/ /g, '-');
+        eventElement.setAttribute('data-location', locationKey);
+        
+        // Create event content
+        const eventContent = document.createElement('div');
+        eventContent.className = 'event-content';
+        
+        // Event title
+        const eventTitle = document.createElement('h3');
+        eventTitle.className = 'event-title';
+        eventTitle.textContent = event.title;
+        eventContent.appendChild(eventTitle);
+        
+        // Event time
+        const eventTime = document.createElement('div');
+        eventTime.className = 'event-time';
+        eventTime.textContent = `${event.startTime} - ${event.endTime}`;
+        eventElement.appendChild(eventTime);
+        
+        // Event location
+        const eventLocation = document.createElement('div');
+        eventLocation.className = 'event-location';
+        eventLocation.textContent = event.location;
+        eventContent.appendChild(eventLocation);
+        
+        // Event description
+        const eventDescription = document.createElement('div');
+        eventDescription.className = 'event-description';
+        eventDescription.innerHTML = event.description;
+        eventContent.appendChild(eventDescription);
+        
+        // Event people
+        if (event.people && event.people.length > 0) {
+            const eventPeople = document.createElement('div');
+            eventPeople.className = 'event-people';
+            
+            event.people.forEach(person => {
+                const personElement = document.createElement('div');
+                personElement.className = 'event-person';
+                
+                const personName = document.createElement('div');
+                personName.className = 'event-person-name';
+                personName.textContent = person.name;
+                personElement.appendChild(personName);
+                
+                const personRole = document.createElement('div');
+                personRole.className = 'event-person-role';
+                personRole.textContent = person.role;
+                personElement.appendChild(personRole);
+                
+                eventPeople.appendChild(personElement);
+            });
+            
+            eventContent.appendChild(eventPeople);
+        }
+        
+        // Event tags
+        if (event.tags && event.tags.length > 0) {
+            const eventTags = document.createElement('div');
+            eventTags.className = 'event-tags';
+            
+            event.tags.forEach(tag => {
+                const tagElement = document.createElement('span');
+                tagElement.className = 'event-tag';
+                tagElement.textContent = tag;
+                eventTags.appendChild(tagElement);
+            });
+            
+            eventContent.appendChild(eventTags);
+        }
+        
+        // Event details toggle
+        const eventDetailsToggle = document.createElement('button');
+        eventDetailsToggle.className = 'event-details-toggle';
+        eventDetailsToggle.textContent = 'Show Details';
+        eventContent.appendChild(eventDetailsToggle);
+        
+        // Event details
+        const eventDetails = document.createElement('div');
+        eventDetails.className = 'event-details';
+        eventDetails.innerHTML = event.details || '';
+        eventContent.appendChild(eventDetails);
+        
+        eventElement.appendChild(eventContent);
+        
+        return eventElement;
+    }
+
+    // Setup filters
+    function setupFilters() {
+        let activeTypeFilters = ['all'];
+        let activeLocationFilters = ['all'];
+        
+        // Function to update visibility based on both filters
+        function updateEventVisibility() {
+            // Get current events - must do this every time to ensure we get all current events
+            const eventBlocks = document.querySelectorAll('.event-block');
+            let visibleCount = 0;
+            
+            // Get the active day timeline to add "no events" message if needed
+            const activeTimeline = document.querySelector('.day-schedule.active .timeline');
+            
+            // Remove any existing "no events" message
+            const existingMessage = document.querySelector('.no-events-message');
+            if (existingMessage) {
+                existingMessage.remove();
+            }
+            
+            eventBlocks.forEach(event => {
+                const eventType = event.getAttribute('data-type');
+                const eventLocation = event.getAttribute('data-location');
+                
+                // Check if type matches any of the active type filters
+                const typeMatches = activeTypeFilters.includes('all') || activeTypeFilters.includes(eventType);
+                
+                // Check if location matches any of the active location filters
+                const locationMatches = activeLocationFilters.includes('all') || activeLocationFilters.includes(eventLocation);
+                
+                if (typeMatches && locationMatches) {
+                    event.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    event.style.display = 'none';
+                }
+            });
+            
+            // If no events are visible, show message
+            if (visibleCount === 0 && activeTimeline) {
+                const noEventsMessage = document.createElement('div');
+                noEventsMessage.className = 'no-events-message';
+                noEventsMessage.textContent = 'No events found matching your filters';
+                noEventsMessage.style.textAlign = 'center';
+                noEventsMessage.style.padding = 'var(--spacing-xl)';
+                noEventsMessage.style.color = 'var(--d4pg-navy)';
+                noEventsMessage.style.fontWeight = 'bold';
+                activeTimeline.appendChild(noEventsMessage);
+            }
+        }
+        
+        // Handle sidebar checkboxes for event types
+        const sidebarTypeCheckboxes = document.querySelectorAll('.sidebar-filter-checkbox[data-filter]');
+        sidebarTypeCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const filter = this.getAttribute('data-filter');
+                
+                if (filter === 'all') {
+                    // If "All Events" is checked, uncheck all others
+                    if (this.checked) {
+                        sidebarTypeCheckboxes.forEach(cb => {
+                            if (cb.getAttribute('data-filter') !== 'all') {
+                                cb.checked = false;
+                            }
+                        });
+                        activeTypeFilters = ['all'];
+                    } else {
+                        // If "All Events" is unchecked with nothing else checked, re-check it
+                        let anyChecked = false;
+                        sidebarTypeCheckboxes.forEach(cb => {
+                            if (cb.checked) anyChecked = true;
+                        });
+                        
+                        if (!anyChecked) {
+                            this.checked = true;
+                            activeTypeFilters = ['all'];
+                        }
+                    }
+                } else {
+                    // If a specific type is checked
+                    if (this.checked) {
+                        // Uncheck "All Events"
+                        const allCheckbox = document.querySelector('#sidebar-all');
+                        if (allCheckbox) allCheckbox.checked = false;
+                        
+                        // Remove 'all' from filters if it exists
+                        activeTypeFilters = activeTypeFilters.filter(f => f !== 'all');
+                        
+                        // Add this filter if not already included
+                        if (!activeTypeFilters.includes(filter)) {
+                            activeTypeFilters.push(filter);
+                        }
+                    } else {
+                        // Remove this filter
+                        activeTypeFilters = activeTypeFilters.filter(f => f !== filter);
+                        
+                        // If no specific types are checked, revert to "All Events"
+                        if (activeTypeFilters.length === 0) {
+                            const allCheckbox = document.querySelector('#sidebar-all');
+                            if (allCheckbox) {
+                                allCheckbox.checked = true;
+                                activeTypeFilters = ['all'];
+                            }
+                        }
+                    }
+                }
+                
+                // Update event visibility based on new filter settings
+                updateEventVisibility();
+                // Update the filter pills
+                updateActiveFilterPills();
+            });
+        });
+        
+        // Handle sidebar checkboxes for locations (similar logic)
+        const sidebarLocationCheckboxes = document.querySelectorAll('.sidebar-filter-checkbox[data-filter-location]');
+        sidebarLocationCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const filter = this.getAttribute('data-filter-location');
+                
+                if (filter === 'all') {
+                    // If "All Locations" is checked, uncheck all others
+                    if (this.checked) {
+                        sidebarLocationCheckboxes.forEach(cb => {
+                            if (cb.getAttribute('data-filter-location') !== 'all') {
+                                cb.checked = false;
+                            }
+                        });
+                        activeLocationFilters = ['all'];
+                    } else {
+                        // If "All Locations" is unchecked with nothing else checked, re-check it
+                        let anyChecked = false;
+                        sidebarLocationCheckboxes.forEach(cb => {
+                            if (cb.checked) anyChecked = true;
+                        });
+                        
+                        if (!anyChecked) {
+                            this.checked = true;
+                            activeLocationFilters = ['all'];
+                        }
+                    }
+                } else {
+                    // If a specific location is checked
+                    if (this.checked) {
+                        // Uncheck "All Locations"
+                        const allCheckbox = document.querySelector('#sidebar-loc-all');
+                        if (allCheckbox) allCheckbox.checked = false;
+                        
+                        // Remove 'all' from filters if it exists
+                        activeLocationFilters = activeLocationFilters.filter(f => f !== 'all');
+                        
+                        // Add this filter if not already included
+                        if (!activeLocationFilters.includes(filter)) {
+                            activeLocationFilters.push(filter);
+                        }
+                    } else {
+                        // Remove this filter
+                        activeLocationFilters = activeLocationFilters.filter(f => f !== filter);
+                        
+                        // If no specific locations are checked, revert to "All Locations"
+                        if (activeLocationFilters.length === 0) {
+                            const allCheckbox = document.querySelector('#sidebar-loc-all');
+                            if (allCheckbox) {
+                                allCheckbox.checked = true;
+                                activeLocationFilters = ['all'];
+                            }
+                        }
+                    }
+                }
+                
+                // Update event visibility based on new filter settings
+                updateEventVisibility();
+                // Update the filter pills
+                updateActiveFilterPills();
+            });
+        });
+        
+        // Ensure "All Events" and "All Locations" are checked by default
+        const allEventsCheckbox = document.querySelector('#sidebar-all');
+        const allLocationsCheckbox = document.querySelector('#sidebar-loc-all');
+        
+        if (allEventsCheckbox) allEventsCheckbox.checked = true;
+        if (allLocationsCheckbox) allLocationsCheckbox.checked = true;
+        
+        // Make global update function available
+        window.updateEventVisibility = updateEventVisibility;
+    }
+
+    // Update sidebar functionality for better mobile experience
+    function setupSidebar() {
+        const filterSidebar = document.querySelector('.filter-sidebar');
+        const mainContent = document.querySelector('.main-content');
+        const sidebarCloseBtn = document.querySelector('.sidebar-close');
+        
+        // Remove existing close button if it exists
+        if (sidebarCloseBtn) {
+            sidebarCloseBtn.remove();
+        }
+        
+        // Create mobile overlay for when sidebar is open
+        const mobileOverlay = document.createElement('div');
+        mobileOverlay.className = 'mobile-overlay';
+        document.body.appendChild(mobileOverlay);
+        
+        // Create mini sidebar
+        const miniSidebar = document.createElement('div');
+        miniSidebar.className = 'mini-sidebar';
+        
+        // Create toggle button for mini sidebar with hamburger icon
+        const toggleBtn = document.createElement('button');
+        toggleBtn.className = 'mini-sidebar-toggle';
+        toggleBtn.innerHTML = '<i class="fa-solid fa-bars"></i>'; // Initial hamburger icon
+        toggleBtn.setAttribute('aria-label', 'Toggle filters');
+        
+        // Add toggle button to mini sidebar
+        miniSidebar.appendChild(toggleBtn);
+        
+        // Add mini sidebar to document
+        document.body.appendChild(miniSidebar);
+        
+        // Check if this is a mobile device
+        const isMobile = window.innerWidth <= 768;
+        
+        // Toggle button click handler
+        toggleBtn.addEventListener('click', function() {
+            if (filterSidebar.classList.contains('open')) {
+                // Close the sidebar
+                closeSidebar();
+            } else {
+                // Open the sidebar
+                openSidebar();
+            }
+        });
+
+        // Function to open sidebar
+        function openSidebar() {
+            filterSidebar.classList.add('open');
+            
+            // Only add margin on desktop
+            if (!isMobile) {
+                const scheduleContent = document.querySelector('.schedule-content');
+                if (scheduleContent) {
+                    scheduleContent.style.marginLeft = '340px'; // Account for both sidebars
+                }
+                mainContent.classList.add('sidebar-open');
+            } else {
+                // On mobile, show the overlay
+                mobileOverlay.classList.add('active');
+            }
+            
+            // Change icon to X mark
+            toggleBtn.innerHTML = '<i class="fa-solid fa-circle-xmark"></i>';
+        }
+        
+        // Function to close sidebar
+        function closeSidebar() {
+            filterSidebar.classList.remove('open');
+            mainContent.classList.remove('sidebar-open');
+            
+            const scheduleContent = document.querySelector('.schedule-content');
+            if (scheduleContent) {
+                // Don't override the !important CSS rule on mobile
+                if (!isMobile) {
+                    scheduleContent.style.marginLeft = '60px';
+                }
+            }
+            
+            // Hide overlay
+            mobileOverlay.classList.remove('active');
+            
+            // Change icon back to hamburger bars
+            toggleBtn.innerHTML = '<i class="fa-solid fa-bars"></i>';
+        }
+        
+        // Click on overlay should close the sidebar
+        mobileOverlay.addEventListener('click', closeSidebar);
+        
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            const newIsMobile = window.innerWidth <= 768;
+            
+            // If switching between mobile and desktop, close the sidebar to avoid layout issues
+            if (newIsMobile !== isMobile && filterSidebar.classList.contains('open')) {
+                closeSidebar();
+            }
+            
+            // Update mobile status
+            isMobile = newIsMobile;
+        });
+
+        // Update active filter pills in sidebar
+        updateActiveFilterPills();
+
+        // Add scroll handling for dynamic sidebar positioning
+        window.addEventListener('scroll', handleScroll);
+        
+        // Call the scroll handler once on page load to set initial positions
+        window.dispatchEvent(new Event('scroll'));
+    }
+
+    // Update handleScroll to handle mobile devices better
+    function handleScroll() {
+        const timeTracker = document.querySelector('.time-tracker');
+        const filterSidebar = document.querySelector('.filter-sidebar');
+        const miniSidebar = document.querySelector('.mini-sidebar');
+        
+        if (!timeTracker) return;
+        
+        // Get time tracker position info
+        const timeTrackerRect = timeTracker.getBoundingClientRect();
+        const trackerHeight = timeTrackerRect.height;
+        
+        // Set the custom property for sidebar positioning
+        document.documentElement.style.setProperty('--tracker-height', trackerHeight + 'px');
+        
+        // Position sidebars relative to time tracker
+        if (timeTrackerRect.bottom <= 0) {
+            // Time tracker is scrolled off the top
+            if (filterSidebar) filterSidebar.style.top = '0';
+            if (miniSidebar) miniSidebar.style.top = '0';
+        } else {
+            // Position sidebars just below time tracker
+            if (filterSidebar) filterSidebar.style.top = timeTrackerRect.bottom + 'px';
+            if (miniSidebar) miniSidebar.style.top = timeTrackerRect.bottom + 'px';
+        }
+    }
+
+    // Add a better mobile initialization
+    document.addEventListener('DOMContentLoaded', function() {
+        // ...existing code...
+        
+        // Check if we're on mobile
+        const isMobile = window.innerWidth <= 768;
+        
+        // After initializing, add margin for mini sidebar
+        const scheduleContent = document.querySelector('.schedule-content');
+        if (scheduleContent) {
+            // Let the CSS handle mobile margins with !important
+            if (!isMobile) {
+                scheduleContent.style.marginLeft = '60px';
+            }
+        }
+        
+        // Add swipe gesture support for mobile
+        if ('ontouchstart' in window) {
+            setupSwipeGestures();
+        }
+    });
+
+    // Add swipe gestures for mobile
+    function setupSwipeGestures() {
+        const content = document.querySelector('.main-content');
+        const filterSidebar = document.querySelector('.filter-sidebar');
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        content.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        }, false);
+        
+        content.addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, false);
+        
+        function handleSwipe() {
+            const swipeDistance = touchEndX - touchStartX;
+            
+            // If it's a significant swipe from left to right when sidebar is closed
+            if (swipeDistance > 70 && !filterSidebar.classList.contains('open')) {
+                // Find the toggle button and trigger a click
+                const toggleBtn = document.querySelector('.mini-sidebar-toggle');
+                if (toggleBtn) toggleBtn.click();
+            }
+            
+            // If it's a significant swipe from right to left when sidebar is open
+            if (swipeDistance < -70 && filterSidebar.classList.contains('open')) {
+                // Find the toggle button and trigger a click
+                const toggleBtn = document.querySelector('.mini-sidebar-toggle');
+                if (toggleBtn) toggleBtn.click();
+            }
+        }
+    }
+
+    // Update the schedule content initial margin to account for mini sidebar
+    document.addEventListener('DOMContentLoaded', function() {
+        // ...existing code...
+        
+        // After initializing, add margin for mini sidebar
+        const scheduleContent = document.querySelector('.schedule-content');
+        if (scheduleContent) {
+            scheduleContent.style.marginLeft = '60px';
+        }
+    });
+
+    // Update active filter pills in sidebar
+    function updateActiveFilterPills() {
+        const pillsContainer = document.querySelector('.active-filter-pills');
+        if (!pillsContainer) return;
+        
+        pillsContainer.innerHTML = '';
+        
+        // Add type filters
+        const sidebarTypeCheckboxes = document.querySelectorAll('.sidebar-filter-checkbox[data-filter]');
+        sidebarTypeCheckboxes.forEach(checkbox => {
+            if (checkbox.checked && checkbox.getAttribute('data-filter') !== 'all') {
+                const label = checkbox.nextElementSibling.textContent;
+                
+                addFilterPill(label, function() {
+                    // Clear this filter
+                    checkbox.checked = false;
+                    document.querySelector('#sidebar-all').checked = true;
+                    document.querySelector('[data-filter="all"]').click();
+                    updateActiveFilterPills();
+                });
+            }
+        });
+        
+        // Add location filters
+        const sidebarLocationCheckboxes = document.querySelectorAll('.sidebar-filter-checkbox[data-filter-location]');
+        sidebarLocationCheckboxes.forEach(checkbox => {
+            if (checkbox.checked && checkbox.getAttribute('data-filter-location') !== 'all') {
+                const label = checkbox.nextElementSibling.textContent;
+                
+                addFilterPill(label, function() {
+                    // Clear this filter
+                    checkbox.checked = false;
+                    document.querySelector('#sidebar-loc-all').checked = true;
+                    document.querySelector('[data-filter-location="all"]').click();
+                    updateActiveFilterPills();
+                });
+            }
+        });
+    }
+
+    // Add filter pill to sidebar
+    function addFilterPill(label, removeCallback) {
+        const pillsContainer = document.querySelector('.active-filter-pills');
+        if (!pillsContainer) return;
+        
+        const pill = document.createElement('div');
+        pill.className = 'active-filter-pill';
+        pill.innerHTML = `
+            ${label}
+            <button class="remove-filter" aria-label="Remove filter">×</button>
+        `;
+        
+        pill.querySelector('.remove-filter').addEventListener('click', removeCallback);
+        
+        pillsContainer.appendChild(pill);
+    }
+
+    // Setup print button
+    function setupPrintButton() {
+        // Enable print functionality with customized print styles
+        const printScheduleButton = document.createElement('button');
+        printScheduleButton.innerHTML = '🖨️ Print Schedule';
+        printScheduleButton.classList.add('filter-button');
+        printScheduleButton.style.marginLeft = 'auto';
+        printScheduleButton.addEventListener('click', function() {
+            window.print();
+        });
+        
+        // Add print button to the sidebar instead
+        const printButtonContainer = document.createElement('div');
+        printButtonContainer.style.textAlign = 'center';
+        printButtonContainer.style.marginTop = 'var(--spacing-lg)';
+        printButtonContainer.appendChild(printScheduleButton);
+        
+        const filterSidebar = document.querySelector('.filter-sidebar');
+        if (filterSidebar) {
+            filterSidebar.appendChild(printButtonContainer);
+        }
+    }
+
+    // Update current time
+    function updateCurrentTime() {
+        const now = new Date();
+        const timeDisplay = document.getElementById('current-time-display');
+        
+        // Format the time as HH:MM AM/PM
+        const hours = now.getHours();
+        const minutes = now.getMinutes();
+        const ampm = hours >= 12 ? 'PM' : 'AM';
+        const formattedHours = hours % 12 || 12; // Convert 0 to 12 for 12 AM
+        const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
+        
+        timeDisplay.textContent = `${formattedHours}:${formattedMinutes} ${ampm}`;
+        
+        // Call again in 1 minute
+        setTimeout(updateCurrentTime, 60000);
+    }
+
+    // Update current events
+    function updateCurrentEvents() {
+        const now = new Date();
+        const currentHours = now.getHours();
+        const currentMinutes = now.getMinutes();
+        const currentTimeInMinutes = currentHours * 60 + currentMinutes;
+        
+        // For demonstration purposes
+        let foundCurrentEvent = false;
+        let currentEventTitle = 'No events currently happening';
+        let upcomingEventTitle = 'No upcoming events';
+        
+        // Only check events in the active day
+        const activeDay = document.querySelector('.day-schedule.active');
+        const events = activeDay.querySelectorAll('.event-block');
+        
+        // First pass: find current event
+        events.forEach(event => {
+            // Remove current class from all events
+            event.classList.remove('current');
+            
+            // Parse event times
+            const startTime = event.getAttribute('data-start');
+            const endTime = event.getAttribute('data-end');
+            
+            // Convert to minutes for comparison (simple parsing for demo)
+            const [startHours, startMinutes] = startTime.split(':').map(num => parseInt(num));
+            let startTimeInMinutes = startHours * 60 + startMinutes;
+            
+            const [endHours, endMinutes] = endTime.split(':').map(num => parseInt(num));
+            let endTimeInMinutes = endHours * 60 + endMinutes;
+            
+            // Adjust for PM times if needed (simple 24-hour conversion)
+            if (startTimeInMinutes < 8 * 60) startTimeInMinutes += 12 * 60; // Assume PM if before 8 AM
+            if (endTimeInMinutes < startTimeInMinutes) endTimeInMinutes += 12 * 60; // Adjust end time if it crosses noon
+            
+            // Check if current time is within event time
+            if (currentTimeInMinutes >= startTimeInMinutes && currentTimeInMinutes < endTimeInMinutes) {
+                event.classList.add('current');
+                foundCurrentEvent = true;
+                currentEventTitle = event.querySelector('.event-title').textContent;
+            }
+        });
+        
+        // Second pass: find upcoming event
+        let nextEventStart = Infinity;
+        
+        events.forEach(event => {
+            // Parse event times
+            const startTime = event.getAttribute('data-start');
+            
+            // Convert to minutes for comparison
+            const [startHours, startMinutes] = startTime.split(':').map(num => parseInt(num));
+            let startTimeInMinutes = startHours * 60 + startMinutes;
+            
+            // Adjust for PM times if needed
+            if (startTimeInMinutes < 8 * 60) startTimeInMinutes += 12 * 60;
+            
+            // Find the next event (closest start time in the future)
+            if (startTimeInMinutes > currentTimeInMinutes && startTimeInMinutes < nextEventStart) {
+                nextEventStart = startTimeInMinutes;
+                upcomingEventTitle = event.querySelector('.event-title').textContent;
+            }
+        });
+        
+        // Update happening now text
+        document.getElementById('happening-now').textContent = currentEventTitle;
+        
+        // Update upcoming event text
+        document.getElementById('upcoming-event').textContent = upcomingEventTitle;
+        
+        // Call again in 5 minutes
+        setTimeout(updateCurrentEvents, 300000);
+    }
+
+    // Add smooth scrolling to anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // Add automatic highlighting for current time on timeline
+    function highlightCurrentTimeOnTimeline() {
+        const now = new Date();
+        const currentHours = now.getHours();
+        const currentMinutes = now.getMinutes();
+        
+        // This would need to be implemented based on how you want to visualize 
+        // the current time on the timeline
+        // ...
+        
+        // Call again in 5 minutes
+        setTimeout(highlightCurrentTimeOnTimeline, 300000);
+    }
+
+    // Add event details toggle functionality
+    function setupEventToggles() {
+        document.querySelectorAll('.event-details-toggle').forEach(toggle => {
+            toggle.addEventListener('click', function() {
+                this.classList.toggle('active');
+                const details = this.nextElementSibling;
+                
+                if (this.classList.contains('active')) {
+                    details.classList.add('active');
+                    this.textContent = 'Hide Details';
+                } else {
+                    details.classList.remove('active');
+                    this.textContent = 'Show Details';
+                }
+            });
+        });
+    }
+
+    // Day navigation functionality
+    const dayButtons = document.querySelectorAll('.day-button');
+        
+        dayButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const targetDay = this.getAttribute('data-day');
+                loadDaySchedule(targetDay);
+            });
+        });
+</script>
+
+<script>
+    // Word Cloud Wave Effect with slower auto-scroll
+    document.addEventListener('DOMContentLoaded', function() {
+        const wordCloudContent = document.getElementById('word-cloud-content');
+        const words = [
+            'Artists', 'Problem Solvers', 'Entrepreneurs', 
+            'Gamers', 'Educators', 'Technologists',
+            'Creators', 'Innovators', 'Designers',
+            'Developers', 'Advocates', 'Visionaries'
+        ];
+        
+        // Create duplicated word sequence for smooth looping
+        const allWords = [...words, ...words, ...words]; // Triple the words for smooth looping
+        
+        // Clear any existing content
+        wordCloudContent.innerHTML = '';
+        
+        // Add words with random float animation values but slower speeds
+        allWords.forEach((word, index) => {
+            const wordSpan = document.createElement('span');
+            wordSpan.classList.add('word-cloud-word');
+            wordSpan.textContent = word;
+            
+            // Set custom properties for animation with slower timing
+            wordSpan.style.setProperty('--delay', (index * 0.4).toFixed(1)); // Doubled delay for slower movement
+            wordSpan.style.setProperty('--float-y', Math.floor(Math.random() * 10) - 5);
+            
+            // Add diamond separator
+            if (index < allWords.length - 1) {
+                const separator = document.createElement('span');
+                separator.classList.add('word-cloud-word');
+                separator.innerHTML = ' <span>◇</span> ';
+                separator.style.setProperty('--delay', ((index * 0.4) + 0.2).toFixed(1)); // Doubled delay
+                separator.style.setProperty('--float-y', Math.floor(Math.random() * 8) - 4);
+                
+                wordCloudContent.appendChild(wordSpan);
+                wordCloudContent.appendChild(separator);
+            } else {
+                wordCloudContent.appendChild(wordSpan);
+            }
+        });
+    });
+
+    // Draggable physics for hero tagline (secret interactive element)
+    document.addEventListener('DOMContentLoaded', function() {
+        const tagline = document.querySelector('.hero-tagline');
+        if (!tagline) return;
+        
+        // Only enable on desktop
+        if (window.innerWidth < 768) return;
+        
+        // Add hint cursor
+        tagline.style.cursor = 'grab';
+        
+        // Physics variables
+        let isDragging = false;
+        let position = { x: 0, y: 0 };
+        let velocity = { x: 0, y: 0 };
+        let lastPosition = { x: 0, y: 0 };
+        let animationFrame;
+        
+        // Set up the initial position
+        tagline.style.position = 'relative';
+        tagline.style.userSelect = 'none'; // Prevent text selection during dragging
+        tagline.style.transition = 'transform 0.1s ease'; // Smooth rotation
+        
+        // Start dragging
+        tagline.addEventListener('mousedown', function(e) {
+            isDragging = true;
+            tagline.style.cursor = 'grabbing';
+            position.x = e.clientX;
+            position.y = e.clientY;
+            lastPosition.x = position.x;
+            lastPosition.y = position.y;
+            
+            // Add a slight "picked up" effect
+            tagline.style.transform = 'scale(1.05) rotate(2deg)';
+            tagline.style.zIndex = '100';
+            
+            // Stop any animation
+            cancelAnimationFrame(animationFrame);
+            
+            e.preventDefault();
+        });
+        
+        // Track mouse movement for dragging
+        document.addEventListener('mousemove', function(e) {
+            if (!isDragging) return;
+            
+            // Calculate new position
+            const dx = e.clientX - position.x;
+            const dy = e.clientY - position.y;
+            
+            // Calculate velocity for "throw" effect
+            velocity.x = e.clientX - lastPosition.x;
+            velocity.y = e.clientY - lastPosition.y;
+            
+            // Update positions
+            lastPosition.x = e.clientX;
+            lastPosition.y = e.clientY;
+            position.x = e.clientX;
+            position.y = e.clientY;
+            
+            // Move the element
+            const currentX = parseInt(tagline.style.left || '0');
+            const currentY = parseInt(tagline.style.top || '0');
+            tagline.style.left = (currentX + dx) + 'px';
+            tagline.style.top = (currentY + dy) + 'px';
+            
+            // Rotate slightly based on movement direction
+            const rotation = velocity.x * 0.2;
+            tagline.style.transform = `scale(1.05) rotate(${rotation}deg)`;
+        });
+        
+        // Release drag and apply physics
+        document.addEventListener('mouseup', function() {
+            if (!isDragging) return;
+            
+            tagline.style.cursor = 'grab';
+            isDragging = false;
+            
+            // Apply "throw" physics
+            applyPhysics();
+        });
+        
+        // Physics animation loop
+        function applyPhysics() {
+            // Apply momentum with decay
+            const friction = 0.95;
+            velocity.x *= friction;
+            velocity.y *= friction;
+            
+            // Stop if velocity is very small
+            if (Math.abs(velocity.x) < 0.5 && Math.abs(velocity.y) < 0.5) {
+                tagline.style.transform = 'scale(1) rotate(0deg)';
+                return;
+            }
+            
+            // Update position
+            const currentX = parseInt(tagline.style.left || '0');
+            const currentY = parseInt(tagline.style.top || '0');
+            let newX = currentX + velocity.x;
+            let newY = currentY + velocity.y;
+            
+            // Boundary checking with different values for X and Y
+            const boundsX = Math.min(window.innerWidth / 2.5, 600); // Wider bounds for horizontal
+            const boundsY = Math.min(window.innerHeight / 2, 400); // Shorter bounds for vertical
+            
+            if (Math.abs(newX) > boundsX) {
+                velocity.x *= -0.7; // Bounce with energy loss
+                newX = newX > 0 ? boundsX : -boundsX;
+            }
+            
+            if (Math.abs(newY) > boundsY) {
+                velocity.y *= -0.7; // Bounce with energy loss
+                newY = newY > 0 ? boundsY : -boundsY;
+            }
+            
+            // Apply position
+            tagline.style.left = newX + 'px';
+            tagline.style.top = newY + 'px';
+            
+            // Rotate based on movement
+            const rotation = velocity.x * 0.2;
+            tagline.style.transform = `scale(${1 + Math.abs(velocity.x + velocity.y) * 0.01}) rotate(${rotation}deg)`;
+            
+            // Continue animation
+            animationFrame = requestAnimationFrame(applyPhysics);
+        }
+        
+        // Double-click to reset position
+        tagline.addEventListener('dblclick', function() {
+            cancelAnimationFrame(animationFrame);
+            velocity = { x: 0, y: 0 };
+            
+            // Animate back to original position
+            tagline.style.transition = 'all 0.5s cubic-bezier(0.18, 0.89, 0.32, 1.28)';
+            tagline.style.left = '0px';
+            tagline.style.top = '0px';
+            tagline.style.transform = 'scale(1) rotate(0deg)';
+            
+            // Reset transition after animation
+            setTimeout(() => {
+                tagline.style.transition = 'transform 0.1s ease';
+            }, 500);
+        });
+    });
+</script>
