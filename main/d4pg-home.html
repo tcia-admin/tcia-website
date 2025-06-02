@@ -313,13 +313,28 @@
     }
 
     .sponsors-title {
-        font-size: var(--font-size-med);
+        font-size: var(--font-size-xl);
         text-transform: uppercase;
-        letter-spacing: 1px;
-        margin-bottom: var(--spacing-sm);
+        letter-spacing: 2px;
+        margin-bottom: var(--spacing-lg);
         color: var(--d4pg-white);
         text-align: center;
-        font-weight: 600;
+        font-weight: bold;
+        font-family: var(--font-accent);
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        position: relative;
+    }
+
+    .sponsors-title::after {
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 3px;
+        background: linear-gradient(90deg, var(--d4pg-coral) 0%, var(--d4pg-yellow) 100%);
+        border-radius: 2px;
     }
 
     .sponsors-logo-container {
@@ -406,6 +421,7 @@
         border: 1px solid rgba(255, 255, 255, 0.2);
         box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
         transition: transform 0.3s ease;
+        overflow: hidden;
     }
 
     .sizzle-reel-container:hover {
@@ -427,6 +443,13 @@
         transition: all 0.3s ease;
         position: relative;
         overflow: hidden;
+        z-index: 2;
+    }
+
+    .sizzle-reel-placeholder.hidden {
+        opacity: 0;
+        pointer-events: none;
+        transform: scale(0.95);
     }
 
     .sizzle-reel-placeholder::before {
@@ -439,6 +462,29 @@
 
     .sizzle-reel-placeholder:hover {
         transform: scale(1.02);
+    }
+
+    .sizzle-reel-video {
+        position: absolute;
+        top: var(--spacing-lg);
+        left: var(--spacing-lg);
+        right: var(--spacing-lg);
+        bottom: var(--spacing-lg);
+        opacity: 0;
+        transition: opacity 0.5s ease;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .sizzle-reel-video.visible {
+        opacity: 1;
+    }
+
+    .sizzle-reel-video iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+        border-radius: 10px;
     }
 
     /* Scholarship Section Integration */
@@ -1514,7 +1560,7 @@
 
     .early-bird-tag {
         background-color: rgba(176, 255, 224, 0.2); 
-        color: var(--d4pg-coral);
+        color: var(--d4pg-white);
         font-size: var(--font-size-xs);
         font-weight: bold;
         padding: var(--spacing-xs) var(--spacing-sm);
@@ -1622,7 +1668,8 @@
         justify-content: flex-end;
         align-items: center;
         border-bottom: 1px solid #ddd;
-        min-height: 60px;
+        min-height: 40px;
+        max-height: 60px;
     }
 
     .schedule-sidebar-title {
@@ -1825,8 +1872,17 @@
                     <p class="multimedia-description">Get a taste of what makes our conference special. Watch highlights from previous years and see the energy, innovation, and community that defines D4PG.</p>
                 </div>
                 <div class="sizzle-reel-container">
-                    <div class="sizzle-reel-placeholder" onclick="playVideo()">
-                        Coming Soon: D4PG Sizzle Reel
+                    <div class="sizzle-reel-placeholder" onclick="playVideo()" id="sizzleReelOverlay">
+                        D4PG Sizzle Reel
+                    </div>
+                    <div class="sizzle-reel-video" id="sizzleReelVideo">
+                        <iframe 
+                            src="https://www.youtube.com/embed/oT-fTdOJJ2k?si=uMcQx8_TeADyH0FQ&rel=0&modestbranding=1" 
+                            title="D4PG Sizzle Reel" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            referrerpolicy="strict-origin-when-cross-origin" 
+                            allowfullscreen>
+                        </iframe>
                     </div>
                 </div>
             </div>
@@ -2426,23 +2482,16 @@
 
     // Sizzle Reel Video Player Function
     function playVideo() {
-        // This function will be updated when the actual video is available
-        // For now, show a placeholder message
-        const placeholder = document.querySelector('.sizzle-reel-placeholder');
-        placeholder.style.background = 'linear-gradient(135deg, var(--d4pg-navy) 0%, var(--d4pg-blue) 100%)';
-        placeholder.innerHTML = `
-            <div style="text-align: center; color: white;">
-                <div style="font-size: 3rem; margin-bottom: 1rem;">🎬</div>
-                <div style="font-size: 1.2rem; font-weight: bold;">Sizzle Reel Coming Soon!</div>
-                <div style="font-size: 0.9rem; margin-top: 0.5rem; opacity: 0.8;">Stay tuned for exciting D4PG highlights</div>
-            </div>
-        `;
+        const overlay = document.getElementById('sizzleReelOverlay');
+        const video = document.getElementById('sizzleReelVideo');
         
-        // Reset after 3 seconds
+        // Hide the gradient overlay with animation
+        overlay.classList.add('hidden');
+        
+        // Show the video after a brief delay
         setTimeout(() => {
-            placeholder.style.background = 'linear-gradient(135deg, var(--d4pg-coral) 0%, var(--d4pg-pink) 100%)';
-            placeholder.innerHTML = 'Coming Soon: D4PG Sizzle Reel';
-        }, 3000);
+            video.classList.add('visible');
+        }, 300);
     }
 
     // Close sidebar with Escape key
