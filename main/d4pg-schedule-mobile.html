@@ -1,0 +1,1543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D4PG Conference Schedule</title>
+    <style>
+        :root {
+            /* D4PG Brand Colors */
+            --d4pg-navy: #0a1835;
+            --d4pg-blue: #182654;
+            --d4pg-light-blue: #8a91c7;
+            --d4pg-coral: #ff8977;
+            --d4pg-yellow: #f3e04b;
+            --d4pg-green: #4adb97;
+            --d4pg-pink: #ff3dc8;
+            --d4pg-white: #f5f5f5;
+            
+            /* Typography */
+            --font-primary: "All Round Gothic", Arial, sans-serif;
+            --font-secondary: "Proxima Nova", sans-serif;
+            --font-accent: "Quicksand", sans-serif;
+            
+            /* Spacing */
+            --spacing-xs: 0.25rem;
+            --spacing-sm: 0.5rem;
+            --spacing-md: 1rem;
+            --spacing-lg: 1.5rem;
+            --spacing-xl: 2rem;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-primary);
+            background-color: transparent;
+            color: var(--d4pg-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        #container {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        /* Header */
+        .mobile-header {
+            /*padding: var(--spacing-md);*/
+            text-align: center;
+            background: linear-gradient(135deg, var(--d4pg-light-blue) 0%, var(--d4pg-white) 100%);
+            border-radius: 10%
+        }
+
+        .logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: var(--spacing-md);
+            padding: var(--spacing-sm);
+        }
+
+        .logo img {
+            max-width: 120px; /* Slightly smaller than before */
+            height: auto;
+            transition: transform 0.3s ease;
+            /* Optional shadow for the logo */
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+        }
+
+        /* Optional hover effect */
+        .logo img:hover {
+            transform: scale(1.05);
+        }
+
+        .title {
+            font-family: var(--font-accent);
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        /* Improved Day Navigation */
+        .day-nav {
+            display: flex;
+            overflow-x: auto;
+            background-color: rgba(10, 24, 53, 0.3); /* Darker background for better contrast */
+            margin: 0;
+            padding: var(--spacing-xs);
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .day-button {
+            flex: 1;
+            padding: var(--spacing-md);
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.85); /* Brighter text for non-active buttons */
+            font-family: var(--font-accent);
+            font-weight: bold;
+            opacity: 0.9; /* Higher opacity for better visibility */
+            position: relative;
+            min-width: 80px;
+            transition: all 0.2s ease;
+        }
+
+        .day-button .day-number {
+            font-size: 1.2rem;
+            margin-bottom: 4px;
+            color: var(--d4pg-white);
+        }
+
+        .day-button.active {
+            opacity: 1;
+            color: var(--d4pg-coral);
+            background-color: rgba(255, 255, 255, 0.1); /* Subtle background for active button */
+            border-radius: 6px;
+            transform: translateY(-2px);
+            box-shadow: 0 2px 8px rgba(255, 137, 119, 0.2);
+        }
+
+        .day-button.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 25%;
+            width: 50%;
+            height: 3px;
+            background-color: var(--d4pg-coral);
+            border-radius: 3px;
+        }
+
+        /* Enhanced Time Tracker */
+        .time-tracker {
+            padding: var(--spacing-sm) var(--spacing-md);
+            background-color: rgba(10, 24, 53, 0.4); /* Darker background */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-radius: 8px;
+            margin: var(--spacing-sm) 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .current-time {
+            font-size: 1rem; /* Slightly larger */
+            color: var(--d4pg-coral); /* Changed from yellow to coral */
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            background: rgba(255, 137, 119, 0.15);
+            padding: 4px 10px;
+            border-radius: 16px;
+        }
+
+        .now-indicator {
+            display: inline-block;
+            width: 10px; /* Slightly larger */
+            height: 10px; /* Slightly larger */
+            background-color: var(--d4pg-coral); /* Changed from yellow to coral */
+            border-radius: 50%;
+            margin-right: 8px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.2); opacity: 0.7; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .now-event {
+            font-size: 1rem; /* Slightly larger */
+            color: var(--d4pg-white); /* Changed to white for better visibility */
+            font-weight: 500;
+            background: rgba(138, 145, 199, 0.2);
+            padding: 4px 10px;
+            border-radius: 16px;
+            max-width: 60%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        /* Improved Event Cards */
+        .events-container {
+            padding: var(--spacing-md);
+        }
+
+        .event-card {
+            background-color: rgba(24, 38, 84, 0.15); /* Slightly darker background */
+            border-radius: 12px;
+            margin-bottom: var(--spacing-md);
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            max-height: 300px;
+        }
+
+        .event-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .event-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+        }
+
+        .event-card.keynote::before { background-color: var(--d4pg-coral); }
+        .event-card.panel::before { background-color: var(--d4pg-light-blue); }
+        .event-card.workshop::before { background-color: var(--d4pg-yellow); }
+        .event-card.break::before { background-color: var(--d4pg-green); }
+        .event-card.social::before { background-color: var(--d4pg-pink); }
+
+        .event-content {
+            background-color: rgba(10, 24, 53, 0.25); /* Semi-transparent background */
+            border-radius: 0 0 12px 12px; /* Round bottom corners */
+            padding: var(--spacing-md) var(--spacing-lg); /* Increase horizontal padding */
+        }
+
+        .event-title {
+            font-family: var(--font-accent);
+            font-size: 1.5rem; /* Slightly larger */
+            margin-bottom: var(--spacing-sm);
+            font-weight: 700;
+            color: white; /* Pure white for better contrast */
+            text-align: center; /* Center align the title */
+            display: -webkit-box;
+            -webkit-line-clamp: 3; /* Limit to 2 lines */
+            line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-height: 1.3;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); /* Text shadow for readability */
+        }
+
+        .event-time {
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: var(--spacing-sm) var(--spacing-lg); /* Increase horizontal padding */
+            font-size: 0.85rem;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            color: var(--d4pg-white);
+        }
+
+        .event-location {
+            font-size: 0.8rem;
+            color: var(--d4pg-light-blue);
+            margin-bottom: var(--spacing-sm);
+            display: flex;
+            align-items: center;
+        }
+
+        .event-location::before {
+            content: '📍';
+            margin-right: 4px;
+        }
+
+        .event-description {
+            display: none;
+        }
+
+        /* Enhanced current event styling */
+        .event-card.current {
+            border: none;
+            position: relative;
+            transform: scale(1.02);
+            box-shadow: 0 5px 20px rgba(255, 137, 119, 0.4);
+        }
+
+        /* Add "NOW" indicator badge */
+        .event-card.current::after {
+            content: 'NOW';
+            position: absolute;
+            top: -10px;
+            right: 15px;
+            background-color: var(--d4pg-coral);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 4px 10px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            letter-spacing: 1px;
+            animation: pulse-badge 2s infinite;
+        }
+
+        /* Distinctive background gradient for current event */
+        .event-card.current .event-content {
+            background: linear-gradient(135deg, rgba(10, 24, 53, 0.4), rgba(255, 137, 119, 0.15));
+        }
+
+        /* Enhanced time bar for current event */
+        .event-card.current .event-time {
+            background: linear-gradient(90deg, var(--d4pg-coral), var(--d4pg-blue));
+            color: white;
+            font-weight: bold;
+        }
+
+        /* Pulsing animation for the badge */
+        @keyframes pulse-badge {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        /* Filter Button */
+        .filter-button {
+            position: fixed;
+            bottom: var(--spacing-md);
+            right: var(--spacing-md);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--d4pg-coral);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .filter-button:hover {
+            transform: scale(1.05);
+        }
+
+        .filter-button:active {
+            transform: scale(0.95);
+        }
+
+        /* When filter drawer is open, highlight the button */
+        .filter-drawer.open + .filter-button,
+        .filter-button.active {
+            background-color: var(--d4pg-yellow);
+            box-shadow: 0 0 15px rgba(243, 224, 75, 0.4);
+        }
+
+        /* Filter Drawer (hidden by default) */
+        .filter-drawer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(10, 24, 53, 0.95); /* Slightly darker background */
+            padding: var(--spacing-lg);
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+            z-index: 99;
+            border-top-left-radius: 16px;
+            border-top-right-radius: 16px;
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+
+        .filter-drawer.open {
+            transform: translateY(0);
+        }
+
+        /* Event Type Pills */
+        .type-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .type-pill {
+            padding: var(--spacing-xs) var(--spacing-md);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            background-color: rgba(255, 255, 255, 0.15); /* Slightly lighter background */
+            color: var(--d4pg-white);
+            border: none;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .type-pill:hover {
+            background-color: rgba(255, 255, 255, 0.25);
+            transform: translateY(-1px);
+        }
+
+        .type-pill.active {
+            background-color: var(--d4pg-coral);
+            box-shadow: 0 2px 8px rgba(255, 137, 119, 0.4);
+        }
+
+        /* Canvas background */
+        #background-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            pointer-events: none; /* Allows clicks to pass through to elements behind */
+        }
+
+        /* Updated stacked title styles with more visual impact */
+        .stacked-title {
+            display: flex;
+            flex-direction: column;
+            font-family: var(--font-accent);
+            font-weight: 800; /* Extra bold */
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: var(--spacing-sm) 0 var(--spacing-md);
+            color: var(--d4pg-navy);
+            position: relative;
+            padding: var(--spacing-sm) 0;
+        }
+
+        .stacked-title span {
+            display: block;
+            text-align: center;
+            font-size: 1.6rem; /* Larger font size */
+            line-height: 1.2;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1;
+        }
+
+        .stacked-title span:first-child {
+            margin-bottom: var(--spacing-xs);
+            background: linear-gradient(to right, var(--d4pg-coral), var(--d4pg-light-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .stacked-title span:last-child {
+            background: linear-gradient(to right, var(--d4pg-light-blue), var(--d4pg-coral));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Add a decorative element */
+        .stacked-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, var(--d4pg-coral), var(--d4pg-light-blue));
+            border-radius: 3px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 340px) {
+            .stacked-title span {
+                font-size: 1.4rem;
+            }
+        }
+
+        /* Add a small indicator to show there's more content */
+        .event-card::after {
+            content: none;
+        }
+
+        /* More prominent expand icon */
+        .expand-icon {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            /*background-color: rgba(255, 137, 119, 0.7);*/ /* Semi-transparent coral background */
+            border-radius: 50%; /* Make it circular */
+            width: 28px; /* Slightly larger */
+            height: 28px; /* Slightly larger */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.7;
+            cursor: pointer;
+            z-index: 5;
+            transition: opacity 0.2s ease;
+        }
+
+        .expand-icon:hover {
+            opacity: 1;
+        }
+
+        /* Corner brackets styling */
+        .expand-icon::before,
+        .expand-icon::after,
+        .expand-icon span::before,
+        .expand-icon span::after {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-color: var(--d4pg-white);
+            border-style: solid;
+            border-width: 0;
+        }
+
+        /* Top-left corner */
+        .expand-icon::before {
+            top: 0;
+            left: 0;
+            border-top-width: 2px;
+            border-left-width: 2px;
+        }
+
+        /* Top-right corner */
+        .expand-icon::after {
+            top: 0;
+            right: 0;
+            border-top-width: 2px;
+            border-right-width: 2px;
+        }
+
+        /* Bottom-left corner */
+        .expand-icon span::before {
+            bottom: 0;
+            left: 0;
+            border-bottom-width: 2px;
+            border-left-width: 2px;
+        }
+
+        /* Bottom-right corner */
+        .expand-icon span::after {
+            bottom: 0;
+            right: 0;
+            border-bottom-width: 2px;
+            border-right-width: 2px;
+        }
+
+        /* Modal for expanded view */
+        .event-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(10, 24, 53, 0.95);
+            z-index: 1000;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            overflow-y: auto;
+            padding: var(--spacing-lg);
+        }
+
+        .event-modal.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background-color: var(--d4pg-blue);
+            border-radius: 16px;
+            max-width: 600px;
+            margin: 5vh auto;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            animation: modal-slide-up 0.3s ease-out;
+        }
+
+        @keyframes modal-slide-up {
+            from { transform: translateY(30px); opacity: 0.7; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .modal-header {
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: var(--spacing-md) var(--spacing-lg);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .modal-time, .modal-location {
+            font-weight: 600;
+            color: var(--d4pg-white);
+        }
+
+        .modal-location::before {
+            content: '📍';
+            margin-right: 5px;
+        }
+
+        .modal-body {
+            padding: var(--spacing-lg);
+        }
+
+        .modal-title {
+            font-family: var(--font-accent);
+            font-size: 1.7rem;
+            margin-bottom: var(--spacing-md);
+            font-weight: 800;
+            color: var(--d4pg-white);
+            text-align: center;
+            line-height: 1.2;
+            position: relative;
+            padding-bottom: var(--spacing-sm);
+        }
+
+        .modal-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, var(--d4pg-coral), var(--d4pg-light-blue));
+            border-radius: 3px;
+        }
+
+        .modal-description {
+            margin-bottom: var(--spacing-lg);
+            color: var(--d4pg-white);
+            line-height: 1.6;
+            font-size: 1rem;
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: var(--spacing-md);
+            border-radius: 8px;
+        }
+
+        /* Speaker section */
+        .modal-speakers-section {
+            margin-top: var(--spacing-lg);
+            background: rgba(255, 255, 255, 0.05);
+            padding: var(--spacing-md);
+            border-radius: 8px;
+        }
+
+        .modal-speakers-title {
+            font-size: 1.1rem;
+            color: var(--d4pg-light-blue);
+            margin-bottom: var(--spacing-sm);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        .modal-speaker {
+            display: flex;
+            align-items: center;
+            margin-bottom: var(--spacing-md);
+            padding-bottom: var(--spacing-sm);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .modal-speaker:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+        }
+
+        .modal-speaker-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--d4pg-light-blue);
+            margin-right: var(--spacing-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .modal-speaker-info {
+            flex: 1;
+        }
+
+        .modal-speaker-name {
+            font-weight: 600;
+            color: var(--d4pg-coral);
+            font-size: 1rem;
+        }
+
+        .modal-speaker-role {
+            font-size: 0.85rem;
+            color: var(--d4pg-white);
+            opacity: 0.9;
+        }
+
+        /* Event type badges */
+        .modal-event-type {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .modal-content.keynote .modal-event-type {
+            background-color: var(--d4pg-coral);
+            color: white;
+        }
+
+        .modal-content.panel .modal-event-type {
+            background-color: var(--d4pg-light-blue);
+            color: white;
+        }
+
+        .modal-content.workshop .modal-event-type {
+            background-color: var(--d4pg-yellow);
+            color: var(--d4pg-blue);
+        }
+
+        .modal-content.break .modal-event-type {
+            background-color: var(--d4pg-green);
+            color: white;
+        }
+
+        .modal-content.social .modal-event-type {
+            background-color: var(--d4pg-pink);
+            color: white;
+        }
+
+        /* Fix the speaker styling for event cards */
+        .event-speakers {
+            margin: var(--spacing-xs) 0 var(--spacing-sm);
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .speaker-name {
+            color: var(--d4pg-coral);
+            font-weight: 600;
+            font-size: 0.95rem;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 4px 12px;
+            border-radius: 16px;
+            display: inline-block;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .speaker-name::before {
+            content: '👤';
+            margin-right: 6px;
+            font-size: 0.8rem;
+        }
+
+        /* Completely hide speaker roles on front cards */
+        .event-card .speaker-role {
+            display: none;
+        }
+
+        /* Only show speaker roles in modal */
+        .modal-speaker-role {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--d4pg-white);
+            opacity: 0.9;
+        }
+
+        /* Enhanced section headings */
+        .filter-drawer h3 {
+            color: var(--d4pg-white);
+            font-size: 1.4rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: var(--spacing-md);
+            text-align: center;
+            position: relative;
+            padding-bottom: var(--spacing-sm);
+        }
+
+        .filter-drawer h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, var(--d4pg-coral), var(--d4pg-light-blue));
+            border-radius: 3px;
+        }
+
+        .filter-drawer h4 {
+            color: var(--d4pg-coral);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: var(--spacing-md) 0 var(--spacing-sm);
+            letter-spacing: 0.5px;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Light mode styles that would be toggled */
+        body.light-mode {
+            color: var(--d4pg-blue);
+            background-color: #f5f5f5;
+        }
+
+        body.light-mode .event-card {
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        body.light-mode .event-content {
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+
+        body.light-mode .event-title {
+            color: var(--d4pg-blue);
+            text-shadow: none;
+        }
+
+        body.light-mode .event-time {
+            background-color: rgba(24, 38, 84, 0.1);
+            color: var(--d4pg-blue);
+        }
+
+        /* Add this near the filter button */
+        .theme-toggle {
+            position: fixed;
+            bottom: var(--spacing-md);
+            left: var(--spacing-md);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--d4pg-light-blue);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+            transition: all 0.2s ease;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.05);
+            background-color: var(--d4pg-coral);
+        }
+
+        /* Countdown timer styles */
+        .countdown-container {
+            background: linear-gradient(135deg, rgba(24, 38, 84, 0.8), rgba(255, 137, 119, 0.3));
+            margin: var(--spacing-md) var(--spacing-md) var(--spacing-lg);
+            border-radius: 12px;
+            padding: var(--spacing-md);
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .countdown-title {
+            font-family: var(--font-accent);
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--d4pg-white);
+            margin-bottom: var(--spacing-sm);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .countdown-digits {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .countdown-unit {
+            position: relative;
+            width: 60px;
+        }
+
+        .countdown-digit {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--d4pg-white);
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            padding: 5px 0;
+            position: relative;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .countdown-label {
+            font-size: 0.7rem;
+            color: var(--d4pg-white);
+            text-transform: uppercase;
+            margin-top: 4px;
+            opacity: 0.8;
+        }
+
+        .countdown-pulse {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(255, 137, 119, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: 0;
+            opacity: 0.7;
+            animation: pulse-countdown 3s infinite;
+        }
+
+        @keyframes pulse-countdown {
+            0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.3; }
+            50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.5; }
+            100% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.3; }
+        }
+
+        .countdown-live {
+            display: none; /* Initially hidden */
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--d4pg-white);
+            background-color: var(--d4pg-coral);
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: 30px;
+            box-shadow: 0 3px 10px rgba(255, 137, 119, 0.4);
+            animation: pulse-live 2s infinite;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        @keyframes pulse-live {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* Light mode adjustments for countdown */
+        body.light-mode .countdown-container {
+            background: linear-gradient(135deg, rgba(138, 145, 199, 0.5), rgba(255, 137, 119, 0.4));
+        }
+
+        body.light-mode .countdown-digit {
+            color: var(--d4pg-blue);
+            background: rgba(255, 255, 255, 0.6);
+        }
+
+        body.light-mode .countdown-title,
+        body.light-mode .countdown-label {
+            color: var(--d4pg-blue);
+        }
+    </style>
+</head>
+<body>
+    <canvas id="background-canvas"></canvas>
+    
+    <div class="mobile-header">
+        <div class="logo">
+            <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/ee979ddd-9728-4cfd-9a8a-9bfd0a81ae05/logo-blank-transparent.png" alt="D4PG Logo">
+        </div>
+        <div class="stacked-title">
+            <span>CONFERENCE</span>
+            <span>SCHEDULE</span>
+        </div>
+    </div>
+
+    <div class="countdown-container">
+        <div class="countdown-pulse"></div>
+        <div class="countdown-title">Conference Begins In</div>
+        <div class="countdown-digits">
+            <div class="countdown-unit">
+                <div class="countdown-digit" id="countdown-days">00</div>
+                <div class="countdown-label">Days</div>
+            </div>
+            <div class="countdown-unit">
+                <div class="countdown-digit" id="countdown-hours">00</div>
+                <div class="countdown-label">Hours</div>
+            </div>
+            <div class="countdown-unit">
+                <div class="countdown-digit" id="countdown-minutes">00</div>
+                <div class="countdown-label">Minutes</div>
+            </div>
+            <div class="countdown-unit">
+                <div class="countdown-digit" id="countdown-seconds">00</div>
+                <div class="countdown-label">Seconds</div>
+            </div>
+        </div>
+        <div class="countdown-live" id="countdown-live">LIVE NOW</div>
+    </div>
+
+    <div class="day-nav">
+        <button class="day-button active" data-day="day1">
+            <div class="day-number">1</div>
+            <div class="day-text">July 16</div>
+        </button>
+        <button class="day-button" data-day="day2">
+            <div class="day-number">2</div>
+            <div class="day-text">July 17</div>
+        </button>
+        <button class="day-button" data-day="day3">
+            <div class="day-number">3</div>
+            <div class="day-text">July 18</div>
+        </button>
+    </div>
+
+    <div class="time-tracker">
+        <div class="current-time">
+            <span class="now-indicator"></span>
+            <span>10:12 AM</span>
+        </div>
+        <div class="now-event">
+            Keynote: Reimagining Digital Justice
+        </div>
+    </div>
+
+    <div class="events-container" id="day1">
+        <!-- Event cards will be loaded here -->
+        <div class="event-card keynote">
+            <div class="expand-icon"><span></span></div>
+            <div class="event-time">
+                <span>8:00 - 9:00</span>
+                <span>Main Hall</span>
+            </div>
+            <div class="event-content">
+                <h3 class="event-title">Registration & Breakfast</h3>
+                <div class="event-speakers">
+                    <div class="speaker-name">Aasim Shabazz</div>
+                    <div class="speaker-role">Lorem ipsum dolor sit amet, consectetur adipiscing elit</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="event-card panel">
+            <div class="expand-icon"><span></span></div>
+            <div class="event-time">
+                <span>9:00 - 9:30</span>
+                <span>Main Auditorium</span>
+            </div>
+            <div class="event-content">
+                <h3 class="event-title">Welcome & Opening Remarks</h3>
+                <div class="event-speakers">
+                    <div class="speaker-name">Marika Pfefferkorn (Moderator)</div>
+                    <div class="speaker-role">Lorem ipsum dolor sit amet, consectetur adipiscing elit</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="event-card keynote current">
+            <div class="expand-icon"><span></span></div>
+            <div class="event-time">
+                <span>9:30 - 10:30</span>
+                <span>Main Auditorium</span>
+            </div>
+            <div class="event-content">
+                <h3 class="event-title">Keynote: Reimagining Digital Justice Through Data Sovereignty</h3>
+                <div class="event-speakers">
+                    <div class="speaker-name">Dr. Tanya Clark</div>
+                    <div class="speaker-role">Lorem ipsum dolor sit amet, consectetur adipiscing elit</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="event-card workshop">
+            <div class="expand-icon"><span></span></div>
+            <div class="event-time">
+                <span>11:00 - 12:30</span>
+                <span>Workshop Room A</span>
+            </div>
+            <div class="event-content">
+                <h3 class="event-title">Workshop: Data Visualization for Social Impact</h3>
+                <div class="event-speakers">
+                    <div class="speaker-name">Dr. Cierra Kaler-Jones</div>
+                    <div class="speaker-role">Lorem ipsum dolor sit amet, consectetur adipiscing elit</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="event-card break">
+            <div class="expand-icon"><span></span></div>
+            <div class="event-time">
+                <span>12:30 - 1:30</span>
+                <span>Dining Hall</span>
+            </div>
+            <div class="event-content">
+                <h3 class="event-title">Networking Lunch</h3>
+                <div class="event-speakers">
+                    <div class="speaker-name">Dr. Roderic N. Crooks</div>
+                    <div class="speaker-role">Lorem ipsum dolor sit amet, consectetur adipiscing elit</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="event-card social">
+            <div class="expand-icon"><span></span></div>
+            <div class="event-time">
+                <span>5:30 - 7:00</span>
+                <span>Rooftop Garden</span>
+            </div>
+            <div class="event-content">
+                <h3 class="event-title">Evening Reception: Celebrating Digital Inclusion</h3>
+                <div class="event-speakers">
+                    <div class="speaker-name">Dr. Angela D. R. Smith</div>
+                    <div class="speaker-role">Lorem ipsum dolor sit amet, consectetur adipiscing elit</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button class="filter-button">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 6H20M7 12H17M9 18H15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </button>
+
+    <button class="theme-toggle">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 17C14.7614 17 17 14.7614 17 12C17 9.23858 14.7614 7 12 7C9.23858 7 7 9.23858 7 12C7 14.7614 9.23858 17 12 17Z" stroke="currentColor" stroke-width="2"/>
+            <path d="M12 1V3M12 21V23M1 12H3M21 12H23M4.22 4.22L5.64 5.64M18.36 18.36L19.78 19.78M4.22 19.78L5.64 18.36M18.36 5.64L19.78 4.22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+    </button>
+
+    <div class="filter-drawer">
+        <h3>Filter Events</h3>
+        
+        <h4>Event Type</h4>
+        <div class="type-filters">
+            <button class="type-pill active">All</button>
+            <button class="type-pill">Keynotes</button>
+            <button class="type-pill">Panels</button>
+            <button class="type-pill">Workshops</button>
+            <button class="type-pill">Breaks</button>
+            <button class="type-pill">Social</button>
+        </div>
+        
+        <h4>Location</h4>
+        <div class="type-filters">
+            <button class="type-pill active">All</button>
+            <button class="type-pill">Main Hall</button>
+            <button class="type-pill">Main Auditorium</button>
+            <button class="type-pill">Workshop Room A</button>
+            <button class="type-pill">Workshop Room B</button>
+        </div>
+    </div>
+
+    <div class="event-modal">
+        <div class="modal-content">
+            <button class="modal-close">×</button>
+            <div class="modal-event-type">Keynote</div>
+            <div class="modal-header">
+                <span class="modal-time">9:30 - 10:30</span>
+                <span class="modal-location">Main Auditorium</span>
+            </div>
+            <div class="modal-body">
+                <h2 class="modal-title">Keynote: Reimagining Digital Justice Through Data Sovereignty</h2>
+                <div class="modal-description">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisl eget aliquam ultricies, nunc nisl aliquet nunc, vitae aliquam nisl nisl vitae nisl. Nullam euismod, nisl eget aliquam ultricies, nunc nisl aliquet nunc, vitae aliquam nisl nisl vitae nisl. In this powerful keynote, we'll explore how data sovereignty is essential to achieving digital justice in our increasingly connected world.
+                </div>
+                
+                <div class="modal-speakers-section">
+                    <h3 class="modal-speakers-title">Speakers</h3>
+                    <div class="modal-speaker">
+                        <div class="modal-speaker-avatar">MJ</div>
+                        <div class="modal-speaker-info">
+                            <div class="modal-speaker-name">Dr. Tanya Clark</div>
+                            <div class="modal-speaker-role">Lorem ipsum dolor sit amet, consectetur adipiscing elit</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Basic interaction for the prototype
+        document.addEventListener('DOMContentLoaded', function() {
+            // Day navigation
+            const dayButtons = document.querySelectorAll('.day-button');
+            dayButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    dayButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    // In a real implementation, this would load the selected day's events
+                });
+            });
+            
+            // Filter drawer toggle - updated with console logging for debugging
+            const filterButton = document.querySelector('.filter-button');
+            const filterDrawer = document.querySelector('.filter-drawer');
+            
+            if (filterButton && filterDrawer) {
+                filterButton.addEventListener('click', function(e) {
+                    e.stopPropagation(); // Prevent event bubbling
+                    filterDrawer.classList.toggle('open');
+                    console.log('Filter button clicked, drawer open state:', filterDrawer.classList.contains('open'));
+                });
+                
+                // Close drawer when clicking outside
+                document.addEventListener('click', function(event) {
+                    if (filterDrawer.classList.contains('open') && 
+                        !filterDrawer.contains(event.target) && 
+                        event.target !== filterButton) {
+                        filterDrawer.classList.remove('open');
+                    }
+                });
+            } else {
+                console.error('Filter button or drawer not found in the DOM');
+            }
+            
+            // Filter pills
+            const filterPills = document.querySelectorAll('.type-pill');
+            filterPills.forEach(pill => {
+                pill.addEventListener('click', function() {
+                    // Toggle active state within its group
+                    const parent = this.parentElement;
+                    parent.querySelectorAll('.type-pill').forEach(p => p.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+        });
+
+        // Setup canvas background
+        document.addEventListener('DOMContentLoaded', function() {
+            const canvas = document.getElementById('background-canvas');
+            const ctx = canvas.getContext('2d');
+            
+            // Set canvas dimensions
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+                drawCanvas();
+            }
+            
+            // Draw background pattern
+            function drawCanvas() {
+                // Light gray background
+                ctx.fillStyle = '#f2f2f7';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                
+                // Draw subtle pattern (small dots)
+                ctx.fillStyle = 'rgba(138, 145, 199, 0.9)'; // Light blue dots
+                for (let i = 0; i < 150; i++) {
+                    const x = Math.random() * canvas.width;
+                    const y = Math.random() * canvas.height;
+                    const radius = Math.random() * 1.5;
+                    
+                    ctx.beginPath();
+                    ctx.arc(x, y, radius, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+                
+                // Add a subtle gradient overlay
+                const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+                gradient.addColorStop(0, 'rgba(255, 255, 255, 0.7)');
+                gradient.addColorStop(1, 'rgba(138, 145, 199, 0.1)');
+                
+                ctx.fillStyle = gradient;
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+            }
+            
+            // Initialize and handle resize
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
+        });
+
+        // Add event expand/collapse functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const eventModal = document.querySelector('.event-modal');
+            const modalContent = document.querySelector('.modal-content');
+            const modalClose = document.querySelector('.modal-close');
+            const modalTitle = document.querySelector('.modal-title');
+            const modalTime = document.querySelector('.modal-time');
+            const modalLocation = document.querySelector('.modal-location');
+            const modalDescription = document.querySelector('.modal-description');
+            
+            // Add expand icons to all event cards
+            document.querySelectorAll('.event-card').forEach(card => {
+                if (!card.querySelector('.expand-icon')) {
+                    const expandIcon = document.createElement('div');
+                    expandIcon.className = 'expand-icon';
+                    expandIcon.innerHTML = '<span></span>';
+                    card.appendChild(expandIcon);
+                }
+            });
+            
+            // Handle expand icon clicks
+            document.addEventListener('click', function(e) {
+                if (e.target.closest('.expand-icon')) {
+                    const card = e.target.closest('.event-card');
+                    
+                    // Get event type for styling
+                    const eventType = Array.from(card.classList)
+                        .find(cls => ['keynote', 'panel', 'workshop', 'break', 'social'].includes(cls));
+                    
+                    // Update modal content
+                    modalTitle.textContent = card.querySelector('.event-title').textContent;
+                    modalTime.textContent = card.querySelector('.event-time').children[0].textContent;
+                    modalLocation.textContent = card.querySelector('.event-time').children[1].textContent;
+                    
+                    // Get description text (might be hidden on card)
+                    let descriptionText = "No description available.";
+                    const descriptionEl = card.querySelector('.event-description');
+                    if (descriptionEl) {
+                        descriptionText = descriptionEl.textContent;
+                    }
+                    modalDescription.textContent = descriptionText;
+                    
+                    // Set appropriate class for color coding
+                    modalContent.className = 'modal-content';
+                    if (eventType) {
+                        modalContent.classList.add(eventType);
+                        
+                        // Set event type text
+                        const modalEventType = document.querySelector('.modal-event-type');
+                        if (modalEventType) {
+                            modalEventType.textContent = eventType.charAt(0).toUpperCase() + eventType.slice(1);
+                        }
+                    }
+                    
+                    // Populate speakers based on data in the card
+                    const speakersSection = document.querySelector('.modal-speakers-section');
+                    if (speakersSection) {
+                        // Clear existing speakers
+                        speakersSection.innerHTML = '';
+                        
+                        // Create appropriate heading based on event type
+                        let speakersTitle = 'Speakers';
+                        if (eventType === 'panel') {
+                            speakersTitle = 'Panel';
+                        } else if (eventType === 'workshop') {
+                            speakersTitle = 'Workshop Leaders';
+                        }
+                        
+                        const speakersTitleEl = document.createElement('h3');
+                        speakersTitleEl.className = 'modal-speakers-title';
+                        speakersTitleEl.textContent = speakersTitle;
+                        speakersSection.appendChild(speakersTitleEl);
+                        
+                        // Create container for speakers
+                        const speakersContainer = document.createElement('div');
+                        speakersContainer.className = 'modal-speakers-container';
+                        speakersSection.appendChild(speakersContainer);
+                        
+                        // Get speaker info from card
+                        const cardSpeakers = card.querySelectorAll('.speaker-name');
+                        const cardSpeakerRoles = card.querySelectorAll('.speaker-role');
+                        
+                        if (cardSpeakers.length > 0) {
+                            // For panel events, add sample panelists with roles
+                            if (eventType === 'panel') {
+                                // Add moderator
+                                const moderatorName = cardSpeakers[0].textContent;
+                                const moderatorRole = cardSpeakerRoles[0] ? cardSpeakerRoles[0].textContent : 'Moderator';
+                                
+                                const moderatorDiv = document.createElement('div');
+                                moderatorDiv.className = 'modal-speaker moderator';
+                                
+                                const initials = moderatorName.split(' ').map(name => name[0]).join('');
+                                
+                                moderatorDiv.innerHTML = `
+                                    <div class="modal-speaker-avatar">${initials}</div>
+                                    <div class="modal-speaker-info">
+                                        <div class="modal-speaker-name">${moderatorName}</div>
+                                        <div class="modal-speaker-role">${moderatorRole}</div>
+                                        <div class="speaker-type">Moderator</div>
+                                    </div>
+                                `;
+                                
+                                speakersContainer.appendChild(moderatorDiv);
+                                
+                                // Add sample panelists if this is a panel
+                                const panelists = [
+                                    { name: "Dr. Sarah Chen", role: "AI Ethics Researcher, Tech for Good Foundation" },
+                                    { name: "James Wilson", role: "Policy Director, Digital Inclusion Initiative" },
+                                    { name: "Maria Rodriguez", role: "Community Organizer, Data Justice Coalition" }
+                                ];
+                                
+                                panelists.forEach(panelist => {
+                                    const panelistDiv = document.createElement('div');
+                                    panelistDiv.className = 'modal-speaker panelist';
+                                    
+                                    const initials = panelist.name.split(' ').map(name => name[0]).join('');
+                                    
+                                    panelistDiv.innerHTML = `
+                                        <div class="modal-speaker-avatar">${initials}</div>
+                                        <div class="modal-speaker-info">
+                                            <div class="modal-speaker-name">${panelist.name}</div>
+                                            <div class="modal-speaker-role">${panelist.role}</div>
+                                            <div class="speaker-type">Panelist</div>
+                                        </div>
+                                    `;
+                                    
+                                    speakersContainer.appendChild(panelistDiv);
+                                });
+                            } else {
+                                // Regular speaker display for non-panel events
+                                cardSpeakers.forEach((speaker, index) => {
+                                    const speakerDiv = document.createElement('div');
+                                    speakerDiv.className = 'modal-speaker';
+                                    
+                                    const speakerName = speaker.textContent;
+                                    const initials = speakerName.split(' ').map(name => name[0]).join('');
+                                    
+                                    speakerDiv.innerHTML = `
+                                        <div class="modal-speaker-avatar">${initials}</div>
+                                        <div class="modal-speaker-info">
+                                            <div class="modal-speaker-name">${speakerName}</div>
+                                            <div class="modal-speaker-role">${index < cardSpeakerRoles.length ? cardSpeakerRoles[index].textContent : ''}</div>
+                                        </div>
+                                    `;
+                                    
+                                    speakersContainer.appendChild(speakerDiv);
+                                });
+                            }
+                        } else {
+                            // No speakers found
+                            speakersSection.style.display = 'none';
+                        }
+                    }
+                    
+                    // Show modal
+                    eventModal.classList.add('active');
+                    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+                }
+            });
+            
+            // Close modal on X button click
+            modalClose.addEventListener('click', function() {
+                eventModal.classList.remove('active');
+                document.body.style.overflow = ''; // Restore scrolling
+            });
+            
+            // Close modal on outside click
+            eventModal.addEventListener('click', function(e) {
+                if (e.target === eventModal) {
+                    eventModal.classList.remove('active');
+                    document.body.style.overflow = ''; // Restore scrolling
+                }
+            });
+        });
+
+        // Add theme toggle functionality
+        const themeToggle = document.querySelector('.theme-toggle');
+        if (themeToggle) {
+            themeToggle.addEventListener('click', function() {
+                document.body.classList.toggle('light-mode');
+                
+                // Update canvas background for light mode
+                if (document.body.classList.contains('light-mode')) {
+                    // Redraw canvas with light background
+                    const canvas = document.getElementById('background-canvas');
+                    const ctx = canvas.getContext('2d');
+                    
+                    // Light background
+                    ctx.fillStyle = '#ffffff';
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                    
+                    // Light pattern
+                    ctx.fillStyle = 'rgba(24, 38, 84, 0.1)';
+                    // Redraw dots for light mode
+                    // (Pattern code similar to the existing drawCanvas function)
+                } else {
+                    // Redraw for dark mode (call original function)
+                    drawCanvas();
+                }
+            });
+        }
+
+        // Countdown Timer functionality
+        function initializeCountdown() {
+            const countdownContainer = document.querySelector('.countdown-container');
+            const countdownDays = document.getElementById('countdown-days');
+            const countdownHours = document.getElementById('countdown-hours');
+            const countdownMinutes = document.getElementById('countdown-minutes');
+            const countdownSeconds = document.getElementById('countdown-seconds');
+            const countdownLive = document.getElementById('countdown-live');
+            const countdownDigits = document.querySelector('.countdown-digits');
+            const countdownTitle = document.querySelector('.countdown-title');
+            
+            // Set the conference start date (July 16, 2025 at 8:00 AM)
+            const conferenceDate = new Date(2025, 6, 16, 8, 0, 0);
+            
+            function updateCountdown() {
+                const now = new Date();
+                const diff = conferenceDate - now;
+                
+                if (diff <= 0) {
+                    // Conference has started
+                    countdownDigits.style.display = 'none';
+                    countdownTitle.style.display = 'none';
+                    countdownLive.style.display = 'inline-block';
+                    return;
+                }
+                
+                // Calculate time units
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+                
+                // Update the display
+                countdownDays.textContent = days.toString().padStart(2, '0');
+                countdownHours.textContent = hours.toString().padStart(2, '0');
+                countdownMinutes.textContent = minutes.toString().padStart(2, '0');
+                countdownSeconds.textContent = seconds.toString().padStart(2, '0');
+            }
+            
+            // Initial update
+            updateCountdown();
+            
+            // Update every second
+            setInterval(updateCountdown, 1000);
+        }
+
+        initializeCountdown();
+    </script>
+</body>
+</html>
