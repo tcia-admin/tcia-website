@@ -198,8 +198,35 @@
             border-radius: 16px;
             max-width: 60%;
             overflow: hidden;
-            text-overflow: ellipsis;
             white-space: nowrap;
+            position: relative;
+        }
+
+        .now-event-content {
+            display: inline-block;
+            white-space: nowrap;
+            animation-duration: var(--scroll-duration, 10s);
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            animation-name: none;
+        }
+
+        .now-event.scrolling .now-event-content {
+            animation-name: scroll-text;
+        }
+
+        @keyframes scroll-text {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        /* Pause animation on hover */
+        .now-event:hover .now-event-content {
+            animation-play-state: paused;
         }
 
         /* Improved Event Cards */
@@ -1071,7 +1098,9 @@
             <span>10:12 AM</span>
         </div>
         <div class="now-event">
-            Keynote: Reimagining Digital Justice
+            <div class="now-event-content">
+                Conference begins July 16
+            </div>
         </div>
     </div>
 
@@ -1885,6 +1914,69 @@
 
         initializeCountdown();
 
+        // Get the next upcoming event
+        function getUpcomingEvent() {
+            if (!isDuringConference()) return null;
+
+            const now = getCurrentTime();
+            const currentMinutes = now.getHours() * 60 + now.getMinutes();
+            const conferenceDay = getConferenceDay(now);
+            
+            if (!conferenceDay || !scheduleData.days || !scheduleData.days[conferenceDay]) {
+                return null;
+            }
+
+            // Find the next event that starts after the current time
+            const dayEvents = scheduleData.days[conferenceDay].events;
+            
+            for (const event of dayEvents) {
+                const startMinutes = timeToMinutes(event.startTime);
+                if (startMinutes > currentMinutes) {
+                    return event;
+                }
+            }
+
+            // If no more events today, check the next day
+            const nextDay = conferenceDay === 'day1' ? 'day2' : (conferenceDay === 'day2' ? 'day3' : null);
+            if (nextDay && scheduleData.days[nextDay]) {
+                const nextDayEvents = scheduleData.days[nextDay].events;
+                return nextDayEvents.length > 0 ? nextDayEvents[0] : null;
+            }
+
+            return null;
+        }
+
+        // Enable scrolling for text that overflows
+        function enableScrollingIfNeeded(element, content) {
+            const contentElement = element.querySelector('.now-event-content');
+            if (!contentElement) return;
+
+            // Update content
+            contentElement.textContent = content;
+            
+            // Reset animation
+            element.classList.remove('scrolling');
+            element.style.setProperty('--scroll-duration', '10s');
+            
+            // Force reflow
+            element.offsetHeight;
+            
+            // Check if content overflows
+            const containerWidth = element.offsetWidth - 20; // Account for padding
+            const contentWidth = contentElement.scrollWidth;
+            
+            if (contentWidth > containerWidth) {
+                // Calculate duration based on content length (roughly 50px per second)
+                const scrollDistance = contentWidth + containerWidth;
+                const duration = Math.max(8, scrollDistance / 50); // Minimum 8 seconds
+                
+                element.style.setProperty('--scroll-duration', `${duration}s`);
+                element.classList.add('scrolling');
+                
+                console.log(`Enabling scroll: content=${contentWidth}px, container=${containerWidth}px, duration=${duration}s`);
+            }
+        }
+
         function updateTimeTracker() {
             const currentTimeEl = document.querySelector('.current-time span:last-child');
             const nowEventEl = document.querySelector('.now-event');
@@ -1899,18 +1991,36 @@
                 currentTimeEl.textContent = timeStr;
             }
 
-            // Update "now event" based on current event
-            const currentEvent = document.querySelector('.event-card.current');
-            if (currentEvent && nowEventEl) {
-                const title = currentEvent.querySelector('.event-title').textContent;
-                nowEventEl.textContent = title;
-            } else if (nowEventEl) {
-                // Show appropriate message when no current event
-                if (isDuringConference()) {
-                    nowEventEl.textContent = 'Between sessions';
+            if (nowEventEl) {
+                let displayText = '';
+                
+                const currentEvent = document.querySelector('.event-card.current');
+                if (currentEvent) {
+                    // We have a current event
+                    const currentTitle = currentEvent.querySelector('.event-title').textContent;
+                    displayText = `NOW: ${currentTitle}`;
+                    
+                    // Add upcoming event if available
+                    const upcomingEvent = getUpcomingEvent();
+                    if (upcomingEvent) {
+                        const upcomingTime = formatTime(upcomingEvent.startTime);
+                        displayText += ` • NEXT: ${upcomingEvent.title} (${upcomingTime})`;
+                    }
+                } else if (isDuringConference()) {
+                    // During conference but between sessions
+                    const upcomingEvent = getUpcomingEvent();
+                    if (upcomingEvent) {
+                        const upcomingTime = formatTime(upcomingEvent.startTime);
+                        displayText = `NEXT: ${upcomingEvent.title} (${upcomingTime})`;
+                    } else {
+                        displayText = 'Between sessions';
+                    }
                 } else {
-                    nowEventEl.textContent = 'Conference begins July 16';
+                    // Before conference starts
+                    displayText = 'Conference begins July 16, 2025';
                 }
+
+                enableScrollingIfNeeded(nowEventEl, displayText);
             }
         }
     </script>
