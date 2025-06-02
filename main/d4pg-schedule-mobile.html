@@ -102,6 +102,14 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
+        .day-text {
+            font-weight: 600;
+        }
+
+        .day-number {
+            font-weight: 600;
+        }
+
         .day-button {
             flex: 1;
             padding: var(--spacing-md);
@@ -975,6 +983,33 @@
         body.light-mode .countdown-label {
             color: var(--d4pg-blue);
         }
+
+        /* Loading and error states */
+        .loading-message, .error-message, .no-events {
+            text-align: center;
+            padding: var(--spacing-xl);
+            color: var(--d4pg-white);
+            font-size: 1.1rem;
+            background: rgba(24, 38, 84, 0.3);
+            border-radius: 12px;
+            margin: var(--spacing-md);
+        }
+
+        .loading-message {
+            animation: pulse-loading 2s infinite;
+        }
+
+        .error-message {
+            color: var(--d4pg-coral);
+            background: rgba(255, 137, 119, 0.1);
+            border: 1px solid rgba(255, 137, 119, 0.3);
+        }
+
+        @keyframes pulse-loading {
+            0% { opacity: 0.6; }
+            50% { opacity: 1; }
+            100% { opacity: 0.6; }
+        }
     </style>
 </head>
 <body>
@@ -987,6 +1022,7 @@
         <div class="stacked-title">
             <span>CONFERENCE</span>
             <span>SCHEDULE</span>
+            <span>demo</span>
         </div>
     </div>
 
@@ -1017,15 +1053,15 @@
     <div class="day-nav">
         <button class="day-button active" data-day="day1">
             <div class="day-number">1</div>
-            <div class="day-text">July 16</div>
+            <div class="day-text">JULY 16</div>
         </button>
         <button class="day-button" data-day="day2">
             <div class="day-number">2</div>
-            <div class="day-text">July 17</div>
+            <div class="day-text">JULY 17</div>
         </button>
         <button class="day-button" data-day="day3">
             <div class="day-number">3</div>
-            <div class="day-text">July 18</div>
+            <div class="day-text">JULY 18</div>
         </button>
     </div>
 
@@ -1040,96 +1076,16 @@
     </div>
 
     <div class="events-container" id="day1">
-        <!-- Event cards will be loaded here -->
-        <div class="event-card keynote">
-            <div class="expand-icon"><span></span></div>
-            <div class="event-time">
-                <span>8:00 - 9:00</span>
-                <span>Main Hall</span>
-            </div>
-            <div class="event-content">
-                <h3 class="event-title">Registration & Breakfast</h3>
-                <div class="event-speakers">
-                    <div class="speaker-name">Aasim Shabazz</div>
-                    <div class="speaker-role">Lorem ipsum dolor sit amet, consectetur adipiscing elit</div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="event-card panel">
-            <div class="expand-icon"><span></span></div>
-            <div class="event-time">
-                <span>9:00 - 9:30</span>
-                <span>Main Auditorium</span>
-            </div>
-            <div class="event-content">
-                <h3 class="event-title">Welcome & Opening Remarks</h3>
-                <div class="event-speakers">
-                    <div class="speaker-name">Marika Pfefferkorn (Moderator)</div>
-                    <div class="speaker-role">Lorem ipsum dolor sit amet, consectetur adipiscing elit</div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="event-card keynote current">
-            <div class="expand-icon"><span></span></div>
-            <div class="event-time">
-                <span>9:30 - 10:30</span>
-                <span>Main Auditorium</span>
-            </div>
-            <div class="event-content">
-                <h3 class="event-title">Keynote: Reimagining Digital Justice Through Data Sovereignty</h3>
-                <div class="event-speakers">
-                    <div class="speaker-name">Dr. Tanya Clark</div>
-                    <div class="speaker-role">Lorem ipsum dolor sit amet, consectetur adipiscing elit</div>
-                </div>
-            </div>
-        </div>
+        <!-- Event cards will be dynamically loaded here -->
+        <div class="loading-message">Loading schedule...</div>
+    </div>
 
-        <div class="event-card workshop">
-            <div class="expand-icon"><span></span></div>
-            <div class="event-time">
-                <span>11:00 - 12:30</span>
-                <span>Workshop Room A</span>
-            </div>
-            <div class="event-content">
-                <h3 class="event-title">Workshop: Data Visualization for Social Impact</h3>
-                <div class="event-speakers">
-                    <div class="speaker-name">Dr. Cierra Kaler-Jones</div>
-                    <div class="speaker-role">Lorem ipsum dolor sit amet, consectetur adipiscing elit</div>
-                </div>
-            </div>
-        </div>
+    <div class="events-container" id="day2" style="display: none;">
+        <!-- Day 2 events will be loaded here -->
+    </div>
 
-        <div class="event-card break">
-            <div class="expand-icon"><span></span></div>
-            <div class="event-time">
-                <span>12:30 - 1:30</span>
-                <span>Dining Hall</span>
-            </div>
-            <div class="event-content">
-                <h3 class="event-title">Networking Lunch</h3>
-                <div class="event-speakers">
-                    <div class="speaker-name">Dr. Roderic N. Crooks</div>
-                    <div class="speaker-role">Lorem ipsum dolor sit amet, consectetur adipiscing elit</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="event-card social">
-            <div class="expand-icon"><span></span></div>
-            <div class="event-time">
-                <span>5:30 - 7:00</span>
-                <span>Rooftop Garden</span>
-            </div>
-            <div class="event-content">
-                <h3 class="event-title">Evening Reception: Celebrating Digital Inclusion</h3>
-                <div class="event-speakers">
-                    <div class="speaker-name">Dr. Angela D. R. Smith</div>
-                    <div class="speaker-role">Lorem ipsum dolor sit amet, consectetur adipiscing elit</div>
-                </div>
-            </div>
-        </div>
+    <div class="events-container" id="day3" style="display: none;">
+        <!-- Day 3 events will be loaded here -->
     </div>
 
     <button class="filter-button">
@@ -1151,20 +1107,11 @@
         <h4>Event Type</h4>
         <div class="type-filters">
             <button class="type-pill active">All</button>
-            <button class="type-pill">Keynotes</button>
-            <button class="type-pill">Panels</button>
-            <button class="type-pill">Workshops</button>
-            <button class="type-pill">Breaks</button>
-            <button class="type-pill">Social</button>
         </div>
         
         <h4>Location</h4>
         <div class="type-filters">
             <button class="type-pill active">All</button>
-            <button class="type-pill">Main Hall</button>
-            <button class="type-pill">Main Auditorium</button>
-            <button class="type-pill">Workshop Room A</button>
-            <button class="type-pill">Workshop Room B</button>
         </div>
     </div>
 
@@ -1197,15 +1144,437 @@
     </div>
 
     <script>
+        // Configuration
+        const CONFIG = {
+            urlPrefix: 'https://tcia-admin.github.io/tcia-server-files/',
+            scheduleFile: 'd4pg-schedule.json',
+            dayFiles: {
+                day1: 'd4pg-schedule-day1.json',
+                day2: 'd4pg-schedule-day2.json', 
+                day3: 'd4pg-schedule-day3.json'
+            }
+        };
+
+        // Global data storage
+        let scheduleData = {};
+        let currentDay = 'day1';
+        let testMode = false;
+        let simulatedDate = null;
+
+        // Check for test mode from URL parameters
+        function initializeTestMode() {
+            const urlParams = new URLSearchParams(window.location.search);
+            testMode = urlParams.has('test-mode');
+            
+            if (urlParams.has('simulate-date')) {
+                const dateParam = urlParams.get('simulate-date');
+                simulatedDate = new Date(dateParam);
+                testMode = true;
+                console.log('Test mode enabled - simulating date:', simulatedDate);
+            } else if (testMode) {
+                // Default to July 16, 2025 at 10:15 AM if just test-mode=true
+                simulatedDate = new Date(2025, 6, 16, 10, 15, 0);
+                console.log('Test mode enabled - simulating date:', simulatedDate);
+            }
+            
+            if (testMode) {
+                // Add visual indicator
+                const testIndicator = document.createElement('div');
+                testIndicator.style.cssText = `
+                    position: fixed; 
+                    top: 10px; 
+                    left: 10px; 
+                    background: var(--d4pg-coral); 
+                    color: white; 
+                    padding: 5px 10px; 
+                    border-radius: 5px; 
+                    font-size: 0.8rem; 
+                    z-index: 1001;
+                    font-weight: bold;
+                `;
+                testIndicator.textContent = `TEST MODE: ${simulatedDate.toLocaleString()}`;
+                document.body.appendChild(testIndicator);
+            }
+        }
+
+        // Get current time (real or simulated)
+        function getCurrentTime() {
+            return testMode && simulatedDate ? new Date(simulatedDate) : new Date();
+        }
+
+        // Check if we're currently during the conference dates
+        function isDuringConference() {
+            if (testMode) return true;
+            
+            const now = new Date();
+            const conferenceStart = new Date(2025, 6, 16); // July 16, 2025
+            const conferenceEnd = new Date(2025, 6, 19); // July 19, 2025 (day after)
+            
+            return now >= conferenceStart && now < conferenceEnd;
+        }
+
+        // Convert time string to minutes since midnight for comparison
+        function timeToMinutes(timeStr) {
+            const [hours, minutes] = timeStr.split(':').map(Number);
+            return hours * 60 + minutes;
+        }
+
+        // Get the conference day for a given date
+        function getConferenceDay(date) {
+            const july16 = new Date(2025, 6, 16);
+            const july17 = new Date(2025, 6, 17);
+            const july18 = new Date(2025, 6, 18);
+            
+            const dateOnly = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+            const july16Only = new Date(july16.getFullYear(), july16.getMonth(), july16.getDate());
+            const july17Only = new Date(july17.getFullYear(), july17.getMonth(), july17.getDate());
+            const july18Only = new Date(july18.getFullYear(), july18.getMonth(), july18.getDate());
+            
+            if (dateOnly.getTime() === july16Only.getTime()) return 'day1';
+            if (dateOnly.getTime() === july17Only.getTime()) return 'day2';
+            if (dateOnly.getTime() === july18Only.getTime()) return 'day3';
+            return null;
+        }
+
+        function updateCurrentEvent() {
+            // Clear all current markers first
+            document.querySelectorAll('.event-card.current').forEach(card => {
+                card.classList.remove('current');
+            });
+
+            // Only mark events as current if we're during the conference
+            if (!isDuringConference()) {
+                console.log('Not during conference dates - no current event');
+                return;
+            }
+
+            const now = getCurrentTime();
+            const currentMinutes = now.getHours() * 60 + now.getMinutes();
+            const conferenceDay = getConferenceDay(now);
+            
+            if (!conferenceDay || !scheduleData.days || !scheduleData.days[conferenceDay]) {
+                console.log('No conference day data available for:', conferenceDay);
+                return;
+            }
+
+            console.log(`Checking for current event on ${conferenceDay} at ${now.toLocaleTimeString()}`);
+
+            // Find the current event for this day
+            const dayEvents = scheduleData.days[conferenceDay].events;
+            let currentEvent = null;
+
+            for (const event of dayEvents) {
+                const startMinutes = timeToMinutes(event.startTime);
+                const endMinutes = timeToMinutes(event.endTime);
+                
+                console.log(`Event: ${event.title} (${event.startTime}-${event.endTime}) - ${startMinutes}-${endMinutes} minutes`);
+                
+                if (currentMinutes >= startMinutes && currentMinutes < endMinutes) {
+                    currentEvent = event;
+                    console.log('Found current event:', event.title);
+                    break;
+                }
+            }
+
+            if (currentEvent) {
+                // Mark the corresponding card as current
+                const eventCard = document.querySelector(`[data-event-id="${currentEvent.id}"]`);
+                if (eventCard) {
+                    eventCard.classList.add('current');
+                    console.log('Marked event card as current:', currentEvent.title);
+                }
+            } else {
+                console.log('No current event found for this time');
+            }
+        }
+
+        // Utility functions
+        function formatTime(timeStr) {
+            // Convert "14:00" to "2:00 PM" format
+            const [hours, minutes] = timeStr.split(':');
+            const hour24 = parseInt(hours);
+            const hour12 = hour24 > 12 ? hour24 - 12 : (hour24 === 0 ? 12 : hour24);
+            const ampm = hour24 >= 12 ? 'PM' : 'AM';
+            return `${hour12}:${minutes} ${ampm}`;
+        }
+
+        function getLocationDisplayName(locationKey) {
+            const locationMap = {
+                'main-auditorium': 'Main Auditorium',
+                'dining-hall': 'Dining Hall',
+                'workshop-a': 'Workshop Room A',
+                'workshop-b': 'Workshop Room B',
+                'main-hall': 'Main Hall',
+                'campus-garden': 'Campus Garden',
+                'great-hall': 'Great Hall',
+                'various-rooms': 'Various Rooms'
+            };
+            return locationMap[locationKey] || locationKey;
+        }
+
+        function createEventCard(event) {
+            const startTime = formatTime(event.startTime);
+            const endTime = formatTime(event.endTime);
+            const location = getLocationDisplayName(event.location);
+            
+            const eventCard = document.createElement('div');
+            eventCard.className = `event-card ${event.type}`;
+            eventCard.dataset.eventId = event.id;
+            eventCard.dataset.eventType = event.type;
+            eventCard.dataset.location = event.location;
+
+            // Create speakers section
+            let speakersHtml = '';
+            if (event.people) {
+                const speakers = [];
+                
+                if (event.people.speakers) {
+                    speakers.push(...event.people.speakers);
+                }
+                if (event.people.moderator) {
+                    speakers.push(event.people.moderator);
+                }
+                
+                if (speakers.length > 0) {
+                    speakersHtml = '<div class="event-speakers">';
+                    speakers.forEach(speaker => {
+                        speakersHtml += `<div class="speaker-name">${speaker.name}</div>`;
+                    });
+                    speakersHtml += '</div>';
+                }
+            }
+
+            eventCard.innerHTML = `
+                <div class="expand-icon"><span></span></div>
+                <div class="event-time">
+                    <span>${startTime} - ${endTime}</span>
+                    <span>${location}</span>
+                </div>
+                <div class="event-content">
+                    <h3 class="event-title">${event.title}</h3>
+                    ${speakersHtml}
+                    <div class="event-description" style="display: none;">${event.description || ''}</div>
+                </div>
+            `;
+
+            return eventCard;
+        }
+
+        function renderDayEvents(dayKey, events) {
+            const container = document.getElementById(dayKey);
+            if (!container) return;
+
+            // Clear existing content
+            container.innerHTML = '';
+
+            if (!events || events.length === 0) {
+                container.innerHTML = '<div class="no-events">No events scheduled for this day.</div>';
+                return;
+            }
+
+            events.forEach(event => {
+                const eventCard = createEventCard(event);
+                container.appendChild(eventCard);
+            });
+        }
+
+        function switchDay(dayKey) {
+            // Hide all day containers
+            document.querySelectorAll('.events-container').forEach(container => {
+                container.style.display = 'none';
+            });
+
+            // Show selected day
+            const dayContainer = document.getElementById(dayKey);
+            if (dayContainer) {
+                dayContainer.style.display = 'block';
+            }
+
+            currentDay = dayKey;
+            updateCurrentEvent();
+            
+            // Apply current filters to the newly shown day
+            filterEvents();
+        }
+
+        // Data loading functions
+        async function loadScheduleData() {
+            try {
+                // Load main schedule info
+                const scheduleResponse = await fetch(CONFIG.urlPrefix + CONFIG.scheduleFile);
+                const scheduleInfo = await scheduleResponse.json();
+                
+                // Load all day data
+                const dayPromises = Object.keys(CONFIG.dayFiles).map(async (dayKey) => {
+                    const response = await fetch(CONFIG.urlPrefix + CONFIG.dayFiles[dayKey]);
+                    const dayData = await response.json();
+                    return { dayKey, data: dayData };
+                });
+
+                const dayResults = await Promise.all(dayPromises);
+                
+                // Store data
+                scheduleData.info = scheduleInfo;
+                scheduleData.days = {};
+                
+                dayResults.forEach(({ dayKey, data }) => {
+                    scheduleData.days[dayKey] = data;
+                });
+
+                console.log('Schedule data loaded:', scheduleData);
+                return scheduleData;
+
+            } catch (error) {
+                console.error('Error loading schedule data:', error);
+                throw error;
+            }
+        }
+
+        function renderSchedule() {
+            if (!scheduleData.days) {
+                console.error('No schedule data available');
+                return;
+            }
+
+            // Render events for each day
+            Object.keys(scheduleData.days).forEach(dayKey => {
+                const dayData = scheduleData.days[dayKey];
+                renderDayEvents(dayKey, dayData.events);
+            });
+
+            // Update current event and time tracker
+            updateCurrentEvent();
+            updateTimeTracker();
+
+            // Remove loading message
+            document.querySelectorAll('.loading-message').forEach(msg => msg.remove());
+        }
+
+        function initializeFiltering() {
+            // Get unique event types and locations from loaded data
+            const eventTypes = new Set(['All']);
+            const locations = new Set(['All']);
+
+            Object.values(scheduleData.days).forEach(dayData => {
+                dayData.events.forEach(event => {
+                    eventTypes.add(event.type);
+                    locations.add(getLocationDisplayName(event.location));
+                });
+            });
+
+            console.log('Event types found:', Array.from(eventTypes));
+            console.log('Locations found:', Array.from(locations));
+
+            // Update type filter pills
+            const typeFiltersContainer = document.querySelector('.type-filters');
+            if (typeFiltersContainer) {
+                typeFiltersContainer.innerHTML = '';
+                eventTypes.forEach(type => {
+                    const pill = document.createElement('button');
+                    pill.className = `type-pill ${type === 'All' ? 'active' : ''}`;
+                    pill.textContent = type === 'All' ? 'All' : type.charAt(0).toUpperCase() + type.slice(1);
+                    pill.addEventListener('click', function() {
+                        // Remove active from siblings
+                        this.parentElement.querySelectorAll('.type-pill').forEach(p => p.classList.remove('active'));
+                        this.classList.add('active');
+                        filterEvents();
+                    });
+                    typeFiltersContainer.appendChild(pill);
+                });
+            }
+
+            // Update location filter pills (second type-filters container)
+            const filterContainers = document.querySelectorAll('.type-filters');
+            const locationFiltersContainer = filterContainers[1];
+            if (locationFiltersContainer) {
+                locationFiltersContainer.innerHTML = '';
+                locations.forEach(location => {
+                    const pill = document.createElement('button');
+                    pill.className = `type-pill ${location === 'All' ? 'active' : ''}`;
+                    pill.textContent = location;
+                    pill.addEventListener('click', function() {
+                        this.parentElement.querySelectorAll('.type-pill').forEach(p => p.classList.remove('active'));
+                        this.classList.add('active');
+                        filterEvents();
+                    });
+                    locationFiltersContainer.appendChild(pill);
+                });
+            }
+
+            console.log('Filter initialization complete');
+        }
+
+        function filterEvents() {
+            const activeTypeFilter = document.querySelector('.type-filters .type-pill.active')?.textContent?.toLowerCase();
+            const activeLocationFilter = document.querySelectorAll('.type-filters')[1]?.querySelector('.type-pill.active')?.textContent;
+
+            console.log('Filtering with type:', activeTypeFilter, 'location:', activeLocationFilter);
+
+            document.querySelectorAll('.event-card').forEach(card => {
+                let show = true;
+
+                // Type filter
+                if (activeTypeFilter && activeTypeFilter !== 'all') {
+                    const cardType = card.dataset.eventType;
+                    console.log('Comparing card type:', cardType, 'with filter:', activeTypeFilter);
+                    if (cardType !== activeTypeFilter) {
+                        show = false;
+                    }
+                }
+
+                // Location filter
+                if (activeLocationFilter && activeLocationFilter !== 'All') {
+                    const cardLocation = getLocationDisplayName(card.dataset.location);
+                    console.log('Comparing card location:', cardLocation, 'with filter:', activeLocationFilter);
+                    if (cardLocation !== activeLocationFilter) {
+                        show = false;
+                    }
+                }
+
+                card.style.display = show ? 'block' : 'none';
+            });
+        }
+
+        // Initialize the application
+        async function initializeApp() {
+            try {
+                // Initialize test mode first
+                initializeTestMode();
+                
+                console.log('Loading schedule data...');
+                await loadScheduleData();
+                
+                console.log('Rendering schedule...');
+                renderSchedule();
+                
+                console.log('Initializing filters...');
+                initializeFiltering();
+                
+                console.log('Schedule app initialized successfully');
+                
+            } catch (error) {
+                console.error('Failed to initialize schedule app:', error);
+                // Show error message to user
+                document.querySelectorAll('.events-container').forEach(container => {
+                    container.innerHTML = '<div class="error-message">Failed to load schedule. Please try again later.</div>';
+                });
+            }
+        }
+
         // Basic interaction for the prototype
         document.addEventListener('DOMContentLoaded', function() {
+            // Initialize the app with data loading
+            initializeApp();
+
             // Day navigation
             const dayButtons = document.querySelectorAll('.day-button');
             dayButtons.forEach(button => {
                 button.addEventListener('click', function() {
                     dayButtons.forEach(btn => btn.classList.remove('active'));
                     this.classList.add('active');
-                    // In a real implementation, this would load the selected day's events
+                    
+                    const dayKey = this.dataset.day;
+                    switchDay(dayKey);
                 });
             });
             
@@ -1232,16 +1601,8 @@
                 console.error('Filter button or drawer not found in the DOM');
             }
             
-            // Filter pills
-            const filterPills = document.querySelectorAll('.type-pill');
-            filterPills.forEach(pill => {
-                pill.addEventListener('click', function() {
-                    // Toggle active state within its group
-                    const parent = this.parentElement;
-                    parent.querySelectorAll('.type-pill').forEach(p => p.classList.remove('active'));
-                    this.classList.add('active');
-                });
-            });
+            // Update time tracker every minute
+            setInterval(updateTimeTracker, 60000);
         });
 
         // Setup canvas background
@@ -1298,37 +1659,34 @@
             const modalLocation = document.querySelector('.modal-location');
             const modalDescription = document.querySelector('.modal-description');
             
-            // Add expand icons to all event cards
-            document.querySelectorAll('.event-card').forEach(card => {
-                if (!card.querySelector('.expand-icon')) {
-                    const expandIcon = document.createElement('div');
-                    expandIcon.className = 'expand-icon';
-                    expandIcon.innerHTML = '<span></span>';
-                    card.appendChild(expandIcon);
-                }
-            });
-            
             // Handle expand icon clicks
             document.addEventListener('click', function(e) {
                 if (e.target.closest('.expand-icon')) {
                     const card = e.target.closest('.event-card');
+                    const eventId = card.dataset.eventId;
+                    
+                    // Find the event data
+                    let eventData = null;
+                    Object.values(scheduleData.days || {}).forEach(dayData => {
+                        const foundEvent = dayData.events.find(event => event.id === eventId);
+                        if (foundEvent) {
+                            eventData = foundEvent;
+                        }
+                    });
+
+                    if (!eventData) {
+                        console.error('Event data not found for ID:', eventId);
+                        return;
+                    }
                     
                     // Get event type for styling
-                    const eventType = Array.from(card.classList)
-                        .find(cls => ['keynote', 'panel', 'workshop', 'break', 'social'].includes(cls));
+                    const eventType = eventData.type;
                     
                     // Update modal content
-                    modalTitle.textContent = card.querySelector('.event-title').textContent;
-                    modalTime.textContent = card.querySelector('.event-time').children[0].textContent;
-                    modalLocation.textContent = card.querySelector('.event-time').children[1].textContent;
-                    
-                    // Get description text (might be hidden on card)
-                    let descriptionText = "No description available.";
-                    const descriptionEl = card.querySelector('.event-description');
-                    if (descriptionEl) {
-                        descriptionText = descriptionEl.textContent;
-                    }
-                    modalDescription.textContent = descriptionText;
+                    modalTitle.textContent = eventData.title;
+                    modalTime.textContent = `${formatTime(eventData.startTime)} - ${formatTime(eventData.endTime)}`;
+                    modalLocation.textContent = getLocationDisplayName(eventData.location);
+                    modalDescription.textContent = eventData.description || 'No description available.';
                     
                     // Set appropriate class for color coding
                     modalContent.className = 'modal-content';
@@ -1342,7 +1700,7 @@
                         }
                     }
                     
-                    // Populate speakers based on data in the card
+                    // Populate speakers based on data in the event
                     const speakersSection = document.querySelector('.modal-speakers-section');
                     if (speakersSection) {
                         // Clear existing speakers
@@ -1354,6 +1712,8 @@
                             speakersTitle = 'Panel';
                         } else if (eventType === 'workshop') {
                             speakersTitle = 'Workshop Leaders';
+                        } else if (eventType === 'break' || eventType === 'social') {
+                            speakersTitle = 'Organizers';
                         }
                         
                         const speakersTitleEl = document.createElement('h3');
@@ -1366,79 +1726,65 @@
                         speakersContainer.className = 'modal-speakers-container';
                         speakersSection.appendChild(speakersContainer);
                         
-                        // Get speaker info from card
-                        const cardSpeakers = card.querySelectorAll('.speaker-name');
-                        const cardSpeakerRoles = card.querySelectorAll('.speaker-role');
-                        
-                        if (cardSpeakers.length > 0) {
-                            // For panel events, add sample panelists with roles
-                            if (eventType === 'panel') {
+                        // Handle different event types
+                        if (eventData.people) {
+                            if (eventType === 'panel' && eventData.people.moderator) {
                                 // Add moderator
-                                const moderatorName = cardSpeakers[0].textContent;
-                                const moderatorRole = cardSpeakerRoles[0] ? cardSpeakerRoles[0].textContent : 'Moderator';
-                                
+                                const moderator = eventData.people.moderator;
                                 const moderatorDiv = document.createElement('div');
                                 moderatorDiv.className = 'modal-speaker moderator';
                                 
-                                const initials = moderatorName.split(' ').map(name => name[0]).join('');
+                                const initials = moderator.name.split(' ').map(name => name[0]).join('');
                                 
                                 moderatorDiv.innerHTML = `
                                     <div class="modal-speaker-avatar">${initials}</div>
                                     <div class="modal-speaker-info">
-                                        <div class="modal-speaker-name">${moderatorName}</div>
-                                        <div class="modal-speaker-role">${moderatorRole}</div>
+                                        <div class="modal-speaker-name">${moderator.name}</div>
+                                        <div class="modal-speaker-role">${moderator.title || 'Moderator'}</div>
                                         <div class="speaker-type">Moderator</div>
                                     </div>
                                 `;
-                                
                                 speakersContainer.appendChild(moderatorDiv);
                                 
-                                // Add sample panelists if this is a panel
-                                const panelists = [
-                                    { name: "Dr. Sarah Chen", role: "AI Ethics Researcher, Tech for Good Foundation" },
-                                    { name: "James Wilson", role: "Policy Director, Digital Inclusion Initiative" },
-                                    { name: "Maria Rodriguez", role: "Community Organizer, Data Justice Coalition" }
-                                ];
-                                
-                                panelists.forEach(panelist => {
-                                    const panelistDiv = document.createElement('div');
-                                    panelistDiv.className = 'modal-speaker panelist';
-                                    
-                                    const initials = panelist.name.split(' ').map(name => name[0]).join('');
-                                    
-                                    panelistDiv.innerHTML = `
-                                        <div class="modal-speaker-avatar">${initials}</div>
-                                        <div class="modal-speaker-info">
-                                            <div class="modal-speaker-name">${panelist.name}</div>
-                                            <div class="modal-speaker-role">${panelist.role}</div>
-                                            <div class="speaker-type">Panelist</div>
-                                        </div>
-                                    `;
-                                    
-                                    speakersContainer.appendChild(panelistDiv);
-                                });
-                            } else {
-                                // Regular speaker display for non-panel events
-                                cardSpeakers.forEach((speaker, index) => {
+                                // Add panelists
+                                if (eventData.people.panelists) {
+                                    eventData.people.panelists.forEach(panelist => {
+                                        const panelistDiv = document.createElement('div');
+                                        panelistDiv.className = 'modal-speaker panelist';
+                                        
+                                        const initials = panelist.name.split(' ').map(name => name[0]).join('');
+                                        
+                                        panelistDiv.innerHTML = `
+                                            <div class="modal-speaker-avatar">${initials}</div>
+                                            <div class="modal-speaker-info">
+                                                <div class="modal-speaker-name">${panelist.name}</div>
+                                                <div class="modal-speaker-role">${panelist.title || 'Panelist'}</div>
+                                                <div class="speaker-type">Panelist</div>
+                                            </div>
+                                        `;
+                                        speakersContainer.appendChild(panelistDiv);
+                                    });
+                                }
+                            } else if (eventData.people.speakers) {
+                                // Regular speakers for non-panel events
+                                eventData.people.speakers.forEach(speaker => {
                                     const speakerDiv = document.createElement('div');
                                     speakerDiv.className = 'modal-speaker';
                                     
-                                    const speakerName = speaker.textContent;
-                                    const initials = speakerName.split(' ').map(name => name[0]).join('');
+                                    const initials = speaker.name.split(' ').map(name => name[0]).join('');
                                     
                                     speakerDiv.innerHTML = `
                                         <div class="modal-speaker-avatar">${initials}</div>
                                         <div class="modal-speaker-info">
-                                            <div class="modal-speaker-name">${speakerName}</div>
-                                            <div class="modal-speaker-role">${index < cardSpeakerRoles.length ? cardSpeakerRoles[index].textContent : ''}</div>
+                                            <div class="modal-speaker-name">${speaker.name}</div>
+                                            <div class="modal-speaker-role">${speaker.title || ''}</div>
                                         </div>
                                     `;
-                                    
                                     speakersContainer.appendChild(speakerDiv);
                                 });
                             }
                         } else {
-                            // No speakers found
+                            // No speaker data available
                             speakersSection.style.display = 'none';
                         }
                     }
@@ -1538,6 +1884,35 @@
         }
 
         initializeCountdown();
+
+        function updateTimeTracker() {
+            const currentTimeEl = document.querySelector('.current-time span:last-child');
+            const nowEventEl = document.querySelector('.now-event');
+            
+            if (currentTimeEl) {
+                const now = getCurrentTime();
+                const timeStr = now.toLocaleTimeString('en-US', { 
+                    hour: 'numeric', 
+                    minute: '2-digit',
+                    hour12: true 
+                });
+                currentTimeEl.textContent = timeStr;
+            }
+
+            // Update "now event" based on current event
+            const currentEvent = document.querySelector('.event-card.current');
+            if (currentEvent && nowEventEl) {
+                const title = currentEvent.querySelector('.event-title').textContent;
+                nowEventEl.textContent = title;
+            } else if (nowEventEl) {
+                // Show appropriate message when no current event
+                if (isDuringConference()) {
+                    nowEventEl.textContent = 'Between sessions';
+                } else {
+                    nowEventEl.textContent = 'Conference begins July 16';
+                }
+            }
+        }
     </script>
 </body>
 </html>
