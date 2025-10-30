@@ -1,0 +1,244 @@
+<!-- Load Assets -->
+<link rel="stylesheet" href="https://tcia-admin.github.io/tcia-website/notice-coalition/notice-glitch-lab/css/main.css">
+<script src="https://tcia-admin.github.io/tcia-website/notice-coalition/notice-glitch-lab/js/main.js"></script>
+
+<section class="notice-coalition-main">
+
+    <nav class="notice-nav">
+        <div class="section-content nav-container">
+            <a href="/glitchlab" class="nav-logo">
+                <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/301406ed-440a-4a15-b346-b8b0faff4729/Notice+Logo+Design+F-03.png?content-type=image%2Fpng" alt="Glitch Lab Logo">
+            </a>
+            
+            <div class="nav-links">
+                <a href="#project-description">About</a>
+                <a href="#gallery-preview">Gallery</a>
+                <a href="#artists">Artists</a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Matrix Background Canvas -->
+    <canvas id="Matrix"></canvas>
+    
+    <!-- Gallery Trigger Button -->
+    <button class="gallery-trigger-btn" id="galleryTriggerBtn" aria-label="Open gallery">
+        <i class="fas fa-images"></i>
+    </button>
+    
+    <!-- Gallery Drawer Overlay -->
+    <div class="gallery-drawer-overlay" id="galleryDrawerOverlay"></div>
+    
+    <!-- Gallery Drawer -->
+    <div class="gallery-drawer" id="galleryDrawer">
+        <div class="gallery-drawer-header">
+            <h2 class="gallery-drawer-title">Glitch Lab Gallery</h2>
+            <p class="gallery-drawer-subtitle">Artwork and documentation from the residency</p>
+            <button class="gallery-close-btn" id="galleryCloseBtn" aria-label="Close gallery">
+                <i class="fas fa-times"></i>
+            </button>
+                        </div>
+        <div class="gallery-drawer-content">
+            <div class="gallery-loading" id="galleryLoading">
+                Loading gallery...
+                    </div>
+            <div class="gallery-masonry" id="galleryMasonry">
+                <!-- Gallery items will be dynamically populated -->
+                        </div>
+                    </div>
+                    </div>
+                    
+    <!-- Gallery Image Modal -->
+    <div class="gallery-image-modal" id="galleryImageModal">
+        <div class="gallery-modal-content">
+            <img class="gallery-modal-image" id="galleryModalImage" src="" alt="">
+            <button class="gallery-modal-close" id="galleryModalClose" aria-label="Close image">
+                <i class="fas fa-times"></i>
+            </button>
+                        </div>
+                    </div>
+                    
+    <!-- Introduction Section -->
+    <section class="notice-intro">
+        <div class="intro-content">
+            <div class="hero-layout">
+                <!-- Left Side: Title and Tagline -->
+                <div class="hero-text">
+                    <h1 class="intro-catchphrase">
+                        Glitch Lab 2025 Artist Residency
+                    </h1>
+                    <p class="intro-cta-text">
+                        Residency of 3 Artists that Learn About Technology
+                    </p>
+                    </div>
+                    
+                <!-- Right Side: Promo Image -->
+                <div class="hero-image-container">
+                    <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/8181d473-ea36-4f6c-a045-e91b58a8812d/File.jpg?content-type=image%2Fjpeg" 
+                         alt="Glitch Lab Event - October 22nd" 
+                         class="hero-promo-image">
+                        </div>
+                    </div>
+        </div>
+    </section>
+
+
+    <!-- Project Description Section -->
+    <section class="notice-newsletter" id="project-description">
+        <div class="section-content">
+            <h2 class="section-title">About the Residency</h2>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-3xl); align-items: center; margin-top: var(--spacing-2xl);">
+                <!-- Text Content -->
+                <div>
+                    <p style="color: var(--notice-text-primary); font-size: var(--font-size-lg); line-height: 1.8; margin-bottom: var(--spacing-xl);">
+                        The Glitch Lab is a new residency by the <strong style="color: var(--notice-accent);">Edgelands Institute</strong> and the <strong style="color: var(--notice-accent);">NOTICE Coalition</strong> that supports three Houston-based artists in developing socially engaged art projects exploring how surveillance technologies—such as student activity monitoring software, AI-powered cameras, and vape detectors—are reshaping education and youth justice.
+                    </p>
+                    <p style="color: var(--notice-text-primary); font-size: var(--font-size-lg); line-height: 1.8;">
+                        The residency uses participatory art to spark civic dialogue and amplify student and community voices around themes like carceral technologies, school privatization, and cultural narratives of safety.
+                    </p>
+                    </div>
+                    
+                <!-- Image -->
+                    <div style="text-align: center;">
+                    <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/85c4a867-3144-4c70-809a-0439fd6e4adf/IMG_3104.jpeg?content-type=image%2Fjpeg" 
+                         alt="Glitch Lab Artwork" 
+                         style="width: 100%; max-width: 500px; border-radius: 12px; box-shadow: 0 8px 24px rgba(251, 197, 22, 0.3); border: 2px solid rgba(251, 197, 22, 0.2);">
+                        </div>
+                    </div>
+                </div>
+    </section>
+
+    <!-- Gallery Preview Section -->
+    <section class="notice-newsletter" id="gallery-preview">
+        <div class="section-content">
+            <h2 class="section-title">Gallery</h2>
+            <p style="color: var(--notice-text-secondary); font-size: var(--font-size-lg); text-align: center; margin-bottom: var(--spacing-2xl);">
+                Preview of artwork and documentation from the residency
+            </p>
+            
+            <!-- Gallery Preview Grid -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--spacing-lg); margin-bottom: var(--spacing-xl);">
+                <div class="gallery-preview-item" data-preview-index="0" style="aspect-ratio: 1; background: linear-gradient(135deg, rgba(251, 197, 22, 0.1), rgba(0, 255, 255, 0.1)); border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1); display: flex; align-items: center; justify-content: center; overflow: hidden; cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                    <img class="gallery-preview-image" src="" alt="Gallery Preview 1" style="width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.3s ease;">
+                    <span class="gallery-preview-loading" style="position: absolute; color: var(--notice-text-secondary); font-size: var(--font-size-sm);">Loading...</span>
+                </div>
+                <div class="gallery-preview-item" data-preview-index="1" style="aspect-ratio: 1; background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(251, 197, 22, 0.1)); border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1); display: flex; align-items: center; justify-content: center; overflow: hidden; cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                    <img class="gallery-preview-image" src="" alt="Gallery Preview 2" style="width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.3s ease;">
+                    <span class="gallery-preview-loading" style="position: absolute; color: var(--notice-text-secondary); font-size: var(--font-size-sm);">Loading...</span>
+                </div>
+                <div class="gallery-preview-item" data-preview-index="2" style="aspect-ratio: 1; background: linear-gradient(135deg, rgba(251, 197, 22, 0.1), rgba(0, 255, 255, 0.1)); border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1); display: flex; align-items: center; justify-content: center; overflow: hidden; cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                    <img class="gallery-preview-image" src="" alt="Gallery Preview 3" style="width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.3s ease;">
+                    <span class="gallery-preview-loading" style="position: absolute; color: var(--notice-text-secondary); font-size: var(--font-size-sm);">Loading...</span>
+                </div>
+            </div>
+                    
+            <!-- View Full Gallery Button -->
+                    <div style="text-align: center;">
+                <button onclick="document.getElementById('galleryTriggerBtn').click()" class="hero-cta-button">
+                    View Full Gallery
+                </button>
+                        </div>
+                    </div>
+    </section>
+
+    <!-- Featured Artists Section -->
+    <section class="notice-newsletter" id="artists">
+        <div class="section-content">
+            <h2 class="section-title">Featured Artists</h2>
+            
+            <div class="artist-carousel-container">
+                <!-- Navigation Buttons -->
+                <button class="carousel-nav-btn" id="carousel-prev" aria-label="Previous artist">←</button>
+                <button class="carousel-nav-btn" id="carousel-next" aria-label="Next artist">→</button>
+                
+                <div class="artist-carousel" id="artist-carousel">
+                    <!-- Jack Morillo -->
+                    <div class="artist-item active" data-index="0">
+                        <div class="artist-card">
+                            <canvas class="artist-card-hex-bg" data-artist-hex="0"></canvas>
+                            <div class="artist-card-content">
+                                <div class="artist-headshot">
+                                    <i class="fas fa-user"></i>
+                        </div>
+                                <h3 style="color: var(--notice-accent); margin-bottom: var(--spacing-md); font-family: var(--font-accent); font-size: var(--font-size-2xl);">Jack Morillo</h3>
+                                <p style="color: var(--notice-text-primary); font-size: var(--font-size-base); line-height: 1.6; margin-bottom: var(--spacing-lg);">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+                                </p>
+                                <a href="https://www.artleaguehouston.org/face-me-morillo" target="_blank" rel="noopener noreferrer" class="artist-link">
+                                    View Portfolio →
+                                </a>
+                    </div>
+                </div>
+            </div>
+            
+                    <!-- Sol Diaz Peña -->
+                    <div class="artist-item" data-index="1">
+                        <div class="artist-card">
+                            <canvas class="artist-card-hex-bg" data-artist-hex="1"></canvas>
+                            <div class="artist-card-content">
+                                <div class="artist-headshot">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <h3 style="color: var(--notice-accent); margin-bottom: var(--spacing-md); font-family: var(--font-accent); font-size: var(--font-size-2xl);">Sol Diaz Peña</h3>
+                                <p style="color: var(--notice-text-primary); font-size: var(--font-size-base); line-height: 1.6; margin-bottom: var(--spacing-lg);">
+                                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.
+                                </p>
+                                <a href="https://soldiazpena.com/" target="_blank" rel="noopener noreferrer" class="artist-link">
+                                    View Portfolio →
+                                </a>
+                    </div>
+                    </div>
+                        </div>
+                    
+                    <!-- Billion Tekleab -->
+                    <div class="artist-item" data-index="2">
+                        <div class="artist-card">
+                            <canvas class="artist-card-hex-bg" data-artist-hex="2"></canvas>
+                            <div class="artist-card-content">
+                                <div class="artist-headshot">
+                                    <i class="fas fa-user"></i>
+                        </div>
+                                <h3 style="color: var(--notice-accent); margin-bottom: var(--spacing-md); font-family: var(--font-accent); font-size: var(--font-size-2xl);">Billion Tekleab</h3>
+                                <p style="color: var(--notice-text-primary); font-size: var(--font-size-base); line-height: 1.6; margin-bottom: var(--spacing-lg);">
+                                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta.
+                                </p>
+                                <a href="https://camh.org/event/freedmens-truths-2/" target="_blank" rel="noopener noreferrer" class="artist-link">
+                                    View Work →
+                                </a>
+                    </div>
+                </div>
+            </div>
+                </div>
+                
+                <!-- Carousel Indicators -->
+                <div class="carousel-controls">
+                    <div class="carousel-indicators" id="carousel-indicators"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Media Section -->
+    <section class="notice-social">
+        <div class="section-content">
+            <div class="notice-social-links">
+                <a href="mailto:info@glitchlab.org" target="_blank" rel="noopener noreferrer" class="social-icon">
+                    <i class="fa-solid fa-envelope"></i>
+                </a>
+                
+                <a href="https://github.com/glitchlab" target="_blank" rel="noopener noreferrer" class="social-icon">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+                
+                <a href="#" target="_blank" rel="noopener noreferrer" class="social-icon">
+                    <i class="fa-brands fa-twitter"></i>
+                </a>
+            </div>
+            
+            <a href="/glitchlab" class="notice-footer-logo">
+                <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/301406ed-440a-4a15-b346-b8b0faff4729/Notice+Logo+Design+F-03.png?content-type=image%2Fpng" alt="Glitch Lab">
+            </a>
+        </div>
+    </section>
+</section>
