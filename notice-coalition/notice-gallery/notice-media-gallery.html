@@ -1,0 +1,902 @@
+<link rel="stylesheet" href="https://tcia-admin.github.io/tcia-website/notice-coalition/notice-gallery/css/main.css">
+<script src="https://tcia-admin.github.io/tcia-website/notice-coalition/notice-gallery/js/main.js"></script>
+<script src="https://tcia-admin.github.io/tcia-website/notice-coalition/notice-gallery/js/gallery.js"></script>
+
+<section class="notice-coalition-main">
+
+    <nav class="notice-nav">
+        <div class="section-content nav-container">
+            <a href="/noticecoalition" class="nav-logo">
+                <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/301406ed-440a-4a15-b346-b8b0faff4729/Notice+Logo+Design+F-03.png?content-type=image%2Fpng" alt="Notice Coalition Logo">
+            </a>
+            
+            <div class="nav-links">
+                <a href="/noticecoalition/about">About</a>
+                <a href="/noticecoalition/fellowship">Fellowship</a>
+                <a href="/noticecoalition/resources">Resources</a>
+                <a href="/noticecoalition/ending-youth-surveillance">Speaker Series</a>
+                <a href="/noticecoalition/newsletter">Newsletter</a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Remove the intro section completely -->
+    
+    <section class="notice-media-gallery">
+        <div class="section-content">
+            <div class="section-header">
+                <h2 class="section-title">MEDIA GALLERY</h2>
+            </div>
+
+            <!-- Filter Section -->
+            <div class="gallery-filters">
+                <div class="filter-toggle">
+                    <button class="filter-toggle-btn">
+                        <span>Filters</span>
+                        <i class="fa fa-chevron-down"></i>
+                    </button>
+                </div>
+                
+                <div class="filter-options">
+                    <!-- Category Filter Section -->
+                    <div class="filter-section">
+                        <div class="filter-section-header">
+                            <h3>Categories</h3>
+                            <button class="section-toggle-btn">
+                                <i class="fa fa-chevron-up"></i>
+                            </button>
+                        </div>
+                        <div class="filter-section-content category-filters">
+                            <!-- Category buttons will be dynamically inserted here -->
+                        </div>
+                    </div>
+                    
+                    <!-- Year Filter Section -->
+                     <!--
+                    <div class="filter-section">
+                        <div class="filter-section-header">
+                            <h3>Years</h3>
+                            <button class="section-toggle-btn">
+                                <i class="fa fa-chevron-up"></i>
+                            </button>
+                        </div>
+                        
+                        
+                        <div class="filter-section-content year-filters">
+                            
+                        </div>
+                        
+                    </div>
+                    -->
+                    <!-- Clear Filters Button -->
+                    <div class="filter-actions">
+                        <button class="clear-filters-btn">Clear All Filters</button>
+                    </div>
+                </div>
+            </div>
+
+            <section class="gallery-grid-container masonry-grid">
+                <!-- Gallery items will be dynamically inserted here -->
+            </section>
+        </div>
+    </section>
+
+    <div class="modal-overlay">
+        <div class="modal-content">
+            <img class="modal-image" src="" alt="">
+            <button class="modal-close">&times;</button>
+        </div>
+    </div>
+
+    <!-- Social Media Introduction -->
+    <section class="notice-social-intro">
+        <div class="section-content">
+            <h2 class="section-title">STAY INFORMED</h2>
+        </div>
+    </section>
+
+    <!-- Social Media Section -->
+    <section class="notice-social">
+        <div class="section-content">
+            <div class="notice-social-links">
+                <a href="https://www.linkedin.com/company/no-tech-criminalization-in-education-notice-coalition/?viewAsMember=true" target="_blank" rel="noopener noreferrer" class="social-icon">
+                    <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/e21f8602-46df-4d45-ae36-3abea3853857/254394.png?content-type=image%2Fpng" alt="LinkedIn">
+                </a>
+                <!--
+                <a href="https://x.com/NOTICETCIA" target="_blank" rel="noopener noreferrer" class="social-icon">
+                    <i class="fa-brands fa-square-x-twitter"></i>
+                </a>
+                -->
+                <a href="https://bsky.app/profile/noticecoalition.bsky.social" target="_blank" rel="noopener noreferrer" class="social-icon">
+                    <i class="fa-brands fa-bluesky"></i>
+                </a>
+
+                <a href="mailto:thenoticecoalition@gmail.com" target="_blank" rel="noopener noreferrer" class="social-icon">
+                    <i class="fa-solid fa-envelope"></i>
+                </a>
+
+                <a href="https://thenoticecoalition.substack.com/" target="_blank" rel="noopener noreferrer" class="social-icon">
+                    <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/211166a9-1777-4257-9e9e-4d912133cc4b/substack-icon.png?content-type=image%2Fpng" alt="Substack">
+                </a>
+            </div>
+            
+            <a href="/noticecoalition" class="notice-footer-logo">
+                <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/301406ed-440a-4a15-b346-b8b0faff4729/Notice+Logo+Design+F-03.png?content-type=image%2Fpng" alt="Notice Coalition">
+            </a>
+        </div>
+    </section>
+</section>
+
+<!--
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get all navigation links
+        const navLinks = document.querySelectorAll('.nav-links a');
+        
+        // Add click event listener to each link
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                // Only prevent default and do smooth scroll for hash links (within the same page)
+                if (this.getAttribute('href').startsWith('#')) {
+                    e.preventDefault();
+                    
+                    // Get the target section id from the href
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetSection = document.getElementById(targetId);
+                    
+                    if (targetSection) {
+                        // Get the height of the fixed navigation bar
+                        const navHeight = document.querySelector('.notice-nav').offsetHeight;
+                        
+                        // Calculate the target position accounting for the nav bar
+                        const targetPosition = targetSection.getBoundingClientRect().top + window.pageYOffset - navHeight;
+                        
+                        // Smooth scroll to the target
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+                // For other links (like /noticecoalition/about), let the default navigation happen
+            });
+        });
+    });
+</script>
+
+
+<script>
+    // Gallery data and functionality will go here
+    const categoryData = {
+        categories: [
+            {
+                id: 'impact-ai-fellowship-event',
+                name: 'IMPACT OF AI FELLOWSHIP EVENT',
+                description: 'IMPACT OF AI ON STUDENTS, EDUCATION, AND PRIVACY FELLOWSHIP EVENT'
+            },
+            {
+                id: 'fellowship-closing-retreat',
+                name: 'FELLOWSHIP CLOSING RETREAT',
+                description: 'NO DATA ABOUT US WITHOUIT US FELLOWSHIP CLOSING RETREAT'
+            }
+        ]
+    };
+
+    const galleryData = {
+        images: [
+            // Added new gallery images
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/68b4448f-68e8-4207-8062-de0d8ae2b04c/IMG_2753.JPG?content-type=image%2Fjpeg',
+                categories: ['impact-ai-fellowship-event'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/68b4448f-68e8-4207-8062-de0d8ae2b04c/IMG_2753.JPG?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/48d409a4-13d9-488f-9448-f2185068d005/IMG_2745.JPG?content-type=image%2Fjpeg',
+                categories: ['impact-ai-fellowship-event'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/48d409a4-13d9-488f-9448-f2185068d005/IMG_2745.JPG?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/6b7e64cb-16dc-466b-88e6-b897bbdcdcb9/IMG_2731.JPG?content-type=image%2Fjpeg',
+                categories: ['impact-ai-fellowship-event'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/6b7e64cb-16dc-466b-88e6-b897bbdcdcb9/IMG_2731.JPG?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/4de82029-2017-4ba5-ac26-1318e706e30f/IMG_2748.JPG?content-type=image%2Fjpeg',
+                categories: ['impact-ai-fellowship-event'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/4de82029-2017-4ba5-ac26-1318e706e30f/IMG_2748.JPG?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            ,
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/3bc53da5-9502-49ab-9013-db86bf853eec/IMG_2803.jpg?content-type=image%2Fjpeg',
+                categories: ['impact-ai-fellowship-event'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/3bc53da5-9502-49ab-9013-db86bf853eec/IMG_2803.jpg?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/06a33d1e-6278-483e-b1e9-f754767fee1f/IMG_2806.JPG?content-type=image%2Fjpeg',
+                categories: ['impact-ai-fellowship-event'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/06a33d1e-6278-483e-b1e9-f754767fee1f/IMG_2806.JPG?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/98acff50-1285-4604-a1a1-3f669f17cd3e/IMG_2765.JPG?content-type=image%2Fjpeg',
+                categories: ['impact-ai-fellowship-event'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/98acff50-1285-4604-a1a1-3f669f17cd3e/IMG_2765.JPG?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/f00ce57b-ce45-4a20-98ad-b4251124b0b4/IMG_3301.jpeg?content-type=image%2Fjpeg',
+                categories: ['fellowship-closing-retreat'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/f00ce57b-ce45-4a20-98ad-b4251124b0b4/IMG_3301.jpeg?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/141c9998-f0b9-4599-b13a-cb82255d7383/Tammies+Event.jpg?content-type=image%2Fjpeg',
+                categories: ['fellowship-closing-retreat'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/141c9998-f0b9-4599-b13a-cb82255d7383/Tammies+Event.jpg?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/ef5c0f6a-3078-46ff-b083-23b0e330689a/IMG_3281.jpeg?content-type=image%2Fjpeg',
+                categories: ['fellowship-closing-retreat'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/ef5c0f6a-3078-46ff-b083-23b0e330689a/IMG_3281.jpeg?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/1b24f24d-07e1-4e96-a40d-26633fb61c0e/IMG_3321.jpeg?content-type=image%2Fjpeg',
+                categories: ['fellowship-closing-retreat'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/1b24f24d-07e1-4e96-a40d-26633fb61c0e/IMG_3321.jpeg?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/ab767fe2-dff9-44c7-ba5b-e2f711894b39/IMG_3239.jpeg?content-type=image%2Fjpeg',
+                categories: ['fellowship-closing-retreat'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/ab767fe2-dff9-44c7-ba5b-e2f711894b39/IMG_3239.jpeg?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/f82ed419-43f1-4cee-a174-465f56d94134/IMG_3235.jpeg?content-type=image%2Fjpeg',
+                categories: ['fellowship-closing-retreat'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/f82ed419-43f1-4cee-a174-465f56d94134/IMG_3235.jpeg?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/bfba4451-a91b-42ca-85c8-86e7c19b04fa/IMG_3268.jpeg?content-type=image%2Fjpeg',
+                categories: ['fellowship-closing-retreat'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/bfba4451-a91b-42ca-85c8-86e7c19b04fa/IMG_3268.jpeg?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/00e33abd-3c16-48bc-bce7-a4869aa4346b/IMG_3246.jpeg?content-type=image%2Fjpeg',
+                categories: ['fellowship-closing-retreat'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/00e33abd-3c16-48bc-bce7-a4869aa4346b/IMG_3246.jpeg?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/379ccf3e-1307-4789-85ca-20baca3fd0aa/IMG_3209.jpeg?content-type=image%2Fjpeg',
+                categories: ['fellowship-closing-retreat'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/379ccf3e-1307-4789-85ca-20baca3fd0aa/IMG_3209.jpeg?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/74d3490b-5c57-403a-9a69-95a679222d75/IMG_3269.jpeg?content-type=image%2Fjpeg',
+                categories: ['fellowship-closing-retreat'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/74d3490b-5c57-403a-9a69-95a679222d75/IMG_3269.jpeg?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/01376c37-61b8-4d22-b8c7-d0b31c4aeafa/IMG_3212.jpeg?content-type=image%2Fjpeg',
+                categories: ['fellowship-closing-retreat'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/01376c37-61b8-4d22-b8c7-d0b31c4aeafa/IMG_3212.jpeg?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/296083f9-61c7-4adc-bd67-9b78032ad09f/IMG_3192.jpeg?content-type=image%2Fjpeg',
+                categories: ['fellowship-closing-retreat'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/296083f9-61c7-4adc-bd67-9b78032ad09f/IMG_3192.jpeg?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/fcdef432-b7ea-4b50-b4f4-458063c9c598/IMG_3242.jpeg?content-type=image%2Fjpeg',
+                categories: ['fellowship-closing-retreat'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/fcdef432-b7ea-4b50-b4f4-458063c9c598/IMG_3242.jpeg?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/e8ff3fd5-1830-4dff-a794-7c6dd2d21ca7/IMG_3262.jpeg?content-type=image%2Fjpeg',
+                categories: ['fellowship-closing-retreat'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/e8ff3fd5-1830-4dff-a794-7c6dd2d21ca7/IMG_3262.jpeg?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/ac96189f-be0f-45c5-b957-e8a49959c5d7/IMG_3259.jpeg?content-type=image%2Fjpeg',
+                categories: ['fellowship-closing-retreat'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/ac96189f-be0f-45c5-b957-e8a49959c5d7/IMG_3259.jpeg?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/48b92ae0-8d87-4c4a-ab2d-33c30247c157/IMG_3288.jpeg?content-type=image%2Fjpeg',
+                categories: ['fellowship-closing-retreat'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/48b92ae0-8d87-4c4a-ab2d-33c30247c157/IMG_3288.jpeg?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/4c4f3007-7c26-4cf1-b3bf-2822ebb5b880/IMG_3231.jpeg?content-type=image%2Fjpeg',
+                categories: ['fellowship-closing-retreat'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/4c4f3007-7c26-4cf1-b3bf-2822ebb5b880/IMG_3231.jpeg?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/bede311f-b2e8-411b-b0fe-596a5fa9a4fc/IMG_3267.jpeg?content-type=image%2Fjpeg',
+                categories: ['fellowship-closing-retreat'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/bede311f-b2e8-411b-b0fe-596a5fa9a4fc/IMG_3267.jpeg?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/fa8b726b-7567-4ca9-be02-c21f94f6a445/IMG_3233.jpeg?content-type=image%2Fjpeg',
+                categories: ['fellowship-closing-retreat'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/fa8b726b-7567-4ca9-be02-c21f94f6a445/IMG_3233.jpeg?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/9cfd2751-08e4-4e05-b47d-51fdcbf0a4ac/IMG_3210.jpeg?content-type=image%2Fjpeg',
+                categories: ['fellowship-closing-retreat'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/9cfd2751-08e4-4e05-b47d-51fdcbf0a4ac/IMG_3210.jpeg?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/874d99f7-f329-4c6f-b054-fc1e45251492/IMG_3289.jpeg?content-type=image%2Fjpeg',
+                categories: ['fellowship-closing-retreat'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/874d99f7-f329-4c6f-b054-fc1e45251492/IMG_3289.jpeg?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/18643931-c87b-42ab-ba2b-0bce4a9293cf/IMG_3218.jpeg?content-type=image%2Fjpeg',
+                categories: ['fellowship-closing-retreat'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/18643931-c87b-42ab-ba2b-0bce4a9293cf/IMG_3218.jpeg?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/72638bc2-7c93-4a3a-a45b-5970abab6b4e/IMG_3184.jpeg?content-type=image%2Fjpeg',
+                categories: ['fellowship-closing-retreat'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/72638bc2-7c93-4a3a-a45b-5970abab6b4e/IMG_3184.jpeg?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/6b86b5b6-51fa-44ff-a4c7-04c694684306/IMG_3207.jpeg?content-type=image%2Fjpeg',
+                categories: ['fellowship-closing-retreat'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/6b86b5b6-51fa-44ff-a4c7-04c694684306/IMG_3207.jpeg?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/e7fc69ce-4d8b-41c9-9519-56e2764f7c5a/IMG_3211.jpeg?content-type=image%2Fjpeg',
+                categories: ['fellowship-closing-retreat'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/e7fc69ce-4d8b-41c9-9519-56e2764f7c5a/IMG_3211.jpeg?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/99c06a0e-4b58-44ce-b9ae-913911cfad83/IMG_3224.jpeg?content-type=image%2Fjpeg',
+                categories: ['fellowship-closing-retreat'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/99c06a0e-4b58-44ce-b9ae-913911cfad83/IMG_3224.jpeg?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/46baa6e6-4ccc-465b-aa92-f52486ecfd87/IMG_3110.jpeg?content-type=image%2Fjpeg',
+                categories: ['fellowship-closing-retreat'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/46baa6e6-4ccc-465b-aa92-f52486ecfd87/IMG_3110.jpeg?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/46e2ce01-0173-40ba-8830-f2502731ac70/IMG_3201.jpeg?content-type=image%2Fjpeg',
+                categories: ['fellowship-closing-retreat'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/46e2ce01-0173-40ba-8830-f2502731ac70/IMG_3201.jpeg?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/124b71a0-fa63-4268-b67f-14d58d607b90/IMG_3199.jpeg?content-type=image%2Fjpeg',
+                categories: ['fellowship-closing-retreat'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/124b71a0-fa63-4268-b67f-14d58d607b90/IMG_3199.jpeg?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/7159ab62-3a12-4678-9d56-77f28e09a257/IMG_3069.jpeg?content-type=image%2Fjpeg',
+                categories: ['fellowship-closing-retreat'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/7159ab62-3a12-4678-9d56-77f28e09a257/IMG_3069.jpeg?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/139bee80-19bf-4a9d-a9c7-0c5a2e5501b9/IMG_3187.jpeg?content-type=image%2Fjpeg',
+                categories: ['fellowship-closing-retreat'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/139bee80-19bf-4a9d-a9c7-0c5a2e5501b9/IMG_3187.jpeg?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/dff7d037-fb13-4687-b97f-2dddbf5109be/IMG_3148.jpeg?content-type=image%2Fjpeg',
+                categories: ['fellowship-closing-retreat'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/dff7d037-fb13-4687-b97f-2dddbf5109be/IMG_3148.jpeg?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/f88a1846-d6e1-4120-abe4-11488a3995cf/IMG_3178.jpeg?content-type=image%2Fjpeg',
+                categories: ['fellowship-closing-retreat'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/f88a1846-d6e1-4120-abe4-11488a3995cf/IMG_3178.jpeg?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/3079bef3-4e4e-4bd0-b871-f98bcc9ac0c2/IMG_3160.jpeg?content-type=image%2Fjpeg',
+                categories: ['fellowship-closing-retreat'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/3079bef3-4e4e-4bd0-b871-f98bcc9ac0c2/IMG_3160.jpeg?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/51ef0ae1-986a-4c2c-b6d8-092d54e117ea/IMG_3063.jpeg?content-type=image%2Fjpeg',
+                categories: ['fellowship-closing-retreat'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/51ef0ae1-986a-4c2c-b6d8-092d54e117ea/IMG_3063.jpeg?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/ed9d3928-25fb-48d1-bc59-58c33a27b8be/IMG_3168.jpeg?content-type=image%2Fjpeg',
+                categories: ['fellowship-closing-retreat'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/ed9d3928-25fb-48d1-bc59-58c33a27b8be/IMG_3168.jpeg?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/f405ff7f-c8ed-4a05-a0c8-ca50cbbdbfb5/IMG_3115.jpeg?content-type=image%2Fjpeg',
+                categories: ['fellowship-closing-retreat'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/f405ff7f-c8ed-4a05-a0c8-ca50cbbdbfb5/IMG_3115.jpeg?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/198f1090-f90e-490f-b21c-2cf6aec9b365/IMG_3087.jpeg?content-type=image%2Fjpeg',
+                categories: ['fellowship-closing-retreat'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/198f1090-f90e-490f-b21c-2cf6aec9b365/IMG_3087.jpeg?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/20d2586a-29e8-43a7-af6b-43e81f00ee92/IMG_3140.jpeg?content-type=image%2Fjpeg',
+                categories: ['fellowship-closing-retreat'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/20d2586a-29e8-43a7-af6b-43e81f00ee92/IMG_3140.jpeg?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/0a0b7d89-67c3-4478-9407-67748d5e6556/IMG_3078.jpeg?content-type=image%2Fjpeg',
+                categories: ['fellowship-closing-retreat'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/0a0b7d89-67c3-4478-9407-67748d5e6556/IMG_3078.jpeg?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/31ed078f-b88e-4040-a3ea-5a90a0aa1389/IMG_3098.jpeg?content-type=image%2Fjpeg',
+                categories: ['fellowship-closing-retreat'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/31ed078f-b88e-4040-a3ea-5a90a0aa1389/IMG_3098.jpeg?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/e2956e08-e01c-46a3-aceb-9f64511f38d7/IMG_3074.jpeg?content-type=image%2Fjpeg',
+                categories: ['fellowship-closing-retreat'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/e2956e08-e01c-46a3-aceb-9f64511f38d7/IMG_3074.jpeg?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/fd606ff3-837f-42e9-9dbe-1790fc34eaad/IMG_3058.jpeg?content-type=image%2Fjpeg',
+                categories: ['fellowship-closing-retreat'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/fd606ff3-837f-42e9-9dbe-1790fc34eaad/IMG_3058.jpeg?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/772317ce-9107-4009-a5d8-f969ad8ca976/IMG_3049.jpeg?content-type=image%2Fjpeg',
+                categories: ['fellowship-closing-retreat'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/772317ce-9107-4009-a5d8-f969ad8ca976/IMG_3049.jpeg?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/8ab19242-807c-4b86-a195-766f44c02d3d/IMG_3046.jpeg?content-type=image%2Fjpeg',
+                categories: ['fellowship-closing-retreat'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/8ab19242-807c-4b86-a195-766f44c02d3d/IMG_3046.jpeg?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/7b6a2be4-85e2-4b64-a501-d52815f5272a/IMG_3062.jpeg?content-type=image%2Fjpeg',
+                categories: ['fellowship-closing-retreat'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/7b6a2be4-85e2-4b64-a501-d52815f5272a/IMG_3062.jpeg?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/6acb3870-4c9a-4d15-ac90-a6c72b7c4859/IMG_3047.jpeg?content-type=image%2Fjpeg',
+                categories: ['fellowship-closing-retreat'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/6acb3870-4c9a-4d15-ac90-a6c72b7c4859/IMG_3047.jpeg?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/03cfb8f1-f9c4-432b-8be6-d9d19a631f83/IMG_3099.jpeg?content-type=image%2Fjpeg',
+                categories: ['fellowship-closing-retreat'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/03cfb8f1-f9c4-432b-8be6-d9d19a631f83/IMG_3099.jpeg?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/c74bd5c2-4485-4be3-8bc0-d21deede2b2f/IMG_0128.jpeg?content-type=image%2Fjpeg',
+                categories: ['fellowship-closing-retreat'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/c74bd5c2-4485-4be3-8bc0-d21deede2b2f/IMG_0128.jpeg?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/52ac0510-dfb5-4c84-be6f-1cbea7813984/IMG_0107.jpeg?content-type=image%2Fjpeg',
+                categories: ['fellowship-closing-retreat'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/52ac0510-dfb5-4c84-be6f-1cbea7813984/IMG_0107.jpeg?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/45306a19-2a73-4571-824a-8ad67fd2301d/IMG_0114.jpeg?content-type=image%2Fjpeg',
+                categories: ['fellowship-closing-retreat'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/45306a19-2a73-4571-824a-8ad67fd2301d/IMG_0114.jpeg?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/806070ed-f3ba-4f69-8dc8-6ef8621b7674/IMG_0109.jpeg?content-type=image%2Fjpeg',
+                categories: ['fellowship-closing-retreat'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/806070ed-f3ba-4f69-8dc8-6ef8621b7674/IMG_0109.jpeg?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/44f07935-3f7e-4da8-8100-4d787b92b2ea/IMG_0101.jpeg?content-type=image%2Fjpeg',
+                categories: ['fellowship-closing-retreat'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/44f07935-3f7e-4da8-8100-4d787b92b2ea/IMG_0101.jpeg?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/43019bcb-14e7-4143-a8c3-40104354305c/IMG_0115.jpeg?content-type=image%2Fjpeg',
+                categories: ['fellowship-closing-retreat'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/43019bcb-14e7-4143-a8c3-40104354305c/IMG_0115.jpeg?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/123f89dd-6763-44d9-8aef-d80774db558f/IMG_0061.jpeg?content-type=image%2Fjpeg',
+                categories: ['fellowship-closing-retreat'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/123f89dd-6763-44d9-8aef-d80774db558f/IMG_0061.jpeg?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/4dbabd72-348d-4015-9cc1-9d8b654a4604/IMG_0099.jpeg?content-type=image%2Fjpeg',
+                categories: ['fellowship-closing-retreat'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/4dbabd72-348d-4015-9cc1-9d8b654a4604/IMG_0099.jpeg?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/fd457080-979d-45d6-ac4d-69cae0c0d23b/IMG_0116.jpeg?content-type=image%2Fjpeg',
+                categories: ['fellowship-closing-retreat'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/fd457080-979d-45d6-ac4d-69cae0c0d23b/IMG_0116.jpeg?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/81ca93a1-6d75-4597-8a8f-17d3babc063b/IMG_0080.jpeg?content-type=image%2Fjpeg',
+                categories: ['fellowship-closing-retreat'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/81ca93a1-6d75-4597-8a8f-17d3babc063b/IMG_0080.jpeg?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/0f4db394-f5b7-463f-8bf2-979b6068ff53/IMG_0100.jpeg?content-type=image%2Fjpeg',
+                categories: ['fellowship-closing-retreat'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/0f4db394-f5b7-463f-8bf2-979b6068ff53/IMG_0100.jpeg?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/2c4f76f2-54e0-4628-b8fb-18f3fafb58d2/IMG_0066.jpeg?content-type=image%2Fjpeg',
+                categories: ['fellowship-closing-retreat'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/2c4f76f2-54e0-4628-b8fb-18f3fafb58d2/IMG_0066.jpeg?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/001ae488-c587-419b-9248-d279189f39c2/IMG_0086.jpeg?content-type=image%2Fjpeg',
+                categories: ['fellowship-closing-retreat'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/001ae488-c587-419b-9248-d279189f39c2/IMG_0086.jpeg?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/3323bb71-f12e-4cb2-a7e8-9774c1484a4d/IMG_0093.jpeg?content-type=image%2Fjpeg',
+                categories: ['fellowship-closing-retreat'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/3323bb71-f12e-4cb2-a7e8-9774c1484a4d/IMG_0093.jpeg?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/efe4d4d0-d7d8-486f-95e7-13aeec1575da/IMG_0041.jpeg?content-type=image%2Fjpeg',
+                categories: ['fellowship-closing-retreat'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/efe4d4d0-d7d8-486f-95e7-13aeec1575da/IMG_0041.jpeg?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/069aae5d-5392-4cd3-998c-483a6aecd51b/IMG_0030.jpeg?content-type=image%2Fjpeg',
+                categories: ['fellowship-closing-retreat'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/069aae5d-5392-4cd3-998c-483a6aecd51b/IMG_0030.jpeg?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/73006f21-8ef8-4606-ac84-421c90577d71/IMG_0019.jpeg?content-type=image%2Fjpeg',
+                categories: ['fellowship-closing-retreat'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/73006f21-8ef8-4606-ac84-421c90577d71/IMG_0019.jpeg?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/a58ac5fa-ca19-4eca-acdd-647cd8d0e2f6/IMG_0023.jpeg?content-type=image%2Fjpeg',
+                categories: ['fellowship-closing-retreat'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/a58ac5fa-ca19-4eca-acdd-647cd8d0e2f6/IMG_0023.jpeg?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/38e84049-79c8-4011-9efe-4d9bfb86fbb8/IMG_0011.jpeg?content-type=image%2Fjpeg',
+                categories: ['fellowship-closing-retreat'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/38e84049-79c8-4011-9efe-4d9bfb86fbb8/IMG_0011.jpeg?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/85c4a867-3144-4c70-809a-0439fd6e4adf/IMG_3104.jpeg?content-type=image%2Fjpeg',
+                categories: ['fellowship-closing-retreat'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/85c4a867-3144-4c70-809a-0439fd6e4adf/IMG_3104.jpeg?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/076d03bf-3aa6-49e7-8778-9cd7593630db/IMG_3103.jpeg?content-type=image%2Fjpeg',
+                categories: ['fellowship-closing-retreat'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/076d03bf-3aa6-49e7-8778-9cd7593630db/IMG_3103.jpeg?content-type=image%2Fjpeg',
+                year: 2025
+            },
+            {
+                imageUrl: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/3c8948bf-44ad-4901-b60e-fed1106f9c58/IMG_3102.jpeg?content-type=image%2Fjpeg',
+                categories: ['fellowship-closing-retreat'],
+                thumbnail: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/3c8948bf-44ad-4901-b60e-fed1106f9c58/IMG_3102.jpeg?content-type=image%2Fjpeg',
+                year: 2025
+            }
+        ]
+    };
+
+    // Define populateGalleryGrid first since other functions depend on it
+    function populateGalleryGrid() {
+        const galleryGrid = document.querySelector('.gallery-grid-container');
+        
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    if (img.dataset.src) {
+                        // Apply srcset when loading image
+                        img.srcset = img.dataset.srcset;
+                        img.src = img.dataset.src;
+                        img.onload = () => {
+                            img.style.opacity = '1';
+                            const container = img.closest('.gallery-thumbnail-container');
+                            if (container) {
+                                const aspectRatio = (img.naturalHeight / img.naturalWidth) * 100;
+                                container.style.paddingBottom = `${aspectRatio}%`;
+                            }
+                        };
+                        delete img.dataset.src;
+                        delete img.dataset.srcset;
+                        observer.unobserve(img);
+                    }
+                }
+            });
+        }, {
+            rootMargin: '50px 0px',
+            threshold: 0.1
+        });
+        
+        galleryData.images.forEach(image => {
+            const galleryItem = document.createElement('div');
+            galleryItem.className = 'gallery-item';
+            
+            // Create different size URLs 
+            const smallUrl = image.thumbnail.replace('?content-type', '?format=300w&content-type');
+            const mediumUrl = image.thumbnail.replace('?content-type', '?format=500w&content-type');
+            const largeUrl = image.thumbnail.replace('?content-type', '?format=800w&content-type');
+            
+            galleryItem.innerHTML = `
+                <div class="gallery-thumbnail-container" style="padding-bottom: 100%">
+                    <img 
+                        data-src="${image.thumbnail}" 
+                        data-srcset="${smallUrl} 300w,
+                                 ${mediumUrl} 500w,
+                                 ${largeUrl} 800w,
+                                 ${image.thumbnail} 1200w"
+                        sizes="(max-width: 480px) 100vw,
+                               (max-width: 768px) 50vw,
+                               (max-width: 1200px) 33vw,
+                               25vw"
+                        alt="" 
+                        class="gallery-thumbnail"
+                        data-categories="${image.categories.join(',')}"
+                        data-year="${image.year}"
+                        decoding="async"
+                    >
+                </div>
+            `;
+            
+            const img = galleryItem.querySelector('img');
+            imageObserver.observe(img);
+            galleryGrid.appendChild(galleryItem);
+        });
+    }
+
+    function initializeModal() {
+        const modalOverlay = document.querySelector('.modal-overlay');
+        const modalImage = document.querySelector('.modal-image');
+        const modalClose = document.querySelector('.modal-close');
+        
+        // Click handler for gallery images
+        document.querySelector('.gallery-grid-container').addEventListener('click', (e) => {
+            const thumbnail = e.target.closest('.gallery-thumbnail');
+            if (thumbnail && window.innerWidth > 768) {
+                const fullSizeUrl = thumbnail.dataset.src || thumbnail.src;
+                modalImage.src = fullSizeUrl;
+                modalOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Disable scrolling
+            }
+        });
+
+        // Close modal when clicking outside image or on close button
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay || e.target === modalClose) {
+                modalOverlay.classList.remove('active');
+                document.body.style.overflow = ''; // Re-enable scrolling
+                // Clear source after animation
+                setTimeout(() => {
+                    modalImage.src = '';
+                }, 300);
+            }
+        });
+
+        // Close on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
+                modalOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+                setTimeout(() => {
+                    modalImage.src = '';
+                }, 300);
+            }
+        });
+    }
+
+    // Add this function to populate filters
+    function initializeFilters() {
+        const filterToggleBtn = document.querySelector('.filter-toggle-btn');
+        const filterOptions = document.querySelector('.filter-options');
+        const sectionToggleBtns = document.querySelectorAll('.section-toggle-btn');
+        const clearFiltersBtn = document.querySelector('.clear-filters-btn');
+        const categoryFiltersContainer = document.querySelector('.category-filters');
+        const yearFiltersContainer = document.querySelector('.year-filters'); // This might be null now
+        
+        // Toggle main filter section
+        filterToggleBtn.addEventListener('click', () => {
+            filterToggleBtn.classList.toggle('active');
+            filterOptions.classList.toggle('active');
+        });
+        
+        // Toggle individual filter sections
+        sectionToggleBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                btn.classList.toggle('active');
+                const content = btn.closest('.filter-section').querySelector('.filter-section-content');
+                content.classList.toggle('hidden');
+            });
+        });
+        
+        // Get categories from categoryData
+        const categories = categoryData.categories;
+        
+        // Add category filter buttons
+        categoryFiltersContainer.innerHTML = `<button class="filter-button active" data-category="all">All</button>` +
+            categories.map(cat => `<button class="filter-button" data-category="${cat.id}">${cat.name}</button>`).join('');
+        
+        // Track current filters
+        let currentYear = 'all'; // Default to 'all' for year
+        let currentCategory = 'all';
+        
+        // Add click handlers for category filters
+        categoryFiltersContainer.addEventListener('click', e => {
+            if (e.target.classList.contains('filter-button')) {
+                categoryFiltersContainer.querySelectorAll('.filter-button').forEach(btn => btn.classList.remove('active'));
+                e.target.classList.add('active');
+                currentCategory = e.target.dataset.category;
+                filterGallery(currentYear, currentCategory);
+            }
+        });
+        
+        // Only set up year filters if the container exists
+        if (yearFiltersContainer) {
+            const years = [...new Set(galleryData.images.map(img => img.year))].sort((a, b) => b - a);
+            
+            yearFiltersContainer.innerHTML = `<button class="filter-button active" data-year="all">All</button>` +
+                years.map(year => `<button class="filter-button" data-year="${year}">${year}</button>`).join('');
+            
+            yearFiltersContainer.addEventListener('click', e => {
+                if (e.target.classList.contains('filter-button')) {
+                    yearFiltersContainer.querySelectorAll('.filter-button').forEach(btn => btn.classList.remove('active'));
+                    e.target.classList.add('active');
+                    currentYear = e.target.dataset.year;
+                    filterGallery(currentYear, currentCategory);
+                }
+            });
+        }
+        
+        // Clear all filters - adjust to handle missing year filters
+        clearFiltersBtn.addEventListener('click', () => {
+            categoryFiltersContainer.querySelectorAll('.filter-button').forEach((btn, index) => {
+                btn.classList.toggle('active', index === 0);
+            });
+            
+            if (yearFiltersContainer) {
+                yearFiltersContainer.querySelectorAll('.filter-button').forEach((btn, index) => {
+                    btn.classList.toggle('active', index === 0);
+                });
+            }
+            
+            currentCategory = 'all';
+            currentYear = 'all';
+            filterGallery(currentYear, currentCategory);
+        });
+    }
+
+    // Add this function to filter gallery items
+    function filterGallery(year, category) {
+        const items = document.querySelectorAll('.gallery-item');
+        
+        items.forEach(item => {
+            const img = item.querySelector('img');
+            if (!img) return; // Skip if no image found
+            
+            // Get the image source (either from dataset or direct src)
+            const imgSrc = img.dataset.src || img.src;
+            if (!imgSrc) return; // Skip if no src available
+            
+            // Use the image categories from the data attribute
+            const imgCategories = img.dataset.categories ? img.dataset.categories.split(',') : [];
+            
+            // Determine if this image matches the current filters
+            const categoryMatch = category === 'all' || imgCategories.includes(category);
+            
+            // For year, we need to check the year from galleryData
+            let yearMatch = year === 'all'; // Default to true if 'all' is selected
+            
+            // Only try to find the image data if we need to check the year
+            if (year !== 'all') {
+                // Try to find the image in the gallery data
+                const imgData = galleryData.images.find(image => 
+                    image.thumbnail === imgSrc || 
+                    imgSrc.includes(image.thumbnail.split('?')[0]) // Compare without query params
+                );
+                
+                if (imgData) {
+                    yearMatch = imgData.year.toString() === year;
+                }
+            }
+            
+            // Show or hide based on filter match
+            if (yearMatch && categoryMatch) {
+                item.style.display = '';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    }
+
+    // Simplify initialization
+    function initializeGallery() {
+        populateGalleryGrid();
+        initializeFilters(); // Make sure this is called
+        initializeModal();
+        
+        // Show filters by default
+        document.querySelector('.filter-toggle-btn').classList.add('active');
+        document.querySelector('.filter-options').classList.add('active');
+    }
+
+    // On page load
+    document.addEventListener('DOMContentLoaded', () => {
+        initializeGallery();
+    });
+</script>
+
+-->
