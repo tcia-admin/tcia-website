@@ -1,0 +1,251 @@
+<!-- Load Assets -->
+<link rel="stylesheet" href="css/main.css">
+
+<script src="js/main.js"></script>
+
+<section class="notice-coalition-main">
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress-indicator" id="scrollProgress"></div>
+    
+    <nav class="notice-nav">
+        <div class="section-content nav-container">
+            <a href="/noticecoalition" class="nav-logo">
+                <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/301406ed-440a-4a15-b346-b8b0faff4729/Notice+Logo+Design+F-03.png?content-type=image%2Fpng" alt="Notice Coalition Logo">
+            </a>
+            
+            <div class="nav-links">
+                <a href="#ndauwu-intro">NDAUWU</a>
+                <a href="#fellows-section">FELLOWS</a> 
+                <a href="#fellows-essays">STORYTELLING</a>
+            </div>
+
+            <!--<span class="notice-btn nav-cta invisible">BUTTON</span>-->
+        </div>
+    </nav>
+
+    <!-- Introduction Section -->
+    <section class="notice-intro" id="ndauwu-intro">
+        <div class="intro-left"></div>
+            <div class="intro-right"></div>
+        <div class="section-content intro-content">
+            
+            <!--
+            <div class="intro-text-container">
+                <h1 class="intro-catchphrase">
+                    
+                </h1>
+                <div class="intro-cta-container">
+                    <p class="intro-cta-text">
+                    </p>
+                    <a href="/noticecoalition/get-involved" class="notice-btn intro-cta-btn">GET INVOLVED</a>
+                </div>
+            </div>
+            -->
+        </div>
+    </section>
+
+
+    <!-- Fellows Grid -->
+    <section id="fellows-section" class="notice-fellows">
+        <div class="section-content">
+            <h2 class="section-title">MEET THE FELLOWS</h2>
+            <div class="fellows-grid">
+                <div class="fellow-card">
+                    <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/1f54c545-b44e-4bb5-b1c5-02ac5efee0a9/F6.png?content-type=image%2Fpng" alt="NDAUWU Fellow Tammie Lang">
+                </div>
+
+                <div class="fellow-card">
+                    <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/e9856dc7-9340-484d-bdaf-90aed6fb4122/F3.png?content-type=image%2Fpng" alt="NDAUWU Fellow Christianna Thomas">
+                </div>
+
+                <div class="fellow-card">
+                    <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/484efd4d-3f14-4785-9546-7cca759886c4/F1.png?content-type=image%2Fpng" alt="NDAUWU Fellow Chinelo">
+                </div>
+
+                <div class="fellow-card">
+                    <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/c2662ea1-d62a-4ea3-ada1-3e883e366a94/F2.png?content-type=image%2Fpng" alt="NDAUWU Fellow Shayna">
+                </div>
+
+                <div class="fellow-card">
+                    <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/46896da7-8787-4a7c-b623-718174bbda84/F5.png?content-type=image%2Fpng" alt="NDAUWU Fellow Jeremy">
+                </div>
+
+                <div class="fellow-card">
+                    <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/414b9924-d5cd-43c5-9889-704b17bd1b00/F8.png?content-type=image%2Fpng" alt="NDAUWU Fellow Vanessa Dominguez">
+                </div>
+
+                <div class="fellow-card">
+                    <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/adaa6553-7697-4294-8603-22ceffa90ca0/F4.png?content-type=image%2Fpng" alt="NDAUWU Fellow Jonathan Rodriguez">
+                </div>
+
+                <div class="fellow-card">
+                    <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/2eaf7300-f935-416c-9d5e-824f093851cd/F7.png?content-type=image%2Fpng" alt="NDAUWU Fellow Joy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fellows Essays Section -->
+    
+    <section id="fellows-essays" class="notice-essays">
+        <div class="section-content">
+            <div class="section-header essays-header">
+                <h2 class="section-title">STORYTELLING PROJECT</h2>
+                <p class="section-subtitle">Fellowship essays exploring digital liberation, community resistance, and the future of technology justice</p>
+            </div>
+        
+                
+            <div class="essays-carousel-container">
+                <div class="essays-carousel" id="essaysCarousel">
+                    
+                </div>
+                
+               
+                
+                <button class="carousel-arrow carousel-prev" id="carouselPrev" aria-label="Previous essay">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                <button class="carousel-arrow carousel-next" id="carouselNext" aria-label="Next essay">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                
+                <div class="carousel-indicators" id="carouselIndicators">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <!-- Add this after the fellows-grid but before closing the main section -->
+    <div class="fellow-modal" id="fellowModal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <div class="modal-body">
+                <div class="fellow-bio-header">
+                    <img src="" alt="" class="fellow-bio-image">
+                    <div class="fellow-bio-info">
+                        <h2 class="fellow-bio-name"></h2>
+                        <p class="fellow-bio-location"></p>
+                    </div>
+                </div>
+                <div class="fellow-bio-text">
+                    <!-- Bio text will be inserted here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Essay Modal Popup -->
+    <div class="essay-modal" id="essayModal">
+        <div class="modal-content essay-modal-content">
+            <button class="modal-close essay-modal-close">&times;</button>
+            <div class="essay-modal-body">
+                <div class="essay-modal-header">
+                    <div class="essay-modal-image">
+                        <img src="" alt="" class="essay-header-image">
+                    </div>
+                    <div class="essay-modal-meta">
+                        <div class="essay-caption">NOTICE Coalition</div>
+                        <h1 class="essay-title"></h1>
+                        <div class="essay-authors"></div>
+                    </div>
+                </div>
+                <div class="essay-content">
+                    <!-- Essay content will be inserted here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <!-- Social Media Section -->
+    <section id="test" class="notice-social">
+        <div class="section-content">
+            <div class="notice-social-links">
+                <a href="https://www.linkedin.com/company/no-tech-criminalization-in-education-notice-coalition/?viewAsMember=true" target="_blank" rel="noopener noreferrer" class="social-icon">
+                    <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/e21f8602-46df-4d45-ae36-3abea3853857/254394.png?content-type=image%2Fpng" alt="LinkedIn">
+                </a>
+                <!--
+                <a href="https://x.com/NOTICETCIA" target="_blank" rel="noopener noreferrer" class="social-icon">
+                    <i class="fa-brands fa-square-x-twitter"></i>
+                </a>
+                -->
+                <a href="https://bsky.app/profile/noticecoalition.bsky.social" target="_blank" rel="noopener noreferrer" class="social-icon">
+                    <i class="fa-brands fa-bluesky"></i>
+                </a>
+
+                <a href="mailto:thenoticecoalition@gmail.com" target="_blank" rel="noopener noreferrer" class="social-icon">
+                    <i class="fa-solid fa-envelope"></i>
+                </a>
+
+                <a href="https://thenoticecoalition.substack.com/" target="_blank" rel="noopener noreferrer" class="social-icon">
+                    <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/211166a9-1777-4257-9e9e-4d912133cc4b/substack-icon.png?content-type=image%2Fpng" alt="Substack">
+                </a>
+            </div>
+            
+            <a href="/noticecoalition" class="notice-footer-logo">
+                <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/301406ed-440a-4a15-b346-b8b0faff4729/Notice+Logo+Design+F-03.png?content-type=image%2Fpng" alt="Notice Coalition">
+            </a>
+        </div>
+    </section>
+
+    <!-- Newsletter/Footer Section -->
+    <section class="notice-newsletter">
+        <div class="section-content footer-grid">
+            <div class="footer-about">
+                <h2 class="section-title">About TCIA</h2>
+                <p class="footer-text">
+                    The Twin Cities Innovation Alliance (TCIA) is a social venture, intended to spark, resource, and guide  entrepreneurs as they grow and scale their businesses across the Twin Cities.
+                </p>
+            </div>
+
+            <div class="footer-links">
+                <h2 class="section-title">Sitemap</h2>
+                <nav class="footer-nav">
+                    <a href="/about" class="footer-link">About</a>
+                    <a href="/news" class="footer-link">Stories + News</a>
+                    <a href="/events" class="footer-link">Events</a>
+                    <a href="/resources" class="footer-link">Resources</a>
+                    <a href="/d4pg" class="footer-link">Data 4 Public Good</a>
+                </nav>
+            </div>
+
+            <div class="footer-contact">
+                <h2 class="section-title">Contact</h2>
+                <p class="footer-text">info@noticecoalition.org</p>
+                <div class="footer-social">
+                    <a href="https://www.linkedin.com/company/twin-cities-innovation-alliance" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://twitter.com/TCIAMN" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://www.youtube.com/channel/UCf2vnOdVWHoJy4GBAFdk4xw?view_as=subscriber" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="http://tciacopowering.bsky.social/" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-brands fa-bluesky"></i>
+                    </a>
+                </div>
+                <p class="footer-text">
+                    Mailing Address:<br>
+                    1041 James Ave. N. Suite 1001<br>
+                    Minneapolis, MN 55411
+                </p>
+            </div>
+
+            <div class="footer-subscribe">
+                <h2 class="section-title">Subscribe</h2>
+                <!-- Leave space for Squarespace widget -->
+            </div>
+        </div>
+    </section>
+
+</section>
+   
