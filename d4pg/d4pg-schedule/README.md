@@ -1,6 +1,4 @@
-# D4PG Schedule Page - Complete Guide
-
-A comprehensive guide to understanding, customizing, and maintaining the Data For Public Good (D4PG) 2025 conference schedule page.
+# D4PG Schedule Page 
 
 ## Table of Contents
 
