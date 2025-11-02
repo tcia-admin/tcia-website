@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D4PG Conference Schedule</title>
+    <link rel="stylesheet" href="https://tcia-admin.github.io/tcia-website/d4pg/d4pg-schedule-mobile/css/main.css">
+    <script src="https://tcia-admin.github.io/tcia-website/d4pg/d4pg-schedule-mobile/js/main.js" defer></script>
+</head>
+<body>
+    <canvas id="background-canvas"></canvas>
+    
+    <div class="mobile-header">
+        <div class="logo">
+            <a href="https://tciamn.org/d4pg" target="_blank">
+                <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/ee979ddd-9728-4cfd-9a8a-9bfd0a81ae05/logo-blank-transparent.png" alt="D4PG Logo">
+            </a>
+        </div>
+        <div class="stacked-title">
+            <span>CONFERENCE</span>
+            <span>SCHEDULE</span>
+        </div>
+    </div>
+
+    <div class="countdown-container">
+        <div class="countdown-pulse"></div>
+        <div class="countdown-title">Conference Begins In</div>
+        <div class="countdown-digits">
+            <div class="countdown-unit">
+                <div class="countdown-digit" id="countdown-days">00</div>
+                <div class="countdown-label">Days</div>
+            </div>
+            <div class="countdown-unit">
+                <div class="countdown-digit" id="countdown-hours">00</div>
+                <div class="countdown-label">Hours</div>
+            </div>
+            <div class="countdown-unit">
+                <div class="countdown-digit" id="countdown-minutes">00</div>
+                <div class="countdown-label">Minutes</div>
+            </div>
+            <div class="countdown-unit">
+                <div class="countdown-digit" id="countdown-seconds">00</div>
+                <div class="countdown-label">Seconds</div>
+            </div>
+        </div>
+        <div class="countdown-live" id="countdown-live">LIVE NOW</div>
+    </div>
+
+    <div class="day-nav">
+        <button class="day-button active" data-day="day1">
+            <div class="day-number">1</div>
+            <div class="day-text">JULY 16</div>
+        </button>
+        <button class="day-button" data-day="day2">
+            <div class="day-number">2</div>
+            <div class="day-text">JULY 17</div>
+        </button>
+        <button class="day-button" data-day="day3">
+            <div class="day-number">3</div>
+            <div class="day-text">JULY 18</div>
+        </button>
+    </div>
+
+    <div class="time-tracker">
+        <div class="current-time">
+            <span>10:12 AM</span>
+        </div>
+        <div class="now-event">
+            <div class="now-event-content">
+                Conference begins July 16
+            </div>
+        </div>
+    </div>
+
+    <div class="events-container" id="day1">
+        <!-- Event cards will be dynamically loaded here -->
+        <div class="loading-message">Loading schedule...</div>
+    </div>
+
+    <div class="events-container" id="day2" style="display: none;">
+        <!-- Day 2 events will be loaded here -->
+    </div>
+
+    <div class="events-container" id="day3" style="display: none;">
+        <div class="youth-summit-banner">
+            <div class="youth-summit-title">Youth Summit</div>
+            <div class="youth-summit-details">
+                <span class="youth-summit-time">10:00 AM – 3:00 PM</span>
+                <span class="youth-summit-location">Campus Center: Loch, JBD, Loch Lounge</span>
+            </div>
+            <div class="youth-summit-desc"></div>
+        </div>
+        <!-- Day 3 events will be loaded here -->
+    </div>
+
+    <button class="filter-button">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 6H20M7 12H17M9 18H15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </button>
+
+    <button class="theme-toggle">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 17C14.7614 17 17 14.7614 17 12C17 9.23858 14.7614 7 12 7C9.23858 7 7 9.23858 7 12C7 14.7614 9.23858 17 12 17Z" stroke="currentColor" stroke-width="2"/>
+            <path d="M12 1V3M12 21V23M1 12H3M21 12H23M4.22 4.22L5.64 5.64M18.36 18.36L19.78 19.78M4.22 19.78L5.64 18.36M18.36 5.64L19.78 4.22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+    </button>
+
+    <div class="filter-drawer">
+        <h3>Filter Events</h3>
+        
+        <h4>Event Type</h4>
+        <div class="type-filters">
+            <button class="type-pill active">All</button>
+        </div>
+        
+        <h4>Location</h4>
+        <div class="type-filters">
+            <button class="type-pill active">All</button>
+        </div>
+    </div>
+
+    <div class="event-modal">
+        <div class="modal-content">
+            <button class="modal-close">×</button>
+            <div class="modal-event-type">Keynote</div>
+            <div class="modal-header">
+                <span class="modal-time">9:30 - 10:30</span>
+                <span class="modal-location">Main Auditorium</span>
+            </div>
+            <div class="modal-body">
+                <h2 class="modal-title">Keynote: Reimagining Digital Justice Through Data Sovereignty</h2>
+                <div class="modal-description">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisl eget aliquam ultricies, nunc nisl aliquet nunc, vitae aliquam nisl nisl vitae nisl. Nullam euismod, nisl eget aliquam ultricies, nunc nisl aliquet nunc, vitae aliquam nisl nisl vitae nisl. In this powerful keynote, we'll explore how data sovereignty is essential to achieving digital justice in our increasingly connected world.
+                </div>
+                
+                <div class="modal-speakers-section">
+                    <h3 class="modal-speakers-title">Speakers</h3>
+                    <div class="modal-speaker">
+                        <div class="modal-speaker-avatar">MJ</div>
+                        <div class="modal-speaker-info">
+                            <div class="modal-speaker-name">Dr. Tanya Clark</div>
+                            <div class="modal-speaker-role">Lorem ipsum dolor sit amet, consectetur adipiscing elit</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
