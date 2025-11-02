@@ -1,0 +1,188 @@
+{
+  "day": "Friday",
+  "date": "July 18",
+  "events": [
+    {
+      "id": "day3-breakfast",
+      "title": "Continental Breakfast & Welcome",
+      "startTime": "08:30",
+      "endTime": "09:20",
+      "type": "keynote",
+      "location": "TBD",
+      "description": "Start your final day with breakfast and conversations with fellow attendees."
+    },
+    {
+      "id": "new-1750448139133",
+      "title": "Plenary Discussion - Digital Resilience & Digital Futures",
+      "startTime": "09:30",
+      "endTime": "10:30",
+      "type": "panel",
+      "location": "TBD",
+      "description": "",
+      "people": {
+        "speakers": [
+          {
+            "name": "Sharon Kennedy Vickers",
+            "title": null,
+            "image": null
+          },
+          {
+            "name": "Aasim Shabazz",
+            "title": null,
+            "image": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "new-1750448261285",
+      "title": "Plenary Panel - Digital Sovereignty and Digital Justice",
+      "startTime": "10:45",
+      "endTime": "11:45",
+      "type": "panel",
+      "location": "TBD",
+      "description": "",
+      "people": {
+        "speakers": [
+          {
+            "name": "Jill Greender",
+            "title": null,
+            "image": null
+          },
+          {
+            "name": "Alicia Ranney",
+            "title": null,
+            "image": null
+          },
+          {
+            "name": "Adam Cowing",
+            "title": null,
+            "image": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "new-1750448306146",
+      "title": "Lunch & Table Discussions",
+      "startTime": "12:00",
+      "endTime": "12:45",
+      "type": "break",
+      "location": "TBD",
+      "description": ""
+    },
+    {
+      "id": "new-1750448357821",
+      "title": "Data Justice for Human Services",
+      "startTime": "13:00",
+      "endTime": "15:00",
+      "type": "workshop",
+      "location": "TBD",
+      "description": "Funders and human service nonprofits rely on participant data for accountability, case management, compliance, and decision-making. How often are community members involved in decisions about what data are collected, how it’s used, and the resulting impact? What are the costs of collecting data without considering its implications? What are the opportunities missed when we continue with \"the way things have always been done\"? The Metropolitan Alliance of Connected Communities offers an equity lens for nonprofits to consider when designing their evaluation plans or data strategies",
+      "people": {
+        "speakers": [
+          {
+            "name": "Alicia Ranney",
+            "title": null,
+            "image": null
+          },
+          {
+            "name": "Adam Cowing",
+            "title": null,
+            "image": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "new-1750448502037",
+      "title": "Understand Your Money Story with Incluva",
+      "startTime": "13:00",
+      "endTime": "15:00",
+      "type": "workshop",
+      "location": "TBD",
+      "description": "In this immersive workshop, participants will be able to explore the origins of their financial triggers and thought patterns, led by Incluya’s founder Vyjayanthi Vadrevu. She will draw from her anthropological background to help attendees understand the money culture they grew up in, and practice ways to rewrite their money story. Participants will take part in Incluya’s mission to help individuals of all backgrounds to go from financial anxiety to financial resilience. Please note, all attendees will be working individually on their own stories to preserve confidentiality, and will not be asked to share anything unless they absolutely want to.",
+      "people": {
+        "speakers": [
+          {
+            "name": "Vyjayanthi Vadrevu",
+            "title": null,
+            "image": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "new-1750448554801",
+      "title": "Faster, Smarter, Lonelier",
+      "startTime": "13:00",
+      "endTime": "15:00",
+      "type": "workshop",
+      "location": "TBD",
+      "description": "",
+      "people": {
+        "speakers": [
+          {
+            "name": "Jayden Thunberg",
+            "title": null,
+            "image": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "new-1750780285148",
+      "title": "Zine Making Workshop",
+      "startTime": "13:00",
+      "endTime": "15:00",
+      "type": "workshop",
+      "location": "TBD",
+      "description": "",
+      "people": {
+        "speakers": [
+          {
+            "name": "Sophie Wang",
+            "title": null,
+            "image": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "new-1750780096336",
+      "title": "Art As Information: New Methods of Creating Data Visualizations",
+      "startTime": "13:00",
+      "endTime": "15:00",
+      "type": "workshop",
+      "location": "TBD",
+      "description": "In this workshop, participants will explore new methods of creating data visualizations.  Using techniques developed by the Science Discovery unit at the University of Colorado (https://www.colorado.edu/sciencediscovery/), participants will learn the basics of beading and crop art by visualizing their own data (either bringing numerical data or a visualization) or using provided data. Participants will be provided with all the materials needed to bring their visualizations to life.",
+      "people": {
+        "speakers": [
+          {
+            "name": "Marta Shore",
+            "title": null,
+            "image": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "new-1750450750837",
+      "title": "Youth Summit Share Out",
+      "startTime": "15:00",
+      "endTime": "15:30",
+      "type": "social",
+      "location": "TBD",
+      "description": ""
+    },
+    {
+      "id": "new-1750450804057",
+      "title": "Closing Remarks & Call To Action",
+      "startTime": "15:30",
+      "endTime": "16:15",
+      "type": "keynote",
+      "location": "TBD",
+      "description": ""
+    }
+  ]
+}

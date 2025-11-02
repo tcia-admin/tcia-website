@@ -1,0 +1,344 @@
+{
+  "day": "Thursday",
+  "date": "July 17",
+  "events": [
+    {
+      "id": "new-1750444766716",
+      "title": "Continental Breakfast & Welcome",
+      "startTime": "08:30",
+      "endTime": "09:30",
+      "type": "keynote",
+      "location": "TBD",
+      "description": ""
+    },
+    {
+      "id": "new-1750444908365",
+      "title": "Plenary Panel - State of Surveillance",
+      "startTime": "09:30",
+      "endTime": "10:30",
+      "type": "panel",
+      "location": "TBD",
+      "description": "Youth surveillance is on the rise and in ways that are difficult to track or understand.  Hear from a panel of educators, organizers, journalists, and researchers on the state of EdTech.  What we need to know, what we can expect, and what we can do about it.",
+      "people": {
+        "speakers": [
+          {
+            "name": "Mark Keierleber",
+            "title": null,
+            "image": null
+          },
+          {
+            "name": "Dr. Roderic N. Crooks",
+            "title": null,
+            "image": null
+          },
+          {
+            "name": "Jeremy Eugene",
+            "title": null,
+            "image": null
+          },
+          {
+            "name": "Shreya Sampath",
+            "title": null,
+            "image": null
+          },
+          {
+            "name": "Katya Abazajian",
+            "title": null,
+            "image": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "new-1750445130915",
+      "title": "The Power of the Narrative",
+      "startTime": "10:45",
+      "endTime": "11:45",
+      "type": "workshop",
+      "location": "TBD",
+      "description": "",
+      "people": {
+        "speakers": [
+          {
+            "name": "Candice Merriman",
+            "title": null,
+            "image": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "new-1750445239350",
+      "title": "Matthew Schutte Workshop - Final Title TBD",
+      "startTime": "10:45",
+      "endTime": "11:45",
+      "type": "workshop",
+      "location": "TBD",
+      "description": "",
+      "people": {
+        "speakers": [
+          {
+            "name": "Matthew Schutte",
+            "title": null,
+            "image": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "new-1750445297636",
+      "title": "Unlearning Surveillance: Power, Protection, and the Spyware We Carry",
+      "startTime": "10:45",
+      "endTime": "11:45",
+      "type": "workshop",
+      "location": "TBD",
+      "description": "",
+      "people": {
+        "speakers": [
+          {
+            "name": "Elina Castillo",
+            "title": null,
+            "image": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "new-1750445749129",
+      "title": "Using Data to Expose Youth Surveillance Harms ",
+      "startTime": "10:45",
+      "endTime": "11:45",
+      "type": "workshop",
+      "location": "TBD",
+      "description": "Investigative journalist Mark Keierleber will outline his in-depth reporting on data privacy issues in Minnesota public schools and their implications on students’ civil rights. Highlighted work includes in-depth reporting on the rise of digital surveillance tools used by schools to monitor students online and the rise of ransomware attacks in K-12 schools.",
+      "people": {
+        "speakers": [
+          {
+            "name": "Mark Keierleber",
+            "title": null,
+            "image": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "new-1750445814460",
+      "title": "Spotlight on EdTech: Workshopping Abolitionist & Reformist Framework",
+      "startTime": "10:45",
+      "endTime": "11:45",
+      "type": "workshop",
+      "location": "TBD",
+      "description": "You may be familiar with Critical Resistance's Reformist reforms vs. abolitionist steps to end the IMPRISONMENT framework.  The NOTICE Coalition imagines a similar framework specific to education and EdTech.  You are invited to workshop with us as we build a framework of our own.  We pulled together the building blocks, now we need your input to ensure that we are building a model that works for those of us in the work",
+      "people": {
+        "speakers": [
+          {
+            "name": "Dr. Chelsea Barabas",
+            "title": null,
+            "image": null
+          },
+          {
+            "name": "Ed Vogel",
+            "title": null,
+            "image": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "new-1750446165148",
+      "title": "Spotlight on EdTech:  Auditing Vape Detection Technology in MN",
+      "startTime": "10:45",
+      "endTime": "11:45",
+      "type": "workshop",
+      "location": "TBD",
+      "description": "",
+      "people": {
+        "speakers": [
+          {
+            "name": "Clarence Okoh",
+            "title": null,
+            "image": null
+          },
+          {
+            "name": "Marika Pfefferkorn",
+            "title": null,
+            "image": null
+          },
+          {
+            "name": "Todd Whitney",
+            "title": null,
+            "image": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "new-1750446262894",
+      "title": "Lunch & Keynote - Imagine That: Rehearsing Futures of Equity and Joy ",
+      "startTime": "12:00",
+      "endTime": "12:45",
+      "type": "keynote",
+      "location": "TBD",
+      "description": "magine That: Rehearsing Futures of Equity and Joy invites educators and industry professionals to radically reimagine design, technology, and learning through the lens of justice-centered imagination. Drawing on Black feminist thought, Afrofuturism, and social justice computing research, this keynote explores what equity sounds like, tastes like, and feels like when it becomes the norm—not the exception. Anchored in academic studies such as the counterstory-driven practices of Black Sims modders and the critical consciousness fostered through social justice informatics curricula, the presentation highlights how marginalized communities aren’t merely resisting exclusion—they are building joyful, pluriversal futures—creating technologies that celebrate multiple ways of being rather than forcing universal conformity. It calls on technologists and educators to move beyond harm-reduction toward design that centers joy, collaboration, and cultural specificity. Grounded in Black feminist thought and Afrofuturist traditions from Octavia Butler to Ruha Benjamin, this keynote emphasizes imagination as both theory and praxis, urging audiences to view justice not just as a goal, but as a design principle. The talk culminates with a challenge: what would it look like if equity were embedded in every line of code, classroom discussion, and organizational value? Imagine that—and then see to it.",
+      "people": {
+        "speakers": [
+          {
+            "name": "Dr. Angela D. R. Smith",
+            "title": null,
+            "image": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "new-1750446565739",
+      "title": "Part 2- Beyond Belonging: Cultivating Thriving Spaces In Steam",
+      "startTime": "13:00",
+      "endTime": "14:30",
+      "type": "workshop",
+      "location": "TBD",
+      "description": "The workshop equips participants with hands-on learning experiences that foster engaging, joyful learning environments grounded in liberatory practices that center belonging, healing-centered education, critical love, positive racial identity, agency, sociopolitical consciousness, and culturally responsive practices.",
+      "people": {
+        "speakers": [
+          {
+            "name": "Dr. Imène Ghernati",
+            "title": null,
+            "image": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "new-1750446634034",
+      "title": "Storytelling for Justice: Data, AI, & Narrative Power-Building",
+      "startTime": "13:00",
+      "endTime": "14:30",
+      "type": "workshop",
+      "location": "TBD",
+      "description": "This workshop explores the intersection of data, technology, and narrative power-building, equipping participants with strategies to counter harmful narratives and push forward liberatory, community-centered ones. Through collective discussion and interactive tools, we will analyze how digital justice, AI, and data privacy impact narratives, identify opportunities for cross-organizational collaboration, and explore ways to use data ethically to build community-driven stories that drive systemic change. ",
+      "people": {
+        "speakers": [
+          {
+            "name": "Dr. Cierra Kaler-Jones",
+            "title": null,
+            "image": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "new-1750446725062",
+      "title": "Promoting Historical Literacy through Critical Data Science",
+      "startTime": "13:00",
+      "endTime": "14:30",
+      "type": "workshop",
+      "location": "TBD",
+      "description": "This workshop introduces participants to a justice-oriented, data science history unit for high school students, part of a nationally-funded project. Workshop attendees will participate as students to engage in parts of a history lesson and see examples from project’s online platform created by our team that integrates CODAP (https://codap.concord.org/) and other tools. The history lesson draws inspiration from W.E.B. Du Bois’ data visualizations and invites students to examine the impact of the Voting Rights Act on U.S. elections, including unpacking the justice visions of historical figures who used data, ways data visualizations were received, and how data speaks to pivotal social issues around systemic, racial inequities. After the lesson, participants will engage in a group discussion about ways to weave data science into historical contexts. Finally, initial findings from a pilot of this unit will be shared.",
+      "people": {
+        "speakers": [
+          {
+            "name": "Cassie Scharber",
+            "title": null,
+            "image": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "new-1750446966384",
+      "title": "Investigating AI Abuses: Criminalization, Surveillance, and Privatization",
+      "startTime": "13:00",
+      "endTime": "14:30",
+      "type": "workshop",
+      "location": "TBD",
+      "description": "",
+      "people": {
+        "speakers": [
+          {
+            "name": "Dr. Chelsea Barabas",
+            "title": null,
+            "image": null
+          },
+          {
+            "name": "Ed Vogel",
+            "title": null,
+            "image": null
+          },
+          {
+            "name": "Clarence Okoh",
+            "title": null,
+            "image": null
+          },
+          {
+            "name": "Marika Pfefferkorn",
+            "title": null,
+            "image": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "new-1750447075298",
+      "title": "AI workshop & Discussion - Final Title TBD",
+      "startTime": "13:00",
+      "endTime": "14:30",
+      "type": "workshop",
+      "location": "TBD",
+      "description": "",
+      "people": {
+        "speakers": [
+          {
+            "name": "Ishmael Israel",
+            "title": null,
+            "image": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "new-1750447195025",
+      "title": "Democratizing Energy Action: Leveraging Access, Collaboration, and Gamification ",
+      "startTime": "13:00",
+      "endTime": "14:30",
+      "type": "workshop",
+      "location": "TBD",
+      "description": "This presentation will cover three interrelated efforts to empower ordinary people to take energy action. The first, Green Neighbor Challenge, will introduce an interactive online toolkit designed to help US residents find and access the home energy programs and incentives available to them. Second, the Rural Electric Cooperative Scorecarding Initiative brings together an interstate alliance of energy advocates to collaboratively gather data as a foundation for decentralized member-owner organizing efforts. Third, Re⚡Volt is a forthcoming tabletop-style game about navigating your home energy transition that draws inspiration from the Residential Energy Consumption Survey and the Inflation Reduction Act.",
+      "people": {
+        "speakers": [
+          {
+            "name": "Andrew Butts",
+            "title": null,
+            "image": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "new-1750447497264",
+      "title": "Plenary Panel - NOTICE Fellows",
+      "startTime": "14:45",
+      "endTime": "15:45",
+      "type": "panel",
+      "location": "TBD",
+      "description": ""
+    },
+    {
+      "id": "new-1750447538550",
+      "title": "Puppet Performance - Title TBD",
+      "startTime": "16:00",
+      "endTime": "17:00",
+      "type": "social",
+      "location": "TBD",
+      "description": "",
+      "people": {
+        "speakers": [
+          {
+            "name": "Kill Joy",
+            "title": null,
+            "image": null
+          }
+        ]
+      }
+    }
+  ]
+}

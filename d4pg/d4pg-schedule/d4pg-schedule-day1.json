@@ -1,0 +1,197 @@
+{
+    "day": "Wednesday",
+    "date": "July 16",
+    "events": [
+      {
+        "id": "new-1750442048273",
+        "title": "Breakfast & Opening Remarks",
+        "startTime": "08:30",
+        "endTime": "10:00",
+        "type": "keynote",
+        "location": "TBD",
+        "description": ""
+      },
+      {
+        "id": "new-1750442381253",
+        "title": "Warm Data Lab",
+        "startTime": "10:00",
+        "endTime": "12:00",
+        "type": "workshop",
+        "location": "TBD",
+        "description": ""
+      },
+      {
+        "id": "new-1750442546880",
+        "title": "Lunch",
+        "startTime": "12:00",
+        "endTime": "13:00",
+        "type": "break",
+        "location": "TBD",
+        "description": ""
+      },
+      {
+        "id": "new-1750268140711",
+        "title": "Understanding Data Rights and Tactics for Data Defense",
+        "startTime": "13:30",
+        "endTime": "15:00",
+        "type": "workshop",
+        "location": "TBD",
+        "description": "",
+        "people": {
+          "speakers": [
+            {
+              "name": "Katya Abazajian",
+              "title": null,
+              "image": null
+            }
+          ]
+        }
+      },
+      {
+        "id": "new-1750268251091",
+        "title": "Collaboratively Creating Flexible Data Science Learning Tools",
+        "startTime": "13:30",
+        "endTime": "15:00",
+        "type": "workshop",
+        "location": "TBD",
+        "description": "In this workshop, we will share the process of working collaboratively with high school teachers to create learning materials.  This free web applet helps Minnesota students explore local air quality by locating the nearest monitoring station and examining both natural and human-made influences on their air quality. We will then encourage participants to explore the app, determine their own questions, and offer suggestions about improvements.",
+        "people": {
+          "speakers": [
+            {
+              "name": "Marta Shore",
+              "title": null,
+              "image": null
+            },
+            {
+              "name": "Anne Hackman",
+              "title": null,
+              "image": null
+            }
+          ]
+        }
+      },
+      {
+        "id": "new-1750268321387",
+        "title": "Afrofuturism Writing Workshop - Title TBD",
+        "startTime": "13:30",
+        "endTime": "15:00",
+        "type": "workshop",
+        "location": "TBD",
+        "description": "",
+        "people": {
+          "speakers": [
+            {
+              "name": "Dr. Tanya Clark",
+              "title": null,
+              "image": null
+            }
+          ]
+        }
+      },
+      {
+        "id": "new-1750268380158",
+        "title": "Part 1- Beyond Belonging: Cultivating Thriving Spaces in STEAM",
+        "startTime": "13:30",
+        "endTime": "15:00",
+        "type": "workshop",
+        "location": "TBD",
+        "description": "The workshop equips participants with hands-on learning experiences that foster engaging, joyful learning environments grounded in liberatory practices that center belonging, healing-centered education, critical love, positive racial identity, agency, sociopolitical consciousness, and culturally responsive practices.",
+        "people": {
+          "speakers": [
+            {
+              "name": "Dr. Imène Ghernati",
+              "title": null,
+              "image": null
+            }
+          ]
+        }
+      },
+      {
+        "id": "new-1750268457279",
+        "title": "From Data Transcript to Narrative Tools: A Workshop on Using Participant-Centered Data in Transformative Ways.",
+        "startTime": "13:30",
+        "endTime": "15:00",
+        "type": "workshop",
+        "location": "TBD",
+        "description": "",
+        "people": {
+          "speakers": [
+            {
+              "name": "Madasen Briggs",
+              "title": null,
+              "image": null
+            },
+            {
+              "name": "Khadijah Zahid",
+              "title": null,
+              "image": null
+            },
+            {
+              "name": "Dr. Angie Mejia",
+              "title": null,
+              "image": null
+            }
+          ]
+        }
+      },
+      {
+        "id": "new-1750268502811",
+        "title": "Carcerality And Education",
+        "startTime": "13:30",
+        "endTime": "15:00",
+        "type": "workshop",
+        "location": "TBD",
+        "description": "This workshop is a train-the-trainer workshop so that attendees can bring this curriculum back to their community.  In this session, we will share our experiences as we developed and delivered this as an education studies class in the spring of 2025.  In the class, we examined how “carcerality” is an organizing feature of public education in the U.S. by exploring disciplinary processes, technology, and surveillance practices, curricular norms, and the built environment in schools, as well as attempts to challenge such carceral logics, especially through organized efforts of communities of color. ",
+        "people": {
+          "speakers": [
+            {
+              "name": "Dr. Anita Chikkatur",
+              "title": null,
+              "image": null
+            },
+            {
+              "name": "Marika Pfefferkorn",
+              "title": null,
+              "image": null
+            }
+          ]
+        }
+      },
+      {
+        "id": "new-1750442708531",
+        "title": "Conversation & Performance",
+        "startTime": "15:15",
+        "endTime": "16:00",
+        "type": "social",
+        "location": "TBD",
+        "description": "Vyjayanthi Vadrevu in conversation with Aasim Shabazz",
+        "people": {
+          "speakers": [
+            {
+              "name": "Vyjayanthi Vadrevu",
+              "title": null,
+              "image": null
+            }
+          ]
+        }
+      },
+      {
+        "id": "new-1750442869955",
+        "title": "\"Access as Surveillance: Edtech and Perpetually At-Risk Youth\"",
+        "startTime": "16:15",
+        "endTime": "17:00",
+        "type": "keynote",
+        "location": "TBD",
+        "description": "Based on examples from the book Access Is Capture: How Edtech Reproduces Racial Inequality, this presentation will focus on data-intensive education technology (edtech) and how its use contributes to surveillance abuse. While the evidence of the value of edtech to contemporary learning is exaggerated, many very real harms related to surveillance abuse have been underreported. Based on the work of community organizers active in anti-surveillance and youth movements, I propose a few questions schools, parents, and education professionals of all kinds might ask before incorporating edtech into classroom learning.",
+        "people": {
+          "speakers": [
+            {
+              "name": "Dr. Roderic N. Crooks",
+              "title": null,
+              "image": null
+            }
+          ]
+        }
+      }
+    ]
+  }
