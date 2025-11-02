@@ -1,6 +1,4 @@
-# D4PG Home Page - Complete Guide
-
-A comprehensive guide to understanding, customizing, and maintaining the Data For Public Good (D4PG) 2025 conference home page.
+# D4PG Home Page
 
 ## 📋 Table of Contents
 
@@ -1353,13 +1351,7 @@ Make your site accessible to all users:
 <img src="photo.jpg" alt="Descriptive text about image">
 ```
 
-### ✅ Color Contrast
 
-Ensure text is readable:
-- Normal text: 4.5:1 contrast ratio minimum
-- Large text (18pt+): 3:1 contrast ratio minimum
-
-**Check contrast:** [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/)
 
 ### ✅ Focus Indicators
 
