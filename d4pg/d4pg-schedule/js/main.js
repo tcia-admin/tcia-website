@@ -1,5 +1,5 @@
 
-    const urlPrefix = 'https://tcia-admin.github.io/tcia-website/d4pg/d4pg-schedule/';
+    const urlPrefix = 'https://tcia-admin.github.io/tcia-website/d4pg/d4pg-schedule/js/';
     const schedulefile = 'd4pg-schedule.json';
     const biosfile = 'd4pg-bios-2025.json';
     
