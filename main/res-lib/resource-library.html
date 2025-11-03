@@ -1,0 +1,958 @@
+<div class="sqs-block-content">
+    <!-- Start of Style -->
+
+    <style>
+        :root {
+    --primary-color: #1a3070;
+    --secondary-color: #f3b54a;
+    --accent-color: #ec1a3c;
+    --darker-accent-color: #c91633;
+    --background-color: #f8f8f8;
+    --text-color: #333;
+}
+
+
+body, h2, h4, th, td, input, button, select {
+    font-weight: 700;
+}
+
+.resource-topics {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 20px;
+    transition: opacity 0.3s ease;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.resource-topics.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.topic-box {
+    background-color: var(--primary-color);
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
+    color: var(--text-color);
+}
+
+.topic-box:hover {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    background-color: var(--secondary-color);
+}
+
+.topic-box h4 {
+    font-weight: 700;
+    color: white;
+}
+
+/* Responsive styles */
+@media (max-width: 1200px) {
+    .resource-topics {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .resource-topics {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .resource-topics {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Materials section */
+.materials-section {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: margin-left 0.3s ease; /* Add transition for smooth adjustment */
+}
+
+.materials-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+.materials-item {
+    display: flex;
+    margin-bottom: 40px; /* Increased margin-bottom for greater vertical separation */
+    padding-bottom: 20px; /* Add padding to avoid overlap with horizontal line */
+    border-bottom: 1px solid var(--primary-color); /* Add horizontal line */
+}
+
+.materials-image {
+    flex: 1;
+    padding-right: 20px;
+}
+
+.materials-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.materials-info {
+    flex: 2;
+}
+
+.materials-title {
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.materials-description {
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.learn-more-button {
+    background-color: var(--accent-color);
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 700;
+}
+
+.learn-more-button:hover {
+    background-color: var(--darker-accent-color);
+}
+
+/* resources section */
+.resources-section {
+    margin-top: 20px;
+    transition: margin-left 0.3s ease;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.resources-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+.resources-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--background-color);
+}
+
+.resources-table th, .resources-table td {
+    border: 1px solid var(--primary-color);
+    padding: 8px;
+    font-weight: 700;
+}
+
+.resources-table th {
+    background-color: var(--secondary-color);
+    text-align: left;
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+.resources-table th.sort-asc::after {
+    content: ' \25B2'; /* Up arrow */
+}
+
+.resources-table th.sort-desc::after {
+    content: ' \25BC'; /* Down arrow */
+}
+
+.resources-table tr:nth-child(even) {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.resources-table tr:nth-child(odd) {
+    background-color: white;
+    color: var(--primary-color);
+}
+
+.resources-table tr:hover {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+}
+
+/* references section */
+.references-section {
+    margin-top: 20px;
+    transition: margin-left 0.3s ease;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.references-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+.references-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--background-color);
+}
+
+.references-table th, .references-table td {
+    border: 1px solid var(--primary-color);
+    padding: 8px;
+    font-weight: 700;
+}
+
+.references-table th {
+    background-color: var(--secondary-color);
+    text-align: left;
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+.references-table th.sort-asc::after {
+    content: ' \25B2'; /* Up arrow */
+}
+
+.references-table th.sort-desc::after {
+    content: ' \25BC'; /* Down arrow */
+}
+
+.references-table tr:nth-child(even) {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.references-table tr:nth-child(odd) {
+    background-color: white;
+    color: var(--primary-color);
+}
+
+.references-table tr:hover {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+}
+
+.return-button {
+    background-color: var(--accent-color);
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.return-button:hover {
+    background-color: var(--darker-accent-color);
+}
+
+
+/* Responsive styles */
+@media (max-width: 1200px) {
+    .resource-topics {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .resource-topics {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .resource-topics {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* Center search and sort controls */
+.search-controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.search-controls input, .search-controls select, .search-controls button {
+    padding: 10px;
+    font-weight: 700;
+}
+
+.align-right {
+    display: flex;
+    justify-content: flex-end;
+    margin: 10px 0;
+}
+
+/* Navigation bar styling */
+/* Navigation bar styling */
+.navigation-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            background-color: #061531;
+            padding: 10px 20px;
+            box-sizing: border-box;
+            margin-bottom: 80px; /* Adjust this value to change the space */
+        }
+
+        .nav-options {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-item {
+            color: white;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .nav-item:hover,
+        .nav-item.selected {
+            color: var(--accent-color);
+        }
+
+        .learn-more-button.nav-home {
+            background-color: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 700;
+            padding: 10px 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .learn-more-button.nav-home:hover {
+            background-color: var(--darker-accent-color);
+        }
+
+        /* Add these styles to your existing CSS */
+
+/* Popup overlay */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    overflow: hidden; /* Prevent scrolling */
+}
+
+/* Popup content */
+.popup {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 600px;
+    max-height: 80%;
+    overflow-y: auto; /* Allow scrolling inside the popup */
+    z-index: 1001;
+    position: relative;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: 700;
+    border-radius: 5px;
+}
+
+.hidden {
+    display: none;
+}
+
+.blur-background {
+    filter: blur(5px);
+    pointer-events: none; /* Prevent interaction with the blurred background */
+}
+
+body.popup-open {
+    overflow: hidden; /* Prevent background scrolling */
+}
+
+/* Make materials-info section clickable */
+.materials-item {
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.materials-item:hover {
+    background-color: var(--secondary-color);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Hide the learn-more-button in the materials-info by default */
+.materials-info .learn-more-button {
+    display: none;
+}
+    </style>
+
+    <!-- End of Style -->
+
+
+    <!-- Navigation -->
+    <div class="navigation-bar">
+        <div class="nav-options">
+            <h3 class="nav-item selected" id="resource-list">Resource List</h3>
+            <h3 class="nav-item" id="materials">Materials</h3>
+        </div>
+        <a href="/resources" class="learn-more-button nav-home">Resources Home</a>
+    </div>
+    
+
+
+
+    <!-- Topics section -->
+    <div class="resource-topics" id="topics-section">
+        <div class="topic-box" data-topic="AI">
+            <h4>AI</h4>
+        </div>
+        <div class="topic-box" data-topic="AI In Education">
+            <h4>AI In Education</h4>
+        </div>
+        <div class="topic-box" data-topic="D4PG">
+            <h4>Data For Public Good</h4>
+        </div>
+        <!-- Add more topic boxes as needed -->
+    </div>
+
+    <!-- Search and Sort Controls for Resources -->
+    <div class="search-controls" id="search-controls">
+        <input type="text" id="search-input" placeholder="Search resource titles">
+        <button id="show-all">Show All Resources</button>
+    </div>
+    
+
+    <!-- Materials section -->
+     
+    <div class="materials-section hidden" id="materials-section">
+
+        <div class="materials-item" data-topic="">
+            <div class="materials-image">
+                <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/aef88e5a-05b8-4b59-84b9-3012a2195ab8/Lessons+on+Storytelling+for+Education+Justice.png?content-type=image%2Fpng" alt="Building Narrative Power: Lessons on Storytelling for Education Justice">
+            </div>
+            <div class="materials-info">
+                <h3 class="materials-title">Building Narrative Power: Lessons on Storytelling for Education Justice</h3>
+                <p class="materials-description">This is a new report from the <a href="https://dignityinschools.org/" target="_blank">Dignity in Schools Campaign</a>, exploring how they are working with their members and communities to use storytelling and narrative work to challenge school pushout, the school-to-prison pipeline, and harmful discipline policies.</p>
+                <p class="materials-description">This release includes case studies from Chicago, Duck Hill, MS and the Twin Cities, showing how community organizing has shifted local policies and redefined safety and justice in schools. It also highlights key areas where narrative power can continue to drive change, including rethinking zero-tolerance policies and addressing the spread of surveillance technologies in schools.</p>
+                <a href="https://dignityinschools.org/wp-content/uploads/2025/05/DIgnity-in-Schools-Building-Narrative-Power-.pdf" class="learn-more-button" target="_blank">Read The Report</a>
+                <a href="https://www.flipsnack.com/dignityinschools/dignity-in-schools-building-narrative-power/full-view.html" class="learn-more-button" target="_blank">View The Flipbook</a>
+            </div>
+        </div>
+        <div class="materials-item" data-topic="">
+            <div class="materials-image">
+                <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/a5d12c7d-7e1a-4291-80de-3c83a1b8bfab/Simplifying+Big+Data+Primer.png" alt="Simplifying Big Data Primer">
+            </div>
+            <div class="materials-info">
+                <h3 class="materials-title">Simplifying Big Data Primer</h3>
+                <p class="materials-description">Our community has been familiarizing ourselves with the in's and out's of Big Data, Predictive Analytics, Algorithms, and Joint Powers Agreements (JPA) and we want to invite you into this important conversation. This data primer is an attempt to engage everyone in fundamentally understanding the definitions and the role of Big Data, Predictive Analytics and Algorithms in education and everywhere.</p>
+                <a href="https://static1.squarespace.com/static/5b9081c58ab7224793278e1d/t/66bf84804cf7551bbc8dd07c/1723827331500/Simplifying+Big+Data+Primer.pdf" class="learn-more-button" target="_blank">Read The Report</a>
+            </div>
+        </div>
+        <div class="materials-item" data-topic="">
+            <div class="materials-image">
+                <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/109fce46-0294-4ea7-841e-86e783c1f388/A+Timeline+of+Algorithmic+Harm.png" alt="A Timeline of Algorithmic Harm">
+            </div>
+            <div class="materials-info">
+                <h3 class="materials-title">A Timeline of Algorithmic Harm</h3>
+                <p class="materials-description">Researchers have identified three types of bias in AI: algorithmic prejudice, negative legacy, and underestimation.</p> <p class="materials-description">Read the report to find more real-world examples of algorithmic bias and harm.</p>
+                <a href="https://static1.squarespace.com/static/5b9081c58ab7224793278e1d/t/66bf849df4a8c17d6df00d7b/1723827359148/Timeline+of+Algorithmic+Harm.pdf" class="learn-more-button" target="_blank">Read The Report</a>
+                <a href="/algo-harm-timeline" class="learn-more-button">View Interactive Timeline</a>
+            </div>
+        </div>
+        <div class="materials-item" data-topic="History of AI">
+            <div class="materials-image">
+                <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/3bcdd02d-2832-49e4-af6c-00f113d98a07/Capture+d%E2%80%99e%CC%81cran+2024-07-11+a%CC%80+12.02.19%E2%80%AFAM.png" alt="Brief AI History">
+            </div>
+            <div class="materials-info">
+                <h3 class="materials-title">Brief History of Artificial Intelligence</h3>
+                <p class="materials-description">The infographic highlights the key milestones in AI, from the conceptual beginnings in the 1950s to the advancements in machine learning and deep learning technologies today. It traces the evolution of AI, showcasing pivotal moments such as the development of neural networks, the rise of expert systems, and the recent breakthroughs in AI applications.</p>
+                <a href="https://static1.squarespace.com/static/5b9081c58ab7224793278e1d/t/668f653c8a33307f3ca81bb8/1720673596496/A+brief+history+of+AI.pdf" class="learn-more-button" target="_blank">View The Infographic</a>
+            </div>
+        </div>
+        <div class="materials-item" data-topic="LLM Primer">
+            <div class="materials-image">
+                <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/de825287-19ca-4ada-a440-1c981002fc75/Capture+d%E2%80%99e%CC%81cran+2024-07-11+a%CC%80+12.09.04%E2%80%AFAM.png" alt="LLM Primer">
+            </div>
+            <div class="materials-info">
+                <h3 class="materials-title">LLM Primer for the Organization and General Public</h3>
+                <p class="materials-description">The document explains Large Language Models (LLMs), detailing their ability to understand and generate human-like text through advanced algorithms and vast datasets. It includes examples of LLMs such as GPT-4, and products like OpenAI's ChatGPT, showcasing their applications in various industries like education, healthcare and more.</p>
+                <a href="https://static1.squarespace.com/static/5b9081c58ab7224793278e1d/t/668f65199ed54f5c2472155d/1720673562017/LLM+primer+Version2+%282%29.pdf" class="learn-more-button" target="_blank">Read The Document</a>
+            </div>
+        </div>
+        <div class="materials-item" data-topic="D4PG">
+            <div class="materials-image">
+                <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/aa02a4fa-63d1-4a8f-99a5-15898e9b5d9c/Capture+d%E2%80%99e%CC%81cran+2024-07-15+a%CC%80+3.15.55%E2%80%AFPM.png" alt="Data For Public Good Campaign">
+            </div>
+            <div class="materials-info">
+                <h3 class="materials-title">Data For Public Good Campaign</h3>
+                <p class="materials-description">We live in an information age where data is currency and the driver of our digital economy, where individuals, communities, government systems are  both the purveyors and end users of big data, <strong>whether we are aware of it or not, whether we agree to it or not</strong>. This trend is expanding across sectors and is surfacing in school districts across the country, presenting ethical dilemmas for education and educational ecosystems.</p>
+                <a href="https://static1.squarespace.com/static/5b9081c58ab7224793278e1d/t/5f28cbdbe3538d6f2cdfc28a/1596509148255/D4PG+Media+Kit+2020.docx" class="learn-more-button" target="_blank">Read The Document</a>
+            </div>
+        </div>
+        <div class="materials-item" data-topic="">
+            <div class="materials-image">
+                <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/f489cf98-5fd9-4066-907d-d1aba64ecded/Capture+d%E2%80%99e%CC%81cran+2024-07-11+a%CC%80+1.00.08%E2%80%AFAM.png" alt="">
+            </div>
+            <div class="materials-info">
+                <h3 class="materials-title">The State Student Privacy Report Card: Grading The States On Protecting Student Data Privacy</h3>
+                <p class="materials-description">The report highlights the evolving landscape of student data privacy since the enactment of FERPA in 1974, focusing on the impact of digital record-keeping and technology use in schools. It underscores the need for comprehensive analysis and strengthened legislation, given the increasing collection and sharing of sensitive student data by schools and private companies, and aims to guide parents and policymakers in improving state-level privacy protections.</p>
+                <a href="https://www.studentprivacymatters.org/wp-content/uploads/2019/01/The-2019-State-Student-Privacy-Report-Card.pdf" class="learn-more-button" target="_blank">Read The Report</a>
+            </div>
+        </div>
+        <div class="materials-item" data-topic="">
+            <div class="materials-image">
+                <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/1ae24448-154d-4976-ac6d-adcbf364ee08/IMG_0006.jpg" alt="Inaccurate Facial Recognition Technology">
+            </div>
+            <div class="materials-info">
+                <h3 class="materials-title">Facial recognition technology is inaccurate, and miscategorizes the faces of Black people.</h3>
+                <p class="materials-description">NYPD  surveillance tools present a danger to all New Yorkers, more  specifically Black New Yorkers. The NYPD's arsenal of spy tools, at its  core, is a flawed form of surveillance that comes at the expense of  basic human rights, security, and privacy.</p>
+                <a href="https://static1.squarespace.com/static/5b9081c58ab7224793278e1d/t/5f236b8cc790292c3eb752dc/1596156812440/Facial+recognition+technology+is+inaccurate.docx" class="learn-more-button" target="_blank">Read The Report</a>
+            </div>
+        </div>
+        <div class="materials-item" data-topic="">
+            <div class="materials-image">
+                <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/d3fad812-e786-4be6-8961-87800ac98ba9/Clipart-stock+images-17.png" alt="Body Cam Policy Study">
+            </div>
+            <div class="materials-info">
+                <h3 class="materials-title">Body Cam Policy Study</h3>
+                <p class="materials-description">In February 2015, Council requested the police department to explore a body-worn camera program. Since that time the police department has examined law enforcement best practices, model policies, state statutes, the technology advancements of the hardware and software systems and received community input. In November 2017, staff recommended to Council that our police department implement a body-worn camera program to assist in collecting evidence, writing accurate reports and providing greater transparency and accountability. At the council's direction, policy development, evaluation and testing of body-worn camera hardware and software equipment began in January 2018.</p>
+                <a href="https://static1.squarespace.com/static/5b9081c58ab7224793278e1d/t/5f23755379440b2177a177ed/1596159315407/Body+cam+policy+study+St.+Louis+Park+SRO.pdf" class="learn-more-button" target="_blank">Read The Report</a>
+            </div>
+        </div>
+        <div class="materials-item" data-topic="">
+            <div class="materials-image">
+                <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/39ad41aa-fd6b-4c7e-9c54-64de4227fe46/spy_school.png?content-type=image%2Fpng" alt="Spying on students: School issued devices and student privacy">
+            </div>
+            <div class="materials-info">
+                <h3 class="materials-title">Spying on students: School issued devices and student privacy</h3>
+                <p class="materials-description">Students and their families are backed into a corner. As students across the United States are handed school-issued laptops and signed up for educational cloud services, the way the educational system treats the privacy of students is undergoing profound changes—often without their parents' notice or consent, and usually without a real choice to optout of privacy-invading technology.</p>
+                <a href="https://static1.squarespace.com/static/5b9081c58ab7224793278e1d/t/5f2360baedefbe64b76c2792/1596154042733/student-privacy-report.pdf" class="learn-more-button" target="_blank">Read The Report</a>
+            </div>
+        </div>
+        <div class="align-right">
+            <a href="/resource-library#materials-section" class="return-button">Back To Top</a>
+        </div>
+    </div>
+
+    <!-- references section -->
+     <div class="references-section hidden" id="references-section">
+        <div class="references-title" id="references-title">All References</div>
+        <table class="references-table" id="references-table">
+            <thead>
+                <tr>
+                    <th data-sort="title">Title</th>
+                    <th data-sort="source">Source</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="reference-row" data-topic="History of AI">
+                    <td>
+                        <a href="https://www.techtarget.com/searchEnterpriseAI/tip/The-history-of-artificial-intelligence-Complete-AI-timeline" target="_blank">The history of artificial intelligence: Complete AI timeline</a>
+                    </td>
+                    <td>TechTarget</td>
+                </tr>
+                <tr class="reference-row" data-topic="History of AI">
+                    <td>
+                        <a href="https://ourworldindata.org/brief-History of AI" target="_blank">The brief history of artificial intelligence: the world has changed fast — what might be next?</a>
+                    </td>
+                    <td>Our World In Data</td>
+                </tr>
+                <tr class="reference-row" data-topic="History of AI">
+                    <td>
+                        <a href="https://www.freecodecamp.org/news/the-History of AI/" target="_blank">The History of Artificial Intelligence from the 1950s to Today</a>
+                    </td>
+                    <td>freeCodeCamp</td>
+                </tr>
+                <tr class="reference-row" data-topic="History of AI">
+                    <td>
+                        <a href="https://journals.sagepub.com/doi/10.1177/0008125619864925" target="_blank">A Brief History of Artificial Intelligence: On the Past, Present, and Future of Artificial Intelligence</a>
+                    </td>
+                    <td>Sage Journals</td>
+                </tr>
+                <tr class="reference-row" data-topic="LLM Primer">
+                    <td>
+                        <a href="https://arxiv.org/html/2401.02038v2" target="_blank">Understanding LLMs: A Comprehensive Overview from Training to Inference</a>
+                    </td>
+                    <td>arxiv</td>
+                </tr>
+                <tr class="reference-row" data-topic="LLM Primer">
+                    <td>
+                        <a href="https://www.ibm.com/topics/large-language-models" target="_blank">What are large language models (LLMs)?</a>
+                    </td>
+                    <td>IBM</td>
+                </tr>
+                <tr class="reference-row" data-topic="LLM Primer">
+                    <td>
+                        <a href="https://www.computerworld.com/article/1627101/what-are-large-language-models-and-how-are-they-used-in-generative-ai.html" target="_blank">What are LLMs, and how are they used in generative AI?</a>
+                    </td>
+                    <td>COMPUTERWORLD</td>
+                </tr>
+                <tr class="reference-row" data-topic="LLM Primer">
+                    <td>
+                        <a href="https://aws.amazon.com/what-is/large-language-model/" target="_blank">What are Large Language Models (LLM)?</a>
+                    </td>
+                    <td>Amazon Web Services (AWS)</td>
+                </tr>
+                <tr class="reference-row" data-topic="LLM Primer">
+                    <td>
+                        <a href="https://doi.org/10.48550/arXiv.2406.04734" target="_blank">Generative AI Models: Opportunities and Risks for Industry and Authorities</a>
+                    </td>
+                    <td>arxiv</td>
+                </tr>
+                <!-- More resources here -->
+            </tbody>
+        </table>
+     </div>
+    
+    
+    
+    <!-- resources section -->
+    <div class="resources-section" id="resources-section">
+        <div class="resources-title" id="resources-title">All Resources</div>
+        <table class="resources-table" id="resources-table">
+            <thead>
+                <tr>
+                    <th data-sort="title">Title</th>
+                    <th data-sort="source">Source</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="resource-row" data-topic="AI">
+                    <td>
+                        <a href="https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-1.pdf" target="_blank">Artificial Intelligence Risk Management Framework (AI RMF 1.0)</a>
+                    </td>
+                    <td>National Institute of Standards and Technology (NIST)</td>
+                </tr>
+                <tr class="resource-row" data-topic="AI">
+                    <td>
+                        <a href="https://dam-prod2.media.mit.edu/x/2019/01/24/AIES-19_paper_223.pdf" target="_blank">Actionable Auditing: Investigating the Impact of Publicly Naming Biased Performance Results of Commercial AI Products</a>
+                    </td>
+                    <td>MIT Media Lab</td>
+                </tr>
+                <tr class="resource-row" data-topic="AI">
+                    <td>
+                        <a href="https://people.cs.umass.edu/~elm/papers/FRTintheWild.pdf" target="_blank">FACIAL RECOGNITION TECHNOLOGIES IN THE WILD: A CALL FOR A FEDERAL OFFICE</a>
+                    </td>
+                    <td>University of Massachusetts Amherst</td>
+                </tr>
+                <tr class="resource-row" data-topic="AI">
+                    <td>
+                        <a href="https://partnershiponai.org/philanthropys-crucial-role-in-advancing-inclusive-ai/" target="_blank">Philanthropy's Crucial Role in Advancing Inclusive AI - Partnership on AI</a>
+                    </td>
+                    <td>Partnership On AI</td>
+                </tr>
+                <tr class="resource-row" data-topic="AI">
+                    <td>
+                        <a href="https://upworthyscience.com/ai-generator/" target="_blank">Massive benefits of AI come with environmental and human costs. Can AI itself be part of the solution?</a>
+                    </td>
+                    <td>UPWORTHY SCIENCE</td>
+                </tr>
+                <tr class="resource-row" data-topic="AI">
+                    <td>
+                        <a href="https://doi.org/10.51388/20.500.12265/218" target="_blank">AI Literacy: A Framework to Understand, Evaluate, and Use Emerging Technology</a>
+                    </td>
+                    <td>DSpace</td>
+                </tr>
+                <tr class="resource-row" data-topic="AI">
+                    <td>
+                        <a href="https://www.turing.ac.uk/research/research-projects/ai-ethics-and-governance-practice" target="_blank">AI Ethics and Governance in Practice</a>
+                    </td>
+                    <td>The Alan Turing Institute</td>
+                </tr>
+                <tr class="resource-row" data-topic="AI">
+                    <td>
+                        <a href="http://dx.doi.org/10.2139/ssrn.4870387" target="_blank">Truly Risk-Based Regulation of Artificial Intelligence</a>
+                    </td>
+                    <td>SSRN</td>
+                </tr>
+                <tr class="resource-row" data-topic="AI">
+                    <td>
+                        <a href="https://www.europarl.europa.eu/RegData/etudes/IDAN/2024/754450/EXPO_IDA(2024)754450_EN.pdf" target="_blank">Artificial intelligence (AI) and human rights: Using AI as a weapon of repression and its impact on human rights</a>
+                    </td>
+                    <td>European Parliament</td>
+                </tr>
+                <tr class="resource-row" data-topic="AI">
+                    <td>
+                        <a href="https://www.ohchr.org/sites/default/files/documents/issues/business/b-tech/taxonomy-GenAI-Human-Rights-Harms.pdf" target="_blank">Taxonomy of Human Rights Risks Connected to Generative AI</a>
+                    </td>
+                    <td>United Nations Human Rights Office of the High Commissioner</td>
+                </tr>
+                <tr class="resource-row" data-topic="AI">
+                    <td>
+                        <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4877398" target="_blank">Generative Discrimination: What Happens When Generative AI Exhibits Bias, and What Can Be Done About It</a>
+                    </td>
+                    <td>SSRN</td>
+                </tr>
+                <tr class="resource-row" data-topic="AI">
+                    <td>
+                        <a href="https://www.mckinsey.com/mgi/our-research/a-new-future-of-work-the-race-to-deploy-ai-and-raise-skills-in-europe-and-beyond" target="_blank">A new future of work: The race to deploy AI and raise skills in Europe and beyond</a>
+                    </td>
+                    <td>McKinsey Global Institute</td>
+                </tr>
+                <tr class="resource-row" data-topic="AI">
+                    <td>
+                        <a href="https://www.orfonline.org/research/a-roadmap-for-ai-governance-lessons-from-g20-national-strategies" target="_blank">A Roadmap for AI Governance: Lessons from G20 National Strategies</a>
+                    </td>
+                    <td>Observer Research Foundation (ORF)</td>
+                </tr>
+                <tr class="resource-row" data-topic="AI">
+                    <td>
+                        <a href="https://royalsociety.org/-/media/policy/projects/science-in-the-age-of-ai/science-ai-related-inventions-report.pdf" target="_blank">ARTIFICIAL INTELLIGENCE RELATED INVENTIONS</a>
+                    </td>
+                    <td>THE ROYAL SOCIETY</td>
+                </tr>
+                <tr class="resource-row" data-topic="AI">
+                    <td>
+                        <a href="https://royalsociety.org/-/media/policy/projects/science-in-the-age-of-ai/science-in-the-age-of-ai-report.pdf" target="_blank">Science in the age of AI: How artificial intelligence is changing the nature and method of scientific research</a>
+                    </td>
+                    <td>THE ROYAL SOCIETY</td>
+                </tr>
+                <tr class="resource-row" data-topic="D4PG">
+                    <td>
+                        <a href="https://aiverifyfoundation.sg/wp-content/uploads/2024/05/Model-AI-Governance-Framework-for-Generative-AI-May-2024-1-1.pdf" target="_blank">MODEL AI GOVERNANCE FRAMEWORK FOR GENERATIVE AI</a>
+                    </td>
+                    <td>AI Verify Foundation</td>
+                </tr>
+                <tr class="resource-row" data-topic="D4PG">
+                    <td>
+                        <a href="https://dx.doi.org/10.2139/ssrn.3403301" target="_blank">Understanding artificial intelligence ethics and safety A guide for the responsible design and implementation of AI systems in the public sector</a>
+                    </td>
+                    <td>SSRN</td>
+                </tr>
+                <tr class="resource-row" data-topic="D4PG">
+                    <td>
+                        <a href="https://righttowarn.ai/" target="_blank">A Right to Warn about Advanced Artificial Intelligence</a>
+                    </td>
+                    <td>righttowarn.ai</td>
+                </tr>
+                <tr class="resource-row" data-topic="D4PG">
+                    <td>
+                        <a href="https://static1.squarespace.com/static/5b9081c58ab7224793278e1d/t/5f28cbdbe3538d6f2cdfc28a/1596509148255/D4PG+Media+Kit+2020.docx" target="_blank">Data For Public Good Campaign</a>
+                    </td>
+                    <td>Twin Cities Innovation Alliance</td>
+                </tr>
+                <tr class="resource-row" data-topic="AI In Education">
+                    <td>
+                        <a href="https://www.oregon.gov/ode/educator-resources/teachingcontent/Documents/ODE_Generative_Artificial_Intelligence_(AI)_in_K-12_Classrooms_2023.pdf" target="_blank">Generative Artificial Intelligence (AI) in K-12 Classrooms</a>
+                    </td>
+                    <td>Oregon Department of Education</td>
+                </tr>
+                <tr class="resource-row" data-topic="AI In Education">
+                    <td>
+                        <a href="http://www.eun.org/documents/411753/11183389/EUNA-Thematic-Seminar-Report-V5.pdf" target="_blank">Professional Development for Teachers in the Age of AI</a>
+                    </td>
+                    <td>European Schoolnet Academy</td>
+                </tr>
+                <tr class="resource-row" data-topic="D4PG">
+                    <td>
+                        <a href="https://static1.squarespace.com/static/5b9081c58ab7224793278e1d/t/66bf8459b3f4466a3bb8dc66/1723827289621/final_ford-foundation-guiding-framework-r3-full-document-final2.pdf" target="_blank">A Guiding Framework for Vetting Technology Vendors Operating in the Public Sector</a>
+                    </td>
+                    <td>Ford Foundation</td>
+                </tr>
+                
+                <!-- More resources here -->
+            </tbody>
+        </table>
+        <div class="align-right">
+            <a href="/resource-library" class="return-button">Back To Top</a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    const topicBoxes = document.querySelectorAll('.topic-box');
+    const menuItems = document.querySelectorAll('.menu-item');
+    const resourceRows = document.querySelectorAll('.resource-row');
+    const resourcesTitle = document.getElementById('resources-title');
+    const searchInput = document.getElementById('search-input');
+    const showAllButton = document.getElementById('show-all');
+    const navItems = document.querySelectorAll('.nav-item');
+    const resourcesSection = document.getElementById('resources-section');
+    const materialsSection = document.getElementById('materials-section');
+    const searchControls = document.getElementById('search-controls');
+    const topicsSection = document.getElementById('topics-section');
+    const overlay = document.getElementById('popup-overlay');
+    const popupContent = document.getElementById('popup-content');
+    const closePopupButton = document.getElementById('close-popup');
+    const popupMaterialInfo = document.getElementById('popup-material-info');
+    const popupReferencesTable = document.getElementById('popup-references-table').querySelector('tbody');
+    const popupReferencesSection = document.getElementById('popup-references-section');
+
+    function filterItems(topic) {
+        resourceRows.forEach(row => {
+            row.style.display = row.getAttribute('data-topic') === topic || topic === 'all' ? '' : 'none';
+        });
+        resourcesTitle.textContent = topic === 'all' ? 'All Resources' : topic.charAt(0).toUpperCase() + topic.slice(1) + ' Resources';
+        menuItems.forEach(item => item.classList.remove('selected'));
+        if (topic !== 'all') {
+            document.querySelector(`.menu-item[data-topic="${topic}"]`).classList.add('selected');
+        }
+    }
+
+    function searchResources() {
+        const searchTerm = searchInput.value.toLowerCase();
+        resourceRows.forEach(row => {
+            const title = row.querySelector('td').textContent.toLowerCase();
+            if (title.includes(searchTerm)) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    }
+
+    function showAllResources() {
+        resourceRows.forEach(row => row.style.display = '');
+        resourcesTitle.textContent = 'All Resources';
+        topicBoxes.forEach(box => box.classList.remove('selected'));
+    }
+
+    function openPopup(materialInfoHtml, references) {
+        popupMaterialInfo.innerHTML = materialInfoHtml;
+
+        // Only show the references table if there are references
+        if (references.length > 0) {
+            popupReferencesTable.innerHTML = references.map(ref => `
+                <tr>
+                    <td><a href="${ref.href}" target="_blank">${ref.title}</a></td>
+                    <td>${ref.source}</td>
+                </tr>
+            `).join('');
+            popupReferencesSection.classList.remove('hidden');
+        } else {
+            popupReferencesSection.classList.add('hidden');
+        }
+
+        overlay.style.display = 'flex';
+        document.body.classList.add('popup-open'); /* Prevent background scrolling */
+        document.querySelector('.sqs-block-content').classList.add('blur-background'); /* Blur the background */
+        popupContent.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    function closePopup() {
+        overlay.style.display = 'none';
+        document.body.classList.remove('popup-open'); /* Allow background scrolling */
+        document.querySelector('.sqs-block-content').classList.remove('blur-background'); /* Remove blur from the background */
+    }
+
+    topicBoxes.forEach(box => {
+        box.addEventListener('click', () => {
+            const topic = box.getAttribute('data-topic');
+            filterItems(topic);
+        });
+    });
+
+    menuItems.forEach(item => {
+        item.addEventListener('click', () => {
+            const topic = item.getAttribute('data-topic');
+            filterItems(topic);
+        });
+    });
+
+    searchInput.addEventListener('input', searchResources);
+    showAllButton.addEventListener('click', showAllResources);
+
+    navItems.forEach(item => {
+        item.addEventListener('click', function() {
+            navItems.forEach(nav => nav.classList.remove('selected'));
+            this.classList.add('selected');
+            if (this.id === 'resource-list') {
+                resourcesSection.classList.remove('hidden');
+                searchControls.classList.remove('hidden');
+                topicsSection.classList.remove('hidden');
+                materialsSection.classList.add('hidden');
+            } else if (this.id === 'materials') {
+                materialsSection.classList.remove('hidden');
+                searchControls.classList.add('hidden');
+                resourcesSection.classList.add('hidden');
+                topicsSection.classList.add('hidden');
+            }
+        });
+    });
+
+    materialsSection.addEventListener('click', function(event) {
+        if (event.target.closest('.materials-item')) {
+            const item = event.target.closest('.materials-item');
+            const materialInfo = item.querySelector('.materials-info').cloneNode(true);
+
+            // Remove the materials-description
+            const description = materialInfo.querySelector('.materials-description');
+            if (description) description.remove();
+
+            // Only show the learn-more-buttons in the popup
+            const learnMoreButtons = materialInfo.querySelectorAll('.learn-more-button');
+            learnMoreButtons.forEach(button => button.style.display = 'block');
+
+            const materialInfoHtml = materialInfo.innerHTML;
+            const topic = item.getAttribute('data-topic');
+            const references = Array.from(document.querySelectorAll('.reference-row'))
+                .filter(row => row.getAttribute('data-topic') === topic)
+                .map(row => ({
+                    href: row.querySelector('a').href,
+                    title: row.querySelector('a').textContent,
+                    source: row.querySelector('td:nth-child(2)').textContent
+                }));
+            openPopup(materialInfoHtml, references);
+        }
+    });
+
+    closePopupButton.addEventListener('click', closePopup);
+
+    // Set Resource List as the default selected view
+    document.getElementById('resource-list').click();
+});
+
+    </script>
+    
+</div>
+
+<!-- Popup overlay -->
+<div class="overlay" id="popup-overlay">
+    <div class="popup" id="popup-content">
+        <button class="close-button" id="close-popup">Close</button>
+        <div id="popup-material-info"></div>
+        <div class="references-section hidden" id="popup-references-section">
+            <div class="references-title" id="popup-references-title">References</div>
+            <table class="references-table" id="popup-references-table">
+                <thead>
+                    <tr>
+                        <th data-sort="title">Title</th>
+                        <th data-sort="source">Source</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Relevant references will be injected here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
