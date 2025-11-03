@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>TCIA's Book Club | Comic Book Style</title>
+    
+    <!-- Hand-Drawn Comic Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://tcia-admin.github.io/tcia-website/main/book-club/css/main.css">
+    <script src="https://tcia-admin.github.io/tcia-website/main/book-club/js/main.js"></script>
+</head>
+<!-- 
+    DEBUG MODE TOGGLE:
+    To enable debug mode for troubleshooting layout issues, 
+    change this line to: <body class="debug-mode">
+    This will show bright colored overlays to help identify layout problems.
+-->
+<body class="texture-white-stipple">
+    <div class="grimoire-container">
+        <!-- Book Spine with Navigation -->
+        <nav class="book-spine texture-canvas-linen" style="background-color: var(--canvas-white);">
+            <div class="spine-decoration"></div>
+            <ul class="chapter-tabs">
+                <li data-chapter="cover" class="active">
+                    <span class="tab-text">Home</span>
+                </li>
+                <li data-chapter="library">
+                    <span class="tab-text">Library</span>
+                </li>
+                <li class="disabled">
+                    <span class="tab-text">Coming Soon</span>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Main Book Content -->
+        <main class="book-pages">
+            <div class="page-wrapper">
+                <!-- Home Page -->
+                <div class="page current-page" data-page="cover">
+                    <!-- Title and Tagline -->
+                    <div class="comic-panel panel-single" style="text-align: center; background: var(--dark-blue-panel); color: var(--light-text);">
+                        <h1 class="chapter-title" style="font-weight: bold; font-size: 3.5rem; margin-bottom: 1rem; color: var(--peach-accent);">
+                            FUTURES LAB BOOK CLUB
+                        </h1>
+                        <p style="font-size: 1.5rem; font-family: 'Quicksand', sans-serif; margin-bottom: 2rem; font-weight: 600; color: var(--light-text);">
+                            Exploring Afrofuturist Literature Together
+                        </p>
+                    </div>
+
+                    <!-- Next Meeting Info - Prominent -->
+                    <div class="comic-panel panel-single" style="background-color: var(--sunshine-yellow); color: var(--sketch-black); text-align: center;">
+                        <h2 style="font-family: var(--font-title); font-weight: bold; font-size: 2.2rem; margin-bottom: 1rem; color: var(--sketch-black);">
+                            Next Meeting: October 25th
+                        </h2>
+                        <p style="font-size: 1.3rem; font-weight: 600; margin: 0;">
+                            10am CST / 11am EST via Zoom
+                        </p>
+                        <p style="font-size: 1rem; margin-top: 0.5rem;">
+                            Sign up below to get the Zoom link in your email!
+                        </p>
+                    </div>
+
+                    <!-- What is TCIA's Book Club - Two Column Layout -->
+                    <div style="display: flex; gap: 2rem; margin-bottom: 2rem;">
+                        <!-- Parable Image moved here for better above-fold layout -->
+                        <div style="flex: 1; text-align: center; padding: 1.5rem; background: transparent;">
+                            <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/90c12090-fb28-42e0-bf39-0749f6fd2dec/IMG_6353.png?content-type=image%2Fpng" 
+                                 alt="TCIA Book Club: Parable & the Talents group illustration" 
+                                 style="max-width: 100%; height: auto; border: 3px solid var(--peach-accent); border-radius: 8px; box-shadow: 0 4px 12px rgba(26, 24, 22, 0.2);">
+                        </div>
+                        
+                        <!-- Book Club Description with Canvas Grain Texture -->
+                        <div class="comic-panel texture-canvas-grain" style="flex: 2; background-color: var(--canvas-white);">
+                            <h2 style="font-family: var(--font-title); font-weight: bold; font-size: 2rem; margin-bottom: 1rem; color: var(--peach-accent);">What is TCIA's Book Club?</h2>
+                            <p class="body-text" style="font-size: 1.1rem; line-height: 1.7;">
+                                The Twin Cities Innovation Alliance, TCIA, in collaboration with Dr. Tanya Clark, has started an Afrofuturist book club, inspired by Tanya's keynote at last year's D4PG. Open to all, we will dive into Afrofuturist literature and celebrate and explore dystopian, imaginative, and empowering narratives that allow us to imagine our own futures and reflect on our own experiences and futuristic power.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Welcome & Sign Up -->
+                    <div class="comic-panel panel-single" style="background-color: var(--vibrant-green); color: var(--canvas-white);">
+                        <h2 style="font-family: var(--font-title);font-weight: bold; font-size: 2.2rem; margin-bottom: 1rem; color: var(--canvas-white);">
+                            Welcome to the Community
+                        </h2>
+                        <p style="margin-bottom: 1rem; line-height: 1.6; font-size: 1.3rem; font-weight: 500;">
+                            By joining Future Labs Book Club you're also a member of our TCIA network, our overarching community. You'll be able to keep up with book club activity both here, but also in your main Mighty Networks feed.
+                        </p>
+                        <p style="margin-bottom: 1.5rem; line-height: 1.6; font-size: 1.3rem; font-weight: 500;">
+                            Use this link to receive email notifications for book meetings and officially sign up for the club:
+                        </p>
+                        <div style="text-align: center;">
+                            <a href="https://app.youform.com/forms/ohwp8dkw" class="mystical-button" style="background: var(--canvas-white); color: var(--sketch-black); font-size: 1.3rem; padding: 1.2rem 2.5rem;">
+                                Sign Up for Book Club
+                            </a>
+                        </div>
+                        <p style="text-align: center; margin-top: 1rem; font-weight: 600; font-size: 1.3rem;">
+                            Let's get to reading!
+                        </p>
+                    </div>
+
+                    <!-- Current Book Info -->
+                    <div style="display: flex; gap: 2rem; margin-bottom: 2rem;">
+                        <div style="flex: 1; text-align: center; background: transparent; padding: 1.5rem;">
+                            <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/1f9d47a4-2912-461c-833b-69f721fbea39/the+ballad+of+black+tom+-+cover.png?content-type=image%2Fpng" 
+                                 alt="The Ballad of Black Tom book cover" 
+                                 style="max-width: 250px; width: 100%; height: auto; border: 3px solid var(--sketch-black); border-radius: 8px; box-shadow: 0 4px 12px rgba(26, 24, 22, 0.2);">
+                        </div>
+
+                        <div class="comic-panel texture-canvas-grain" style="flex: 2; background-color: var(--canvas-white);">
+                            <h2 style="font-family: var(--font-title); font-size: 2.2rem; color: var(--peach-accent); margin-bottom: 1rem; font-weight: 700;">
+                                Current Book: The Ballad of Black Tom
+                            </h2>
+                            <h3 style="color: var(--electric-purple); margin-bottom: 1.5rem; font-size: 1.3rem; font-weight: 600;">
+                                by Victor LaValle
+                            </h3>
+                            <div style="background: var(--electric-purple); color: var(--canvas-white); padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+                                <p style="margin: 0; font-weight: 600; text-align: center;">
+                                    Get ready for our October 25th discussion!
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Past Books Section -->
+                    <div class="comic-panel panel-single" style="background: var(--dark-blue-panel); text-align: center; padding: 1.5rem 1.5rem 1rem 1.5rem;">
+                        <h2 style="font-family: var(--font-title); font-weight: bold; font-size: 2.5rem; margin-bottom: 0.5rem; color: var(--peach-accent);">
+                            Books We've Explored
+                        </h2>
+                        <p style="color: var(--light-text); font-size: 1.1rem; margin: 0;">
+                            Our journey through Afrofuturist literature
+                        </p>
+                    </div>
+
+                    <!-- Past Books Grid -->
+                    <div style="display: flex; gap: 2rem; margin-bottom: 2rem; flex-wrap: wrap;">
+                        <!-- Binti -->
+                        <div style="flex: 1; min-width: 300px;">
+                            <div class="comic-panel texture-canvas-grain" style="background-color: var(--canvas-white); height: 100%; display: flex; flex-direction: column;">
+                                <div style="text-align: center; margin-bottom: 1rem;">
+                                    <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/1eb05b98-21f3-4679-bb43-aaa6da922fe0/binti+book+cover.jpg?content-type=image%2Fjpeg" 
+                                         alt="Binti book cover" 
+                                         style="max-width: 200px; width: 100%; height: auto; border: 3px solid var(--sketch-black); border-radius: 8px; box-shadow: 0 4px 12px rgba(26, 24, 22, 0.2);">
+                                </div>
+                                <h3 style="font-family: var(--font-title); font-size: 1.8rem; color: var(--peach-accent); margin-bottom: 0.5rem; font-weight: 700; text-align: center;">
+                                    Binti
+                                </h3>
+                                <h4 style="color: var(--electric-purple); margin-bottom: 1rem; font-size: 1.1rem; font-weight: 600; text-align: center;">
+                                    by Nnedi Okorafor
+                                </h4>
+                                <p class="body-text" style="flex-grow: 1;">
+                                    An award-winning novella that follows Binti, a young Himba woman who becomes the first of her people to attend the prestigious Oomza University, setting off on an interstellar journey that will challenge everything she knows about herself and her world.
+                                </p>
+                                <div style="background: var(--vibrant-green); color: var(--canvas-white); padding: 0.75rem; border-radius: 8px; margin-top: 1rem; text-align: center;">
+                                    <p style="margin: 0; font-weight: 600; font-size: 0.9rem;">
+                                        ✓ Discussed September 2025
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Facilitator Section Title -->
+                    <div class="comic-panel panel-single" style="background: var(--dark-blue-panel); text-align: center; align-content: center;">
+                        <h2 style="font-family: var(--font-title); font-weight: bold; font-size: 2rem; margin-bottom: 0; color: var(--peach-accent);">
+                            Our Book Club Curator & Facilitator
+                        </h2>
+                    </div>
+
+                    <!-- Facilitator Info - 3 Panel Layout -->
+                    <div style="display: flex; gap: 2rem; margin-bottom: 2rem;">
+                        <!-- Left Panel: Dr. Clark's Image with Interactive Prompt -->
+                        <div class="comic-panel texture-canvas-linen" style="flex: 1; background-color: var(--canvas-white); text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 2rem;">
+                            <div class="facilitator-image-container" style="display: inline-block; margin-bottom: 1.5rem;">
+                                <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/493110ca-3040-450d-8062-cc39a284a8c5/Tanya+Mini+Card+D4Pg+2025+%231.png?content-type=image%2Fpng" 
+                                     alt="Dr. Tanya N. Clark" 
+                                     style="width: 100%; max-width: 400px; height: auto; border-radius: 8px; cursor: pointer; object-fit: cover;">
+                                
+                                <!-- Hover-Activated Speech Bubble -->
+                                <div class="hover-speech-bubble">
+                                    <h4>"Why is Afrofuturism Important to You?"</h4>
+                                    <p>"My love for speculative genres began in childhood with Dungeons & Dragons, horror, and sci-fi, but discovering Octavia Butler in college introduced me to Black speculative fiction and Afrofuturism. This was transformative, merging my passion for the fantastic with explorations of race, identity, and liberation."</p>
+                                </div>
+                            </div>
+                            
+                            <p style="font-size: 1rem; color: var(--electric-purple); font-weight: 600; font-style: italic; margin: 0 0 0.5rem 0;">
+                                "Why is Afrofuturism Important To You?"
+                            </p>
+                            <p style="font-size: 0.9rem; color: var(--warm-gray); margin: 0;" class="interaction-hint">
+                                <span class="desktop-hint">Hover over Tanya's image to discover her answer!</span>
+                                <span class="mobile-hint">See her answer in the panel below!</span>
+                            </p>
+                        </div>
+
+                        <!-- Middle Panel: Education & Research -->
+                        <div class="comic-panel texture-canvas-grain" style="flex: 1; background-color: var(--canvas-white); display: flex; flex-direction: column; justify-content: center;">
+                            <p class="body-text" style="margin-bottom: 1rem; font-size: 1.1rem; line-height: 1.7;">
+                                <strong>Dr. Tanya N. Clark</strong> is a teacher and dreamer shaped by HBCU culture and a childhood love of all things speculative. She grew up devouring novels by Stephen King and V. C. Andrews, playing Dungeons & Dragons with her big brother, and obsessing over Star Wars, Star Trek, comics, and horror flicks, long before she realized these genres could reflect Black life and possibility. This realization came as an undergrad at Clark Atlanta University, where she first encountered the dynamic work of Zora Neale Hurston, Toni Morrison, and Octavia Butler. 
+                            </p>
+                        </div>
+
+                        <!-- Mobile-Only Quote Panel -->
+                    <div class="comic-panel panel-single mobile-quote-panel" style="background-color: var(--bright-coral); color: var(--canvas-white); text-align: center;">
+                        <h3 style="font-family: var(--font-title); font-size: 1.8rem; margin-bottom: 1rem; color: var(--canvas-white);">
+                            "Why is Afrofuturism Important To You?"
+                        </h3>
+                        <p style="font-size: 1.1rem; line-height: 1.6; font-style: italic; margin: 0;">
+                            "My love for speculative genres began in childhood with Dungeons & Dragons, horror, and sci-fi, but discovering Octavia Butler in college introduced me to Black speculative fiction and Afrofuturism. This was transformative, merging my passion for the fantastic with explorations of race, identity, and liberation."
+                        </p>
+                        <p style="margin-top: 1rem; font-weight: 600; font-size: 1rem;">
+                            — Dr. Tanya N. Clark
+                        </p>
+                    </div>
+
+                        <!-- Right Panel: Afrofuturism Expertise -->
+                        <div class="comic-panel texture-canvas-grain" style="flex: 1; background-color: var(--canvas-white); display: flex; flex-direction: column; justify-content: center;">
+                            <p class="body-text" style="margin-bottom: 0; font-size: 1.1rem; line-height: 1.7;">
+                                Her fascination deepened during graduate study at Temple University, where her understanding of Black speculative traditions expanded to include pioneers like Pauline Hopkins and Samuel R. Delany.
+                            </p>
+                            <p class="body-text" style="margin-bottom: 0; font-size: 1.1rem; line-height: 1.7;">
+                                Now an Assistant Professor at Morehouse College, Dr. Clark teaches and writes at the intersection of Black literature, memory, and liberation. Her popular course black in Wonderland explores Black sci-fi, horror, and fantasy as frameworks for cultural critique, offering students new ways to think about identity, power, and the future.
+                            </p>
+                        </div>
+                    </div>
+
+                    
+
+                </div>
+
+                <!-- Library Page -->
+                <div class="page hidden" data-page="library">
+                    <!-- Library Title -->
+                    <div class="comic-panel panel-single" style="text-align: center; background: var(--dark-blue-panel); color: var(--light-text);">
+                        <h1 class="chapter-title" style="font-weight: bold; font-size: 3.5rem; margin-bottom: 1rem; color: var(--peach-accent);">
+                            BOOK CLUB LIBRARY
+                        </h1>
+                        <p style="font-size: 1.5rem; font-family: 'Quicksand', sans-serif; margin-bottom: 0; font-weight: 600; color: var(--light-text);">
+                            Our Afrofuturist Reading Journey
+                        </p>
+                    </div>
+
+                    <!-- Library Description -->
+                    <div class="comic-panel panel-single texture-canvas-grain" style="background-color: var(--canvas-white); text-align: center;">
+                        <p class="body-text" style="font-size: 1.2rem; margin: 0;">
+                            Explore all the incredible Afrofuturist works we've discussed together. Each book has taken us on a journey through Black speculative fiction, offering new perspectives on identity, power, and possibility.
+                        </p>
+                    </div>
+
+                    <!-- Books Grid -->
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
+                        <!-- Binti -->
+                        <div class="comic-panel texture-canvas-grain" style="background-color: var(--canvas-white); display: flex; flex-direction: column;">
+                            <div style="text-align: center; margin-bottom: 1rem;">
+                                <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/1eb05b98-21f3-4679-bb43-aaa6da922fe0/binti+book+cover.jpg?content-type=image%2Fjpeg" 
+                                     alt="Binti book cover" 
+                                     style="max-width: 200px; width: 100%; height: auto; border: 3px solid var(--sketch-black); border-radius: 8px; box-shadow: 0 4px 12px rgba(26, 24, 22, 0.2);">
+                            </div>
+                            <h3 style="font-family: var(--font-title); font-size: 1.8rem; color: var(--peach-accent); margin-bottom: 0.5rem; font-weight: 700; text-align: center;">
+                                Binti
+                            </h3>
+                            <h4 style="color: var(--electric-purple); margin-bottom: 1rem; font-size: 1.1rem; font-weight: 600; text-align: center;">
+                                by Nnedi Okorafor
+                            </h4>
+                            <p class="body-text" style="flex-grow: 1;">
+                                An award-winning novella that follows Binti, a young Himba woman who becomes the first of her people to attend the prestigious Oomza University, setting off on an interstellar journey that will challenge everything she knows about herself and her world.
+                            </p>
+                            <div style="background: var(--vibrant-green); color: var(--canvas-white); padding: 0.75rem; border-radius: 8px; margin-top: 1rem; text-align: center;">
+                                <p style="margin: 0; font-weight: 600; font-size: 0.9rem;">
+                                    ✓ Discussed September 2025
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Add more books here as you read them -->
+                        <!-- Template for future books:
+                        <div class="comic-panel texture-canvas-grain" style="background-color: var(--canvas-white); display: flex; flex-direction: column;">
+                            <div style="text-align: center; margin-bottom: 1rem;">
+                                <img src="BOOK_COVER_URL" 
+                                     alt="Book Title" 
+                                     style="max-width: 200px; width: 100%; height: auto; border: 3px solid var(--sketch-black); border-radius: 8px; box-shadow: 0 4px 12px rgba(26, 24, 22, 0.2);">
+                            </div>
+                            <h3 style="font-family: var(--font-title); font-size: 1.8rem; color: var(--peach-accent); margin-bottom: 0.5rem; font-weight: 700; text-align: center;">
+                                Book Title
+                            </h3>
+                            <h4 style="color: var(--electric-purple); margin-bottom: 1rem; font-size: 1.1rem; font-weight: 600; text-align: center;">
+                                by Author Name
+                            </h4>
+                            <p class="body-text" style="flex-grow: 1;">
+                                Book description...
+                            </p>
+                            <div style="background: var(--vibrant-green); color: var(--canvas-white); padding: 0.75rem; border-radius: 8px; margin-top: 1rem; text-align: center;">
+                                <p style="margin: 0; font-weight: 600; font-size: 0.9rem;">
+                                    ✓ Discussed Month Year
+                                </p>
+                            </div>
+                        </div>
+                        -->
+                    </div>
+
+                    <!-- Back to Home Button -->
+                    <div style="text-align: center; margin-top: 2rem;">
+                        <button onclick="turnToPage('cover')" class="mystical-button" style="font-size: 1.2rem;">
+                            ← Back to Home
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+            
+        </main>
+    </div>
+
+</body>
+</html>
