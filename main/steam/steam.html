@@ -1,0 +1,2296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>STEAM Collective</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-blue: #06a7e0;
+            --dark-blue: #14003b;
+            --light-gray: #f8f9fa;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: white;
+            overflow-x: hidden;
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+        
+        .hero-image {
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .hero-image:hover {
+            transform: translateY(-2px);
+        }
+        
+        .page-title {
+            background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .page-subtitle {
+            font-size: 1.25rem;
+            color: var(--dark-blue);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .steam-acronym {
+            text-align: center;
+            font-size: 0.95rem;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+        
+        .marketing-space {
+            background: linear-gradient(135deg, rgba(6, 167, 224, 0.08), rgba(20, 0, 59, 0.08));
+            border-radius: 12px;
+            border-left: 4px solid var(--primary-blue);
+            margin: 2rem 0;
+            padding: 2.5rem;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+        }
+        
+        .marketing-space ol {
+            padding-left: 1.5rem;
+        }
+        
+        .marketing-space li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+        
+        .section-title {
+            color: var(--dark-blue);
+            font-weight: 600;
+            margin-top: 2.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--dark-blue));
+            border-radius: 2px;
+        }
+        
+        .content-card {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+        }
+        
+        .content-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .content-card img {
+            border-radius: 12px 12px 0 0;
+            transition: transform 0.3s ease;
+        }
+        
+        .content-card:hover img {
+            transform: scale(1.05);
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(6, 167, 224, 0.1), rgba(20, 0, 59, 0.1));
+            border-left: 4px solid var(--primary-blue);
+            padding: 1.5rem;
+            border-radius: 0 8px 8px 0;
+            margin: 1.5rem 0;
+        }
+        
+        .member-section {
+            background: var(--light-gray);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .member-location {
+            color: var(--primary-blue);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .impact-item {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--primary-blue);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        .impact-item h5 {
+            color: var(--dark-blue);
+            font-weight: 600;
+        }
+        
+        .download-button {
+            background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+            border: none;
+            border-radius: 25px;
+            padding: 12px 30px;
+            color: white;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(6, 167, 224, 0.3);
+        }
+        
+        .download-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(6, 167, 224, 0.4);
+            color: white;
+            text-decoration: none;
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .marketing-space {
+                min-height: 60px;
+                padding: 1rem;
+            }
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Enhanced Navigation & UX */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--dark-blue));
+            z-index: 1000;
+            transition: width 0.25s ease;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(6, 167, 224, 0.3);
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-3px) scale(1.1);
+            box-shadow: 0 6px 20px rgba(6, 167, 224, 0.4);
+        }
+        
+        /* Enhanced Member Cards */
+        .member-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--primary-blue);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .member-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(6, 167, 224, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+        
+        .member-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        
+        .member-card:hover::before {
+            left: 100%;
+        }
+        
+        .member-name {
+            color: var(--dark-blue);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .member-role {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        /* Enhanced Image Gallery */
+        .image-gallery {
+            position: relative;
+        }
+        
+        .gallery-image {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .gallery-image::after {
+            content: '\f065';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 24px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .gallery-image:hover::after {
+            opacity: 1;
+        }
+        
+        .gallery-image:hover img {
+            transform: scale(1.1);
+            filter: brightness(0.7);
+        }
+        
+        /* Image Modal */
+        .image-modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            backdrop-filter: blur(5px);
+        }
+        
+        .modal-content-img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .modal-close:hover {
+            color: var(--primary-blue);
+        }
+        
+        /* Enhanced Animations */
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s ease;
+        }
+        
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s ease;
+        }
+        
+        .slide-in-left.visible,
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.6s ease;
+        }
+        
+        .scale-in.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        /* Timeline Enhancement */
+        .timeline-item {
+            position: relative;
+            padding: 1.5rem 0;
+            border-left: 2px solid var(--border-color);
+            margin-left: 20px;
+            padding-left: 30px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 1.5rem;
+            width: 14px;
+            height: 14px;
+            background: var(--primary-blue);
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 0 2px var(--primary-blue);
+        }
+        
+        .timeline-item:hover::before {
+            transform: scale(1.3);
+            transition: transform 0.3s ease;
+        }
+        
+        /* Statistics Counter */
+        .stat-counter {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Gallery Section Button */
+        .gallery-section-btn {
+            background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+            border: none;
+            border-radius: 12px;
+            padding: 18px 40px;
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(6, 167, 224, 0.3);
+            cursor: pointer;
+            margin: 3rem auto;
+            text-align: center;
+        }
+
+        .gallery-section-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(6, 167, 224, 0.4);
+            color: white;
+            text-decoration: none;
+        }
+
+        .gallery-section-btn i {
+            font-size: 1.3rem;
+        }
+
+        /* Enhanced Mobile Experience */
+        @media (max-width: 768px) {
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
+                font-size: 18px;
+            }
+            
+            .gallery-section-btn {
+                padding: 15px 30px;
+                font-size: 1rem;
+                margin: 2rem auto;
+            }
+            
+            .gallery-section-btn i {
+                font-size: 1.1rem;
+            }
+            
+            .member-card {
+                margin-bottom: 1rem;
+                padding: 1.25rem;
+            }
+            
+            .timeline-item {
+                margin-left: 15px;
+                padding-left: 25px;
+            }
+            
+            .stat-counter {
+                font-size: 2rem;
+            }
+            
+            .modal-content-img {
+                max-width: 95%;
+                max-height: 85%;
+            }
+            
+            .modal-close {
+                top: 10px;
+                right: 20px;
+                font-size: 30px;
+            }
+        }
+        
+        /* Loading Animation */
+        .loading-shimmer {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        
+        /* Improved Typography */
+        .lead-emphasis {
+            font-size: 1.15rem;
+            font-weight: 500;
+            color: var(--dark-blue);
+            line-height: 1.7;
+        }
+        
+        /* Interactive Elements */
+        .interactive-highlight {
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .interactive-highlight::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-blue);
+            transition: width 0.3s ease;
+        }
+        
+        .interactive-highlight:hover::after {
+            width: 100%;
+        }
+        
+        /* Video Carousel */
+        .video-carousel-container {
+            background: linear-gradient(135deg, rgba(6, 167, 224, 0.05), rgba(20, 0, 59, 0.05));
+            border-radius: 16px;
+            padding: 3rem 4rem;
+            margin: 3rem 0;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .video-carousel-container:hover {
+            border: 2px solid var(--primary-blue);
+            box-shadow: 0 8px 30px rgba(6, 167, 224, 0.15);
+            transform: translateY(-2px);
+        }
+        
+        .video-carousel {
+            position: relative;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+        
+        .carousel-wrapper {
+            overflow: hidden;
+            border-radius: 12px;
+            position: relative;
+            margin: 0 70px;
+        }
+        
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease;
+            gap: 1.5rem;
+        }
+        
+        .video-card {
+            flex: 0 0 300px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .video-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+        }
+        
+        .video-thumbnail {
+            position: relative;
+            width: 100%;
+            height: 180px;
+            overflow: hidden;
+        }
+        
+        .video-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .video-card:hover .video-thumbnail img {
+            transform: scale(1.1);
+        }
+        
+        .play-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .play-button {
+            width: 60px;
+            height: 60px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: var(--primary-blue);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .video-card:hover .play-button {
+            background: white;
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+        
+        .video-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .video-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--dark-blue);
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+        }
+        
+        .video-description {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.5;
+        }
+        
+        /* Carousel Navigation */
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 45px;
+            height: 45px;
+            background: rgba(255,255,255,0.9);
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: var(--primary-blue);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .carousel-nav:hover {
+            background: white;
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+        
+        .carousel-nav.prev {
+            left: 15px;
+        }
+        
+        .carousel-nav.next {
+            right: 15px;
+        }
+        
+        .carousel-nav:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .carousel-nav:disabled:hover {
+            transform: translateY(-50%) scale(1);
+        }
+        
+        /* Carousel Indicators */
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 2rem;
+        }
+        
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(6, 167, 224, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .indicator.active {
+            background: var(--primary-blue);
+            transform: scale(1.2);
+        }
+        
+        /* Video Modal */
+        .video-modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            backdrop-filter: blur(5px);
+        }
+        
+        .video-modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 800px;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        .video-modal-header {
+            background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+            color: white;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .video-modal-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 0;
+        }
+        
+        .video-modal-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background 0.3s ease;
+        }
+        
+        .video-modal-close:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        
+        .video-modal-body {
+            padding: 0;
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+        }
+        
+        .video-modal-body iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .video-carousel-container {
+                padding: 2rem 1rem;
+                margin: 2rem 0;
+            }
+            
+            .carousel-wrapper {
+                margin: 0 55px;
+            }
+            
+            .video-card {
+                flex: 0 0 280px;
+            }
+            
+            .carousel-nav {
+                width: 42px;
+                height: 42px;
+                font-size: 16px;
+            }
+            
+            .carousel-nav.prev {
+                left: 5px;
+            }
+            
+            .carousel-nav.next {
+                right: 5px;
+            }
+            
+            .video-modal-content {
+                width: 95%;
+                margin: 0 2.5%;
+            }
+            
+            .video-modal-header {
+                padding: 0.75rem 1rem;
+            }
+            
+            .video-modal-title {
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .video-carousel-container {
+                padding: 1.5rem 0.5rem;
+            }
+            
+            .carousel-wrapper {
+                margin: 0 48px;
+            }
+            
+            .video-card {
+                flex: 0 0 calc(100vw - 120px);
+                max-width: 280px;
+            }
+            
+            .video-thumbnail {
+                height: 140px;
+            }
+            
+            .video-info {
+                padding: 1rem;
+            }
+            
+            .play-button {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+            
+            .carousel-nav {
+                width: 38px;
+                height: 38px;
+                font-size: 14px;
+            }
+            
+            .carousel-nav.prev {
+                left: 2px;
+            }
+            
+            .carousel-nav.next {
+                right: 2px;
+            }
+        }
+        
+        /* =====================================
+           🖼️ GALLERY DRAWER STYLES
+           ===================================== */
+        
+        /* Gallery Trigger Button */
+        .gallery-trigger-btn {
+            position: fixed;
+            top: 50%;
+            right: 30px;
+            transform: translateY(-50%);
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 1500;
+            box-shadow: 0 8px 25px rgba(6, 167, 224, 0.3);
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            animation: galleryPulse 3s infinite;
+        }
+        
+        .gallery-trigger-btn.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .gallery-trigger-btn:hover {
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 12px 35px rgba(6, 167, 224, 0.4);
+        }
+        
+        .gallery-trigger-btn.active {
+            transform: translateY(-50%) rotate(45deg);
+        }
+        
+        @keyframes galleryPulse {
+            0%, 100% { 
+                box-shadow: 0 8px 25px rgba(6, 167, 224, 0.3); 
+            }
+            50% { 
+                box-shadow: 0 8px 35px rgba(6, 167, 224, 0.5), 0 0 0 15px rgba(6, 167, 224, 0.1); 
+            }
+        }
+        
+        /* Gallery Drawer Overlay */
+        .gallery-drawer-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .gallery-drawer-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Gallery Drawer Panel */
+        .gallery-drawer {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 85%;
+            max-width: 1200px;
+            height: 100vh;
+            background: white;
+            transform: translateX(100%);
+            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            z-index: 2001;
+            overflow: hidden;
+            box-shadow: -10px 0 50px rgba(0, 0, 0, 0.3);
+        }
+        
+        .gallery-drawer.active {
+            transform: translateX(0);
+        }
+        
+        /* Gallery Header */
+        .gallery-drawer-header {
+            background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+            color: white;
+            padding: 2rem;
+            position: relative;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .gallery-drawer-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 0 0 0.5rem 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.9), rgba(255,255,255,1));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .gallery-drawer-subtitle {
+            opacity: 0.9;
+            font-size: 1.1rem;
+            margin: 0;
+        }
+        
+        .gallery-close-btn {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .gallery-close-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(90deg);
+        }
+        
+        /* Gallery Content Area */
+        .gallery-drawer-content {
+            height: calc(100vh - 120px);
+            overflow-y: auto;
+            padding: 2rem;
+            background: #fafafa;
+        }
+        
+        /* Masonry Grid */
+        .gallery-masonry {
+            column-count: 4;
+            column-gap: 1.5rem;
+            column-fill: balance;
+        }
+        
+        .gallery-item {
+            break-inside: avoid;
+            margin-bottom: 1.5rem;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .gallery-item-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: all 0.4s ease;
+            opacity: 0;
+        }
+        
+        .gallery-item-image.loaded {
+            opacity: 1;
+        }
+        
+        .gallery-item:hover .gallery-item-image {
+            transform: scale(1.05);
+        }
+        
+        .gallery-item-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(6, 167, 224, 0.8), rgba(20, 0, 59, 0.8));
+            opacity: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-item-overlay {
+            opacity: 1;
+        }
+        
+        .gallery-item-icon {
+            color: white;
+            font-size: 3rem;
+            transform: scale(0.5);
+            transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        
+        .gallery-item:hover .gallery-item-icon {
+            transform: scale(1);
+        }
+        
+        /* Gallery Image Modal */
+        .gallery-image-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(15px);
+            z-index: 3000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        
+        .gallery-image-modal.active {
+            display: flex;
+            opacity: 1;
+        }
+        
+        .gallery-modal-content {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+            animation: modalSlideIn 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .gallery-modal-image {
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+        }
+        
+        .gallery-modal-close {
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+        }
+        
+        .gallery-modal-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(90deg) scale(1.1);
+        }
+        
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8) translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+        
+        /* Gallery Loading Animation */
+        .gallery-loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 200px;
+            font-size: 1.2rem;
+            color: var(--primary-blue);
+        }
+        
+        .gallery-loading::after {
+            content: '';
+            width: 30px;
+            height: 30px;
+            border: 3px solid var(--primary-blue);
+            border-top-color: transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-left: 1rem;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .gallery-masonry {
+                column-count: 3;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .gallery-drawer {
+                width: 95%;
+            }
+            
+            .gallery-masonry {
+                column-count: 2;
+                column-gap: 1rem;
+            }
+            
+            .gallery-drawer-content {
+                padding: 1rem;
+            }
+            
+            .gallery-trigger-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+                right: 20px;
+            }
+            
+            .gallery-drawer-header {
+                padding: 1.5rem;
+            }
+            
+            .gallery-drawer-title {
+                font-size: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .gallery-drawer {
+                width: 100%;
+                height: 100vh;
+            }
+            
+            .gallery-masonry {
+                column-count: 1;
+            }
+            
+            .gallery-modal-close {
+                top: -40px;
+                right: -40px;
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress"></div>
+    
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+    
+    <!-- Image Modal -->
+    <div class="image-modal" id="imageModal">
+        <span class="modal-close" id="modalClose">&times;</span>
+        <img class="modal-content-img" id="modalImage">
+    </div>
+    
+    <!-- Video Modal -->
+    <div class="video-modal" id="videoModal">
+        <div class="video-modal-content">
+            <div class="video-modal-header">
+                <h3 class="video-modal-title" id="videoModalTitle">Youth Summit Video Modal Title</h3>
+                <button class="video-modal-close" id="videoModalClose">&times;</button>
+            </div>
+            <div class="video-modal-body" id="videoModalBody">
+                <!-- Video iframe will be inserted here -->
+            </div>
+        </div>
+    </div>
+    
+    <!-- Gallery Trigger Button -->
+    <button class="gallery-trigger-btn" id="galleryTriggerBtn" aria-label="Open gallery">
+        <i class="fas fa-images"></i>
+    </button>
+    
+    <!-- Gallery Drawer Overlay -->
+    <div class="gallery-drawer-overlay" id="galleryDrawerOverlay"></div>
+    
+    <!-- Gallery Drawer -->
+    <div class="gallery-drawer" id="galleryDrawer">
+        <div class="gallery-drawer-header">
+            <h2 class="gallery-drawer-title">STEAM Collective Photo Gallery</h2>
+            <p class="gallery-drawer-subtitle">Explore moments from our events and initiatives</p>
+            <button class="gallery-close-btn" id="galleryCloseBtn" aria-label="Close gallery">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="gallery-drawer-content">
+            <div class="gallery-loading" id="galleryLoading">
+                Loading gallery...
+            </div>
+            <div class="gallery-masonry" id="galleryMasonry">
+                <!-- Gallery items will be dynamically populated -->
+            </div>
+        </div>
+    </div>
+    
+    <!-- Gallery Image Modal -->
+    <div class="gallery-image-modal" id="galleryImageModal">
+        <div class="gallery-modal-content">
+            <img class="gallery-modal-image" id="galleryModalImage" src="" alt="">
+            <button class="gallery-modal-close" id="galleryModalClose" aria-label="Close image">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+    
+    <div class="container-fluid px-3 px-md-5 py-4">
+        <!-- Hero Section -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="hero-section">
+                    <img src="https://images.ctfassets.net/x2t7lek2vf7h/2aZ9XG1S1oT9rAMFBPmgPk/f8b0c732de1d968269925ffc6059964c/unnamed__12_.jpg?w=960&h=540&fl=progressive&q=50&fm=jpg" 
+                         class="img-fluid hero-image w-100" 
+                         alt="Science Museum building" 
+                         style="max-height: 400px; object-fit: cover;">
+                </div>
+            </div>
+        </div>
+
+        <!-- Title -->
+        <div class="row">
+            <div class="col-12">
+                <h1 class="page-title fade-in">STEAM Collective</h1>
+                <p class="page-subtitle fade-in">Developing Intergenerational Socio-Technical Leaders</p>
+                <p class="steam-acronym fade-in">STEAM: Science, Technology, Engineering, Arts, Mathematics</p>
+            </div>
+        </div>
+
+        <!-- Marketing Content -->
+        <div class="row">
+            <div class="col-12">
+                <div class="marketing-space fade-in">
+                    <h3 style="color: var(--dark-blue); font-weight: 600; margin-bottom: 1.5rem;">From Museum Initiative to Independent Program</h3>
+                    
+                    <p class="mb-4"><strong>In 2025</strong>, the Science Museum of Minnesota transitioned its Racial Justice STEAM Collective Initiative to the <strong>Twin Cities Innovation Alliance (TCIA)</strong> as a standalone program. This expansion marks an exciting new chapter in our mission.</p>
+                    
+                    <h4 style="color: var(--primary-blue); font-weight: 600; margin-bottom: 1rem;">Our Intergenerational STEAM Cultivation Pipeline</h4>
+                    
+                    <ol class="mb-0" style="font-size: 1.05rem;">
+                        <li style="margin-bottom: 1rem;"><strong>Engage Youth</strong> interested in STEAM career pathways through Ideathons, learning cohorts, and Youth Participatory Action Research (YPAR)</li>
+                        <li style="margin-bottom: 1rem;"><strong>Connect STEAM Educators</strong> and the field through communities of practice and learning exchanges</li>
+                        <li style="margin-bottom: 0;"><strong>Partner with Organizations</strong>, schools, and institutions to deliver training, curriculum, and summits that raise awareness and deepen outreach strategies</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- Goals and Impact Section -->
+        <div class="row mt-5">
+            <div class="col-md-6">
+                <div class="fade-in">
+                    <h2 class="section-title">Goals of the STEAM Collective</h2>
+                    <p>The STEAM Collective's long-term goals are to utilize our cross-regional connections to bring youth-focused racial justice summits to every community that our group members represent. By developing a framework or toolkit that demonstrates our deep model of power-sharing, we aim to change the museum and educational fields through:</p>
+
+                    <div class="impact-item">
+                        <h5>Mentorship Models</h5>
+                        <p class="mb-0">Creating new entryways to the STEAM-pipeline, support career development, and support ongoing community efforts</p>
+                    </div>
+
+                    <div class="impact-item">
+                        <h5>Project Expansion</h5>
+                        <p class="mb-0">Developing a network of Black, Indigenous, and people of color STEAM professionals that grows beyond our initial regions</p>
+                    </div>
+
+                    <div class="impact-item">
+                        <h5>Self-Sustainability</h5>
+                        <p class="mb-0">Transitioning this work to being driven by partners, individuals, and organizations</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="fade-in">
+                    <h2 class="section-title">Impact on Participants</h2>
+                    <p>What are the impacts on participants and community members?</p>
+
+                    <div class="impact-item">
+                        <h5>Empowerment to Autonomy</h5>
+                        <p class="mb-0">We want participants to walk away recognizing the power that they have to make a difference in their communities.</p>
+                    </div>
+
+                    <div class="impact-item">
+                        <h5>Collaboration Experience</h5>
+                        <p class="mb-0">Power-sharing models and community-first engagement practices can change the way participants think about collaboration and project management.</p>
+                    </div>
+
+                    <div class="impact-item">
+                        <h5>Resource Access</h5>
+                        <p class="mb-0">Access to resources, connections, and research that allow deeper connections between participants, partnering organizations, and STEAM professionals.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="row mt-5">
+            <div class="col-lg-8">
+                <div class="fade-in">
+                    <h2 class="section-title">Open Innovation Challenge 2025</h2>
+                    
+                    <div class="highlight-box">
+                        <p class="mb-3"><strong>In May 2025</strong>, the Racial Justice STEAM Collective (RJSC) hosted the <strong>Open Innovation Challenge</strong> in the Fargo-Moorhead area.</p>
+                    </div>
+
+                    <p><strong>About the Program:</strong> This program centered on empowering Black, Indigenous, and people of color youth ages 15-23. Participants came together to brainstorm solutions to issues at the intersection of race/culture and science, technology, engineering, art, and math (STEAM). The format was similar to a hackathon, except that rather than working solely on computers and engineering, students were encouraged to collaborate and ideate directly, using a variety of means to deliver their solutions, including presentations, models, posters, zines, and more.</p>
+
+                    <div class="highlight-box">
+                        <p class="mb-0"><strong>Topic Selection Process:</strong> The community participated in <strong>Conversation Cafe</strong> events in September 2024 to discuss issues facing their communities. Following these sessions, the RJSC selected a topic based on community relevance and conducted research efforts to inform the Open Innovation Challenge held in May 2025.</p>
+                    </div>
+
+                    <h3 class="section-title">About the RJSC's Youth Summit 2024</h3>
+                    
+                    <p>Over the course of two Saturdays in March 2024, youth participants came to the Science Museum of Minnesota to explore the many intersections of race and health, engineering, environmental justice, and technology.</p>
+
+                    <p>At the March 16 event, participants learned about the intersections of race and engineering with partners from the University of Minnesota Libraries, then dug into race and environmental justice with social justice advocate and teaching artist <a href="https://www.linkedin.com/in/eshay-brantley-0630a372/" target="_blank" class="text-decoration-none fw-bold">Eshay Brantley</a>.</p>
+
+                    <p>In the March 30 session, participants took a look at the intersections of race and data with <a href="https://www.shaynakaruman.com/" target="_blank" class="text-decoration-none fw-bold">Shayna Karuman</a> and <a href="https://www.tciamn.org/marika" target="_blank" class="text-decoration-none fw-bold">Marika Pfefferkorn</a>, supported with a zine from <a href="https://www.wangshuf.com/" target="_blank" class="text-decoration-none fw-bold">Sophie Wang</a>, then investigated the intersection of race and health care with a variety of Black, Indigenous, and people of color health care professionals and circle keepers.</p>
+
+                    <div class="highlight-box">
+                        <p class="mb-0"><strong>How did it go?</strong> Explore feedback provided from youth participants below <!--in our video carousel, or view the full playlist <a href="https://www.youtube.com/playlist?list=PLmPqSe24nVbhxqj1p21Aiib1lASjKXXgF" target="_blank" class="text-decoration-none fw-bold">here</a>.--></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="image-gallery fade-in">
+                    <!-- Enhanced Image Gallery -->
+                    <div class="content-card gallery-image scale-in" data-src="https://images.ctfassets.net/x2t7lek2vf7h/2JfLcuuomwbSI2PKakjzWn/e999bc7c15a9369cd2d5b516dc6b4829/Untitled-3.png?w=800&h=450&q=85&fm=png">
+                        <img src="https://images.ctfassets.net/x2t7lek2vf7h/2JfLcuuomwbSI2PKakjzWn/e999bc7c15a9369cd2d5b516dc6b4829/Untitled-3.png?w=500&h=280&q=75&fm=png" 
+                             class="img-fluid" alt="RJSC Event - Youth Summit 2024">
+                    </div>
+
+                    <div class="content-card gallery-image scale-in" data-src="https://images.ctfassets.net/x2t7lek2vf7h/69ejnu52AZhMSGcxd3EMj7/4cd16c4b4f1fb1b3e9001ec3afbd1472/Untitled-2.png?w=800&h=450&q=85&fm=png">
+                        <img src="https://images.ctfassets.net/x2t7lek2vf7h/69ejnu52AZhMSGcxd3EMj7/4cd16c4b4f1fb1b3e9001ec3afbd1472/Untitled-2.png?w=500&h=280&q=75&fm=png" 
+                             class="img-fluid" alt="RJSC Participants - Community Engagement">
+                    </div>
+
+                    <div class="content-card gallery-image scale-in" data-src="https://images.ctfassets.net/x2t7lek2vf7h/5D0dGUfRitfbuPDLKVIf7n/5880f2b59f0a5e4f5a3ca0a7eb8597f1/Untitled-4.png?w=800&h=450&q=85&fm=png">
+                        <img src="https://images.ctfassets.net/x2t7lek2vf7h/5D0dGUfRitfbuPDLKVIf7n/5880f2b59f0a5e4f5a3ca0a7eb8597f1/Untitled-4.png?w=500&h=280&q=75&fm=png" 
+                             class="img-fluid" alt="RJSC Workshop - Innovation Challenge">
+                    </div>
+
+                    <div class="content-card p-3 text-center scale-in">
+                        <a href="https://assets.ctfassets.net/x2t7lek2vf7h/1CQ1gzboGieirGRG6VgRRJ/d856901fa04896d6218d5140ae45a0b5/RJSC-2024-infographic.pdf" 
+                           target="_blank" 
+                           class="download-button">
+                            <i class="fas fa-chart-bar me-2"></i>2024 at a Glance
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Video Carousel Section -->
+        <div class="row">
+            <div class="col-12">
+                <div class="video-carousel-container fade-in">
+                    <h3 class="section-title text-center mb-4">YOUTH SUMMIT STEAM COLLECTIVE</h3>
+                    <p class="text-center mb-4 lead-emphasis">Hear directly from the youth participants about their experiences and insights from the STEAM Collective Youth Summit.</p>
+                    
+                    <div class="video-carousel">
+                        <div class="carousel-wrapper">
+                            <div class="carousel-track" id="carouselTrack">
+                                <!-- Video cards will be populated by JavaScript -->
+                            </div>
+                            
+                            <button class="carousel-nav prev" id="prevBtn" aria-label="Previous video">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button class="carousel-nav next" id="nextBtn" aria-label="Next video">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="carousel-indicators" id="carouselIndicators">
+                            <!-- Indicators will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gallery Section Button -->
+        <div class="row mt-5">
+            <div class="col-12 text-center">
+                <button class="gallery-section-btn gallery-btn-trigger">
+                    <i class="fas fa-images"></i>
+                    Explore Our Photo Gallery
+                </button>
+            </div>
+        </div>
+
+        <!-- History Section -->
+        <div class="row mt-5">
+            <div class="col-12">
+                <div class="fade-in">
+                    <h2 class="section-title">History of the STEAM Collective</h2>
+                    
+                    <h4 style="color: var(--primary-blue); font-weight: 600; margin-bottom: 1rem;">Our Roots</h4>
+                    <p class="mb-4">The relationships and projects of the RJSC grew from the Science Museum of Minnesota's long-standing commitment to working <a href="http://smm.org/us" target="_blank" class="text-decoration-none fw-bold">through the lens of race</a>. Several of the future RJSC members served as consultants and advisors in the development of the <em>RACE: Are We So Different</em> exhibition. These networks continued to expand as we developed smaller footprint RACE models in partnership with organizations in:</p>
+                    
+                    <ul style="margin-bottom: 2rem; font-size: 1.05rem;">
+                        <li>Twin Cities</li>
+                        <li>Fargo-Moorhead</li>
+                        <li>Rochester</li>
+                        <li>Worthington</li>
+                    </ul>
+
+                    <h4 style="color: var(--primary-blue); font-weight: 600; margin-bottom: 1rem;">Evolution & Growth</h4>
+                    <p class="mb-4">Through deep relationships and consistent trust-building, these connections evolved into the RJSC. <strong>With initial funding from the National Science Foundation</strong>, the group created youth leadership development programs, podcasts, and digital board games. <a href="https://sites.google.com/smm.org/stem-rj/home" target="_blank" class="text-decoration-none fw-bold">Explore our past work</a>.</p>
+
+                    <h4 style="color: var(--primary-blue); font-weight: 600; margin-bottom: 1rem;">Current Mission</h4>
+                    <p class="mb-0">With support from the Association of Science and Technology Centers' <a href="https://communityscience.astc.org/2023-funding-opportunities/cultivating-community-science-stipends/" target="_blank" class="text-decoration-none fw-bold">Cultivating Community Science Stipends</a> program, the RJSC is developing youth-focused racial justice workshops that travel throughout the Great Lakes region. We are committed to <strong>repositioning museums as learners, supporters, and facilitators</strong> — rather than the sole experts — while <strong>community members become the primary decision-makers and deliverers of expertise</strong>.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Members Section -->
+        <div class="row mt-5">
+            <div class="col-12">
+                <div class="fade-in">
+                    <h2 class="section-title">Meet the STEAM Collective Members</h2>
+                    <p class="lead">The Collective's work is built on the cross-regional connections of our group members.</p>
+
+                    <div class="member-section slide-in-left">
+                        <h4 class="member-location">Fargo-Moorhead</h4>
+                        
+                        <div class="member-card">
+                            <div class="member-name">Jered Pigeon</div>
+                            <div class="member-role">Director of Diversity & Inclusion at Minnesota State University Moorhead; business owner</div>
+                        </div>
+
+                        <div class="member-card">
+                            <div class="member-name">Frederick Edwards Jr.</div>
+                            <div class="member-role">Co-founder of Umoja writing workshops, <a href="https://www.bushfoundation.org/people?spc_id=a015f00000O4B3CAAV&year=2024&search_within=2024+Bush+Fellows" target="_blank" class="interactive-highlight">Bush fellow</a>, youth development professional, motivational speaker, community educator, and spoken word artist from North Minneapolis</div>
+                        </div>
+                    </div>
+
+                    <div class="member-section slide-in-right">
+                        <h4 class="member-location">Twin Cities</h4>
+                        
+                        <div class="member-card">
+                            <div class="member-name">Marika Pfefferkorn</div>
+                            <div class="member-role">Co-founder and Solutions and Sustainability Officer at <a href="https://www.tciamn.org/" target="_blank" class="interactive-highlight">Twin Cities Innovation Alliance</a></div>
+                        </div>
+
+                        <div class="member-card">
+                            <div class="member-name">Nathasha Chandrasekharan</div>
+                            <div class="member-role">Program/research administrator at University of Minnesota Department of Pediatrics, STEAM educator, youth development professional</div>
+                        </div>
+
+                        <div class="member-card">
+                            <div class="member-name">Shayna Karuman</div>
+                            <div class="member-role">Community organizer, artist, co-founder of Fargo's <a href="https://plainsart.org/events/asian-night-market-and-media/" target="_blank" class="interactive-highlight">Asian Night Market</a></div>
+                        </div>
+
+                        <div class="member-card">
+                            <div class="member-name">Charly Vang, MPH</div>
+                            <div class="member-role">Data scientist, Hennepin Healthcare Research Institute</div>
+                        </div>
+                    </div>
+
+                    <div class="member-section slide-in-left">
+                        <h4 class="member-location">Rochester</h4>
+                        
+                        <div class="member-card">
+                            <div class="member-name">Karen Martinez</div>
+                            <div class="member-role">Field office assistant for <a href="https://educationminnesota.org/" target="_blank" class="interactive-highlight">Education Minnesota</a>, co-designer for <a href="https://rochesterarea.org/initiatives/housingcoalition/" target="_blank" class="interactive-highlight">Coalition for Rochester Area Housing</a></div>
+                        </div>
+
+                        <div class="member-card">
+                            <div class="member-name">Karimatu Jalloh</div>
+                            <div class="member-role">Clinical surgical research assistant at Penn Medicine, University of Pennsylvania Health System</div>
+                        </div>
+
+                        <div class="member-card">
+                            <div class="member-name">Beth Martinez</div>
+                            <div class="member-role">Parent advocate at <a href="https://c2cmn.com/" target="_blank" class="interactive-highlight">Cradle 2 Career</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gallery Section Button -->
+        <div class="row mt-5">
+            <div class="col-12 text-center">
+                <button class="gallery-section-btn gallery-btn-trigger">
+                    <i class="fas fa-images"></i>
+                    Explore Our Photo Gallery
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Video data
+        const videoData = [
+            {
+                id: 'dzuUr7xEXrc',
+                title: 'STEAM Collective Day 1',
+                description: '',
+                thumbnail: 'https://img.youtube.com/vi/dzuUr7xEXrc/maxresdefault.jpg'
+            },
+            {
+                id: 'Qk5k8DyHE34',
+                title: 'STEAM Collective Day 2',
+                description: '',
+                thumbnail: 'https://img.youtube.com/vi/Qk5k8DyHE34/maxresdefault.jpg'
+            },
+            {
+                id: '4Ngo5MhWPoI',
+                title: 'STEAM Collective Testimonials',
+                description: '',
+                thumbnail: 'https://img.youtube.com/vi/4Ngo5MhWPoI/maxresdefault.jpg'
+            }
+        ];
+
+        // Enhanced scroll and animation functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            // Scroll Progress Bar
+            const progressBar = document.querySelector('.scroll-progress');
+            const backToTopBtn = document.getElementById('backToTop');
+            const galleryTriggerBtn = document.getElementById('galleryTriggerBtn');
+            
+            function updateScrollProgress() {
+                const scrollTotal = document.documentElement.scrollHeight - window.innerHeight;
+                const scrollProgress = (window.pageYOffset / scrollTotal) * 100;
+                progressBar.style.width = scrollProgress + '%';
+                
+                // Show/hide back to top button
+                if (window.pageYOffset > 300) {
+                    backToTopBtn.classList.add('visible');
+                    galleryTriggerBtn.classList.add('visible');
+                } else {
+                    backToTopBtn.classList.remove('visible');
+                    galleryTriggerBtn.classList.remove('visible');
+                }
+            }
+            
+            window.addEventListener('scroll', updateScrollProgress);
+            
+            // Back to top functionality
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // Enhanced scroll animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all animated elements
+            const animatedElements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in');
+            animatedElements.forEach(el => observer.observe(el));
+            
+            // Image Gallery Modal
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const modalClose = document.getElementById('modalClose');
+            const galleryImages = document.querySelectorAll('.gallery-image');
+            
+            galleryImages.forEach(img => {
+                img.addEventListener('click', () => {
+                    modal.style.display = 'block';
+                    modalImg.src = img.dataset.src;
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+            
+            // Close modal functionality
+            function closeModal() {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+            
+            modalClose.addEventListener('click', closeModal);
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+            
+            // Keyboard navigation for modal
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal.style.display === 'block') {
+                    closeModal();
+                }
+            });
+            
+            // Enhanced member card interactions
+            const memberCards = document.querySelectorAll('.member-card');
+            memberCards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.style.transform = 'translateY(-3px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+            
+            // Smooth scrolling for internal links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+            
+            // Enhanced link interactions
+            const interactiveLinks = document.querySelectorAll('.interactive-highlight');
+            interactiveLinks.forEach(link => {
+                link.addEventListener('mouseenter', () => {
+                    link.style.color = 'var(--primary-blue)';
+                });
+                
+                link.addEventListener('mouseleave', () => {
+                    link.style.color = '';
+                });
+            });
+            
+            // Parallax effect for hero image (subtle)
+            const heroImage = document.querySelector('.hero-image');
+            if (heroImage) {
+                window.addEventListener('scroll', () => {
+                    const scrolled = window.pageYOffset;
+                    const rate = scrolled * -0.2;
+                    if (scrolled < window.innerHeight) {
+                        heroImage.style.transform = `translateY(${rate}px)`;
+                    }
+                });
+            }
+            
+            // Performance optimization - debounce scroll events
+            function debounce(func, wait) {
+                let timeout;
+                return function executedFunction(...args) {
+                    const later = () => {
+                        clearTimeout(timeout);
+                        func(...args);
+                    };
+                    clearTimeout(timeout);
+                    timeout = setTimeout(later, wait);
+                };
+            }
+            
+            // Debounced scroll handler
+            const debouncedScrollHandler = debounce(updateScrollProgress, 10);
+            window.removeEventListener('scroll', updateScrollProgress);
+            window.addEventListener('scroll', debouncedScrollHandler);
+            
+            // Video Carousel Functionality
+            let currentSlide = 0;
+            const carouselTrack = document.getElementById('carouselTrack');
+            const carouselIndicators = document.getElementById('carouselIndicators');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const videoModal = document.getElementById('videoModal');
+            const videoModalTitle = document.getElementById('videoModalTitle');
+            const videoModalBody = document.getElementById('videoModalBody');
+            const videoModalClose = document.getElementById('videoModalClose');
+
+            function createVideoCard(video, index) {
+                return `
+                    <div class="video-card" data-video-id="${video.id}" data-index="${index}">
+                        <div class="video-thumbnail">
+                            <img src="${video.thumbnail}" alt="${video.title}" loading="lazy">
+                            <div class="play-overlay">
+                                <div class="play-button">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <h4 class="video-title">${video.title}</h4>
+                            <p class="video-description">${video.description}</p>
+                        </div>
+                    </div>
+                `;
+            }
+
+            function createIndicator(index) {
+                return `<div class="indicator ${index === 0 ? 'active' : ''}" data-slide="${index}"></div>`;
+            }
+
+            function initializeCarousel() {
+                // Populate video cards
+                carouselTrack.innerHTML = videoData.map((video, index) => createVideoCard(video, index)).join('');
+                
+                // Populate indicators
+                carouselIndicators.innerHTML = videoData.map((_, index) => createIndicator(index)).join('');
+                
+                // Add event listeners to video cards
+                const videoCards = document.querySelectorAll('.video-card');
+                videoCards.forEach(card => {
+                    card.addEventListener('click', () => {
+                        const videoId = card.dataset.videoId;
+                        const videoIndex = parseInt(card.dataset.index);
+                        openVideoModal(videoId, videoData[videoIndex].title);
+                    });
+                });
+
+                // Add event listeners to indicators
+                const indicators = document.querySelectorAll('.indicator');
+                indicators.forEach(indicator => {
+                    indicator.addEventListener('click', () => {
+                        const slideIndex = parseInt(indicator.dataset.slide);
+                        goToSlide(slideIndex);
+                    });
+                });
+
+                updateCarousel();
+            }
+
+            function updateCarousel() {
+                const cardWidth = 300 + 24; // card width + gap
+                const offset = -currentSlide * cardWidth;
+                carouselTrack.style.transform = `translateX(${offset}px)`;
+
+                // Update indicators
+                const indicators = document.querySelectorAll('.indicator');
+                indicators.forEach((indicator, index) => {
+                    indicator.classList.toggle('active', index === currentSlide);
+                });
+
+                // Update navigation buttons
+                prevBtn.disabled = currentSlide === 0;
+                nextBtn.disabled = currentSlide >= videoData.length - 1;
+            }
+
+            function goToSlide(slideIndex) {
+                currentSlide = Math.max(0, Math.min(slideIndex, videoData.length - 1));
+                updateCarousel();
+            }
+
+            function nextSlide() {
+                if (currentSlide < videoData.length - 1) {
+                    currentSlide++;
+                    updateCarousel();
+                }
+            }
+
+            function prevSlide() {
+                if (currentSlide > 0) {
+                    currentSlide--;
+                    updateCarousel();
+                }
+            }
+
+            function openVideoModal(videoId, title) {
+                videoModalTitle.textContent = title;
+                videoModalBody.innerHTML = `
+                    <iframe 
+                        src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0" 
+                        title="${title}"
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        referrerpolicy="strict-origin-when-cross-origin" 
+                        allowfullscreen>
+                    </iframe>
+                `;
+                videoModal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeVideoModal() {
+                videoModal.style.display = 'none';
+                videoModalBody.innerHTML = '';
+                document.body.style.overflow = 'auto';
+            }
+
+            // Initialize carousel
+            initializeCarousel();
+
+            // Navigation event listeners
+            prevBtn.addEventListener('click', prevSlide);
+            nextBtn.addEventListener('click', nextSlide);
+
+            // Modal event listeners
+            videoModalClose.addEventListener('click', closeVideoModal);
+            videoModal.addEventListener('click', (e) => {
+                if (e.target === videoModal) {
+                    closeVideoModal();
+                }
+            });
+
+            // Keyboard navigation for video modal
+            document.addEventListener('keydown', (e) => {
+                if (videoModal.style.display === 'block') {
+                    if (e.key === 'Escape') {
+                        closeVideoModal();
+                    } else if (e.key === 'ArrowLeft') {
+                        prevSlide();
+                    } else if (e.key === 'ArrowRight') {
+                        nextSlide();
+                    }
+                }
+            });
+
+            // Auto-advance carousel (optional - commented out by default)
+            // setInterval(() => {
+            //     if (currentSlide < videoData.length - 1) {
+            //         nextSlide();
+            //     } else {
+            //         goToSlide(0);
+            //     }
+            // }, 8000);
+
+            // Touch/swipe support for mobile
+            let startX = 0;
+            let currentX = 0;
+            let isDragging = false;
+
+            carouselTrack.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+                isDragging = true;
+            });
+
+            carouselTrack.addEventListener('touchmove', (e) => {
+                if (!isDragging) return;
+                currentX = e.touches[0].clientX;
+                e.preventDefault();
+            });
+
+            carouselTrack.addEventListener('touchend', () => {
+                if (!isDragging) return;
+                
+                const diffX = startX - currentX;
+                const threshold = 50;
+
+                if (Math.abs(diffX) > threshold) {
+                    if (diffX > 0) {
+                        nextSlide();
+                    } else {
+                        prevSlide();
+                    }
+                }
+                
+                isDragging = false;
+            });
+
+            // Loading animation completion
+            setTimeout(() => {
+                document.body.classList.add('loaded');
+            }, 100);
+            
+            // 🖼️ GALLERY FUNCTIONALITY
+            initializeGalleryDrawer();
+            
+            // Gallery Section Buttons (multiple on page)
+            const gallerySectionBtns = document.querySelectorAll('.gallery-btn-trigger');
+            gallerySectionBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Use the same function that opens the gallery drawer
+                    const galleryTriggerBtn = document.getElementById('galleryTriggerBtn');
+                    if (galleryTriggerBtn) {
+                        galleryTriggerBtn.click();
+                    }
+                });
+            });
+        });
+        
+        // Gallery data and functionality
+        function initializeGalleryDrawer() {
+            const galleryTriggerBtn = document.getElementById('galleryTriggerBtn');
+            const galleryDrawerOverlay = document.getElementById('galleryDrawerOverlay');
+            const galleryDrawer = document.getElementById('galleryDrawer');
+            const galleryCloseBtn = document.getElementById('galleryCloseBtn');
+            const galleryLoading = document.getElementById('galleryLoading');
+            const galleryMasonry = document.getElementById('galleryMasonry');
+            const galleryImageModal = document.getElementById('galleryImageModal');
+            const galleryModalImage = document.getElementById('galleryModalImage');
+            const galleryModalClose = document.getElementById('galleryModalClose');
+
+            // Gallery data - Dynamic loading from proxy endpoint with caching
+            const CACHE_KEY = 'steam_gallery_images';
+            const CACHE_TIMESTAMP_KEY = 'steam_gallery_timestamp';
+            const CACHE_DURATION = 60 * 60 * 1000; // 1 hour in milliseconds
+                
+                
+            const fallbackGalleryImages = [
+                'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/56233c80-0372-478a-ae7b-c665d7e790cb/D4PG_25-27.jpg?content-type=image%2Fjpeg',
+                'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/a1f8513f-d8f8-4349-8a55-e85a9d906291/D4PG_25-26.jpg?content-type=image%2Fjpeg',
+                'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/8c5978df-4ea7-44f9-b04d-4b95ff84fa3d/D4PG_25-39-min.jpg?content-type=image%2Fjpeg',
+                'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/e0e1a38a-fab0-4b8b-96e1-524e100f115f/D4PG_25-37-min.jpg?content-type=image%2Fjpeg',
+                'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/2eeda250-f302-47b5-8903-73a1f0e04ec7/D4PG_25-40-min.jpg?content-type=image%2Fjpeg',
+                'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/acbcc8dd-c111-4411-b502-bb068d46994d/D4PG_25-38-min.jpg?content-type=image%2Fjpeg',
+                'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/3d9ba313-f6b5-4cce-831a-a5b967f54650/D4PG_25-33-min.jpg?content-type=image%2Fjpeg',
+                'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/092cef26-dcd0-4a43-b880-b4728a0b914a/D4PG_25-32-min.jpg?content-type=image%2Fjpeg',
+                'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/38c2505f-5cbf-486f-ba88-93c26ec4b38a/D4PG_25-36-min.jpg?content-type=image%2Fjpeg',
+                'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/9b363de3-7de1-4ab7-b112-a4472096b0ce/D4PG_25-31-min.jpg?content-type=image%2Fjpeg',
+                'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/bbc0952f-f519-42f5-b4b5-545179de93c8/D4PG_25-41-min.jpg?content-type=image%2Fjpeg',
+                'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/f78616f8-2e60-4389-9897-b6e685a25476/D4PG_25-34-min.jpg?content-type=image%2Fjpeg',
+                'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/b4d8e230-a843-4c7a-9a74-9f807107a896/D4PG_25-30-min.jpg?content-type=image%2Fjpeg',
+                'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/6af5ee5f-1758-484c-86a2-16a26ad34dff/D4PG_25-35-min.jpg?content-type=image%2Fjpeg',
+                'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/8a6f601f-8463-4f04-9750-b71f8dd6c4ea/D4PG_25-23-min.jpg?content-type=image%2Fjpeg',
+                'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/e469743a-45ff-42c5-a36c-cea3655c7f66/D4PG_25-22-min.jpg?content-type=image%2Fjpeg',
+                'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/56682c1c-3dd2-46af-9800-aa4267608bc6/D4PG_25-24-min.jpg?content-type=image%2Fjpeg'
+            ];
+
+            // Function to fetch images from the proxy endpoint
+            async function fetchGalleryImages() {
+                try {
+                    // Check cache first
+                    const cachedImages = getCachedImages();
+                    if (cachedImages) {
+                        console.log('Using cached gallery images');
+                        return cachedImages;
+                    }
+                    
+                    console.log('Fetching fresh gallery images from proxy...');
+                    const response = await fetch('/steam-2025-image-proxy');
+                    
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    
+                    const html = await response.text();
+                    const images = parseImagesFromHTML(html);
+                    
+                    if (images.length > 0) {
+                        // Cache the results
+                        setCachedImages(images);
+                        console.log(`Fetched and cached ${images.length} gallery images`);
+                        return images;
+                    } else {
+                        throw new Error('No images found in proxy response');
+                    }
+                    
+                } catch (error) {
+                    console.error('Error fetching gallery images:', error);
+                    console.log('Falling back to static images');
+                    return fallbackGalleryImages;
+                }
+            }
+            
+            // Function to parse images from HTML
+            function parseImagesFromHTML(html) {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                const galleryElements = doc.querySelectorAll('.gallery img');
+                
+                const imageUrls = [];
+                galleryElements.forEach(img => {
+                    // Get the highest quality src available
+                    const src = img.getAttribute('data-src') || img.getAttribute('src');
+                    if (src && src.startsWith('http')) {
+                        // Remove any query parameters that might limit quality
+                        const cleanUrl = src.split('?')[0];
+                        imageUrls.push(cleanUrl);
+                    }
+                });
+                
+                return imageUrls;
+            }
+            
+            // Cache management functions
+            function getCachedImages() {
+                try {
+                    const cachedTimestamp = localStorage.getItem(CACHE_TIMESTAMP_KEY);
+                    const cachedImages = localStorage.getItem(CACHE_KEY);
+                    
+                    if (!cachedTimestamp || !cachedImages) {
+                        return null;
+                    }
+                    
+                    const timestamp = parseInt(cachedTimestamp);
+                    const now = Date.now();
+                    
+                    // Check if cache is still valid
+                    if (now - timestamp < CACHE_DURATION) {
+                        return JSON.parse(cachedImages);
+                    } else {
+                        // Cache expired, clear it
+                        localStorage.removeItem(CACHE_KEY);
+                        localStorage.removeItem(CACHE_TIMESTAMP_KEY);
+                        return null;
+                    }
+                } catch (error) {
+                    console.error('Error reading cache:', error);
+                    return null;
+                }
+            }
+            
+            function setCachedImages(images) {
+                try {
+                    localStorage.setItem(CACHE_KEY, JSON.stringify(images));
+                    localStorage.setItem(CACHE_TIMESTAMP_KEY, Date.now().toString());
+                } catch (error) {
+                    console.error('Error setting cache:', error);
+                }
+            }
+            
+            // Utility function to clear gallery cache (can be called from browser console)
+            window.clearGalleryCache = function() {
+                localStorage.removeItem(CACHE_KEY);
+                localStorage.removeItem(CACHE_TIMESTAMP_KEY);
+                console.log('Gallery cache cleared. Refresh the page to fetch fresh images.');
+            };
+            
+            let galleryLoaded = false;
+            let observer = null;
+            
+            // Open gallery
+            function openGallery() {
+                galleryTriggerBtn.classList.add('active');
+                galleryDrawerOverlay.classList.add('active');
+                galleryDrawer.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                
+                if (!galleryLoaded) {
+                    loadGalleryImages();
+                }
+            }
+            
+            // Close gallery
+            function closeGallery() {
+                galleryTriggerBtn.classList.remove('active');
+                galleryDrawerOverlay.classList.remove('active');
+                galleryDrawer.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+            
+            // Load gallery images with lazy loading
+            async function loadGalleryImages() {
+                galleryLoading.style.display = 'flex';
+
+                try {
+
+                    // Fetch images dynamically
+                    const galleryImages = await fetchGalleryImages();
+
+                    observer = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                const img = entry.target;
+                                img.src = img.dataset.src;
+                                img.classList.add('loaded');
+                                observer.unobserve(img);
+                            }
+                        });
+                    }, {
+                        rootMargin: '50px 0px',
+                        threshold: 0.1
+                    });
+                    
+                    galleryImages.forEach((imageUrl, index) => {
+                        const galleryItem = document.createElement('div');
+                        galleryItem.className = 'gallery-item';
+                        galleryItem.innerHTML = `
+                            <img 
+                                class="gallery-item-image" 
+                                data-src="${imageUrl}" 
+                                alt="STEAM Collective Gallery Image ${index + 1}"
+                                loading="lazy"
+                            >
+                            <div class="gallery-item-overlay">
+                                <i class="gallery-item-icon fas fa-expand-alt"></i>
+                            </div>
+                        `;
+                        
+                        const img = galleryItem.querySelector('.gallery-item-image');
+                        observer.observe(img);
+                        
+                        galleryItem.addEventListener('click', () => {
+                            openImageModal(imageUrl);
+                        });
+                        
+                        galleryMasonry.appendChild(galleryItem);
+                    });
+                    
+                    setTimeout(() => {
+                        galleryLoading.style.display = 'none';
+                        galleryLoaded = true;
+                    }, 800);
+                } catch (error) {
+                    console.error('Error loading gallery images:', error);
+                    galleryLoading.style.display = 'none';
+                    
+                    // Show error message to user
+                    const errorElement = document.createElement('div');
+                    errorElement.className = 'gallery-error';
+                    errorElement.innerHTML = `
+                        <p>Unable to load gallery images. Please try again later.</p>
+                        <button onclick="location.reload()">Refresh Page</button>
+                    `;
+                    galleryMasonry.appendChild(errorElement);
+                }
+            }
+            
+            function openImageModal(imageUrl) {
+                galleryModalImage.src = imageUrl;
+                galleryImageModal.classList.add('active');
+            }
+            
+            function closeImageModal() {
+                galleryImageModal.classList.remove('active');
+                setTimeout(() => {
+                    galleryModalImage.src = '';
+                }, 400);
+            }
+            
+            // Event listeners
+            galleryTriggerBtn.addEventListener('click', openGallery);
+            galleryCloseBtn.addEventListener('click', closeGallery);
+            galleryDrawerOverlay.addEventListener('click', closeGallery);
+            galleryModalClose.addEventListener('click', closeImageModal);
+            galleryImageModal.addEventListener('click', (e) => {
+                if (e.target === galleryImageModal) {
+                    closeImageModal();
+                }
+            });
+            
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    if (galleryImageModal.classList.contains('active')) {
+                        closeImageModal();
+                    } else if (galleryDrawer.classList.contains('active')) {
+                        closeGallery();
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>
