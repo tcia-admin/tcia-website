@@ -1,0 +1,88 @@
+<script src="https://tcia-admin.github.io/tcia-website/intern-search/js/main.js" defer></script>
+<link rel="stylesheet" href="https://tcia-admin.github.io/tcia-website/intern-search/css/main.css">
+
+
+<section class="intern-search-main">
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <a href="/internship-about" class="hero-back-button">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Back to Internship Main
+        </a>
+        <div class="hero-content">
+            <div class="section-title"></div>
+            <h1 class="hero-title">JOIN THE TEAM</h1>
+            <div class="search-container">
+                <div class="search-box">
+                    <input type="text" placeholder="Search for positions..." class="search-input">
+                    <button class="search-button">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M21 21L16.5 16.5M16.5 16.5C18.1569 14.8431 19 12.5373 19 10C19 5.02944 14.9706 1 10 1C5.02944 1 1 5.02944 1 10C1 14.9706 5.02944 19 10 19C12.5373 19 14.8431 18.1569 16.5 16.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="search-filters">
+                    <div class="filter-dropdown">
+                        <button class="filter-button" id="department-filter">
+                            Department
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                                <path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </button>
+                        <div class="dropdown-content" id="department-dropdown"></div>
+                    </div>
+                    <div class="filter-dropdown">
+                        <button class="filter-button" id="type-filter">
+                            Type
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                                <path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </button>
+                        <div class="dropdown-content" id="type-dropdown"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="positions-list">
+        <div class="positions-header">
+            <div class="header-cell">Position</div>
+            <div class="header-cell">Department</div>
+        </div>
+        
+        <div id="positions-container">
+            <!-- Positions will be populated here -->
+        </div>
+    </section>
+
+    <!-- Add this section after the positions-list section -->
+    <section class="role-description" style="display: none;">
+        <div class="role-container">
+            <button class="back-button">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Back to Positions
+            </button>
+            
+            <h1 class="role-title"></h1>
+            <div class="role-content">
+                <div class="role-section">
+                    <h2>The Role</h2>
+                    <div class="role-description-text"></div>
+                </div>
+                
+                <div class="role-section">
+                    <h2>What We're Looking For</h2>
+                    <div class="role-requirements"></div>
+                </div>
+                
+                <button class="apply-button">Apply Now</button>
+            </div>
+        </div>
+    </section>
+
+</section>
