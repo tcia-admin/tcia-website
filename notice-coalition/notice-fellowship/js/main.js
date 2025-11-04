@@ -193,14 +193,32 @@ document.addEventListener('DOMContentLoaded', function() {
             nextBtn.style.display = 'none';
             indicators.style.display = 'none';
         } else {
-            carousel.style.justifyContent = 'flex-start';
-            const translateX = -(currentIndex * (550 + 32));
+            carousel.style.justifyContent = 'center';
+            
+            // Determine card width based on viewport
+            let cardWidth = 550;
+            if (window.innerWidth <= 768) {
+                cardWidth = 320;
+            } else if (window.innerWidth <= 1024) {
+                cardWidth = 450;
+            }
+            
+            const gap = 32;
+            const containerWidth = carousel.parentElement.offsetWidth;
+            
+            // Calculate offset to center the current card
+            const totalCardsWidth = (cardWidth + gap) * currentIndex;
+            const centerOffset = (containerWidth - cardWidth) / 2;
+            const translateX = centerOffset - totalCardsWidth;
+            
             carousel.style.transform = `translateX(${translateX}px)`;
             prevBtn.style.display = 'flex';
             nextBtn.style.display = 'flex';
             indicators.style.display = 'flex';
             prevBtn.style.opacity = currentIndex === 0 ? '0.5' : '1';
-            nextBtn.style.opacity = currentIndex >= essays.length - cardsPerView ? '0.5' : '1';
+            prevBtn.style.pointerEvents = currentIndex === 0 ? 'none' : 'auto';
+            nextBtn.style.opacity = currentIndex >= essays.length - 1 ? '0.5' : '1';
+            nextBtn.style.pointerEvents = currentIndex >= essays.length - 1 ? 'none' : 'auto';
         }
         
         updateIndicators();
@@ -208,7 +226,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     function updateIndicators() {
         indicators.innerHTML = '';
-        const totalIndicators = Math.max(1, essays.length - cardsPerView + 1);
+        const totalIndicators = essays.length;
         
         for (let i = 0; i < totalIndicators; i++) {
             const indicator = document.createElement('button');
@@ -295,8 +313,8 @@ document.addEventListener('DOMContentLoaded', function() {
             cardsPerView = 3;
         }
         
-        if (currentIndex > essays.length - cardsPerView) {
-            currentIndex = Math.max(0, essays.length - cardsPerView);
+        if (currentIndex > essays.length - 1) {
+            currentIndex = Math.max(0, essays.length - 1);
         }
         
         updateCarousel();
@@ -310,7 +328,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     nextBtn.addEventListener('click', () => {
-        if (currentIndex < essays.length - cardsPerView) {
+        if (currentIndex < essays.length - 1) {
             currentIndex++;
             updateCarousel();
         }
