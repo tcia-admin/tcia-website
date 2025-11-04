@@ -231,7 +231,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 excerpt: 'What does it mean for children to learn on land where Black life has long been punished rather than protected? Two fellows bridge generations in Fort Bend County, Texas.',
                 source: 'NOTICE Coalition',
                 date: 'October 20, 2025',
-                image_url: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/2035deab-4abf-4479-a235-280b79acd173/1cH2yx8iGqe9uZud1bW3NXw.jpg?content-type=image%2Fjpeg',
+                image_url: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/01c5cfd5-78ec-4882-a0fe-dd443f0f4616/fellows-img-1.png?content-type=image%2Fpng',
                 substack_url: '',
                 medium_url: 'https://medium.com/@TwinCitiesInnovationAlliance/seeds-of-kinship-building-intergenerational-advocacy-for-digital-liberation-df8cf3514a2a',
                 content: [
