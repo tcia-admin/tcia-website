@@ -224,6 +224,29 @@ document.addEventListener('DOMContentLoaded', function() {
     function initCarousel() {
         essays = [
             {
+                id: 'seeds-of-kinship-essay',
+                title: 'Seeds of Kinship: Building Intergenerational Advocacy for Digital Liberation',
+                authors: 'Chelsea Barabas & Clarence Okoh',
+                caption: 'STORYTELLING PROJECT',
+                excerpt: 'What does it mean for children to learn on land where Black life has long been punished rather than protected? Two fellows bridge generations in Fort Bend County, Texas.',
+                source: 'NOTICE Coalition',
+                date: 'October 20, 2025',
+                image_url: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/2035deab-4abf-4479-a235-280b79acd173/1cH2yx8iGqe9uZud1bW3NXw.jpg?content-type=image%2Fjpeg',
+                substack_url: '',
+                medium_url: 'https://medium.com/@TwinCitiesInnovationAlliance/seeds-of-kinship-building-intergenerational-advocacy-for-digital-liberation-df8cf3514a2a',
+                content: [
+                    { type: 'text', content: '<em>This essay draws on the <a href="https://www.tciamn.org/noticecoalition/fellowship" target="_blank" rel="noopener noreferrer">No Data About Us Without Us Fellowship</a>, a program led by the <a href="https://www.tciamn.org/noticecoalition" target="_blank" rel="noopener noreferrer">NOTICE Coalition: No Tech Criminalization in Education</a> and the Edgelands Institute.</em>' },
+                    { type: 'text', content: '...' },
+                    { type: 'text', content: 'What does it mean for children to learn on land where Black life has long been punished rather than protected?' },
+                    { type: 'text', content: '<strong>What does it mean for children to learn on land where Black life has long been punished rather than protected?</strong>' },
+                    { type: 'text', content: 'This question has shaped the work of two fellows in the No Data About Us Without Us fellowship — Tammie Lang Campbell and Chinelo Dike — who came to their work on youth surveillance from different generations but the same place: Fort Bend County, Texas.' },
+                    { type: 'image', url: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/2035deab-4abf-4479-a235-280b79acd173/1cH2yx8iGqe9uZud1bW3NXw.jpg?content-type=image%2Fjpeg', credit: 'Image by <a href="https://www.linkedin.com/in/hawwa-youngmark-114a361a4/" target="_blank" rel="noopener noreferrer">Hawwa Youngmark</a>' },
+                    { type: 'text', content: 'Ms. Tammie and Chinelo\'s paths first crossed in 2020 when Chinelo reached out to her for guidance and support concerning her efforts to organize a peer advocacy group to confront discriminatory policies in Fort Bend School District. As a longtime parent advocate, Ms. Tammie had spent decades defending children from punitive school discipline in Fort Bend. Chinelo, then a high school student and co-founder of the <strong><a href="https://www.instagram.com/fbisdequity/" target="_blank" rel="noopener noreferrer">Fort Bend ISD Equity Coalition</a></strong>, was busy <a href="https://docs.google.com/document/d/11md_ejgk3kvTc8tgj0f6818KGImI2wOWO-LFMmL43Kw/edit?tab=t.0#heading=h.qjvsu6vuahyp" target="_blank" rel="noopener noreferrer">formulating a set of demands for the district</a> — clear, specific changes that might make their schools places of care rather than control.' },
+                    { type: 'text', content: 'Ms. Tammie served as a mentor and sounding board, helping Chinelo think through how to make her demands heard.' },
+                    { type: 'text', content: 'Over time, their bond of mentorship evolved into mutual learning, and in their fellowship, they worked together to link Fort Bend\'s long legacy of racialized discipline with the wider fight for digital liberation.' }
+                ]
+            },
+            {
                 id: 'digital-liberation-essay',
                 title: '"No Data About Us Without Us": An Afrofuturist Reflection on Building Grassroots Infrastructures for Digital Liberation',
                 authors: 'Clarence Okoh & Chelsea Barabas',
@@ -369,6 +392,32 @@ document.addEventListener('DOMContentLoaded', function() {
                 const p = document.createElement('p');
                 p.innerHTML = item.content;
                 modalContent.appendChild(p);
+            } else if (item.type === 'image') {
+                const imageContainer = document.createElement('div');
+                imageContainer.style.margin = 'var(--spacing-2xl) 0';
+                imageContainer.style.textAlign = 'center';
+                
+                const img = document.createElement('img');
+                img.src = item.url;
+                img.alt = 'Essay image';
+                img.style.maxWidth = '100%';
+                img.style.height = 'auto';
+                img.style.borderRadius = '8px';
+                img.style.marginBottom = 'var(--spacing-md)';
+                
+                imageContainer.appendChild(img);
+                
+                if (item.credit) {
+                    const credit = document.createElement('p');
+                    credit.innerHTML = item.credit;
+                    credit.style.fontSize = 'var(--font-size-sm)';
+                    credit.style.color = 'var(--notice-text-secondary)';
+                    credit.style.fontStyle = 'italic';
+                    credit.style.marginTop = 'var(--spacing-sm)';
+                    imageContainer.appendChild(credit);
+                }
+                
+                modalContent.appendChild(imageContainer);
             }
         });
         
@@ -387,28 +436,31 @@ document.addEventListener('DOMContentLoaded', function() {
         const linksContainer = document.createElement('div');
         linksContainer.className = 'essay-external-links';
         
-        const substackLink = document.createElement('a');
-        substackLink.href = essay.substack_url;
-        substackLink.target = '_blank';
-        substackLink.rel = 'noopener noreferrer';
-        substackLink.className = 'essay-external-link essay-substack-link';
-        substackLink.innerHTML = `
-            <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/211166a9-1777-4257-9e9e-4d912133cc4b/substack-icon.png?content-type=image%2Fpng" alt="Substack" class="substack-icon">
-            Read on Substack
-        `;
+        if (essay.substack_url && essay.substack_url.trim() !== '') {
+            const substackLink = document.createElement('a');
+            substackLink.href = essay.substack_url;
+            substackLink.target = '_blank';
+            substackLink.rel = 'noopener noreferrer';
+            substackLink.className = 'essay-external-link essay-substack-link';
+            substackLink.innerHTML = `
+                <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/211166a9-1777-4257-9e9e-4d912133cc4b/substack-icon.png?content-type=image%2Fpng" alt="Substack" class="substack-icon">
+                Read on Substack
+            `;
+            linksContainer.appendChild(substackLink);
+        }
         
-        const mediumLink = document.createElement('a');
-        mediumLink.href = essay.medium_url;
-        mediumLink.target = '_blank';
-        mediumLink.rel = 'noopener noreferrer';
-        mediumLink.className = 'essay-external-link essay-medium-link';
-        mediumLink.innerHTML = `
-            <i class="fa-brands fa-medium medium-icon"></i>
-            Read on Medium
-        `;
-        
-        linksContainer.appendChild(substackLink);
-        linksContainer.appendChild(mediumLink);
+        if (essay.medium_url && essay.medium_url.trim() !== '') {
+            const mediumLink = document.createElement('a');
+            mediumLink.href = essay.medium_url;
+            mediumLink.target = '_blank';
+            mediumLink.rel = 'noopener noreferrer';
+            mediumLink.className = 'essay-external-link essay-medium-link';
+            mediumLink.innerHTML = `
+                <i class="fa-brands fa-medium medium-icon"></i>
+                Read on Medium
+            `;
+            linksContainer.appendChild(mediumLink);
+        }
         
         readMoreDiv.appendChild(readMoreText);
         readMoreDiv.appendChild(linksContainer);
