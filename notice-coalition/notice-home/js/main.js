@@ -195,6 +195,39 @@ function initializeConnectModal() {
 }
 
 /**
+ * Initializes donate button functionality
+ */
+function initializeDonateButton() {
+    const donateBtn = document.getElementById('donateBtn');
+    
+    if (!donateBtn) return;
+
+    donateBtn.addEventListener('click', () => {
+        // Try to find the donation section by class or id
+        let donationSection = document.querySelector('.notice-donation-section');
+        
+        if (!donationSection) {
+            donationSection = document.getElementById('notice-donation-section');
+        }
+        
+        if (donationSection) {
+            // Get the height of the fixed navigation bar
+            const nav = document.querySelector('.notice-nav');
+            const navHeight = nav ? nav.offsetHeight : 0;
+            
+            // Calculate the target position accounting for the nav bar
+            const targetPosition = donationSection.getBoundingClientRect().top + window.pageYOffset - navHeight;
+            
+            // Smooth scroll to the target
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
+        }
+    });
+}
+
+/**
  * Initializes Substack popup functionality
  */
 function initializeSubstackPopup() {
@@ -290,6 +323,7 @@ function initialize() {
     initializeVideoModal();
     initializeNavigation();
     initializeConnectModal();
+    initializeDonateButton();
     initializeSubstackPopup();
     
     // Load data
@@ -309,6 +343,7 @@ if (typeof module !== 'undefined' && module.exports) {
         initializeVideoModal,
         initializeNavigation,
         initializeConnectModal,
+        initializeDonateButton,
         initializeSubstackPopup,
         loadFeedData,
         loadNewsletterData,
@@ -321,6 +356,7 @@ if (typeof module !== 'undefined' && module.exports) {
         initializeVideoModal,
         initializeNavigation,
         initializeConnectModal,
+        initializeDonateButton,
         initializeSubstackPopup,
         loadFeedData,
         loadNewsletterData,
