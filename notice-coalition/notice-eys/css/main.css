@@ -456,7 +456,7 @@ html {
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: fill;
+    object-fit: contain;
 }
 
 .event-countdown {
@@ -484,6 +484,12 @@ html {
 
 .speaker-details {
     padding: var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: var(--spacing-sm);
 }
 
 .event-date {
@@ -505,7 +511,7 @@ html {
 }
 
 .register-btn {
-    width: 100%;
+    width: 60%;
 }
 
 /* Coming Soon Message Styles */
