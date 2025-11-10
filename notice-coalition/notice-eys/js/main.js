@@ -21,41 +21,74 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // ===== Modal Functionality =====
-    const modal = document.getElementById('registration-modal');
-    const closeBtn = document.querySelector('.close-modal');
+    // ===== Modal Functionality (registration + image modal) =====
+    const imageModal = document.getElementById('image-modal');
+    const registrationModal = document.getElementById('registration-modal');
     const registerButtons = document.querySelectorAll('.register-btn');
-    
-    // Open modal when register buttons are clicked
+
+    // Open registration modal when register buttons are clicked
     registerButtons.forEach(button => {
         button.addEventListener('click', function(e) {
-            e.preventDefault();
-            modal.style.display = 'block';
-            document.body.classList.add('modal-open');
+            e && e.preventDefault();
+            if (registrationModal) {
+                registrationModal.style.display = 'block';
+                document.body.classList.add('modal-open');
+            }
         });
     });
-    
-    // Close modal when X is clicked
-    if (closeBtn) {
-        closeBtn.addEventListener('click', function() {
-            modal.style.display = 'none';
-            document.body.classList.remove('modal-open');
+
+    // Open image modal when speaker images are clicked
+    const speakerImages = document.querySelectorAll('.speaker-flyer img');
+    const modalImage = imageModal ? imageModal.querySelector('.modal-image') : null;
+    speakerImages.forEach(img => {
+        img.addEventListener('click', function(e) {
+            e && e.preventDefault();
+            if (imageModal && modalImage) {
+                modalImage.src = img.src;
+                modalImage.alt = img.alt || 'Speaker image';
+                imageModal.style.display = 'block';
+                document.body.classList.add('modal-open');
+            }
         });
-    }
-    
-    // Close modal when clicking outside
+    });
+
+    // Close modal when any modal's close (×) is clicked
+    const closeButtons = document.querySelectorAll('.modal .close-modal');
+    closeButtons.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const parent = this.closest('.modal');
+            if (!parent) return;
+            parent.style.display = 'none';
+            document.body.classList.remove('modal-open');
+            if (parent === imageModal && modalImage) modalImage.src = '';
+        });
+    });
+
+    // Close modal when clicking outside modal content
     window.addEventListener('click', function(e) {
-        if (e.target === modal) {
-            modal.style.display = 'none';
+        if (e.target === registrationModal) {
+            registrationModal.style.display = 'none';
             document.body.classList.remove('modal-open');
         }
-    });
-    
-    // Close modal with escape key
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && modal && modal.style.display === 'block') {
-            modal.style.display = 'none';
+        if (e.target === imageModal) {
+            imageModal.style.display = 'none';
             document.body.classList.remove('modal-open');
+            if (modalImage) modalImage.src = '';
+        }
+    });
+
+    // Close any open modal with Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            if (registrationModal && registrationModal.style.display === 'block') {
+                registrationModal.style.display = 'none';
+                document.body.classList.remove('modal-open');
+            }
+            if (imageModal && imageModal.style.display === 'block') {
+                imageModal.style.display = 'none';
+                document.body.classList.remove('modal-open');
+                if (modalImage) modalImage.src = '';
+            }
         }
     });
 
