@@ -24,7 +24,7 @@ async function fetchFeedData() {
         const response = await fetch(API_ENDPOINTS.FEEDS);
         const data = await response.json();
         
-        return data.items.slice(0, 4); // Get only the latest 6 items (limited for homepage)
+        return data.items.slice(0, 6); // Get only the latest 6 items (limited for homepage)
     } catch (error) {
         console.error('Error fetching feed data:', error);
         return [];
