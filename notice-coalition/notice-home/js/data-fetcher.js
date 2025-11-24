@@ -23,7 +23,13 @@ async function fetchFeedData() {
     try {
         const response = await fetch(API_ENDPOINTS.FEEDS);
         const data = await response.json();
-        return data.items.slice(0, 6); // Get only the latest 6 items (limited for homepage)
+        
+        // Select specific indices to ensure diverse content
+        const indices = [0, 1, 2, 4, 6, 8];
+        const selectedItems = indices.map(i => data.items[i]).filter(Boolean);
+
+        return selectedItems;
+        // return data.items.slice(0, 6); // Get only the latest 6 items (limited for homepage)
     } catch (error) {
         console.error('Error fetching feed data:', error);
         return [];
