@@ -1190,8 +1190,12 @@ html {
 
 /* Responsive Design */
 @media screen and (max-width: 1400px) {
-    .intro-staging {
+        .intro-staging {
         grid-template-columns: 1fr;
+    }
+    
+    .fellows-grid {
+        grid-template-columns: 2fr;
     }
 
     .essay-author-left {
@@ -1204,6 +1208,15 @@ html {
 }
 
 @media screen and (max-width: 1200px) {
+    
+    .intro-staging {
+        grid-template-columns: 2fr;
+    }
+    
+    .fellows-grid {
+        grid-template-columns: 2fr;
+    }
+
     .essay-author-left {
         left: calc(50vw - 400px);
     }
@@ -1217,8 +1230,12 @@ html {
     :root {
         --container-padding: 2rem;
     }
+
     .intro-staging {
         grid-template-columns: 1fr;
+    }
+    .fellows-grid {
+        grid-template-columns: 2fr;
     }
 
     .essay-card {
@@ -1362,6 +1379,10 @@ html {
 
     .modal-content {
         padding: var(--spacing-xl);
+    }
+    
+    .fellows-grid {
+        grid-template-columns: 2fr;
     }
 
     .fellow-bio-header {
