@@ -12,7 +12,7 @@ const API_ENDPOINTS = {
 // Cache configuration
 const CACHE_CONFIG = {
     RESOURCES_CACHE_KEY: 'noticeResourcesCache',
-    CACHE_DURATION: 60 * 60 * 1000 // 1 hour in milliseconds
+    CACHE_DURATION: 60 * 60 * 10 // 1 hour in milliseconds
 };
 
 /**
@@ -23,8 +23,8 @@ async function fetchFeedData() {
     try {
         const response = await fetch(API_ENDPOINTS.FEEDS);
         const data = await response.json();
-        
-        return data.items.slice(0, 6); // Get only the latest 6 items (limited for homepage)
+        return data.items; // returns all items for list
+        // return data.items.slice(0, 6); // Get only the latest 6 items (limited for homepage)
     } catch (error) {
         console.error('Error fetching feed data:', error);
         return [];
