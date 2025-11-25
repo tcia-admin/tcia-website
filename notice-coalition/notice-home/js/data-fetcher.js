@@ -12,7 +12,7 @@ const API_ENDPOINTS = {
 // Cache configuration
 const CACHE_CONFIG = {
     RESOURCES_CACHE_KEY: 'noticeResourcesCache',
-    CACHE_DURATION: 60 * 60  // 1 hour in milliseconds
+    CACHE_DURATION: 60 * 60 * 1000 // 1 hour in milliseconds
 };
 
 /**

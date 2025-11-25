@@ -212,6 +212,7 @@ async function displayResources(data, debugMode = false) {
         // const resourceItems = data.slice(0, 6);
 
         // Selects specific articles based on indices and filter from fetched data
+
         const indices = [0,1,2,4,6,8]
         const resourceItems = data.filter((_, index) => indices.includes(index));
         
