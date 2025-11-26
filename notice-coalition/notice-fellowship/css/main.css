@@ -338,7 +338,7 @@ html {
 }
 
 .intro-content .staging-title {
-    font-family: var(--font-accent);
+    font-family: var(--font-bold);
     font-size: var(--font-size-4xl);
     color: var(--notice-black);
     text-align: left;
@@ -1195,7 +1195,7 @@ html {
     }
     
     .fellows-grid {
-        grid-template-columns: 2fr;
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .essay-author-left {
@@ -1214,7 +1214,7 @@ html {
     }
     
     .fellows-grid {
-        grid-template-columns: 2fr;
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .essay-author-left {
@@ -1272,6 +1272,7 @@ html {
     .intro-staging {
         grid-template-columns: 1fr;
     }
+
     .notice-nav {
         width: 100%;
         height: auto;
@@ -1382,7 +1383,7 @@ html {
     }
     
     .fellows-grid {
-        grid-template-columns: 2fr;
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .fellow-bio-header {
