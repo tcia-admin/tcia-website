@@ -6,7 +6,7 @@
 // API Endpoints
 const API_ENDPOINTS = {
     FEEDS: 'https://tcia-website.s3.us-west-2.amazonaws.com/processed_feeds.json',
-    RESOURCES: 'https://tcia-admin.github.io/tcia-server-files/notice-resources-list.json'
+    RESOURCES: 'https://tcia-admin.github.io/tcia-server-files/notice-resources-list-home.json'
 };
 
 // Cache configuration
