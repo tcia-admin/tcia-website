@@ -1,0 +1,180 @@
+:root {
+    /* Spacing Variables */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-2xl: 3rem;
+    --spacing-3xl: 4rem;
+    --spacing-4xl: 5rem;
+
+    /* Layout Variables */
+    --container-max-width: 1200px;
+    --container-padding: 1rem;
+
+    /* Breakpoints (for reference in media queries) */
+    --mobile: 480px;
+    --tablet: 768px;
+    --desktop: 1024px;
+
+    /* Typography Scale */
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-med: 1rem;
+    --font-size-base: 1.25rem;
+    --font-size-lg: 1.125rem;
+    --font-size-xl: 1.25rem;
+    --font-size-2xl: 1.5rem;
+    --font-size-3xl: 2rem;
+    --font-size-4xl: 2.5rem;
+    --font-size-5xl: 3rem;
+    --font-size-6xl: 3.5rem;
+    --font-size-7xl: 4rem;
+    --font-size-8xl: 4.5rem;
+    --font-size-12xl: 6rem;
+
+    /* Brand Colors */
+    --notice-yellow: #fbc516;
+    --notice-black: #1a1919;
+    --notice-grey: #808285;
+    --notice-white: #ffffff;
+
+    /* Functional Colors */
+    --notice-bg-primary: var(--notice-black);
+    --notice-bg-secondary: #242424;  /* slightly lighter than black for layering */
+    --notice-text-primary: var(--notice-white);
+    --notice-text-secondary: var(--notice-grey);
+    --notice-accent: var(--notice-yellow);
+    
+    /* Background tints for subtle variations */
+    --notice-bg-grey-light: rgba(128, 130, 133, 0.1);
+    --notice-bg-grey-medium: rgba(128, 130, 133, 0.2);
+    
+    /* Font Families */
+    --font-primary: 'Roboto', sans-serif;
+    /*--font-accent: 'Impact', sans-serif;*/
+    --font-accent: 'Roboto', sans-serif;
+    
+    /* Font Weights */
+    --font-regular: 400;
+    --font-bold: 700;
+}
+
+/* Reset and Base Styles - Update to remove any default margins */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    overflow-x: hidden;  /* Prevent horizontal scrolling */
+    position: relative;  /* Create new stacking context */
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overscroll-behavior-x: none;  /* Prevent horizontal overscroll */
+    touch-action: pan-y pinch-zoom;  /* Only allow vertical touch actions */
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--nav-height); /* Add this variable to your root */
+}/* Notice social intro */
+.notice-social-intro {
+    padding: var(--spacing-3xl) 0;
+    display: flex;
+    align-items: center;
+}
+
+.social-intro-container {
+    margin-top: var(--spacing-xl);
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+
+
+}
+
+/* Social Media Section / Footer Styles */
+.notice-social {
+    padding: var(--spacing-3xl) 0;
+    text-align: center;
+    background-color: var(--notice-bg-primary);
+}
+
+.notice-social-links {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-2xl);
+}
+
+.social-icon {
+    width: 64px;
+    height: 64px;
+    background-color: var(--notice-bg-secondary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.social-icon:hover {
+    transform: translateY(-2px);
+}
+
+.social-icon img {
+    width: 32px;
+    height: 32px;
+    filter: brightness(0) invert(1);
+}
+
+.social-icon i {
+    font-size: 32px;
+    color: var(--notice-white);
+}
+
+.notice-footer-logo {
+    display: block;
+    margin: 0 auto;
+    transition: opacity 0.3s ease;
+}
+
+.notice-footer-logo img {
+    height: 60px;
+    width: auto;
+}
+
+.notice-footer-logo:hover {
+    opacity: 0.8;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+    .notice-social {
+        padding: var(--spacing-2xl) 0;
+    }
+
+    .notice-social-links {
+        gap: var(--spacing-lg);
+        margin-bottom: var(--spacing-2xl);
+    }
+
+    .social-icon {
+        width: 48px;
+        height: 48px;
+    }
+
+    .social-icon img {
+        width: 24px;
+        height: 24px;
+    }
+
+    .notice-footer-logo img {
+        height: 48px;
+    }
+}
