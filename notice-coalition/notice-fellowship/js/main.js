@@ -274,7 +274,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 date: 'January 2025',
                 image_url: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/01c5cfd5-78ec-4882-a0fe-dd443f0f4616/fellows-img-1.png?content-type=image%2Fpng',
                 substack_url: 'https://thenoticecoalition.substack.com/p/no-data-about-us-without-us',
-                medium_url: 'https://medium.com/@noticecoalition/dummy-link-1',
+                medium_url: 'https://medium.com/write-a-catalyst/no-data-about-us-without-us-an-afrofuturist-reflection-on-building-grassroots-infrastructures-19cae9bb5386',
                 content: [
                     { type: 'text', content: 'Who do you call when AI labels your child a criminal?' },
                     { type: 'text', content: 'By the time Tammie Lang Campbell <a href="https://sacobserver.com/2024/11/digital-missteps-leave-long-lasting-criminal-scars-for-black-students/" target="_blank" rel="noopener noreferrer">answered her phone</a> to speak with the distraught family, their 14-year-old child had been locked in a central Texas juvenile detention facility for three days. He\'d been arrested during his first-period class—handcuffed at school, taken without his parents\' knowledge, and sent to a prison for children.' },
@@ -284,7 +284,23 @@ document.addEventListener('DOMContentLoaded', function() {
                     { type: 'text', content: 'And for Tammie Campbell, it was confirmation that the systems she\'d been fighting for decades were evolving in insidious ways through digitized surveillance.' },
                     { type: 'text', content: '"The surveillance, the monitoring of students, that\'s not new," Tammie explained in a recent interview, "What is new is the data-driven technology that\'s being used to advance the school to prison pipeline and how it\'s being used under the guise of school safety and technology advancement for students to be able to compete in a global society."' }
                 ]
-            }
+            },
+            {
+                id: 'takeover-surveillance-essay',
+                title: 'Takeover Surveillance',
+                authors: 'Clarence Okoh & Chelsea Barabas',
+                excerpt: 'An Essay on Grassroots Leaders Using Cultural Organizing to Resist State Surveillance & Social Control in Texas Public Schools',
+                date: 'December 01 2025',
+                image_url: 'https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/21f573e8-13db-4487-8381-7bbbf29b96cb/NDAUWU+Full+picture.png?content-type=image%2Fpng',
+                substack_url: 'https://thenoticecoalition.substack.com/p/takeover-surveillance',
+                medium_url: 'https://medium.com/@TwinCitiesInnovationAlliance/takeover-surveillance-how-ndauwu-fellows-used-cultural-organizing-to-resist-state-surveillance-e7e5b968acb4',
+                content: [
+                    { type: 'text', content: 'When the state of Texas took control over the Houston Independent School District in 2023, the changes arrived quickly. Libraries were emptied of books and converted into “discipline centers.” Rows of desks replaced reading corners. Librarians were laid off. Fresh indentations in the carpet evidence the weight of books removed–a physical reminder for a child that this was the room where they first met Junie B. Jones and Dr. Seuss.' },
+                    { type: 'text', content: 'Thousands of teachers were terminated or fled the district. Housing assistance programs for students were shuttered. Special education programs were defunded. Zero-tolerance discipline policies were reinstated. Cameras appeared in classrooms to ensure lessons stayed on script and to swiftly remove “disruptive” students. These changes reflected a broader movement reshaping classrooms throughout the state.' },
+                    { type: 'text', content: 'Across Texas, school boards and legislators expanded their reach into curricula, policing not only behavior but imagination — deciding which histories could be told, which questions could be asked, and which futures could be imagined.'},
+                    { type: 'text', content: 'For students like high-school junior Christianna Thomas, the transformation was immediate and disorienting. Extracurricular activities like debate lost funding, teachers second-guessed what they could assign, and entire conversations about race or gender suddenly felt dangerous.'}
+    ]
+}
         ];
         
         carousel.innerHTML = essays.map((essay, index) => createEssayCard(essay, index)).join('');
