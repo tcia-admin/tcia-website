@@ -24,31 +24,4 @@ document.addEventListener("DOMContentLoaded", () => {
     "Footer loaded successfully",
     "Footer load error:"
   );
-
-  // Initialize hamburger menu after header loads
-  setTimeout(initializeHamburgerMenu, 100);
 });
-
-// Hamburger Menu Functionality
-function initializeHamburgerMenu() {
-  const hamburger = document.getElementById("hamburgerMenu");
-  const mobileMenu = document.getElementById("mobileMenu");
-
-  if (hamburger && mobileMenu) {
-    hamburger.addEventListener("click", () => {
-      hamburger.classList.toggle("active");
-      mobileMenu.classList.toggle("active");
-    });
-
-    // Close menu when a link is clicked
-    const mobileLinks = mobileMenu.querySelectorAll("a");
-    mobileLinks.forEach(link => {
-      link.addEventListener("click", () => {
-        hamburger.classList.remove("active");
-        mobileMenu.classList.remove("active");
-      });
-    });
-  }
-}
-
-
