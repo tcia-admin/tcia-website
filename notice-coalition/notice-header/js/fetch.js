@@ -38,6 +38,8 @@ function initializeHamburgerMenu() {
     hamburger.addEventListener("click", () => {
       hamburger.classList.toggle("active");
       mobileMenu.classList.toggle("active");
+      //debugging
+      console.log("menu clicked!");
     });
 
     // Close menu when a link is clicked
