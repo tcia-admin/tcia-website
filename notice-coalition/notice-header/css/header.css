@@ -235,6 +235,73 @@ html {
     min-width: max-content;
 }
 
+/* Hamburger Menu Styles */
+.hamburger-menu {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 6px;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.hamburger-menu span {
+    width: 25px;
+    height: 3px;
+    background-color: var(--notice-accent);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.hamburger-menu.active span:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+}
+
+.hamburger-menu.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-menu.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* Mobile Navigation Menu */
+.nav-mobile-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--notice-bg-secondary);
+    flex-direction: column;
+    padding: var(--spacing-lg);
+    gap: var(--spacing-md);
+}
+
+.nav-mobile-menu.active {
+    display: flex;
+}
+
+.nav-mobile-menu a {
+    color: var(--notice-text-primary);
+    text-decoration: none;
+    font-size: var(--font-size-med);
+    font-weight: var(--font-bold);
+    font-family: var(--font-accent);
+    transition: color 0.2s ease;
+    padding: var(--spacing-sm) 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-mobile-menu a:last-child {
+    border-bottom: none;
+}
+
+.nav-mobile-menu a:hover {
+    color: var(--notice-accent);
+}
+
 @media screen and (max-width: 1400px) {
     .nav-links {
         gap: var(--spacing-md);
@@ -293,10 +360,16 @@ html {
         display: none;
     }
 
+    .hamburger-menu {
+        display: flex;
+    }
+
     .nav-cta-featured {
         order: 3;
         margin-left: 0;
         margin-top: var(--spacing-sm);
+        width: 100%;
+        text-align: center;
     }
 
     .nav-logo {
@@ -306,6 +379,34 @@ html {
     .nav-logo img {
         height: 55px;
         width: auto;
+    }
+}
+
+/* Extra small devices */
+@media screen and (max-width: 480px) {
+    :root {
+        --spacing-lg: 1rem;
+        --spacing-xl: 1.25rem;
+    }
+
+    .nav-container {
+        padding: var(--spacing-xs) var(--spacing-sm);
+    }
+
+    .nav-logo img {
+        height: 35px;
+        width: auto;
+    }
+
+    .nav-cta-featured {
+        font-size: var(--font-size-sm);
+        padding: var(--spacing-xs) var(--spacing-md);
+        width: 100%;
+    }
+
+    .hamburger-menu span {
+        width: 20px;
+        height: 2px;
     }
 }
 
