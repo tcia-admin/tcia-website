@@ -251,7 +251,6 @@ html {
     height: 3px;
     background-color: var(--notice-accent);
     border-radius: 2px;
-    transition: all 0.3s ease;
 }
 
 /* .hamburger-menu.active span:nth-child(1) {
@@ -362,6 +361,7 @@ html {
 
     .hamburger-menu {
         display: flex;
+        margin-right: 1rem;
         margin-left: auto;
     }
 
