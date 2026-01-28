@@ -376,18 +376,17 @@ html {
         width: 100%;
         text-align: center;
     }
-
     .nav-logo {
-        display: flex;
-        margin: 0 auto;
-        flex: 1 1 50%;
-        padding-right: 60%;
-        transform: translateX(45%);
+        display: inline-flex;
+        margin: 0 30%;
+        flex: 1 1 100%;
+        transform: translateX(25%);
     }
 
     .nav-logo img {
-        height: 40px;
+        height: 35px;
         width: auto;
+        transform: translateX(10%); 
     }
 }
 
@@ -409,16 +408,16 @@ html {
     }
 
     .nav-logo {
-        display: flex;
-        margin: 0 auto;
-        flex: 1 1 50%;
-        padding-right: 60%;
-        transform: translateX(45%);
+        display: inline-flex;
+        margin: 0 30%;
+        flex: 1 1 100%;
+        transform: translateX(25%);
     }
 
     .nav-logo img {
         height: 35px;
         width: auto;
+        transform: translateX(10%); 
     }
 
     .nav-cta-featured {
