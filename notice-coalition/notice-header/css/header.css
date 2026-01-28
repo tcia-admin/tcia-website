@@ -379,14 +379,11 @@ html {
     .nav-logo {
         display: inline-flex;
         margin: 0 30%;
-        flex: 1 1 100%;
-        transform: translateX(25%);
     }
 
     .nav-logo img {
         height: 35px;
         width: auto;
-        transform: translateX(10%); 
     }
 }
 
@@ -410,14 +407,12 @@ html {
     .nav-logo {
         display: inline-flex;
         margin: 0 30%;
-        flex: 1 1 100%;
-        transform: translateX(25%);
     }
 
     .nav-logo img {
         height: 35px;
         width: auto;
-        transform: translateX(10%); 
+
     }
 
     .nav-cta-featured {
