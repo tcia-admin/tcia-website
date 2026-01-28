@@ -380,7 +380,7 @@ html {
     .nav-logo {
         display: flex;
         margin: 0 auto;
-        flex: 1 1 100%;
+        flex: 1 1 50%;
         transform: translateX(45%);
     }
 
@@ -410,7 +410,7 @@ html {
     .nav-logo {
         display: flex;
         margin: 0 auto;
-        flex: 1 1 100%;
+        flex: 1 1 50%;
         transform: translateX(45%);
     }
 
