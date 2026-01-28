@@ -350,9 +350,13 @@ html {
 
 @media screen and (max-width: 768px) {
     .nav-container {
-        display:flex;
+        display: flex;
+        flex-direction: row;
         align-content: center;
+        justify-content: space-between;
+        align-items: center;
         padding: var(--spacing-sm);
+        width: 100%;
     }
 
     .nav-links {
@@ -361,8 +365,8 @@ html {
 
     .hamburger-menu {
         display: flex;
-        margin-right: 1rem;
         margin-left: auto;
+        margin-right: 1rem;
     }
 
     .nav-cta-featured {
@@ -376,7 +380,8 @@ html {
     .nav-logo {
         display: flex;
         margin: 0 auto;
-        transform: translateX(60%);
+        flex: 1 1 100%;
+        transform: translateX(45%);
     }
 
     .nav-logo img {
