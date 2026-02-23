@@ -642,7 +642,9 @@
         .service-card--research {
             --card-accent: var(--brand-teal);
         }
-        
+        .service-card--support {
+            --card-accent: var(--brand-yellow);
+        }
         /* Filled Card Styles */
         .service-card--filled .service-card__content {
             background: var(--card-accent);
