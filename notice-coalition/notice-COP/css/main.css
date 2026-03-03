@@ -453,6 +453,13 @@ html {
     text-transform: uppercase;
 }
 
+.section-subtitle {
+    font-family: var(--font-accent);
+    font-size: var(--font-size-2xl);
+    color: var(--notice-white);
+    text-transform: uppercase;
+}
+
 .section-link {
     font-family: var(--font-accent);
     font-size: var(--font-size-lg);
