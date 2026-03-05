@@ -488,7 +488,7 @@ html {
 /* About Grid */
 .about-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
     gap: var(--spacing-2xl);
     align-items: stretch;
 }
@@ -514,6 +514,20 @@ html {
     margin: 0;
 }
 
+.about-card ul {
+    display: block;
+    align-items: top;
+    justify-content: left;
+    padding: var(--spacing-lg);
+    margin: 0;
+}
+.about-card span {
+    align-items: top;
+    justify-content: center;
+    padding: var(--spacing-sm);
+    margin: 0;
+}
+
 .about-card img {
     flex: 1;
     width: 100%;
@@ -525,7 +539,7 @@ html {
 /* Goals Grid */
 .goals-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: var(--spacing-2xl);
     align-items: stretch;
     text-align: center;
@@ -543,11 +557,19 @@ html {
     position: relative;
     width: 100%;
     text-decoration: none;
-    display: flex;
+    display: block;
     flex-direction: column;
     color: var(--notice-white);
 }
-
+.goals-card p {
+    position: relative;
+    text-align: left;
+    width: 100%;
+    text-decoration: none;
+    display: block;
+    flex-direction: column;
+    color: var(--notice-white);
+}
 /* Update overlay styles to show title by default */
 
 .about-title {
