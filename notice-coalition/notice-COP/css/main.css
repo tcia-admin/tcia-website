@@ -978,13 +978,13 @@ html {
 
 /* Update section title alignment */
 .notice-cohort .section-title {
-    text-align: left;
+    text-align: center;
     margin-bottom: var(--spacing-2xl);
 }
 
 /* Update section title alignment */
 .notice-funders .section-title {
-    text-align: left;
+    text-align: center;
     margin-bottom: var(--spacing-2xl);
 }
 
