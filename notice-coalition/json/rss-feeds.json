@@ -2,7 +2,11 @@
   "rss_feeds": [
     { 
       "name": "The NOTICE Newsletter", 
-      "url": "https://thenoticecoalition.substack.com/feed" 
+      "url": "https://thenoticecoalition.substack.com/feed"
+    },
+    {
+      "name": "The NOTICE Blogs", 
+      "url": "https://thenoticecoalition.substack.com/s/the-notice-blog" 
     }
   ]
 }
