@@ -37,14 +37,32 @@ async function fetchFeedData() {
  */
 async function fetchNewsletterData() {
     try {
+        console.log('DataFetcher: Fetching newsletter data from', API_ENDPOINTS.FEEDS);
         const response = await fetch(API_ENDPOINTS.FEEDS);
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
         const data = await response.json();
+        console.log('DataFetcher: Raw feed data received, total items:', data.items ? data.items.length : 0);
+        
         // Filter for newsletter entries only (from Substack)
-        return data.items
-            .filter(item => item.feed_name.includes('Substack'))
-            .slice(0, 3); // Get only the latest 4 newsletter items
+        const newsletterItems = data.items
+            .filter(item => {
+                const hasSubstack = item.feed_name && item.feed_name.includes('Substack');
+                if (hasSubstack) {
+                    console.log('DataFetcher: Found Substack item:', item.feed_name);
+                }
+                return hasSubstack;
+            })
+            .slice(0, 3); // Get only the latest 3 newsletter items
+        
+        console.log(`DataFetcher: Filtered ${newsletterItems.length} Substack newsletter items`);
+        return newsletterItems;
     } catch (error) {
-        console.error('Error fetching newsletter data:', error);
+        console.error('DataFetcher: Error fetching newsletter data:', error);
+        console.error('DataFetcher: Feed endpoint attempted:', API_ENDPOINTS.FEEDS);
         return [];
     }
 }
