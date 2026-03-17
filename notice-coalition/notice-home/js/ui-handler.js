@@ -171,21 +171,46 @@ function displayFeedItems(items, containerId = 'feed-items') {
  */
 function displayNewsletterItems(items, containerId = 'newsletter-items') {
     const newsletterContainer = document.getElementById(containerId);
-    if (!newsletterContainer) return;
     
-    newsletterContainer.innerHTML = items.map(item => `
+    if (!newsletterContainer) {
+        console.warn(`Newsletter container with ID "${containerId}" not found in the DOM`);
+        return;
+    }
+    
+    if (!items || items.length === 0) {
+        console.warn('No newsletter items to display');
+        newsletterContainer.innerHTML = '<div class="feed-item"><div class="feed-item-content"><p class="feed-item-description">No newsletter updates available at this time.</p></div></div>';
+        return;
+    }
+    
+    try {
+        newsletterContainer.innerHTML = items.map(item => {
+            // Validate required fields
+            if (!item.link || !item.title) {
+                console.warn('Newsletter item missing required fields:', item);
+                return '';
+            }
+            
+            return `
         <article class="feed-item">
             <a href="${item.link}" class="feed-item-link" target="_blank" rel="noopener noreferrer">
-                <img src="${item.image_url}" alt="${item.title}" class="feed-item-image">
+                ${item.image_url ? `<img src="${item.image_url}" alt="${item.title}" class="feed-item-image">` : ''}
                 <div class="feed-item-content">
-                    <div class="feed-item-source">${item.feed_name}</div>
+                    <div class="feed-item-source">${item.feed_name || 'Newsletter'}</div>
                     <h3 class="feed-item-title">${item.title}</h3>
-                    <p class="feed-item-description">${item.description}</p>
-                    <div class="feed-item-date">${Utils.formatDate(item.pubDate)}</div>
+                    ${item.description ? `<p class="feed-item-description">${item.description}</p>` : ''}
+                    ${item.pubDate ? `<div class="feed-item-date">${Utils.formatDate(item.pubDate)}</div>` : ''}
                 </div>
             </a>
         </article>
-    `).join('');
+    `;
+        }).filter(html => html.length > 0).join('');
+        
+        console.log(`Newsletter: Displayed ${items.length} items`);
+    } catch (error) {
+        console.error('Error displaying newsletter items:', error);
+        newsletterContainer.innerHTML = '<div class="feed-item"><div class="feed-item-content"><p class="feed-item-description">Error loading newsletter updates.</p></div></div>';
+    }
 }
 
 /**
