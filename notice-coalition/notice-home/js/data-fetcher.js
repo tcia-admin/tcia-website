@@ -41,7 +41,7 @@ async function fetchNewsletterData() {
         const data = await response.json();
         // Filter for newsletter entries only (from Substack)
         return data.items
-            .filter(item => item.feed_name.includes('Newsletter'))
+            .filter(item => item.feed_name.includes('Newsletter') && !item.title.includes('The NOTICE Newsletter'))
             .slice(0, 3); // Get only the latest 3 newsletter items
     } catch (error) {
         console.error('Error fetching newsletter data:', error);
