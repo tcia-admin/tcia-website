@@ -178,7 +178,7 @@ function displayNewsletterItems(items, containerId = 'newsletter-items') {
             <a href="${item.link}" class="feed-item-link" target="_blank" rel="noopener noreferrer">
                 <img src="${item.image_url}" alt="${item.title}" class="feed-item-image">
                 <div class="feed-item-content">
-                    <div class="feed-item-source">${item.feed_name}</div>
+                    <div class="feed-item-source">The Notice Blog</div>
                     <h3 class="feed-item-title">${item.title}</h3>
                     <p class="feed-item-description">${item.description}</p>
                     <div class="feed-item-date">${Utils.formatDate(item.pubDate)}</div>
