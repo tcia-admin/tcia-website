@@ -479,6 +479,10 @@ html {
     transform: scaleX(1);
 }
 
+.notice-initiatives {
+    padding: var(--spacing-3xl) 0;
+}
+
 /* Initiatives Grid */
 .initiatives-grid {
     display: grid;
