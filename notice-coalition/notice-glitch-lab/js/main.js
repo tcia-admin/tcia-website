@@ -328,7 +328,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             
             console.log('Fetching fresh gallery images from proxy...');
-            const response = await fetch('/glitch-lab-image-proxy');
+            const response = await fetch('/glitch-lab-image-proxy#gl-art-show');
             
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
