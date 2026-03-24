@@ -124,24 +124,6 @@ html {
     padding: 0 var(--container-padding);
 }
 
-/* Alternating Background Colors for Visual Separation */
-.notice-intro {
-    position: relative;
-    width: 100%;
-    min-height: 100vh; /* Ensures full viewport height */
-    overflow: hidden; /* Prevents video from spilling out */
-    background-color: var(--notice-bg-primary);
-    margin: 0; /* Ensure no margins */
-    padding-top: calc(var(--nav-height) + 46px);
-    top: 0; /* Align to top */
-    left: 0;
-    right: 0;
-}
-
-
-
-
-
 
 /* Responsive Adjustments */
 @media screen and (max-width: 768px) {
