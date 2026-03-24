@@ -436,14 +436,14 @@ html {
 }
 
 /* Updated Intro Content Styles */
-.intro-content {
+/* .intro-content {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 100%;
     margin-top: var(--spacing-2xl); /* Added more space below navigation */
-}
+} */
 
 .intro-text-container {
     max-width: 90%; /* Increased from previous max-width */
