@@ -118,18 +118,22 @@
             </p>
             
             <!-- Gallery Preview Grid -->
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--spacing-lg); margin-bottom: var(--spacing-xl);">
-                <div class="gallery-preview-item" data-preview-index="0" style="aspect-ratio: 1; background: linear-gradient(135deg, rgba(251, 197, 22, 0.1), rgba(0, 255, 255, 0.1)); border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1); display: flex; align-items: center; justify-content: center; overflow: hidden; cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;">
-                    <img class="gallery-preview-image" src="" alt="Gallery Preview 1" style="width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.3s ease;">
-                    <span class="gallery-preview-loading" style="position: absolute; color: var(--notice-text-secondary); font-size: var(--font-size-sm);">Loading...</span>
+            <div id="gallery-preview-grid">
+                <div class="gallery-preview-item" data-preview-index="0">
+                    <img class="gallery-preview-image" src="" alt="Gallery Preview 1">
+                    <span class="gallery-preview-loading">Loading...</span>
                 </div>
-                <div class="gallery-preview-item" data-preview-index="1" style="aspect-ratio: 1; background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(251, 197, 22, 0.1)); border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1); display: flex; align-items: center; justify-content: center; overflow: hidden; cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;">
-                    <img class="gallery-preview-image" src="" alt="Gallery Preview 2" style="width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.3s ease;">
-                    <span class="gallery-preview-loading" style="position: absolute; color: var(--notice-text-secondary); font-size: var(--font-size-sm);">Loading...</span>
+                <div class="gallery-preview-item" data-preview-index="1">
+                    <img class="gallery-preview-image" src="" alt="Gallery Preview 2">
+                    <span class="gallery-preview-loading">Loading...</span>
                 </div>
-                <div class="gallery-preview-item" data-preview-index="2" style="aspect-ratio: 1; background: linear-gradient(135deg, rgba(251, 197, 22, 0.1), rgba(0, 255, 255, 0.1)); border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1); display: flex; align-items: center; justify-content: center; overflow: hidden; cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;">
-                    <img class="gallery-preview-image" src="" alt="Gallery Preview 3" style="width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.3s ease;">
-                    <span class="gallery-preview-loading" style="position: absolute; color: var(--notice-text-secondary); font-size: var(--font-size-sm);">Loading...</span>
+                <div class="gallery-preview-item" data-preview-index="2">
+                    <img class="gallery-preview-image" src="" alt="Gallery Preview 3">
+                    <span class="gallery-preview-loading">Loading...</span>
+                </div>
+                <div class="gallery-preview-item" data-preview-index="3">
+                    <img class="gallery-preview-image" src="" alt="Gallery Preview 4">
+                    <span class="gallery-preview-loading">Loading...</span>
                 </div>
             </div>
                     
