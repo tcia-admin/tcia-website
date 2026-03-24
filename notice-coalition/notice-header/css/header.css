@@ -83,18 +83,6 @@ html {
     scroll-padding-top: var(--nav-height); /* Add this variable to your root */
 }
 
-/* Main Container Styles - Ensure no top margin/padding */
-.notice-coalition-main {
-    width: 100%;
-    font-family: var(--font-primary);
-    color: var(--notice-text-primary);
-    background-color: var(--notice-bg-primary);
-    position: relative;
-    overflow-x: clip;  /* Clip any horizontal overflow */
-}
-
-
-
 @media screen and (max-width: 768px) {
     :root {
         /* Adjust spacing for mobile */
