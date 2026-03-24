@@ -110,20 +110,6 @@ html {
     transform: translateY(-2px);
 }
 
-/* Section Base Styles - Add content container */
-.notice-coalition-main > section {
-    width: 100%;
-    padding: var(--spacing-2xl) 0;
-    overflow-x: hidden;  /* Prevent horizontal scrolling within sections */
-}
-
-/* Add content container for each section */
-.section-content {
-    max-width: var(--container-max-width);
-    margin: 0 auto;
-    padding: 0 var(--container-padding);
-}
-
 
 /* Responsive Adjustments */
 @media screen and (max-width: 768px) {
