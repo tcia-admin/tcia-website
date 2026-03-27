@@ -13,8 +13,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const galleryModalClose = document.getElementById('galleryModalClose');
     
     // Gallery data - Dynamic loading from proxy endpoint with caching
-    const CACHE_KEY = 'glitch_lab_gallery_images';
-    const CACHE_TIMESTAMP_KEY = 'glitch_lab_gallery_timestamp';
+    const CACHE_KEY = 'summit_gallery_images';
+    const CACHE_TIMESTAMP_KEY = 'summit_gallery_timestamp';
     const CACHE_DURATION = 60 * 60 * 1000; // 1 hour in milliseconds
     
     // Fallback gallery images in case proxy fails
@@ -118,10 +118,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Utility function to clear gallery cache (can be called from browser console)
-    window.clearGlitchLabGalleryCache = function() {
+    window.clearSummitGalleryCache = function() {
         localStorage.removeItem(CACHE_KEY);
         localStorage.removeItem(CACHE_TIMESTAMP_KEY);
-        console.log('Glitch Lab gallery cache cleared. Refresh the page to fetch fresh images.');
+        console.log('Summit gallery cache cleared. Refresh the page to fetch fresh images.');
     };
     
     let galleryLoaded = false;
