@@ -3,24 +3,69 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Open Source — Founders & Solutions</title>
+<title>Open Source: Power, People & Possibility — D4PG | TCIA</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=JetBrains+Mono:wght@300;400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-<link href="https://tcia-admin.github.io/tcia-website/main/open-source/css/main.css" rel="stylesheet">
-
+<link rel="stylesheet" href="css/style-tcia.css">
 </head>
 <body>
 
+<nav class="tcia-nav">
+  <a class="tcia-nav-logo" href="https://www.tciamn.org" target="_blank">
+      <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/d938cbda-a43f-485d-bc14-9eb929752606/TCIA_Logo_T.png?content-type=image%2Fpng" alt="Twin Cities Innovation Alliance logo" loading="eager" decoding="async">
+  </a>
+  <div class="tcia-nav-links">
+    <a href="https://www.tciamn.org/about" target="_blank">About</a>
+    <a href="https://www.tciamn.org/noticecoalition" target="_blank">NOTICE</a>
+    <a href="https://www.tciamn.org/d4pg" target="_blank" class="active">D4PG</a>
+    <a href="https://www.tciamn.org/resources" target="_blank">Resources</a>
+    <a href="https://www.tciamn.org/d4pg#register" target="_blank" class="tcia-nav-cta">Register — July 15–17</a>
+  </div>
+</nav>
+
+<div class="d4pg-banner">
+  <div class="d4pg-banner-left">
+    <div class="d4pg-badge">D4PG · 2026</div>
+    <div class="d4pg-banner-text">
+      Part of <strong>Data for Public Good — Creative Futures</strong> · An educational resource from TCIA's community tech library
+    </div>
+  </div>
+  <a class="d4pg-banner-link" href="https://www.tciamn.org/d4pg" target="_blank">← Back to D4PG</a>
+</div>
+
 <header>
-  <div class="header-eyebrow">A Living History of Open Knowledge</div>
-  <h1>The <em>Open Source</em><br>Founders Tree</h1>
-  <div class="header-sub">Milestones · Creators · Solutions</div>
-  <div class="hint">
-    <span>↓</span> Click any card to reveal creator bio &amp; solutions</div>
+  <div class="header-eyebrow">Open Source · Power · People · Possibility</div>
+  <h1>Who Built the <em>Internet</em><br>You Live In?</h1>
+  <div class="header-sub">A D4PG community resource — the history of open source, who it serves, and how your community can reclaim it</div>
+  <div class="hint"><span>↓</span> Click any card to reveal creator bio, solutions built &amp; what it means for your community</div>
 </header>
 
 <div class="timeline">
 <div class="trunk-line"></div>
 
+<!-- TCIA FRAMING INTRO -->
+<div class="tcia-intro">
+  <div class="community-panel">
+    <div class="community-panel-head">
+      <div class="cp-icon">✊</div>
+      <div class="cp-label">Why this matters — The opportunity context</div>
+    </div>
+    <p>The internet, the smartphone in your pocket, the maps you navigate by, the tools your children learn with — <strong>most of it was built on open source software.</strong> Code that anyone can use, study, change, and share. Code that was designed to belong to everyone.</p>
+    <p class="margin-top-sm">But here's the question TCIA is asking: <strong>if the infrastructure is open, why do so few communities hold power over it?</strong> Who governs the algorithms shaping your housing application, your child's school software, your neighborhood's surveillance systems? Understanding open source history is not a tech lesson — it's a power lesson. <strong>Technological direction is a political choice, not a natural law.</strong></p>
+    <div class="cp-stakes">
+      <span class="cp-stake cp-stake-green">Who governs?</span>
+      <span class="cp-stake cp-stake-amber">Who benefits?</span>
+      <span class="cp-stake cp-stake-pink">Who bears risk?</span>
+      <span class="cp-stake cp-stake-blue">Who gets to build?</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- Timeline milestones and cards would go here - repeating the same card structure from original -->
+<!-- For brevity in this implementation, I'm showing the structure -->
+<!-- The full content with all 15+ milestone cards should be copied from the original tcia.html -->
+<!-- This includes: 1983 (Stallman), 1985 (FSF), 1991 (Linux), 1993 (Web), 1997-1998 (OSI), 2001 (Creative Commons), 2005 (Git), -->
+<!-- 2008 (GitHub), 2013-2014 (Docker), 2015-2016 (TensorFlow), 2022-2023 (LLaMA), 2024-2026 (LF Energy), and Daily Life section -->
 <!-- ════════════════ 1983 ════════════════ -->
 <div class="year-badge"><div class="yr">1983</div></div>
 
@@ -83,12 +128,21 @@
         </div>
         <div class="panel">
           <div class="panel-head" onclick="togglePanel(this)">
-            <div class="panel-icon">🌱</div>
-            <div class="panel-label">Sustainability Impact</div>
-            <div class="panel-arrow">▶</div>
+            <div class="panel-icon">🌱</div><div class="panel-label">Sustainability Impact</div><div class="panel-arrow">▶</div>
           </div>
           <div class="panel-body">
             Stallman's copyleft model ensures software improvements cannot be enclosed. Every improvement to a GPL tool must remain free — creating a permanently self-sustaining commons. GNU tools now run the infrastructure of global climate research, satellite monitoring, and environmental modelling systems.
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-head" onclick="togglePanel(this)">
+            <div class="panel-icon">✊</div><div class="panel-label">What this means for your community</div><div class="panel-arrow">▶</div>
+          </div>
+          <div class="panel-body">
+            <div class="opportunity-panel">
+              <div class="op-label">The opportunity</div>
+              <div class="op-body">Stallman's insight was that <strong>ownership of tools is ownership of power.</strong> When your community uses proprietary software — in schools, city halls, clinics — you are renting infrastructure from corporations who can change the terms, raise prices, or shut you out. GPL-licensed tools like LibreOffice and Linux belong to no corporation. <strong>Every public institution in Minneapolis and St. Paul could switch to free, community-governed software today</strong> — saving millions in licensing fees and reclaiming data sovereignty. TCIA's Data Trust work is built on this same principle: shared infrastructure, governed collectively.</div>
+            </div>
           </div>
         </div>
       </div>
@@ -218,6 +272,17 @@
             Linux is the OS of energy transition infrastructure: wind farm SCADA systems, solar inverter controllers, EV charging networks, and smart grid management platforms all run on Linux. The Linux Foundation's LF Energy project now coordinates open source energy software across 50+ utilities worldwide.
           </div>
         </div>
+        <div class="panel">
+          <div class="panel-head" onclick="togglePanel(this)">
+            <div class="panel-icon">✊</div><div class="panel-label">What this means for your community</div><div class="panel-arrow">▶</div>
+          </div>
+          <div class="panel-body">
+            <div class="opportunity-panel">
+              <div class="op-label">The opportunity</div>
+              <div class="op-body">Linux powers 92% of internet infrastructure — and yet most communities have no say in how that infrastructure is governed. <strong>The question isn't whether your community uses Linux. It does.</strong> Every city website, every school server, every hospital record system likely runs on it. The opportunity is to <strong>move from passive user to active stakeholder</strong> — advocating for open source procurement policies in city government, demanding that public data systems run on auditable open code, and training local technologists who can maintain and modify these systems. What a student from North Minneapolis builds on Linux today could run a city system tomorrow.</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -274,6 +339,17 @@
               <li>W3C (World Wide Web Consortium) — open standards body governing the web</li>
               <li>Solid — a decentralised web protocol giving users control of their own data (ongoing)</li>
             </ul>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-head" onclick="togglePanel(this)">
+            <div class="panel-icon">✊</div><div class="panel-label">What this means for your community</div><div class="panel-arrow">▶</div>
+          </div>
+          <div class="panel-body">
+            <div class="opportunity-panel">
+              <div class="op-label">The opportunity</div>
+              <div class="op-body">Berners-Lee gave the web to the world for free — <strong>but corporations have been enclosing it ever since.</strong> Social media platforms, search engines, and app stores have rebuilt walled gardens on top of open protocols. Your community's digital presence — its stories, its networks, its organizing history — lives on platforms that can delete it, de-monetize it, or weaponize it against you. <strong>Berners-Lee's Solid project is building the next web</strong>, where you own your own data and move it freely between services. TCIA's data trust model is rooted in this same vision: community-controlled data, not extracted data. Learning to host your own websites, run your own servers, and use open protocols is an act of sovereignty.</div>
+            </div>
           </div>
         </div>
       </div>
@@ -449,6 +525,17 @@
             CC licenses power the open access science movement — allowing climate research, biodiversity data, and environmental models to be freely shared. The IPCC reports, open biodiversity databases (GBIF), and NASA's Earth Observation data all rely on CC-licensed frameworks to share findings globally.
           </div>
         </div>
+        <div class="panel">
+          <div class="panel-head" onclick="togglePanel(this)">
+            <div class="panel-icon">✊</div><div class="panel-label">What this means for your community</div><div class="panel-arrow">▶</div>
+          </div>
+          <div class="panel-body">
+            <div class="opportunity-panel">
+              <div class="op-label">The opportunity</div>
+              <div class="op-body"><strong>Your community's knowledge, art, and stories have value — and you get to choose who profits from them.</strong> Creative Commons licenses let artists, educators, and organizers share their work freely while keeping control. Musicians in North Minneapolis can release music that anyone can remix for community events but nobody can sell without permission. Educators can share curriculum freely across districts. <strong>The cultural production of Black and Brown communities has been extracted and monetized by corporations for generations</strong> — CC licensing is one tool for communities to control their own narrative, protect their intellectual legacy, and build on each other's work rather than starting from scratch. Wikipedia, the free encyclopedia built by volunteers, runs entirely on these licenses.</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -557,6 +644,17 @@
             </ul>
           </div>
         </div>
+        <div class="panel">
+          <div class="panel-head" onclick="togglePanel(this)">
+            <div class="panel-icon">✊</div><div class="panel-label">What this means for your community</div><div class="panel-arrow">▶</div>
+          </div>
+          <div class="panel-body">
+            <div class="opportunity-panel">
+              <div class="op-label">The opportunity — and the warning</div>
+              <div class="op-body">GitHub made open source social and accessible — <strong>but Microsoft's $7.5 billion acquisition in 2018 is a case study in enclosure.</strong> The world's open source commons is now owned by a corporation. When GitHub goes down, global software development stops. This is exactly the pattern TCIA's framework names: communities build the resource, corporations capture it. <strong>The opportunity is twofold:</strong> First, the tools GitHub hosts are still free — any young person in your community can learn to code, contribute to real projects, and build a portfolio that opens doors. Second, alternatives like Codeberg and GitLab offer community-governed hosting. Pushing city and school systems toward open, non-Microsoft-controlled platforms is a concrete policy ask your community can make right now.</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -622,6 +720,17 @@
           </div>
           <div class="panel-body">
             Containers enable fine-grained resource allocation, dramatically reducing idle server capacity. Kubernetes bin-packing algorithms improve server utilisation from ~15% to 60–80%, reducing the physical footprint of the internet. The CNCF's Environmental Sustainability TAG specifically tracks cloud-native tools for carbon-aware workload scheduling.
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-head" onclick="togglePanel(this)">
+            <div class="panel-icon">✊</div><div class="panel-label">What this means for your community</div><div class="panel-arrow">▶</div>
+          </div>
+          <div class="panel-body">
+            <div class="opportunity-panel">
+              <div class="op-label">The opportunity</div>
+              <div class="op-body">Cloud infrastructure sounds distant — but it shapes the cost of every digital service your community uses. <strong>When nonprofits, schools, and community organizations pay for cloud services, where does that money go?</strong> Almost entirely to Amazon, Microsoft, and Google. Open source infrastructure tools like Kubernetes mean that a technically skilled community organization can run its own cloud — reducing dependency on tech monopolies and keeping resources local. More immediately: <strong>these are high-paying jobs.</strong> Cloud infrastructure skills are among the most in-demand in the tech industry. TCIA's workforce development work can directly target this pipeline, connecting Twin Cities youth to careers that don't require a four-year degree — just structured learning and open source practice.</div>
+            </div>
           </div>
         </div>
       </div>
@@ -693,6 +802,17 @@
             Open ML frameworks power climate and environmental science: weather forecasting (GraphCast), wildfire spread prediction, plastic pollution tracking in oceans, and species identification (iNaturalist). DeepMind's AlphaFold — which solved 200M protein structures and runs on PyTorch/JAX — is accelerating drug discovery and materials science for clean energy.
           </div>
         </div>
+        <div class="panel">
+          <div class="panel-head" onclick="togglePanel(this)">
+            <div class="panel-icon">✊</div><div class="panel-label">What this means for your community</div><div class="panel-arrow">▶</div>
+          </div>
+          <div class="panel-body">
+            <div class="opportunity-panel">
+              <div class="op-label">The opportunity — and the stakes</div>
+              <div class="op-body"><strong>AI is being built right now, and most of the people building it do not look like your community.</strong> The tools — TensorFlow, PyTorch — are free and open. The knowledge to use them is accessible. What's missing is the on-ramp: mentorship, context, and a community that says this is for you too. <strong>But open tools can also be used against communities.</strong> The same frameworks that power medical breakthroughs power predictive policing algorithms, tenant screening systems, and automated benefits denial. Understanding how these tools work is not optional for communities that will be governed by them. TCIA's Cradle to Prison Algorithm initiative puts this directly: you cannot challenge algorithmic harm if you cannot name it. Open source AI literacy is a civil rights issue.</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -759,6 +879,17 @@
             Local open LLMs dramatically reduce the energy cost per AI inference. Running Llama 3 8B locally on a laptop uses a fraction of the energy of a cloud API call. Open models also enable AI for environmental NGOs, climate researchers, and conservation organisations that cannot afford proprietary API costs — democratising access to transformative tools for planetary sustainability work.
           </div>
         </div>
+        <div class="panel">
+          <div class="panel-head" onclick="togglePanel(this)">
+            <div class="panel-icon">✊</div><div class="panel-label">What this means for your community</div><div class="panel-arrow">▶</div>
+          </div>
+          <div class="panel-body">
+            <div class="opportunity-panel">
+              <div class="op-label">The opportunity — this is the moment</div>
+              <div class="op-body">Open large language models are the most significant democratization of AI capability in history — and they arrived in 2023. <strong>Your community does not have to wait for Google or OpenAI to decide what AI is for.</strong> A neighborhood health clinic can run its own local AI on a laptop — no data leaving the building, no subscription, no corporate terms of service. A legal aid organization can build an AI tool trained on tenant rights law. A school can deploy an AI tutor that reflects its students' culture and language. <strong>The window is open right now</strong>, but it will not stay open. As TCIA's framework names: corporations are moving to re-enclose what the open source community built. Communities that learn to build, host, and govern their own AI tools in the next 18 months will have durable leverage. Communities that wait will be consumers of someone else's product again.</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -814,6 +945,17 @@
               <li>Seapath — open source substation automation platform</li>
               <li>Open Climate Fix solar nowcasting — ML forecasting that reduces gas peaker plant usage by predicting solar output 4hrs ahead</li>
             </ul>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-head" onclick="togglePanel(this)">
+            <div class="panel-icon">✊</div><div class="panel-label">What this means for your community</div><div class="panel-arrow">▶</div>
+          </div>
+          <div class="panel-body">
+            <div class="opportunity-panel">
+              <div class="op-label">The opportunity</div>
+              <div class="op-body">The energy transition is not just an environmental issue — it is an economic justice issue. <strong>Who owns the solar panels on rooftops in North Minneapolis? Who controls the smart grid algorithms that decide which neighborhoods get power first during outages?</strong> Open source energy tools mean that community energy cooperatives can model their own microgrids, negotiate from an informed position with utilities, and eventually own local energy infrastructure. Cities like Minneapolis that have committed to clean energy goals can be held accountable through open data and open tools — and community members who understand those tools can sit at the table as informed advocates, not just witnesses. <strong>Energy sovereignty and data sovereignty are the same fight.</strong></div>
+            </div>
           </div>
         </div>
       </div>
@@ -882,6 +1024,17 @@
             AOSP's open nature enables repair-focused operating systems like /e/OS and LineageOS — extending phone lifespans and reducing e-waste. Community-maintained OS builds allow devices to receive security updates years beyond manufacturer support. <a class="cite" href="https://lineageos.org/" target="_blank">[6]</a>
           </div>
         </div>
+        <div class="panel">
+          <div class="panel-head" onclick="togglePanel(this)">
+            <div class="panel-icon">✊</div><div class="panel-label">What this means for your community</div><div class="panel-arrow">▶</div>
+          </div>
+          <div class="panel-body">
+            <div class="opportunity-panel">
+              <div class="op-label">The opportunity</div>
+              <div class="op-body">Your smartphone is a surveillance device you carry voluntarily — but it doesn't have to be. <strong>The same Linux kernel powering your Android can power one with no Google tracking, no targeted advertising, no data sent to corporations.</strong> LineageOS and GrapheneOS are free alternatives schools and organizations can deploy on existing hardware. For families concerned about children's data collected by school-issued devices, or organizers who need secure communications, these tools exist right now. <strong>Phone repair is also a community economic opportunity:</strong> refurbishing and reflashing devices with open OS builds creates local tech jobs and keeps hardware out of landfills.</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -927,6 +1080,17 @@
                 <div class="daily-item-name">uBlock Origin</div>
                 <div class="daily-item-desc">Open source ad/tracker blocker used by 40M+ people; community-maintained filter lists <a class="cite" href="https://github.com/gorhill/uBlock" target="_blank">[11]</a></div>
               </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-head" onclick="togglePanel(this)">
+            <div class="panel-icon">✊</div><div class="panel-label">What this means for your community</div><div class="panel-arrow">▶</div>
+          </div>
+          <div class="panel-body">
+            <div class="opportunity-panel">
+              <div class="op-label">The opportunity — one install, immediate impact</div>
+              <div class="op-body">Switching to Firefox and installing uBlock Origin takes five minutes and immediately stops hundreds of advertising trackers from following your community members across the web. <strong>This is not a technical skill — it's a civic skill.</strong> Every school, church, community center, and neighborhood organization can make this switch today. For parents, it means children's browsing isn't profiled. For organizers, it means your research isn't being fed into surveillance capitalism's data economy. <strong>Digital privacy is not a luxury for the tech-savvy — it's a right, and open source browsers are one of the most accessible ways to exercise it.</strong> TCIA's data literacy workshops can teach this in under an hour.</div>
             </div>
           </div>
         </div>
@@ -991,6 +1155,17 @@
             OSM is foundational to environmental monitoring. Global Forest Watch, coral reef tracking, wildfire mapping, and flood risk modelling all use OSM base maps. The open licence means conservation organisations can integrate it freely — critical for underfunded environmental NGOs. <a class="cite" href="https://www.globalforestwatch.org/" target="_blank">[17]</a>
           </div>
         </div>
+        <div class="panel">
+          <div class="panel-head" onclick="togglePanel(this)">
+            <div class="panel-icon">✊</div><div class="panel-label">What this means for your community</div><div class="panel-arrow">▶</div>
+          </div>
+          <div class="panel-body">
+            <div class="opportunity-panel">
+              <div class="op-label">The opportunity</div>
+              <div class="op-body"><strong>Your neighborhood's history, its landmarks, its community spaces — none of them exist on Google Maps unless Google decides they matter.</strong> OpenStreetMap is a map that any community member can edit, add to, and correct. Residents of North Minneapolis can map food access deserts, community gardens, and Black-owned businesses in ways that no corporate map platform will prioritize. Humanitarian mapping teams have used OSM to coordinate disaster response in communities corporations ignored. <strong>Mapping your community is an act of claiming it.</strong> TCIA can connect organizers to OSM mapping workshops where no technical background is required — just local knowledge.</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1042,6 +1217,17 @@
             </div>
           </div>
         </div>
+        <div class="panel">
+          <div class="panel-head" onclick="togglePanel(this)">
+            <div class="panel-icon">✊</div><div class="panel-label">What this means for your community</div><div class="panel-arrow">▶</div>
+          </div>
+          <div class="panel-body">
+            <div class="opportunity-panel">
+              <div class="op-label">The opportunity — organizer security is community security</div>
+              <div class="op-body"><strong>Surveillance is not paranoia — it is a documented fact of life for community organizers, activists, and advocates in the Twin Cities and beyond.</strong> Law enforcement has used social media monitoring, subpoenaed messaging records, and data requests to track organizing work. Signal's open source encryption means even the company cannot read your messages — not because you trust Signal, but because the math makes it impossible. <strong>Every community leader, housing advocate, youth organizer, and tenant rights worker should be on Signal today.</strong> TCIA can train your whole team in under an hour. This is not a tech workshop — it is a safety workshop.</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1087,6 +1273,17 @@
                 <div class="daily-item-name">Government Deployments</div>
                 <div class="daily-item-desc">Munich (LiMux), French Gendarmerie (94K desktops), Italian Ministry of Defence all migrated to open source office suites <a class="cite" href="https://joinup.ec.europa.eu/collection/open-source-observatory-osor" target="_blank">[27]</a></div>
               </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-head" onclick="togglePanel(this)">
+            <div class="panel-icon">✊</div><div class="panel-label">What this means for your community</div><div class="panel-arrow">▶</div>
+          </div>
+          <div class="panel-body">
+            <div class="opportunity-panel">
+              <div class="op-label">The opportunity — public dollars, public tools</div>
+              <div class="op-body">Every Minneapolis and St. Paul public school that pays for Microsoft 365 is spending community tax dollars on a subscription to a corporation. <strong>LibreOffice does everything Microsoft Office does — for free, forever, with no data sent to corporate servers.</strong> Italy, France, and Germany have moved entire government agencies to LibreOffice. The question is not whether it works — it does. The question is whether there is political will to make the switch. <strong>Advocating for open source office tools in public institutions is a budget justice argument, a data privacy argument, and a sovereignty argument all at once.</strong> TCIA's policy work can frame this case for school boards and city councils today.</div>
             </div>
           </div>
         </div>
@@ -1140,6 +1337,17 @@
                 <div class="daily-item-name">WebP / AV1 / Opus</div>
                 <div class="daily-item-desc">Open codec formats (AOM consortium) reducing bandwidth — images load faster, video uses less data <a class="cite" href="https://aomedia.org/" target="_blank">[32]</a></div>
               </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-head" onclick="togglePanel(this)">
+            <div class="panel-icon">✊</div><div class="panel-label">What this means for your community</div><div class="panel-arrow">▶</div>
+          </div>
+          <div class="panel-body">
+            <div class="opportunity-panel">
+              <div class="op-label">The opportunity — own your media infrastructure</div>
+              <div class="op-body"><strong>Every dollar your community spends on Netflix, YouTube Premium, or Spotify flows out.</strong> PeerTube — an open source, federated video platform — lets any organization host its own video channel with no algorithm deciding who sees it, no corporate terms of service, no data extraction. Community media organizations, youth programs, and cultural institutions can build their own video infrastructure. <strong>VLC plays any video file — including files from your own community archive, your oral histories, your cultural documentation</strong> — without requiring a subscription, without sending viewing data to corporations, and without an algorithm deciding what's worth watching. Open media tools are cultural sovereignty tools.</div>
             </div>
           </div>
         </div>
@@ -1202,6 +1410,17 @@
             Wikimedia Foundation operates on renewable energy. Wikipedia's server infrastructure — 100% Linux — runs in data centres powered by certified green energy. Open knowledge reduces duplicated research globally, directly lowering the carbon cost of information production. <a class="cite" href="https://meta.wikimedia.org/wiki/Sustainability_Initiative" target="_blank">[38]</a>
           </div>
         </div>
+        <div class="panel">
+          <div class="panel-head" onclick="togglePanel(this)">
+            <div class="panel-icon">✊</div><div class="panel-label">What this means for your community</div><div class="panel-arrow">▶</div>
+          </div>
+          <div class="panel-body">
+            <div class="opportunity-panel">
+              <div class="op-label">The opportunity — write your community into history</div>
+              <div class="op-body"><strong>Wikipedia has a documented problem: communities of color, women, and non-Western cultures are systematically underrepresented.</strong> This is not an accident — it reflects who has historically had access to the internet, time, and confidence to contribute. Wikipedia edit-a-thons — organized community writing events — are one of the most direct ways to put your community's history, leaders, and knowledge on the record. TCIA has organized these events. <strong>Every article written about a Black Twin Cities entrepreneur, a Somali community institution, a Native leader, or a grassroots organization is a permanent, freely accessible piece of the public record</strong> — and it belongs to no corporation, no platform, and no algorithm. Your community's knowledge is worth encyclopedic space.</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1250,18 +1469,29 @@
             </div>
           </div>
         </div>
+        <div class="panel">
+          <div class="panel-head" onclick="togglePanel(this)">
+            <div class="panel-icon">✊</div><div class="panel-label">What this means for your community</div><div class="panel-arrow">▶</div>
+          </div>
+          <div class="panel-body">
+            <div class="opportunity-panel">
+              <div class="op-label">The opportunity — health data is community power</div>
+              <div class="op-body"><strong>Who owns your medical records determines who profits from your health data.</strong> Proprietary EHR systems like Epic and Cerner have sold or licensed de-identified patient data to pharmaceutical companies and AI firms — often without meaningful patient consent. Open source health records systems put that data under institutional — and potentially community — control. More urgently: <strong>algorithmic systems are already being used to make decisions about pain management, benefit eligibility, and resource allocation in ways that have documented racial bias.</strong> Understanding and auditing these systems requires the same open source literacy this page teaches. TCIA's data justice work directly addresses algorithmic harm in public health systems — and every community member who understands these tools is one more voice that can hold institutions accountable.</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
 <!-- TODAY -->
-<div style="height:20px"></div>
+<div class="timeline-spacer"></div>
 <div class="today-wrap">
   <div class="today-ring"></div>
   <div class="today-ring"></div>
   <div class="today-dot"></div>
-  <div class="today-label">present · 2026</div>
+  <div class="today-label">present · 2026 — the window is open</div>
 </div>
 
 </div><!-- /timeline -->
@@ -1277,10 +1507,30 @@
   <div class="leg"><div class="leg-dot" style="background:var(--c7)"></div>Daily Life Solutions</div>
 </div>
 
+<!-- ══════════════ TCIA ACTIVATE CTA ══════════════ -->
+<div id="CTA">
+  <div class="cta-box">
+    <div class="cta-label">
+      Reclaim · Build · Anchor
+    </div>
+    <div class="cta-title">
+      Knowledge without action is just history.<br><em>D4PG turns it into power.
+    </em></div>
+    <p class="cta-desc">
+      Every milestone on this tree is proof that communities — not corporations — built the most important infrastructure in human history. Now it's your turn. <br><br> Join TCIA at Data for Public Good 2026 to educate, equip, and activate.
+    </p>
+    <div class="cta-buttons">
+      <a href="https://www.tciamn.org/d4pg#register" target="_blank" class="cta-btn cta-btn-primary">Register for D4PG — July 15–17</a>
+      <a href="https://www.tciamn.org/donate" target="_blank" class="cta-btn cta-btn-secondary">Support TCIA's Mission</a>
+    </div>
+    <div class="cta-contact">tciamn.org · info@tciamn.org · 651-565-7376 · 1041 James Ave. N. Suite 1001 Minneapolis, MN 55411</div>
+  </div>
+</div>
+
 <!-- ══════════════ REFERENCES ══════════════ -->
 <div class="references">
-  <div class="references-title">References</div>
-  <div class="references-sub">APA 7th Edition · All links verified March 2026</div>
+  <div class="references-title">Sources &amp; Citations</div>
+  <div class="references-sub">APA 7th Edition · Verified March 2026 · Open access where available</div>
   <div class="ref-divider"></div>
   <div class="ref-list">
 
@@ -1502,511 +1752,24 @@
   </div>
 </div>
 
-<script>
-// Card toggle
-function toggleCard(card) {
-  const isOpen = card.classList.contains('open');
-  // close all others
-  document.querySelectorAll('.card.open').forEach(c => {
-    c.classList.remove('open');
-    c.querySelectorAll('.panel.open').forEach(p => p.classList.remove('open'));
-  });
-  if (!isOpen) {
-    card.classList.add('open');
-    // animate impact bars
-    setTimeout(() => {
-      card.querySelectorAll('.impact-bar-fill').forEach(bar => {
-        const w = bar.style.width;
-        bar.style.width = '0';
-        requestAnimationFrame(() => { bar.style.width = w; });
-      });
-    }, 50);
-  }
-}
-
-// Panel accordion
-function togglePanel(head) {
-  event.stopPropagation();
-  const panel = head.parentElement;
-  panel.classList.toggle('open');
-}
-
-// Scroll reveal
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('visible');
-    }
-  });
-}, { threshold: 0.12 });
-
-document.querySelectorAll('.row, .branch-header, .year-badge').forEach(el => {
-  observer.observe(el);
-});
-</script>
-
 <!-- ══════════════════════════════════════════════════════════
      RESOURCE PAGE — injected as a full-screen overlay page
      ══════════════════════════════════════════════════════════ -->
 
-<style>
-/* ── PAGE NAV ─────────────────────────────────────── */
-#page-nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 8000;
-  background: rgba(6,8,10,0.92);
-  backdrop-filter: blur(14px);
-  border-bottom: 1px solid #1c2a1e;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-  padding: 10px 16px;
-}
-
-.nav-btn {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.6rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  font-weight: 600;
-  padding: 7px 16px;
-  border-radius: 20px;
-  border: 1px solid #1c2a1e;
-  background: transparent;
-  color: #4a6452;
-  cursor: pointer;
-  transition: all 0.2s;
-  white-space: nowrap;
-}
-
-.nav-btn:hover { color: #cdd9c4; border-color: #3ddc84; }
-.nav-btn.active { background: #3ddc84; color: #06080a; border-color: #3ddc84; }
-
-/* spacer so content isn't hidden under nav */
-#timeline-page { padding-top: 54px; }
-#resource-page  { padding-top: 54px; display: none; }
-
-/* ── RESOURCE PAGE SHELL ──────────────────────────── */
-#resource-page {
-  min-height: 100vh;
-  background: var(--bg);
-  color: var(--text);
-  font-family: 'Inter', sans-serif;
-}
-
-.rp-header {
-  text-align: center;
-  padding: 60px 24px 40px;
-  border-bottom: 1px solid #1c2a1e;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-.rp-eyebrow {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.58rem;
-  letter-spacing: 0.42em;
-  color: #f06292;
-  text-transform: uppercase;
-  margin-bottom: 14px;
-}
-
-.rp-title {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(1.9rem, 4vw, 3.2rem);
-  font-weight: 700;
-  color: #e8f0e8;
-  line-height: 1.1;
-}
-
-.rp-title em { font-style: italic; color: #3ddc84; font-weight: 400; }
-
-.rp-sub {
-  margin-top: 12px;
-  font-size: 0.75rem;
-  color: #4a6452;
-  font-family: 'JetBrains Mono', monospace;
-  letter-spacing: 0.1em;
-}
-
-/* ── LEGEND BAR ─────────────────────────────────── */
-.tier-legend {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  flex-wrap: wrap;
-  padding: 20px 24px 0;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-.tier-pill {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.58rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  padding: 5px 13px;
-  border-radius: 20px;
-  border: 1px solid;
-  font-weight: 700;
-}
-
-.tier-pill.good    { color: #3ddc84; border-color: rgba(61,220,132,0.3); background: rgba(61,220,132,0.07); }
-.tier-pill.better  { color: #4fc3f7; border-color: rgba(79,195,247,0.3); background: rgba(79,195,247,0.07); }
-.tier-pill.best    { color: #f5a623; border-color: rgba(245,166,35,0.3);  background: rgba(245,166,35,0.07); }
-.tier-pill.worst   { color: #ef5350; border-color: rgba(239,83,80,0.3);   background: rgba(239,83,80,0.07); }
-
-/* ── CATEGORY FILTER ─────────────────────────────── */
-.cat-filter {
-  display: flex;
-  gap: 6px;
-  flex-wrap: wrap;
-  justify-content: center;
-  padding: 20px 24px 0;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-.cat-btn {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.56rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  padding: 5px 12px;
-  border-radius: 4px;
-  border: 1px solid #1c2a1e;
-  background: transparent;
-  color: #4a6452;
-  cursor: pointer;
-  transition: all 0.15s;
-}
-
-.cat-btn:hover  { color: #cdd9c4; border-color: #4a6452; }
-.cat-btn.active { color: #e8f0e8; border-color: #f06292; background: rgba(240,98,146,0.1); }
-
-/* ── CARDS GRID ──────────────────────────────────── */
-.rp-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 18px;
-  max-width: 1200px;
-  margin: 26px auto 0;
-  padding: 0 24px 80px;
-}
-
-/* ── SOLUTION CARD ───────────────────────────────── */
-.sol-card {
-  background: #0d1117;
-  border: 1px solid #1c2a1e;
-  border-radius: 12px;
-  overflow: hidden;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.sol-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 40px rgba(0,0,0,0.5);
-}
-
-.sol-card-head {
-  padding: 14px 16px 12px;
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  border-bottom: 1px solid #1c2a1e;
-}
-
-.sol-icon-wrap {
-  width: 40px; height: 40px;
-  border-radius: 8px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.2rem;
-  flex-shrink: 0;
-}
-
-.sol-head-meta { flex: 1; min-width: 0; }
-
-.sol-cat {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.52rem;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  color: #4a6452;
-  margin-bottom: 3px;
-}
-
-.sol-name {
-  font-family: 'Playfair Display', serif;
-  font-size: 1rem;
-  font-weight: 700;
-  color: #e8f0e8;
-  line-height: 1.2;
-}
-
-/* tier badge on card */
-.sol-tier {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.55rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  padding: 3px 9px;
-  border-radius: 12px;
-  margin-top: 5px;
-  flex-shrink: 0;
-  align-self: flex-start;
-}
-
-.sol-tier.good   { color: #3ddc84; background: rgba(61,220,132,0.12);  border: 1px solid rgba(61,220,132,0.25); }
-.sol-tier.better { color: #4fc3f7; background: rgba(79,195,247,0.12);  border: 1px solid rgba(79,195,247,0.25); }
-.sol-tier.best   { color: #f5a623; background: rgba(245,166,35,0.12);  border: 1px solid rgba(245,166,35,0.25); }
-.sol-tier.worst  { color: #ef5350; background: rgba(239,83,80,0.12);   border: 1px solid rgba(239,83,80,0.25); }
-
-/* ── SCORES GRID ─────────────────────────────────── */
-.sol-scores {
-  padding: 12px 16px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
-  border-bottom: 1px solid #1c2a1e;
-}
-
-.score-item { display: flex; flex-direction: column; gap: 4px; }
-
-.score-label {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.5rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: #4a6452;
-}
-
-.score-bar-wrap { display: flex; align-items: center; gap: 6px; }
-
-.score-bar {
-  flex: 1;
-  height: 5px;
-  background: #1c2a1e;
-  border-radius: 3px;
-  overflow: hidden;
-}
-
-.score-fill {
-  height: 100%;
-  border-radius: 3px;
-  transition: width 0.8s ease;
-}
-
-.score-num {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.55rem;
-  color: #6a8a72;
-  width: 22px;
-  text-align: right;
-}
-
-/* ── SKILL BADGE ─────────────────────────────────── */
-.skill-band {
-  padding: 10px 16px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  border-bottom: 1px solid #1c2a1e;
-}
-
-.skill-label {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.5rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: #4a6452;
-  white-space: nowrap;
-}
-
-.skill-track {
-  flex: 1;
-  height: 8px;
-  background: #1c2a1e;
-  border-radius: 4px;
-  position: relative;
-  overflow: visible;
-}
-
-.skill-fill {
-  position: absolute;
-  left: 0; top: 0;
-  height: 8px;
-  border-radius: 4px;
-  background: linear-gradient(90deg, #3ddc84, #f5a623);
-}
-
-.skill-dot {
-  position: absolute;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 14px; height: 14px;
-  border-radius: 50%;
-  background: #f5a623;
-  border: 2px solid #06080a;
-  box-shadow: 0 0 8px rgba(245,166,35,0.5);
-}
-
-.skill-ends {
-  display: flex;
-  justify-content: space-between;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.48rem;
-  color: #3a5240;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  margin-top: 3px;
-}
-
-/* ── WHAT IT COVERS ──────────────────────────────── */
-.sol-covers {
-  padding: 10px 16px 14px;
-}
-
-.covers-label {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.5rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: #4a6452;
-  margin-bottom: 8px;
-}
-
-.covers-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.covers-list li {
-  display: flex;
-  align-items: flex-start;
-  gap: 7px;
-  font-size: 0.68rem;
-  color: #7a9a7a;
-  line-height: 1.5;
-  font-family: 'Inter', sans-serif;
-  font-weight: 300;
-}
-
-.covers-list li .ci {
-  font-size: 0.7rem;
-  flex-shrink: 0;
-  margin-top: 1px;
-}
-
-.covers-list li .cv {
-  font-weight: 500;
-  color: #a0b8a0;
-  margin-right: 3px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.6rem;
-}
-
-/* worst card red accent */
-.sol-card.worst-card { border-color: rgba(239,83,80,0.2); }
-.sol-card.worst-card .sol-card-head { background: rgba(239,83,80,0.04); }
-
-/* hidden state for filtering */
-.sol-card.hidden { display: none; }
-
-/* ── SCORE COLOUR HELPERS ────────────────────────── */
-.fill-green  { background: #3ddc84; }
-.fill-blue   { background: #4fc3f7; }
-.fill-amber  { background: #f5a623; }
-.fill-red    { background: #ef5350; }
-.fill-purple { background: #ce93d8; }
-.fill-pink   { background: #f06292; }
-
-@media (max-width: 640px) {
-  .rp-grid { grid-template-columns: 1fr; padding: 0 14px 60px; }
-  .sol-scores { grid-template-columns: 1fr; }
-}
-</style>
-
 <!-- NAV BAR (shared between both pages) -->
 <div id="page-nav">
-  <button class="nav-btn active" onclick="showPage('timeline')">🌳 Timeline</button>
-  <button class="nav-btn" onclick="showPage('resource')">📋 Resource Guide</button>
+  <button class="nav-btn active" onclick="showPage('timeline')">🌳 Founders Tree</button>
+  <button class="nav-btn" onclick="showPage('resource')">🛠️ Community Tools Guide</button>
 </div>
 
-<!-- wrap original content -->
-<script>
-// Wrap timeline content
-document.addEventListener('DOMContentLoaded', () => {
-  const body = document.body;
-  const nav  = document.getElementById('page-nav');
-  const rp   = document.getElementById('resource-page');
-
-  // Gather everything except nav & resource-page into timeline-page div
-  const tl = document.createElement('div');
-  tl.id = 'timeline-page';
-  tl.style.paddingTop = '54px';
-
-  const nodes = [...body.childNodes].filter(n =>
-    n !== nav && n !== rp &&
-    !(n.nodeName === 'SCRIPT') &&
-    !(n.nodeName === 'STYLE') &&
-    !(n.nodeName === '#comment')
-  );
-  nodes.forEach(n => tl.appendChild(n));
-  body.insertBefore(tl, rp);
-});
-
-function showPage(page) {
-  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-  if (page === 'timeline') {
-    document.getElementById('timeline-page').style.display = 'block';
-    document.getElementById('resource-page').style.display  = 'none';
-    document.querySelectorAll('.nav-btn')[0].classList.add('active');
-  } else {
-    document.getElementById('timeline-page').style.display = 'none';
-    document.getElementById('resource-page').style.display  = 'block';
-    document.querySelectorAll('.nav-btn')[1].classList.add('active');
-    // trigger score bar animations
-    setTimeout(animateScores, 100);
-  }
-}
-
-function animateScores() {
-  document.querySelectorAll('.score-fill[data-w]').forEach(el => {
-    el.style.width = el.dataset.w;
-  });
-}
-
-function filterCat(btn, cat) {
-  document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  document.querySelectorAll('.sol-card').forEach(c => {
-    if (cat === 'all' || c.dataset.cat === cat) {
-      c.classList.remove('hidden');
-    } else {
-      c.classList.add('hidden');
-    }
-  });
-}
-</script>
-
-<!-- ══ RESOURCE PAGE CONTENT ══════════════════════════ -->
 <div id="resource-page">
-
   <div class="rp-header">
-    <div class="rp-eyebrow">Open Source · Daily Solutions · Evaluated</div>
-    <div class="rp-title">The Open Source <em>Resource Guide</em></div>
-    <div class="rp-sub">Rated by Data Privacy · UX/UI · Security · Skill Level — Good → Better → Best → Worst</div>
+    <div class="rp-eyebrow">D4PG Community Tools Guide · Data for Public Good 2026</div>
+    <div class="rp-title">Know What You're Using — <em>and What It Costs You</em></div>
+    <div class="rp-sub">Every tool rated by Data Privacy · UX/UI · Security · Skill Level · Community Power — from the tools that extract from your community to the ones that build it</div>
+    <div style="margin-top:18px;max-width:620px;margin-left:auto;margin-right:auto;font-family:'Inter',sans-serif;font-size:0.78rem;line-height:1.7;color: var(--brand-black);">
+      The apps on your phone were not designed with your community's interests in mind. Some of them were designed <em>against</em> them. This guide helps you make informed choices — and points toward open alternatives that put power back in your hands.<br><br> <strong style="color: var(--brand-teal);">Use the category filter to find tools relevant to your work.</strong>
+    </div>
   </div>
 
   <div class="tier-legend">
@@ -2028,7 +1791,7 @@ function filterCat(btn, cat) {
     <button class="cat-btn" onclick="filterCat(this,'health')">🏥 Healthcare</button>
   </div>
 
-  <div class="rp-grid">
+ <div class="rp-grid">
 
     <!-- ═══════════ MOBILE OS ═══════════ -->
 
@@ -2089,6 +1852,7 @@ function filterCat(btn, cat) {
           <li><span class="ci">🛡️</span><span><span class="cv">Security:</span> Monthly patches; exploit mitigations; SELinux enforcing; verified boot support</span></li>
           <li><span class="ci">🎓</span><span><span class="cv">Skill:</span> Advanced — requires bootloader unlock, ADB commands, manual flashing via recovery</span></li>
           <li><span class="ci">🌱</span><span><span class="cv">Sustainability:</span> Extends device lifespan 3–5 years beyond manufacturer EOL, directly reducing e-waste</span></li>
+          <li><span class="ci">✊</span><span><span class="cv">Community power:</span> Phone repair co-ops using LineageOS create local jobs and keep devices out of landfills — a Black/Brown community economic opportunity hiding in plain sight</span></li>
         </ul>
       </div>
     </div>
@@ -3313,12 +3077,26 @@ function filterCat(btn, cat) {
     </div>
 
   </div><!-- /rp-grid -->
+
+  <!-- TAKE ACTION STRIP -->
+  <div class="rp-cta-container">
+    <div class="rp-cta-box">
+      <div class="rp-cta-content">
+        <div class="rp-cta-label">Knowledge is the first step</div>
+        <div class="rp-cta-title">Now bring it to D4PG.</div>
+        <p class="rp-cta-desc">Join TCIA at Data for Public Good — July 15–17, 2026 — to go deeper on every tool in this guide with fellow community members, educators, organizers, and technologists.</p>
+      </div>
+      <div class="rp-cta-buttons">
+        <a href="https://www.tciamn.org/d4pg#register" target="_blank" class="rp-cta-btn rp-cta-btn-primary">Register for D4PG →</a>
+        <a href="https://www.tciamn.org/resources" target="_blank" class="rp-cta-btn rp-cta-btn-secondary">More TCIA Resources →</a>
+      </div>
+    </div>
+  </div>
+
 </div><!-- /resource-page -->
 
-<script>
-// Animate bars when resource page first shown
-document.querySelectorAll('.score-fill[data-w]').forEach(el => {
-  el.style.width = '0';
-});
-</script>
+<!-- Load external JavaScript -->
+<script src="js/tcia.js"></script>
 
+</body>
+</html>
