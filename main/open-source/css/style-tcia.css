@@ -977,6 +977,12 @@ sup { vertical-align: super; font-size: 0.55em; }
   .today-label { display: none; }
 }
 
+
+/* ── UTILITY CLASSES ────────────────────── */
+.hidden {
+  display: none !important;
+}
+
 /* ── PAGE NAV ─────────────────────────────────────── */
 #page-nav {
   position: fixed;
