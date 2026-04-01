@@ -64,12 +64,12 @@ document.querySelectorAll('.row, .branch-header, .year-badge').forEach(el => {
 function showPage(page) {
   document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
   if (page === 'timeline') {
-    document.getElementById('timeline-page').style.display = 'block';
-    document.getElementById('resource-page').style.display  = 'none';
+    document.getElementById('timeline-page').classList.remove('hidden');
+    document.getElementById('resource-page').classList.add('hidden');
     document.querySelectorAll('.nav-btn')[0].classList.add('active');
   } else {
-    document.getElementById('timeline-page').style.display = 'none';
-    document.getElementById('resource-page').style.display  = 'block';
+    document.getElementById('timeline-page').classList.add('hidden');
+    document.getElementById('resource-page').classList.remove('hidden');
     document.querySelectorAll('.nav-btn')[1].classList.add('active');
     // trigger score bar animations
     setTimeout(animateScores, 100);
