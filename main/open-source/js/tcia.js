@@ -41,7 +41,8 @@ document.querySelectorAll('.row, .branch-header, .year-badge').forEach(el => {
 
 // Wrap timeline content
 document.addEventListener('DOMContentLoaded', () => {
-  const body = document.body;
+  const section = document.querySelector('section');
+  if (!section) return;
   const nav  = document.getElementById('page-nav');
   const rp   = document.getElementById('resource-page');
 
@@ -50,14 +51,14 @@ document.addEventListener('DOMContentLoaded', () => {
   tl.id = 'timeline-page';
   tl.style.paddingTop = '54px';
 
-  const nodes = [...body.childNodes].filter(n =>
+  const nodes = [...section.childNodes].filter(n =>
     n !== nav && n !== rp &&
     !(n.nodeName === 'SCRIPT') &&
     !(n.nodeName === 'STYLE') &&
     !(n.nodeName === '#comment')
   );
   nodes.forEach(n => tl.appendChild(n));
-  body.insertBefore(tl, rp);
+  section.insertBefore(tl, rp);
 });
 
 function showPage(page) {
