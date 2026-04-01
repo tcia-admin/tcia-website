@@ -39,27 +39,27 @@ document.querySelectorAll('.row, .branch-header, .year-badge').forEach(el => {
   observer.observe(el);
 });
 
-// Wrap timeline content
-document.addEventListener('DOMContentLoaded', () => {
-  const section = document.querySelector('section');
-  if (!section) return;
-  const nav  = document.getElementById('page-nav');
-  const rp   = document.getElementById('resource-page');
+// Wrap timeline content (Removed for SS functionality)
+// document.addEventListener('DOMContentLoaded', () => {
+//   const section = document.querySelector('section');
+//   if (!section) return;
+//   const nav  = document.getElementById('page-nav');
+//   const rp   = document.getElementById('resource-page');
 
-  // Gather everything except nav & resource-page into timeline-page div
-  const tl = document.createElement('div');
-  tl.id = 'timeline-page';
-  tl.style.paddingTop = '54px';
+//   // Gather everything except nav & resource-page into timeline-page div
+//   const tl = document.createElement('div');
+//   tl.id = 'timeline-page';
+//   tl.style.paddingTop = '54px';
 
-  const nodes = [...section.childNodes].filter(n =>
-    n !== nav && n !== rp &&
-    !(n.nodeName === 'SCRIPT') &&
-    !(n.nodeName === 'STYLE') &&
-    !(n.nodeName === '#comment')
-  );
-  nodes.forEach(n => tl.appendChild(n));
-  section.insertBefore(tl, rp);
-});
+//   const nodes = [...section.childNodes].filter(n =>
+//     n !== nav && n !== rp &&
+//     !(n.nodeName === 'SCRIPT') &&
+//     !(n.nodeName === 'STYLE') &&
+//     !(n.nodeName === '#comment')
+//   );
+//   nodes.forEach(n => tl.appendChild(n));
+//   section.insertBefore(tl, rp);
+// });
 
 function showPage(page) {
   document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
