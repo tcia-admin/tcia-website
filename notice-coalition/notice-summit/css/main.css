@@ -443,7 +443,7 @@ html {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: var(--spacing-2xl);
+    margin-bottom: var(--spacing-lg);
 }
 
 .section-title {
@@ -554,7 +554,7 @@ html {
     gap: var(--spacing-2xl);
     align-items: stretch;
     line-height: 1.5em;
-    padding: var(--spacing-2xl) 0;
+    padding: var(--spacing-lg) 0;
 }
 .values-grid {
     display: grid;
