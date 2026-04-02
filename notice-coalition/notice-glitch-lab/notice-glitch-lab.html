@@ -11,7 +11,6 @@
 <div id="header"></div>
 
 <section class="notice-coalition-main">
-
     
     <!-- Matrix Background Canvas -->
     <canvas id="Matrix"></canvas>
@@ -83,26 +82,141 @@
         <div class="section-content">
             <h2 class="section-title">About the Residency</h2>
             
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-3xl); align-items: center; margin-top: var(--spacing-2xl);">
+            <div class="about-grid" style="">
                 <!-- Text Content -->
-                <div>
-                    <p style="color: var(--notice-text-primary); font-size: var(--font-size-lg); line-height: 1.8; margin-bottom: var(--spacing-xl);">
-                        The Glitch Lab is a new residency by the <strong style="color: var(--notice-accent);">Edgelands Institute</strong> and the <strong style="color: var(--notice-accent);">NOTICE Coalition</strong> that supports three Houston-based artists in developing socially engaged art projects exploring how surveillance technologies—such as student activity monitoring software, AI-powered cameras, and vape detectors—are reshaping education and youth justice.
+                <div class = "about">
+                    <p>
+                        The Glitch Lab is a social practice art residency developed by the Edgelands Institute and the NOTICE Coalition to explore the intersections of surveillance, emergent technologies and the futures of youth justice through community-engaged projects and participatory art. Under the leadership of Dr. Chelsea Barabas and Rian Crane, the 2025 Glitch Lab brought together Houston-based artists Jack Morillo, Sol Díaz-Peña, and Billion T. to examine how technologies—such as AI-powered cameras, student monitoring software, and vape detectors—reshape the meaning of safety and discipline within schools. 
                     </p>
-                    <p style="color: var(--notice-text-primary); font-size: var(--font-size-lg); line-height: 1.8;">
-                        The residency uses participatory art to spark civic dialogue and amplify student and community voices around themes like carceral technologies, school privatization, and cultural narratives of safety.
+                        
+                    <p>
+                         Over the course of five months, the Glitch Lab fostered collaboration, dialogue, and creative resistance, questioning the narratives that position surveillance as a solution to educational challenges. The program highlighted how these technologies often reinforce racialized and ableist systems of control, disproportionately affecting Black, disabled, TLGBQIA+, and other marginalized youth. By merging art, research, and community organizing, the residency transformed Friends Gallery in Houston, TX into a space of experimentation and civic engagement. Through installations, workshops, sound experiments, and storytelling, participants reimagined how socially engaged art can expose systemic harm while amplifying youth and community voices—offering new ways to envision digital futures grounded in care, equity, and justice. The residency culminated in an art show hosted by Friends Gallery in Houston from October 22 to November 9, 2025, showcasing the works created throughout the program.
+
                     </p>
-                    </div>
+                </div>
                     
                 <!-- Image -->
-                    <div style="text-align: center;">
-                    <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/85c4a867-3144-4c70-809a-0439fd6e4adf/IMG_3104.jpeg?content-type=image%2Fjpeg" 
+                    <!-- <div style="text-align: center;">
+                        <img src="https://images.squarespace-cdn.com/content/5b9081c58ab7224793278e1d/b23800a3-275e-439b-8da4-081a60eeb42a/693dbb47aca28b67a3478b6e_art-show.jpg?content-type=image%2Fjpeg" 
                          alt="Glitch Lab Artwork" 
                          style="width: 100%; max-width: 500px; border-radius: 12px; box-shadow: 0 8px 24px rgba(251, 197, 22, 0.3); border: 2px solid rgba(251, 197, 22, 0.2);">
+                    </div> -->
+            </div>
+        </div>
+    </section>
+    <!-- Artists Gallery -->
+    <section class="notice-newsletter" id="artists">
+        <div class="section-content">
+            <h2 class="section-title">Featured Artists</h2>
+            
+            <div class="artist-carousel-container">
+                <!-- Navigation Buttons -->
+                <button class="carousel-nav-btn" id="carousel-prev" aria-label="Previous artist">←</button>
+                <button class="carousel-nav-btn" id="carousel-next" aria-label="Next artist">→</button>
+                
+                <div class="artist-carousel" id="artist-carousel">
+                    <!-- Jack Morillo -->
+                    <div class="artist-item active" data-index="0">
+                        <div class="artist-card">
+                            <canvas class="artist-card-hex-bg" data-artist-hex="0"></canvas>
+                            <div class="artist-card-content">
+                                <!-- <div class="artist-headshot">
+                                    <img class="fas fa-user"></img>
+                                </div> -->
+                                <h3>Jack Morillo</h3>
+                                <p>
+                                    Jack Morillo is an artist and poet from Houston who facilitates Teen Council at the Contemporary Arts Museum Houston. His work explores the unintended uses of space, disidentification, and the surreal as tools for resistance.
+                                </p>
+                                <a href="https://www.artleaguehouston.org/face-me-morillo" target="_blank" rel="noopener noreferrer" class="artist-link">
+                                    View Portfolio →
+                                </a>
+                    </div>
+                </div>
+            </div>
+            
+                    <!-- Sol Diaz Peña -->
+                    <div class="artist-item" data-index="1">
+                        <div class="artist-card">
+                            <canvas class="artist-card-hex-bg" data-artist-hex="1"></canvas>
+                            <div class="artist-card-content">
+                                <!-- <div class="artist-headshot">
+                                    <img class="fas fa-user"></img>
+                                </div> -->
+                                <h3>Sol Diaz Peña</h3>
+                                <p>
+                                    Sol Diaz-Peña is a Cuban-Mexican-American transdisciplinary artist, educator, and organizer. Their work moves across painting, photography, and collective practice, drawing from Zapotec Indigenous traditions, queerness, and migration to explore how identity is shaped, remembered, and reclaimed.                                </p>
+                                <a href="https://soldiazpena.com/" target="_blank" rel="noopener noreferrer" class="artist-link">
+                                    View Portfolio →
+                                </a>
+                    </div>
+                    </div>
+                        </div>
+                    
+                    <!-- Billion Tekleab -->
+                    <div class="artist-item" data-index="2">
+                        <div class="artist-card">
+                            <canvas class="artist-card-hex-bg" data-artist-hex="2"></canvas>
+                            <div class="artist-card-content">
+                                <!-- <div class="artist-headshot">
+                                    <img class="fas fa-user"></img>
+                                </div> -->
+                                <h3>Billion Tekleab</h3>
+                                <p>
+                                    Billion Tekleab works through breaking language, sound making, cartographic studies, and performance to make visible the ephemera of Black life, displacement, and the African diaspora.
+                                </p>
+                                <a href="https://camh.org/event/freedmens-truths-2/" target="_blank" rel="noopener noreferrer" class="artist-link">
+                                    View Work →
+                                </a>
+                    </div>
+                </div>
+            </div>
+                </div>
+                
+                <!-- Carousel Indicators -->
+                <div class="carousel-controls">
+                    <div class="carousel-indicators" id="carousel-indicators"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership Grid-->
+    <section class="notice-newsletter" id="leadership">
+        <div class="section-content">
+            <h2 class="section-title">Leadership</h2>
+            
+            <div class="leadership-grid">
+                <!-- Dr. Chelsea Barbaras -->
+                <div class="leader">
+                    <div class="artist-card">
+                        <canvas class="artist-card-hex-bg" data-artist-hex="0"></canvas>
+                        <div class="artist-card-content">
+                            <h3>Chelsea</h3>
+                            <p>
+                                Chelsea (she/her) is a Postdoctoral Fellow at the University of Texas in Austin. She is researcher and strategist who works across communities, advocacy networks, and public institutions to confront technological harm and build collective futures.
+                            </p>
                         </div>
                     </div>
                 </div>
+
+                <!-- Rian -->
+                <div class="leader">
+                    <div class="artist-card">
+                        <canvas class="artist-card-hex-bg" data-artist-hex="1"></canvas>
+                        <div class="artist-card-content">
+                            <h3>Rian</h3>
+                            <p>
+                                Rian (he/they) is a post-disciplinary performance artist interested in Black diasporic rebellion as an anti-thesis to borders, gender, and prisons. He collaborates with other artists and communities to counter isolation, individualism, and the hyper-productivity of end-capitalism.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </section>
+
+            
 
     <!-- Gallery Preview Section -->
     <section class="notice-newsletter" id="gallery-preview">
@@ -141,84 +255,6 @@
                     </div>
     </section>
 
-    <!-- Featured Artists Section -->
-    <section class="notice-newsletter" id="artists">
-        <div class="section-content">
-            <h2 class="section-title">Featured Artists</h2>
-            
-            <div class="artist-carousel-container">
-                <!-- Navigation Buttons -->
-                <button class="carousel-nav-btn" id="carousel-prev" aria-label="Previous artist">←</button>
-                <button class="carousel-nav-btn" id="carousel-next" aria-label="Next artist">→</button>
-                
-                <div class="artist-carousel" id="artist-carousel">
-                    <!-- Jack Morillo -->
-                    <div class="artist-item active" data-index="0">
-                        <div class="artist-card">
-                            <canvas class="artist-card-hex-bg" data-artist-hex="0"></canvas>
-                            <div class="artist-card-content">
-                                <div class="artist-headshot">
-                                    <i class="fas fa-user"></i>
-                        </div>
-                                <h3 style="color: var(--notice-accent); margin-bottom: var(--spacing-md); font-family: var(--font-accent); font-size: var(--font-size-2xl);">Jack Morillo</h3>
-                                <p style="color: var(--notice-text-primary); font-size: var(--font-size-base); line-height: 1.6; margin-bottom: var(--spacing-lg);">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
-                                </p>
-                                <a href="https://www.artleaguehouston.org/face-me-morillo" target="_blank" rel="noopener noreferrer" class="artist-link">
-                                    View Portfolio →
-                                </a>
-                    </div>
-                </div>
-            </div>
-            
-                    <!-- Sol Diaz Peña -->
-                    <div class="artist-item" data-index="1">
-                        <div class="artist-card">
-                            <canvas class="artist-card-hex-bg" data-artist-hex="1"></canvas>
-                            <div class="artist-card-content">
-                                <div class="artist-headshot">
-                                    <i class="fas fa-user"></i>
-                                </div>
-                                <h3 style="color: var(--notice-accent); margin-bottom: var(--spacing-md); font-family: var(--font-accent); font-size: var(--font-size-2xl);">Sol Diaz Peña</h3>
-                                <p style="color: var(--notice-text-primary); font-size: var(--font-size-base); line-height: 1.6; margin-bottom: var(--spacing-lg);">
-                                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.
-                                </p>
-                                <a href="https://soldiazpena.com/" target="_blank" rel="noopener noreferrer" class="artist-link">
-                                    View Portfolio →
-                                </a>
-                    </div>
-                    </div>
-                        </div>
-                    
-                    <!-- Billion Tekleab -->
-                    <div class="artist-item" data-index="2">
-                        <div class="artist-card">
-                            <canvas class="artist-card-hex-bg" data-artist-hex="2"></canvas>
-                            <div class="artist-card-content">
-                                <div class="artist-headshot">
-                                    <i class="fas fa-user"></i>
-                        </div>
-                                <h3 style="color: var(--notice-accent); margin-bottom: var(--spacing-md); font-family: var(--font-accent); font-size: var(--font-size-2xl);">Billion Tekleab</h3>
-                                <p style="color: var(--notice-text-primary); font-size: var(--font-size-base); line-height: 1.6; margin-bottom: var(--spacing-lg);">
-                                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta.
-                                </p>
-                                <a href="https://camh.org/event/freedmens-truths-2/" target="_blank" rel="noopener noreferrer" class="artist-link">
-                                    View Work →
-                                </a>
-                    </div>
-                </div>
-            </div>
-                </div>
-                
-                <!-- Carousel Indicators -->
-                <div class="carousel-controls">
-                    <div class="carousel-indicators" id="carousel-indicators"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Social Media Section -->
     <section class="notice-social">
         <div class="section-content">
             <div class="notice-social-links">
@@ -240,6 +276,7 @@
             </a>
         </div>
     </section>
+    
 </section>
 
 <!-- Footer Section -->

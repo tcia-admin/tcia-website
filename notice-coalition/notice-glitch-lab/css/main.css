@@ -495,15 +495,49 @@ body {
 }
 
 /* Make sure the main container has a transparent background to show the matrix */
-.notice-coalition-main {
+/* .notice-coalition-main {
     background: transparent;
-}
+} */
 
 /* Update intro section - no overlay needed, matrix provides background */
 .notice-intro {
     position: relative;
 }
+.about-grid {
+    display: block; 
+    grid-template-columns: 1fr 1fr; 
+    gap: var(--spacing-3xl); 
+    align-items: center;
+    margin-top: var(--spacing-2xl);
+}
+.about p {
+    color: var(--notice-text-primary); 
+    font-size: var(--font-size-lg); 
+    line-height: 1.8; 
+    margin-bottom: var(--spacing-xl);
+}
 
+/* Leadership Grid */
+.leadership-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+}
+
+.leader {
+    display: flex;
+    width: 100%;
+    opacity: 1;
+    pointer-events: auto;
+    padding-top: var(--spacing-2xl);
+}
+
+@media (max-width: 768px) {
+    .leadership-grid {
+        grid-template-columns: 1fr;
+    }
+}
 /* ========================================
    ARTIST CAROUSEL STYLES
    ======================================== */
@@ -590,6 +624,19 @@ body {
     width: 100%;
 }
 
+.artist-card-content h3{
+    color: var(--notice-accent); 
+    margin-bottom: var(--spacing-md); 
+    font-family: var(--font-accent); 
+    font-size: var(--font-size-2xl);
+}
+
+.artist-card-content p {
+    color: var(--notice-text-primary); 
+    font-size: var(--font-size-base); 
+    line-height: 1.6;
+    margin-bottom: var(--spacing-lg);
+}
 .artist-link {
     display: inline-block;
     color: var(--notice-accent);
@@ -611,7 +658,7 @@ body {
     display: flex;
     justify-content: center;
     gap: var(--spacing-md);
-    margin-top: var(--spacing-2xl);
+    margin-bottom: var(--spacing-2xl);
 }
 
 .carousel-nav-btn {
@@ -1121,7 +1168,6 @@ body {
     }
 }
 
-/* Gallery Preview Styles */
 /* Gallery Preview Styles */
 
 #gallery-preview-grid {
