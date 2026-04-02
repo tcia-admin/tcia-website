@@ -63,18 +63,17 @@ document.querySelectorAll('.row, .branch-header, .year-badge').forEach(el => {
 
 function showPage(page) {
   document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  const timelineEl = document.getElementById('timeline-page');
+  const resourceEl = document.getElementById('resource-page');
+  
   if (page === 'timeline') {
-    const timelineEl = document.getElementById('timeline');
-    const resourceEl = document.getElementById('resource-page');
-    if (timelineEl) timelineEl.classList.remove('hidden');
-    if (resourceEl) resourceEl.classList.add('hidden');
+    if (timelineEl) timelineEl.style.display = 'block';
+    if (resourceEl) resourceEl.style.display = 'none';
     const navBtns = document.querySelectorAll('.nav-btn');
     if (navBtns[0]) navBtns[0].classList.add('active');
-  } else {
-    const timelineEl = document.getElementById('timeline');
-    const resourceEl = document.getElementById('resource-page');
-    if (timelineEl) timelineEl.classList.add('hidden');
-    if (resourceEl) resourceEl.classList.remove('hidden');
+  } else if (page === 'resource') {
+    if (timelineEl) timelineEl.style.display = 'none';
+    if (resourceEl) resourceEl.style.display = 'block';
     const navBtns = document.querySelectorAll('.nav-btn');
     if (navBtns[1]) navBtns[1].classList.add('active');
     // trigger score bar animations
