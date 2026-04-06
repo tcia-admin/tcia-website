@@ -554,7 +554,7 @@ html {
     gap: var(--spacing-2xl);
     align-items: stretch;
     line-height: 1.5em;
-    padding: var(--spacing-lg) 0;
+    padding: var(--spacing-2xl) 0;
 }
 .values-grid {
     display: grid;
