@@ -187,22 +187,19 @@ html {
     width: 100%;
     min-height: 100vh; /* Ensures full viewport height */
     overflow: hidden; /* Prevents video from spilling out */
-    /* NO background image - matrix rain shows through */
-    background: transparent;
+    background-color: var(--notice-bg-primary);
     margin: 0; /* Ensure no margins */
-    padding-top: var(--nav-height);
+    padding-top: calc(var(--nav-height) + 46px);
     top: 0; /* Align to top */
+    left: 0;
+    right: 0;
 }
 
 
 /* Updated Intro Content Styles */
 .intro-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     width: 100%;
-    margin-top: var(--spacing-2xl); /* Added more space below navigation */
+    height: 100%;
     z-index: 1; /* Ensure content appears above overlay */
 }
 
@@ -456,11 +453,11 @@ html {
     }
 
     .intro-catchphrase {
-        text-align: center;
+        text-align: left;
     }
 
     .intro-cta-text {
-        text-align: center;
+        text-align: left;
     }
 
     .hero-promo-image {
@@ -548,7 +545,7 @@ body {
     position: relative;
     perspective: 2000px;
     z-index: 1;
-    margin-top: var(--spacing-3xl);
+    margin-top: var(--spacing-2xl);
 }
 
 .artist-carousel {
@@ -731,11 +728,11 @@ body {
     }
     
     .carousel-nav-btn#carousel-prev {
-        left: -60px;
+        left: -1em;
     }
     
     .carousel-nav-btn#carousel-next {
-        right: -60px;
+        right: -1em;
     }
 }
 
@@ -762,13 +759,38 @@ body {
 
 /* Hero Section Layout */
 .hero-layout {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: var(--spacing-3xl);
     align-items: center;
     max-width: var(--container-max-width);
-    margin: 0 auto;
+    width: 100%;
     padding: 0 var(--container-padding);
+    z-index: 2;
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Prevents interaction with the video */
+    z-index: 0;
+    opacity: 50%;
+    background-color: var(--notice-black);
+}
+
+.hero-background img {
+    width: 100%;
+    height: 100%;
+    transform: translateY(-5%);
+    object-fit: cover;
+    display: block;
 }
 
 .hero-text {
@@ -791,7 +813,7 @@ body {
     animation: heroPulse 3s ease-in-out infinite;
 }
 
-@keyframes heroPulse {
+/* @keyframes heroPulse {
     0%, 100% { 
         transform: scale(1);
         box-shadow: 0 8px 32px rgba(251, 197, 22, 0.3);
@@ -800,7 +822,7 @@ body {
         transform: scale(1.05);
         box-shadow: 0 12px 48px rgba(251, 197, 22, 0.6), 0 0 0 20px rgba(251, 197, 22, 0.1);
     }
-}
+} */
 
 /* ========================================
    GALLERY DRAWER STYLES (from steam.html)
@@ -1172,7 +1194,7 @@ body {
 
 #gallery-preview-grid {
     display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(520px, 1fr)); 
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
     gap: var(--spacing-lg); 
     margin-bottom: var(--spacing-xl);
 }
