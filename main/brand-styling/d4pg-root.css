@@ -1,0 +1,56 @@
+:root {
+    /* Spacing Variables */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-2xl: 3rem;
+    --spacing-3xl: 4rem;
+    --spacing-4xl: 5rem;
+
+    /* Layout Variables */
+    --container-max-width: 2000px;
+    --container-padding: 1rem;
+    --border-radius: 8px;
+
+    /* Breakpoints (for reference in media queries) */
+    --mobile: 480px;
+    --tablet: 768px;
+    --desktop: 1024px;
+
+    /* Typography Scale */
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-med: 1rem;
+    --font-size-base: 1.25rem;
+    --font-size-lg: 1.5rem;
+    --font-size-xl: 1.75rem;
+    --font-size-2xl: 2.5rem;
+    --font-size-3xl: 3.5rem;
+    --font-size-4xl: 4.5rem;
+    --font-size-5xl: 5.5rem;
+
+    /* D4PG Brand Colors */
+    --d4pg-navy: #051335;      /* Darker navy for main background */
+    --d4pg-blue: #1f3070;      /* Slightly lighter blue for layering */
+    --d4pg-light-blue: #989fd5; /* Light blue/purple background */
+    --d4pg-coral: #ff7f6d;     /* Coral/orange for buttons & accents */
+    --d4pg-yellow: #f3e04b;    /* Yellow accent */
+    --d4pg-green: #4adb97;     /* Green accent */
+    --d4pg-pink: #ff3dc8;      /* Pink accent */
+    --d4pg-white: #ffffff;     /* White text */
+
+    --d4pg-coral-dark: #ff6a54;
+
+    /* Speaker Card Colors */
+    --speaker-bg-red: #ff7c6d;     /* Red/coral background */
+    --speaker-bg-blue: #6e7ff3;    /* Blue background */
+    --speaker-bg-yellow: #c7f74a;  /* Yellow/lime background */
+    --speaker-bg-pink: #ff3dc8;    /* Pink background */
+    
+    /* Font Families */
+    --font-primary: "All Round Gothic", Arial, sans-serif;
+    --font-secondary: "Proxima Nova", sans-serif;
+    --font-accent: "Poppins", "Helvetica Neue", Arial, sans-serif;
+}

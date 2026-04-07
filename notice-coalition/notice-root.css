@@ -1,0 +1,62 @@
+:root {
+    /* Spacing Variables */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-2xl: 3rem;
+    --spacing-3xl: 4rem;
+    --spacing-4xl: 5rem;
+
+    /* Layout Variables */
+    --container-max-width: 1200px;
+    --container-padding: 1rem;
+
+    /* Breakpoints (for reference in media queries) */
+    --mobile: 480px;
+    --tablet: 768px;
+    --desktop: 1024px;
+
+    /* Typography Scale */
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-med: 1rem;
+    --font-size-base: 1.25rem;
+    --font-size-lg: 1.125rem;
+    --font-size-xl: 1.25rem;
+    --font-size-2xl: 1.5rem;
+    --font-size-3xl: 2rem;
+    --font-size-4xl: 2.5rem;
+    --font-size-5xl: 3rem;
+    --font-size-6xl: 3.5rem;
+    --font-size-7xl: 4rem;
+    --font-size-8xl: 4.5rem;
+    --font-size-12xl: 6rem;
+
+    /* Brand Colors */
+    --notice-yellow: #fbc516;
+    --notice-black: #1a1919;
+    --notice-grey: #808285;
+    --notice-white: #ffffff;
+
+    /* Functional Colors */
+    --notice-bg-primary: var(--notice-black);
+    --notice-bg-secondary: #242424;  /* slightly lighter than black for layering */
+    --notice-text-primary: var(--notice-white);
+    --notice-text-secondary: var(--notice-grey);
+    --notice-accent: var(--notice-yellow);
+    
+    /* Background tints for subtle variations */
+    --notice-bg-grey-light: rgba(128, 130, 133, 0.1);
+    --notice-bg-grey-medium: rgba(128, 130, 133, 0.2);
+    
+    /* Font Families */
+    --font-primary: 'Roboto', sans-serif;
+    /*--font-accent: 'Impact', sans-serif;*/
+    --font-accent: 'Roboto', sans-serif;
+    
+    /* Font Weights */
+    --font-regular: 400;
+    --font-bold: 700;
+}
