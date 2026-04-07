@@ -331,6 +331,25 @@ html {
     scale: 1.5; /* Makes video slightly larger to cover any gaps */
 }
 
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Prevents interaction with the video */
+    z-index: 0;
+    opacity: 50%;
+    background-color: var(--notice-black);
+}
+
+.hero-background img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
 /* Overlay for darkening the video */
 .video-overlay {
     position: absolute;
@@ -338,7 +357,7 @@ html {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(12, 11, 30, 0.527);
     pointer-events: none;
 }
 
@@ -405,6 +424,10 @@ html {
 
 /* Responsive adjustments */
 @media screen and (max-width: 768px) {
+    .intro-text-container {
+        width: 90%;
+    }
+
     .intro-catchphrase {
         font-size: calc(var(--font-size-4xl) * 0.8);
         letter-spacing: 0.1em;
@@ -415,13 +438,21 @@ html {
     .intro-cta-container {
         flex-direction: column;
         gap: var(--spacing-lg);
+        align-items: flex-start;
     }
 
     .intro-cta-text {
         max-width: 100%;
         font-size: var(--font-size-lg);
-        text-align: center;
+        text-align: left;
     }
+
+    .intro-cta-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-md);
+        
+    }  
 
     .intro-cta-btn {
         width: 100%;
