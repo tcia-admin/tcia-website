@@ -464,6 +464,7 @@ html {
     .section-title {
         font-size: var(--font-size-2xl);
         margin-bottom: var(--spacing-xl);
+        padding: 0 var(--spacing-md);
     }
 
 }
@@ -1533,6 +1534,6 @@ html {
     .resources-grid,
     .initiatives-grid {
         max-width: 100%;
-        padding: 0;
+        padding: 0 var(--spacing-md);
     }
 }
