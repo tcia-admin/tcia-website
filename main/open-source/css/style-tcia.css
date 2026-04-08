@@ -91,10 +91,15 @@ section {
   background-size: 25px 25px;
   color: var(--text);
   font-family: var(--font-primary);
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
   cursor: default;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── UTILITY CLASSES ────────────────────── */
+.hidden {
+  display: none !important;
 }
 
 
@@ -977,16 +982,13 @@ sup { vertical-align: super; font-size: 0.55em; }
   .today-label { display: none; }
 }
 
-
-/* ── UTILITY CLASSES ────────────────────── */
-.hidden {
-  display: none !important;
-}
-
 /* ── PAGE NAV ─────────────────────────────────────── */
 #page-nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
   z-index: 8000;
   background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(14px) saturate(140%);
