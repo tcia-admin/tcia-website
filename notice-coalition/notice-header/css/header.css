@@ -138,6 +138,8 @@ html {
 /* Logo Styles */
 .nav-logo {
     margin-right: var(--spacing-xl);
+    display: flex;
+    align-items: center;
 }
 
 .nav-logo img {
@@ -180,6 +182,9 @@ html {
     background: none;
     border: none;
     padding: 0;
+    width: 10%;
+    height:  auto;
+    align-items: center;
 }
 
 .hamburger-menu span {
@@ -290,6 +295,8 @@ html {
         display:flex;
         align-content: center;
         padding: var(--spacing-sm);
+        justify-content: center;
+        position: relative;
     }
 
     .nav-links {
@@ -299,6 +306,8 @@ html {
     .hamburger-menu {
         display: flex;
         margin-left: auto;
+        position: absolute;
+        right: var(--spacing-md);
     }
 
     .nav-cta-featured {
@@ -311,8 +320,8 @@ html {
 
     .nav-logo {
         display: flex;
-        margin: 0 auto;
-        transform: translateX(60%);
+        align-items: center;
+        justify-content: center;
     }
 
     .nav-logo img {
