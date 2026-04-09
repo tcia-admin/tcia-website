@@ -24,31 +24,38 @@ document.addEventListener("DOMContentLoaded", () => {
     "Footer loaded successfully",
     "Footer load error:"
   );
-
-    // Initialize hamburger menu after header loads
-  setTimeout(initializeHamburgerMenu, 100);
 });
 
-// Hamburger Menu Functionality
 function initializeHamburgerMenu() {
   const hamburger = document.getElementById("hamburgerMenu");
   const mobileMenu = document.getElementById("mobileMenu");
 
-  if (hamburger && mobileMenu) {
-    hamburger.addEventListener("click", () => {
-      hamburger.classList.toggle("active");
-      mobileMenu.classList.toggle("active");
-      //debugging
-      console.log("menu clicked!");
-    });
+  if (!hamburger || !mobileMenu) return;
 
-    // Close menu when a link is clicked
-    const mobileLinks = mobileMenu.querySelectorAll("a");
-    mobileLinks.forEach(link => {
-      link.addEventListener("click", () => {
-        hamburger.classList.remove("active");
-        mobileMenu.classList.remove("active");
-      });
+  hamburger.addEventListener("click", () => {
+    hamburger.classList.toggle("active");
+    mobileMenu.classList.toggle("active");
+    console.log("menu clicked!");
+  });
+
+  const mobileLinks = mobileMenu.querySelectorAll("a");
+  mobileLinks.forEach(link => {
+    link.addEventListener("click", () => {
+      hamburger.classList.remove("active");
+      mobileMenu.classList.remove("active");
     });
+  });
+}
+
+// Wait for Squarespace to finish loading blocks
+const observer = new MutationObserver(() => {
+  const hamburger = document.getElementById("hamburgerMenu");
+  const mobileMenu = document.getElementById("mobileMenu");
+
+  if (hamburger && mobileMenu) {
+    initializeHamburgerMenu();
+    observer.disconnect();
   }
-};
+});
+
+observer.observe(document.body, { childList: true, subtree: true });
