@@ -28,26 +28,3 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 });
 
-// Hamburger Menu Functionality
-function initializeHamburgerMenu() {
-  const hamburger = document.getElementById("hamburgerMenu");
-  const mobileMenu = document.getElementById("mobileMenu");
-
-  if (hamburger && mobileMenu) {
-    hamburger.addEventListener("click", () => {
-      hamburger.classList.toggle("active");
-      mobileMenu.classList.toggle("active");
-      //debugging
-      console.log("menu clicked!");
-    });
-
-    // Close menu when a link is clicked
-    const mobileLinks = mobileMenu.querySelectorAll("a");
-    mobileLinks.forEach(link => {
-      link.addEventListener("click", () => {
-        hamburger.classList.remove("active");
-        mobileMenu.classList.remove("active");
-      });
-    });
-  }
-};
