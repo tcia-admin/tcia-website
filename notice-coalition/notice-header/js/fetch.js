@@ -1,10 +1,11 @@
 // Helper function to load HTML into a target element
-function loadHTML(url, targetId, successMessage, errorMessage) {
+function loadHTML(url, targetId, successMessage, errorMessage, callback) {
   fetch(url)
     .then(response => response.text())
     .then(data => {
       document.getElementById(targetId).innerHTML = data;
       console.log(successMessage);
+      if (callback) callback();
     })
     .catch(error => console.error(errorMessage, error));
 }
@@ -15,7 +16,8 @@ document.addEventListener("DOMContentLoaded", () => {
     "https://tcia-admin.github.io/tcia-website/notice-coalition/notice-header/notice-header.html",
     "header",
     "Header loaded successfully",
-    "Header load error:"
+    "Header load error:",
+    initializeHamburgerMenu
   );
 
   loadHTML(
@@ -24,9 +26,6 @@ document.addEventListener("DOMContentLoaded", () => {
     "Footer loaded successfully",
     "Footer load error:"
   );
-
-    // Initialize hamburger menu after header loads
-  setTimeout(initializeHamburgerMenu, 100);
 });
 
 // Hamburger Menu Functionality
