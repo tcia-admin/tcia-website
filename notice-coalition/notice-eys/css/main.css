@@ -765,12 +765,16 @@ body.modal-open { overflow: hidden; }
         justify-content: center;
     }
 
+    .intro-cta-buttons a{
+        font-size: var(--font-size-sm);
+    }
+
     .intro-cta-btn {
         width: 100%;
         max-width: none;
         margin-bottom: var(--spacing-sm);
     }
-
+  
     .speakers-grid {
         grid-template-columns: 1fr;
         gap: var(--spacing-xl);
