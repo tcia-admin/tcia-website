@@ -21,7 +21,7 @@
             </div>
 
             <!-- Mobile Hamburger Menu -->
-            <button class="hamburger-menu" id="hamburgerMenu" onclick="initializeHamburgerMenu()">
+            <button class="hamburger-menu" id="hamburgerMenu">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -31,7 +31,7 @@
         </div>
 
                 <!-- Mobile Navigation Menu -->
-        <div class="nav-mobile-menu" id="mobileMenu"">
+        <div class="nav-mobile-menu" id="mobileMenu">
             <a href="/">← TCIA</a>
             <a href="/noticecoalition/about">About</a>
             <a href="/noticecoalition#initiatives">Initiatives</a>
@@ -41,29 +41,6 @@
         </div>
     </nav>
     
-    <script> // Hamburger Menu Functionality
-    function initializeHamburgerMenu() {
-    const hamburger = document.getElementById("hamburgerMenu");
-    const mobileMenu = document.getElementById("mobileMenu");
-
-    if (hamburger && mobileMenu) {
-        hamburger.addEventListener("click", () => {
-        hamburger.classList.toggle("active");
-        mobileMenu.classList.toggle("active");
-        //debugging
-        console.log("menu clicked!");
-        });
-
-        // Close menu when a link is clicked
-        const mobileLinks = mobileMenu.querySelectorAll("a");
-        mobileLinks.forEach(link => {
-        link.addEventListener("click", () => {
-            hamburger.classList.remove("active");
-            mobileMenu.classList.remove("active");
-        });
-        });
-  }
-};</script>
 </body>
 </html>
 
