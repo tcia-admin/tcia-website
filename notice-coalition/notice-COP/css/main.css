@@ -1494,7 +1494,7 @@ html {
 /* Responsive adjustments for smaller screens */
 @media screen and (max-width: 768px) {
     .section-content {
-        padding: 0;
+        padding: 0  var(--spacing-md);
         width: 100%;
     }
     
