@@ -1,5 +1,5 @@
 // Helper function to load HTML into a target element
-function loadHTML(url, targetId, successMessage, errorMessage, callback) {
+function loadHTML(url, targetId, successMessage, errorMessage) {
   fetch(url)
     .then(response => response.text())
     .then(data => {
@@ -17,7 +17,6 @@ document.addEventListener("DOMContentLoaded", () => {
     "header",
     "Header loaded successfully",
     "Header load error:",
-    initializeHamburgerMenu
   );
 
   loadHTML(
