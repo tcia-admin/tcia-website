@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "https://tcia-admin.github.io/tcia-website/notice-coalition/notice-header/notice-header.html",
     "header",
     "Header loaded successfully",
-    "Header load error:",
+    "Header load error:"
   );
 
   loadHTML(
