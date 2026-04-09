@@ -185,6 +185,7 @@ html {
     width: 10%;
     height:  auto;
     align-items: center;
+    z-index: 2000;
 }
 
 .hamburger-menu span {
