@@ -137,8 +137,8 @@ html {
 }
 
 .nav-logo img {
-    height: 55px;
-    width: auto;
+    height: auto;
+    width: 10em;
 }
 
 .nav-links {
@@ -160,7 +160,7 @@ html {
     font-weight: var(--font-bold);
     font-family: var(--font-accent);
     transition: all 0.3s ease;
-    padding: var(--spacing-lg) 0;
+    padding: var(--spacing-md) 0;
     display: block;
     text-align: center;
     position: relative;
@@ -1308,6 +1308,11 @@ html {
         flex-direction: row;
         justify-content: center;
         gap: var(--spacing-md);
+        padding-left: var(--spacing-2xl) ;
+    }
+
+    .nav-links{
+        font-size: var(--font-size-med);
     }
 
     .nav-cta {
