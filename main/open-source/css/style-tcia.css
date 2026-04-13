@@ -40,12 +40,12 @@
 
   /* branch palette - light theme with teal */
   --c1: #02a69e;  /* free software — brand teal */
-  --c2: #f3b54a;  /* linux — brand yellow */
+  --c2: #02a69e;  /* linux — brand teal */
   --c3: #02a69e;  /* open web — brand teal */
   --c4: #1a3070;  /* commercial — brand blue */
   --c5: #02a69e;  /* cloud — brand teal */
-  --c6: #ec1a3c;  /* AI — brand red */
-  --c7: #ec1a3c;  /* daily life — brand red */
+  --c6: #1a3070;  /* AI — brand blue */
+  --c7: #1a3070;  /* daily life — brand blue */
 
   /* Font Families */
   --font-primary: "All Round Gothic", Arial, sans-serif;
@@ -340,7 +340,7 @@ section {
 
 .header-eyebrow {
   font-family: var(--font-secondary);
-  font-size: 0.62rem;
+  font-size: 0.8rem;
   letter-spacing: 0.3em;
   color: var(--trunk);
   text-transform: uppercase;
