@@ -373,6 +373,13 @@ html {
         max-width: 95%;
         width: 95%;
     }
+
+    .artist-card-content p {
+    color: var(--notice-text-primary); 
+    font-size: var(--font-size-med); 
+    line-height: 1.6;
+    margin-bottom: var(--spacing-lg);
+}
 }
 
 
