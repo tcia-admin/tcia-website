@@ -332,7 +332,7 @@ section {
 .op-body strong { color: var(--text); font-weight: 600; }
 
 /* ── HEADER ─────────────────────────────── */
-#timeline-eheader {
+#timeline-header {
   text-align: center;
   padding: 80px 24px 60px;
   position: relative;
