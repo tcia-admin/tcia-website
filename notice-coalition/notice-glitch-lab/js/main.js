@@ -1,4 +1,4 @@
-// document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
 //     // ========================================
 //     // HERO IMAGE ALTERNATING EFFECT
 //     // ========================================
@@ -745,4 +745,5 @@
     }
     
     // Load gallery preview on page load
-    loadGalleryPreview();
+    loadGalleryPreview()
+});
